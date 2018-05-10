@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kevin578/mrteacherkevin2/issues"
   },
-  "homepage": "https://github.com/kevin578/mrteacherkevin2#readme"
+  "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
+  "dependencies": {
+    "styled-components": "^3.2.6"
+  }
 }
