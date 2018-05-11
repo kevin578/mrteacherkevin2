@@ -27,7 +27,7 @@ class SplashBody extends React.Component {
         return (
             <Buttons>
                 <OauthButton logo = {GoogleLogo} text = "Continue with Google"/>
-                <OauthButton logo = {EmailLogo} text = "Sign up with email"/>
+                <OauthButton logo = {EmailLogo} text = "Continue with email"/>
             </Buttons>
         )
     }
