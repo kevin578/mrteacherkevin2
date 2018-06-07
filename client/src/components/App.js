@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Login from './Login/Login';
+import Main from './Main/Main'
+import Subject from './Subject/Subject'
+import {BrowserRouter, Route} from 'react-router-dom';
+
+
+
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Subject />
       </div>
     );
   }

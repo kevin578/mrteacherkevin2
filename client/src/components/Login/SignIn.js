@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import OauthButton from './OauthButton'
-import GoogleLogo from './../img/googleLogo.png'
-import EmailLogo from './../img/email.png';
+import GoogleLogo from './../../img/googleLogo.png'
+import EmailLogo from './../../img/email.png';
 
 
 const Title = styled.img`

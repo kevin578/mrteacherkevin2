@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "client": "cd client && yarn start",
+    "server": "nodemon index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   },
   "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
   "dependencies": {
+    "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
