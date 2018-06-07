@@ -12,7 +12,7 @@ class SubjectBody extends React.Component {
     render() {
         return (
             <Wrapper>
-               Subject Body 
+                
             </Wrapper>
         )
     }

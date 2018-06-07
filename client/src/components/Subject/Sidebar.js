@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import SidebarItem from './SidebarItem';
+
 
 const Wrapper = styled.section`
     width: 25%;
@@ -32,6 +34,8 @@ class Sidebar extends React.Component {
                 <SidebarSubject>
                     <SidebarSubjectName>Lego Mindstorms</SidebarSubjectName>
                 </SidebarSubject>
+                <SidebarItem>Create a file</SidebarItem>
+                <SidebarItem>Play with the move block</SidebarItem>
             </Wrapper>
         )
     }
