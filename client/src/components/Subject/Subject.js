@@ -15,8 +15,11 @@ class Subject extends React.Component {
             <div>
             <Header />
             <Body>
-                <Sidebar steps = {this.props.steps}/>
-                <SubjectBody />
+                <Sidebar 
+                    title = {this.props.title}
+                    steps = {this.props.steps}
+                />
+            {this.props.children}
             </Body>
             </div>
         )

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from  'styled-components';
 import logo from './../../img/logo2.png';
 import SignIn from './SignIn';
+import OauthButton from './OauthButton'
 
 const Wrapper = styled.section`
     background: #59e3ff;
@@ -20,7 +21,7 @@ class Login extends React.Component {
         return (
             <Wrapper>
                 <Logo src = {logo} />
-                <SignIn />
+                <OauthButton logo = {GoogleLogo} text = "Continue with Google"/>
             </Wrapper>
         )
     }

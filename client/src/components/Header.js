@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import image from './../img/logo2.png';
+import { connect } from 'react-redux';
 
 const headerHeight = 60
 const imgHeight = headerHeight - 20;
@@ -34,27 +35,50 @@ const HeaderLink = styled.a`
     transform:translateY(-20%);
     color: #fff;
     font-weight: 600;
-
-
+    cursor: pointer;
+    text-decoration: none;
 `
 
 
 class Header extends React.Component {
     
-
-
-    render(){
-        return (
-            <Wrapper>
-                <Logo src = {image} />
+    getHeaderContent = ()=> {
+        if (this.props.auth == null) {
+            return
+        }
+        else if (this.props.auth)  {
+            return (
                 <HeaderLinks>
                     <HeaderLink>00015 - L1</HeaderLink>
                     <HeaderLink>Profile</HeaderLink>
-                    <HeaderLink>Logout</HeaderLink>
+                    <HeaderLink href = '/api/logout'>Logout</HeaderLink>
                 </HeaderLinks>
+            )
+
+        }
+        else {
+            return (
+                <HeaderLinks>
+                    <HeaderLink href = '/auth/google'>Login with Google</HeaderLink>
+                </HeaderLinks>
+            )
+        }
+        
+    }
+
+    render(){
+        console.log(this.props)
+        return (
+            <Wrapper>
+                <Logo src = {image} />
+                {this.getHeaderContent()}
             </Wrapper>
         )
     }
 }
 
-export default Header
+function mapStateToProps(state) {
+    return { auth: state.auth}
+}
+
+export default connect(mapStateToProps)(Header)
