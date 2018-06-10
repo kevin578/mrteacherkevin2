@@ -67,7 +67,6 @@ class Header extends React.Component {
     }
 
     render(){
-        console.log(this.props)
         return (
             <Wrapper>
                 <Logo src = {image} />
@@ -78,7 +77,8 @@ class Header extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { auth: state.auth}
+    return { 
+        auth: state.auth}
 }
 
 export default connect(mapStateToProps)(Header)

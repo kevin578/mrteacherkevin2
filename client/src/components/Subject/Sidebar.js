@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import SidebarItem from './SidebarItem';
 import Mindstorms from './../../img/mindstorms.jpg'
-
+import {connect} from 'react-redux';
+import * as actions from '../../actions'
 
 const Wrapper = styled.section`
     width: 25%;
@@ -38,11 +39,19 @@ const SidebarSubjectName = styled.p`
 
 class Sidebar extends React.Component {
 
+    changePage = ()=> {
+        console.log('asdf')
+    }
 
     getSidebarItems = ()=> {
         return this.props.steps.map((step, index)=> {
             return (
-                <SidebarItem key = {index}>{index + 1}. {step}</SidebarItem>
+                <SidebarItem 
+                    key = {index}
+                    index = {index}
+                >
+                    {index + 1}. {step.props.title}
+                </SidebarItem>
             )
         })
     }
@@ -60,4 +69,4 @@ class Sidebar extends React.Component {
     }
 }
 
-export default Sidebar;
+export default connect(null, actions)(Sidebar);

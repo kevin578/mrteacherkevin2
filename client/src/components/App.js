@@ -15,6 +15,7 @@ import LegoMindStorms1 from './Pages/Engineering/LegoMindstorms1';
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.setPage(0);
   }
 
 

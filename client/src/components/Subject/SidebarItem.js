@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -15,13 +17,17 @@ const ItemName = styled.p`
 
 class SidebarItem extends React.Component {
 
+    click = ()=> {
+        this.props.setPage(this.props.index);
+    }
+
     render() {
         return (
-            <Wrapper>
+            <Wrapper onClick = {this.click}>
                 <ItemName>{this.props.children}</ItemName>
             </Wrapper>
         )
     }
 }
 
-export default SidebarItem;
+export default connect(null, actions)(SidebarItem);
