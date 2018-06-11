@@ -9,6 +9,7 @@ class LegoMindstorms1 extends React.Component  {
         return (
             <Subject
                 title = "Lego Mindstorms"
+                urlName = "legomindstorms1"
             >
             {[
                 <Body key title = "Create a file">
@@ -21,15 +22,19 @@ class LegoMindstorms1 extends React.Component  {
 
                 <Body key title = "Play with the move block">
                     Goal: Destroy robot
+                    <Button>Next</Button>
                 </Body>,
                 <Body key title = "Super hard test">
                     Super hard test
+                    <Button>Next</Button>
                 </Body>,
                 <Body key title = "Move your robot">
                     Move
+                    <Button>Next</Button>
                 </Body>,
                 <Body key title = "Make your robot go and comeback">
                     Go and comeback
+                    <Button>Next</Button>
                 </Body>
             ]}
 

@@ -39,22 +39,42 @@ const SidebarSubjectName = styled.p`
 
 class Sidebar extends React.Component {
 
-    changePage = ()=> {
-        console.log('asdf')
+
+
+    getColor = (index)=> {
+        const subject = this.props.subject;
+        const completed = this.props.completed;
+
+        if (!subject || !completed) {
+            return false;
+        }
+        
+        if (!completed[subject]) {
+            return false
+        }
+
+        if (completed[subject].includes(index)) {
+            return true;
+        }
     }
 
     getSidebarItems = ()=> {
-        return this.props.steps.map((step, index)=> {
-            return (
-                <SidebarItem 
-                    key = {index}
-                    index = {index}
-                >
-                    {index + 1}. {step.props.title}
-                </SidebarItem>
-            )
-        })
+
+        if (this.props.completed && this.props.subject) {
+            return this.props.steps.map((step, index)=> {
+                return (
+                    <SidebarItem 
+                        key = {index}
+                        index = {index}
+                        completed = {this.getColor(index)}
+                    >
+                        {index + 1}. {step.props.title}
+                    </SidebarItem>
+                    )
+            })
+        }
     }
+    
 
     render() {
         return (
@@ -69,4 +89,11 @@ class Sidebar extends React.Component {
     }
 }
 
-export default connect(null, actions)(Sidebar);
+function mapStateToProps(state) {
+    return {
+        completed: state.completed,
+        subject: state.subject
+    } 
+}
+
+export default connect(mapStateToProps, actions)(Sidebar);

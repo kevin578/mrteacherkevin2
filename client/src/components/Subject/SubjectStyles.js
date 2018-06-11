@@ -12,7 +12,7 @@ const vidWidth = vidHeight * 1.4375;
 
 export const Video = (props)=> {
     return (
-        <iframe width={vidWidth} height={vidHeight} src = {props.src} title = "video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width={vidWidth} height={vidHeight} src = {props.src} title = "video" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
     )
 }
 

@@ -8,10 +8,14 @@ const Wrapper = styled.div`
     height: 50px;
     border-bottom: 2px solid #979797;
     overflow: auto;
+    cursor: pointer;
+    background: ${props => props.completed? '#60A253':'transparent'};
+    color: ${props => props.completed? '#fff': 'default'};
 `
 
 const ItemName = styled.p`
     margin-left: 15px;
+
 `
 
 
@@ -23,11 +27,13 @@ class SidebarItem extends React.Component {
 
     render() {
         return (
-            <Wrapper onClick = {this.click}>
+            <Wrapper onClick = {this.click} completed = {this.props.completed}>
                 <ItemName>{this.props.children}</ItemName>
             </Wrapper>
         )
     }
 }
+
+
 
 export default connect(null, actions)(SidebarItem);

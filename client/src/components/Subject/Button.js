@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import * as actions from '../../actions';
+import { connect } from 'react-redux';
 
 export const Wrapper = styled.button`
     border: 4px solid #4C6EFF;
@@ -17,12 +18,31 @@ export const Wrapper = styled.button`
 ` 
 
 
-export default class Button extends Component {
+class Button extends Component {
+
+  buttonClick = ()=> {
+    this.props.completeButton(this.props.page, this.props.subject)
+    this.props.setPage(this.props.page + 1);
+  }
+
   render() {
     return (
       <div>
-          <Wrapper>{this.props.children}</Wrapper>
+          <Wrapper 
+          onClick = {()=> this.buttonClick()}
+          >
+          {this.props.children}
+          </Wrapper>
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+    return {
+      page: state.page,
+      subject: state.subject
+    } 
+}
+
+export default connect(mapStateToProps, actions)(Button)

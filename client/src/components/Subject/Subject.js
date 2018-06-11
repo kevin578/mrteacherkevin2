@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './../Header';
 import Sidebar from './Sidebar';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 
 const Body = styled.div`
@@ -16,8 +17,12 @@ const Content = styled.div`
 ` 
 
 class Subject extends React.Component {
+
+    componentDidMount(){
+        this.props.setSubject(this.props.urlName)
+    }
+
     render(){
-        console.log(this.props.children)
         return (
             <div>
             <Header />
@@ -25,6 +30,7 @@ class Subject extends React.Component {
                 <Sidebar 
                     title = {this.props.title}
                     steps = {this.props.children}
+                    subject = {this.props.urlName}
                 />
                 <Content>
                     {this.props.children[this.props.page]}
@@ -41,5 +47,5 @@ function mapStateToProps(state) {
     } 
 }
 
-export default connect(mapStateToProps)(Subject)
+export default connect(mapStateToProps, actions)(Subject)
 

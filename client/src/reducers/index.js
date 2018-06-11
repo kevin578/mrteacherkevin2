@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import pageReducer from './pageReducer'
+import { setPage, completePage, setSubject } from './pageReducer'
 
 export default combineReducers({
     auth: authReducer,
-    page: pageReducer
+    page: setPage,
+    subject: setSubject,
+    completed: completePage
 })
