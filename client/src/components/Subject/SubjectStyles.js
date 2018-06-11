@@ -21,21 +21,6 @@ export const Header = styled.h1`
     margin-top: 50px;
 ` 
 
-export const Button = styled.button`
-    border: 4px solid #4C6EFF;
-    box-shadow: 0 2px 4px 0 rgba(168,168,168,0.50);
-    border-radius: 20px;
-    font-family: Helvetica-Bold;
-    font-size: 18px;
-    color: #1A1A1A;
-    width: 125px;
-    height: 55px;
-    margin-top: 30px;
-    cursor: pointer;
-` 
-
-
-
 
 
 export const Body = (props)=> {

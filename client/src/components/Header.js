@@ -12,14 +12,13 @@ const Wrapper = styled.section`
      width: 100%;  
      background: #345AFB; 
      display: flex;
-
-
 `
 
 const Logo = styled.img`
     margin-top: ${(headerHeight - imgHeight)/2}px;
     height: ${imgHeight}px;
     margin-left: 32px;
+    cursor: pointer;
 `
 
 const HeaderLinks = styled.div`
@@ -66,10 +65,14 @@ class Header extends React.Component {
         
     }
 
+    goHome = ()=> {
+        window.location = '/'
+    }
+
     render(){
         return (
             <Wrapper>
-                <Logo src = {image} />
+                <Logo src = {image} onClick = {this.goHome}/>
                 {this.getHeaderContent()}
             </Wrapper>
         )

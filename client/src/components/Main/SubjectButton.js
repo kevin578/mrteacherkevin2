@@ -10,6 +10,7 @@ const Wrapper = styled.div`
     background-image: ${props=> props.background};
     border-radius: 8px;
     margin-bottom: 20px;
+    cursor: pointer;
 `
 
 const Subject = styled.p`
@@ -22,8 +23,17 @@ const Subject = styled.p`
 
 
 const SubjectButton = (props)=> {
+
+    const goToLink = ()=> {
+        window.location = props.destination;
+    }
+
     return (
-        <Wrapper background = {props.background}>
+        
+        <Wrapper 
+            background = {props.background}
+            onClick = {goToLink}
+            >
             <Subject>{props.subject}</Subject>
         </Wrapper>
     )

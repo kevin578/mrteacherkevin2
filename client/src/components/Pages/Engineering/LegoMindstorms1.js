@@ -1,6 +1,7 @@
 import React from 'react';
 import Subject from './../../Subject/Subject'
-import { Body,Header, Video, Button} from '../../Subject/SubjectStyles';
+import { Body,Header, Video} from '../../Subject/SubjectStyles';
+import Button from '../../Subject/Button';
 
 class LegoMindstorms1 extends React.Component  {
     
