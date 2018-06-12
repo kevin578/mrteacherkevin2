@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import { setPage, completePage, setSubject, changeScore  } from './pageReducer'
+import { setPage, completePage, setSubjectURL, changeScore, setSubject,  addAcheievement } from './pageReducer'
 
 export default combineReducers({
     auth: authReducer,
     page: setPage,
     subject: setSubject,
+    subjectURL: setSubjectURL,
+    achievements: addAcheievement,
     completed: completePage,
     score: changeScore
 })

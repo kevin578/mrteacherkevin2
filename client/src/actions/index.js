@@ -26,6 +26,16 @@ export const setPage = (pageNumber) => {
   }
 }
 
+export const setSubjectURL = (subject) => {
+  return (dispatch)=> {
+    dispatch({
+      type: 'SET_SUBJECT_URL',
+      subject
+    },
+  )
+  }
+}
+
 export const setSubject = (subject) => {
   return (dispatch)=> {
     dispatch({
@@ -46,6 +56,16 @@ export const completeButton = (pageNumber, subject)=> {
   }
 }
 
+export const addAchievemnet = (ranking, subject)=> {
+  return (dispatch)=> {
+    dispatch({
+      type: 'SUBJECT_RANKING',
+      ranking,
+      subject
+    })
+  }
+}
+
 export const changeScore = (change)=> {
     return (dispatch)=> {
       dispatch({
@@ -54,6 +74,8 @@ export const changeScore = (change)=> {
       })
     }
 }
+
+
 
 
 

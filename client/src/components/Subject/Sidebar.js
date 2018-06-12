@@ -7,11 +7,12 @@ import * as actions from '../../actions'
 import {headerHeight} from '../Header'
 
 const Wrapper = styled.section`
-    width: 25%;
+    width: 340px;
     height: 800px;
     background: #D8D8D8;
     margin-top: ${headerHeight}px;
-    
+    position: fixed;
+    overflow: auto;
 
 `
 
@@ -45,11 +46,10 @@ const SidebarSubjectName = styled.p`
 class Sidebar extends React.Component {
 
 
-
     getColor = (index)=> {
+
         const subject = this.props.subject;
         const completed = this.props.completed;
-
         if (!subject || !completed) {
             return false;
         }
@@ -64,16 +64,16 @@ class Sidebar extends React.Component {
     }
 
     getSidebarItems = ()=> {
-
         if (this.props.completed && this.props.subject) {
             return this.props.steps.map((step, index)=> {
                 return (
                     <SidebarItem 
-                        key = {index}
+                        key = {step.props.title}
                         index = {index}
                         completed = {this.getColor(index)}
+                        stars = {step.props.stars}
                     >
-                        {index + 1}. {step.props.title}
+                        {index + 1}. {step.props.title} 
                     </SidebarItem>
                     )
             })
@@ -97,7 +97,7 @@ class Sidebar extends React.Component {
 function mapStateToProps(state) {
     return {
         completed: state.completed,
-        subject: state.subject
+        subject: state.subjectURL
     } 
 }
 

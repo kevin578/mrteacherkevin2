@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
+import { addAcheievement } from '../../reducers/pageReducer';
 
 export const Wrapper = styled.button`
     border: 4px solid #4C6EFF;
@@ -20,18 +21,25 @@ export const Wrapper = styled.button`
 
 class Button extends Component {
 
+  componentDidMount() {
 
+  }
 
   buttonClick = ()=> {
-    this.props.completeButton(this.props.page, this.props.subject)
+    this.props.completeButton(this.props.page, this.props.subjectURL)
     this.props.setPage(this.props.page + 1);
-    
+    window.scrollTo(0, 0);
     const timer = ()=> {
       for (let i = 0; i < this.props.changeScoreValue; i++) {
         setTimeout(()=> { this.props.changeScore(1)}, i * 70)
       }
     };
     timer();
+    if (this.props.badge) {
+      console.log(this.props.badge)
+      this.props.addAchievemnet(this.props.badge, this.props.subject);
+    }
+    
 
     
   }
@@ -57,6 +65,7 @@ Button.defaultProps = {
 function mapStateToProps(state) {
     return {
       page: state.page,
+      subjectURL: state.subjectURL,
       subject: state.subject
     } 
 }

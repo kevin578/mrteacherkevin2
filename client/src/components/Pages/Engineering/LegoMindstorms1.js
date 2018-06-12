@@ -3,8 +3,11 @@ import Subject from './../../Subject/Subject'
 import { Body,Header, Video} from '../../Subject/SubjectStyles';
 import Button from '../../Subject/Button';
 
+
 class LegoMindstorms1 extends React.Component  {
     
+    
+
     render() {
         return (
             <Subject
@@ -20,22 +23,23 @@ class LegoMindstorms1 extends React.Component  {
                     <Button>Next</Button>
                 </Body>,
 
-                <Body key title = "Play with the move block">
+                <Body key title = "Play with the move block" stars = {1}>
                     Goal: Destroy robot
-                    <Button>Next</Button>
+                    <Button badge = 'one_star'>Next</Button>
                 </Body>,
-                <Body key title = "Super hard test">
+                <Body key title = "Super hard test" stars = {2}>
                     Super hard test
-                    <Button>Next</Button>
+                    <Button badge = 'two_star'>Next</Button>
                 </Body>,
-                <Body key title = "Move your robot">
+                <Body key title = "Move your robot" stars = {3}>
                     Move
-                    <Button>Next</Button>
+                    <Button badge = 'three_star'>Next</Button>
                 </Body>,
-                <Body key title = "Make your robot go and comeback">
+                <Body key title = "Go and comeback">
                     Go and comeback
-                    <Button>Next</Button>
+                    <Button badge = 'Robotic Renegade'>Next</Button>
                 </Body>
+
             ]}
 
             </Subject>

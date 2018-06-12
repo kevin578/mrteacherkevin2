@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import {headerHeight} from '../Header'
+import camelCase from 'camelcase';
 
 
 const Body = styled.div`
@@ -14,7 +15,7 @@ const Body = styled.div`
 
 const Content = styled.div`
     margin-top: 10px;
-    margin-left: 100px;
+    margin-left: 430px;
     width: 60%;
     margin-top: ${headerHeight}px;
 ` 
@@ -22,7 +23,8 @@ const Content = styled.div`
 class Subject extends React.Component {
 
     componentDidMount(){
-        this.props.setSubject(this.props.urlName)
+        this.props.setSubjectURL(this.props.urlName)
+        this.props.setSubject(camelCase(this.props.title))
     }
 
     render(){

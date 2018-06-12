@@ -9,12 +9,42 @@ export function setPage(state = null, action) {
     }
 }
 
+export function setSubjectURL(state = null, action) {
+    switch (action.type) {
+        case 'SET_SUBJECT_URL':
+            return action.subject;
+        default:
+            return state;
+    }
+}
+
 export function setSubject(state = null, action) {
     switch (action.type) {
         case 'SET_SUBJECT':
             return action.subject;
         default:
             return state;
+    }
+}
+
+export function addAcheievement(state = null, action) {
+
+    let stateCopy = { ...state }
+    const subject = action.subject;
+    const ranking = action.ranking;
+
+    switch (action.type) {
+        case 'SUBJECT_RANKING':
+            if (subject in stateCopy && !stateCopy[subject].includes(ranking)) {
+                stateCopy[subject].push(ranking)
+            }
+            else if (!(subject in stateCopy)) {
+                stateCopy[subject] = [ranking]
+            }     
+            return stateCopy
+
+            default:
+                return state;
     }
 }
 

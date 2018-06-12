@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
   "dependencies": {
+    "camelcase": "^5.0.0",
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^5.0.1",
