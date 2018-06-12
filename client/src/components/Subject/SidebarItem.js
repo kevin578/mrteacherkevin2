@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     border-bottom: 2px solid #979797;
     overflow: auto;
     cursor: pointer;
-    background: ${props => props.completed? '#60A253':'transparent'};
+    background: ${props => props.completed? '#5BA84C':'transparent'};
     color: ${props => props.completed? '#fff': 'default'};
 `
 

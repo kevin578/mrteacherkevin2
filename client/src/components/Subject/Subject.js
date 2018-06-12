@@ -4,16 +4,19 @@ import Header from './../Header';
 import Sidebar from './Sidebar';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import {headerHeight} from '../Header'
 
 
 const Body = styled.div`
     display: flex;
+
 `
 
 const Content = styled.div`
     margin-top: 10px;
     margin-left: 100px;
     width: 60%;
+    margin-top: ${headerHeight}px;
 ` 
 
 class Subject extends React.Component {

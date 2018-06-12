@@ -20,10 +20,22 @@ export const Wrapper = styled.button`
 
 class Button extends Component {
 
+
+
   buttonClick = ()=> {
     this.props.completeButton(this.props.page, this.props.subject)
     this.props.setPage(this.props.page + 1);
+    
+    const timer = ()=> {
+      for (let i = 0; i < this.props.changeScoreValue; i++) {
+        setTimeout(()=> { this.props.changeScore(1)}, i * 70)
+      }
+    };
+    timer();
+
+    
   }
+
 
   render() {
     return (
@@ -36,6 +48,10 @@ class Button extends Component {
       </div>
     )
   }
+}
+
+Button.defaultProps = {
+  changeScoreValue: 5
 }
 
 function mapStateToProps(state) {

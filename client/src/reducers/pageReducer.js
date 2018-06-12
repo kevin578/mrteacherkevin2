@@ -1,8 +1,8 @@
-import {SET_PAGE, COMPLETE_BUTTON, SET_SUBJECT} from './../actions'
+//import {SET_PAGE, COMPLETE_BUTTON, SET_SUBJECT} from './../actions'
 
 export function setPage(state = null, action) {
     switch (action.type) {
-        case SET_PAGE:
+        case 'SET_PAGE':
             return action.payload;
         default:
             return state;
@@ -11,7 +11,7 @@ export function setPage(state = null, action) {
 
 export function setSubject(state = null, action) {
     switch (action.type) {
-        case SET_SUBJECT:
+        case 'SET_SUBJECT':
             return action.subject;
         default:
             return state;
@@ -26,7 +26,7 @@ export function completePage(state = {}, action) {
     
 
     switch (action.type) {
-        case COMPLETE_BUTTON:
+        case 'COMPLETE_BUTTON':
             if (subject in stateCopy && !stateCopy[subject].includes(pageNumber)) {
                 stateCopy[subject].push(pageNumber)
             }
@@ -40,4 +40,14 @@ export function completePage(state = {}, action) {
             return state
     }
 }
+
+export function changeScore(state = 0, action) {
+    
+    switch(action.type) {
+        case 'CHANGE_SCORE':
+            return state + action.change
+        default: 
+            return state;
+    }
+} 
 

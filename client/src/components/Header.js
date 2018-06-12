@@ -2,16 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import image from './../img/logo2.png';
 import { connect } from 'react-redux';
+import zeroFill from 'zero-fill';
+import CountUp from 'react-countup';
 
-const headerHeight = 60
+export const headerHeight = 60
 const imgHeight = headerHeight - 20;
 
 const Wrapper = styled.section`
+    top: 0px;
      background: blue;
      height: ${headerHeight}px;
      width: 100%;  
      background: #345AFB; 
      display: flex;
+     position: fixed;
+     overflow: hidden;
+    z-index: 1;
 `
 
 const Logo = styled.img`
@@ -41,6 +47,9 @@ const HeaderLink = styled.a`
 
 class Header extends React.Component {
     
+
+
+
     getHeaderContent = ()=> {
         if (this.props.auth == null) {
             return
@@ -48,7 +57,7 @@ class Header extends React.Component {
         else if (this.props.auth)  {
             return (
                 <HeaderLinks>
-                    <HeaderLink>00015 - L1</HeaderLink>
+                    <HeaderLink>{zeroFill(5)(this.props.score)}</HeaderLink>
                     <HeaderLink>Profile</HeaderLink>
                     <HeaderLink href = '/api/logout'>Logout</HeaderLink>
                 </HeaderLinks>
@@ -81,7 +90,9 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
     return { 
-        auth: state.auth}
+        auth: state.auth,
+        score: state.score   
+    }
 }
 
 export default connect(mapStateToProps)(Header)

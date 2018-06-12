@@ -4,11 +4,15 @@ import SidebarItem from './SidebarItem';
 import Mindstorms from './../../img/mindstorms.jpg'
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
+import {headerHeight} from '../Header'
 
 const Wrapper = styled.section`
     width: 25%;
     height: 800px;
     background: #D8D8D8;
+    margin-top: ${headerHeight}px;
+    
+
 `
 
 
@@ -21,6 +25,7 @@ const SidebarSubject = styled.div`
     text-align: center;
     border-top: 2px solid #979797;
     border-bottom: 1px solid #979797; 
+
 `
 const SubjectImage = styled.img`
     opacity: .0;  

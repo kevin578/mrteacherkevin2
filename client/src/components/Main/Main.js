@@ -8,6 +8,7 @@ const Engineering = styled.div`
     margin-top: 100px;
     margin-left: 120px;
     width: 215px;
+    overflow: hidden;
 `
 
 const EngineeringTitle = styled.h1`
@@ -35,7 +36,6 @@ class Main extends React.Component {
                     subject = 'Kerbal Space Program'
                 />
             </Engineering>
-
             </div>
 
 

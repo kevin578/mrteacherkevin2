@@ -27,7 +27,9 @@
     "mongoose": "^5.1.2",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
+    "react-countup": "^3.0.3",
     "redux-devtools-extension": "^2.13.2",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "zero-fill": "^2.2.3"
   }
 }
