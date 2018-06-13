@@ -23,15 +23,15 @@ class LegoMindstorms1 extends React.Component  {
                     <Button>Next</Button>
                 </Body>,
 
-                <Body key title = "Play with the move block" stars = {1}>
+                <Body key title = "Play with the move block">
                     Goal: Destroy robot
                     <Button badge = 'one_star'>Next</Button>
                 </Body>,
-                <Body key title = "Super hard test" stars = {2}>
+                <Body key title = "Super hard test" >
                     Super hard test
                     <Button badge = 'two_star'>Next</Button>
                 </Body>,
-                <Body key title = "Move your robot" stars = {3}>
+                <Body key title = "Move your robot" >
                     Move
                     <Button badge = 'three_star'>Next</Button>
                 </Body>,

@@ -5,6 +5,7 @@ import Mindstorms from './../../img/mindstorms.jpg'
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import {headerHeight} from '../Header'
+import Ranking from '../Ranking'
 
 const Wrapper = styled.section`
     width: 340px;
@@ -25,7 +26,9 @@ const SidebarSubject = styled.div`
     background: #A43AB4;
     text-align: center;
     border-top: 2px solid #979797;
-    border-bottom: 1px solid #979797; 
+    border-bottom: 1px solid #979797;
+    display: flex; 
+    justify-content: space-around;
 
 `
 const SubjectImage = styled.img`
@@ -45,6 +48,13 @@ const SidebarSubjectName = styled.p`
 
 class Sidebar extends React.Component {
 
+
+    getRank = ()=> {
+        if (this.props.achievements) {
+            return this.props.achievements[this.props.subjectName]
+        }
+        else return []
+    }
 
     getColor = (index)=> {
 
@@ -85,8 +95,8 @@ class Sidebar extends React.Component {
         return (
             <Wrapper>
                 <SidebarSubject>
-                    <SubjectImage src = {Mindstorms} />
                     <SidebarSubjectName>{this.props.title}</SidebarSubjectName>
+                    <Ranking rank = {this.getRank()} />
                 </SidebarSubject>
                 {this.getSidebarItems()}
             </Wrapper>
@@ -95,9 +105,13 @@ class Sidebar extends React.Component {
 }
 
 function mapStateToProps(state) {
+
     return {
         completed: state.completed,
-        subject: state.subjectURL
+        subject: state.subjectURL,
+        subjectName: state.subject,
+        achievements: state.achievements
+
     } 
 }
 

@@ -36,7 +36,6 @@ class Button extends Component {
     };
     timer();
     if (this.props.badge) {
-      console.log(this.props.badge)
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
     
