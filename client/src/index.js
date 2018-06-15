@@ -10,7 +10,7 @@ import reduxThunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-const store = createStore(reducers,{},composeWithDevTools(
+export const store = createStore(reducers,{},composeWithDevTools(
     applyMiddleware(reduxThunk)));
 
 ReactDOM.render(

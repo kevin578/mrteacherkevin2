@@ -42,14 +42,15 @@ export function addAcheievement(state = null, action) {
                 stateCopy[subject] = [ranking]
             }     
             return stateCopy
+        case 'ACHIEVEMENT_INIT':
+            return action.payload? action.payload : null
 
-            default:
+        default:
                 return state;
     }
 }
 
 export function completePage(state = {}, action) {
-    
     let stateCopy = { ...state }
     const subject = action.subject;
     const pageNumber = action.pageNumber;
@@ -62,10 +63,11 @@ export function completePage(state = {}, action) {
             }
             else if (!(subject in stateCopy)) {
                 stateCopy[subject] = [pageNumber]
-            }
-            
-            return stateCopy
-            
+            } 
+        return stateCopy
+
+        case 'COMPLETE_INIT':
+            return action.payload? action.payload : null
         default:
             return state
     }

@@ -57,7 +57,6 @@ class Sidebar extends React.Component {
     }
 
     getColor = (index)=> {
-
         const subject = this.props.subject;
         const completed = this.props.completed;
         if (!subject || !completed) {
@@ -74,7 +73,7 @@ class Sidebar extends React.Component {
     }
 
     getSidebarItems = ()=> {
-        if (this.props.completed && this.props.subject) {
+  
             return this.props.steps.map((step, index)=> {
                 return (
                     <SidebarItem 
@@ -87,7 +86,7 @@ class Sidebar extends React.Component {
                     </SidebarItem>
                     )
             })
-        }
+       
     }
     
 

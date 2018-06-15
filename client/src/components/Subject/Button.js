@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { addAcheievement } from '../../reducers/pageReducer';
+import axios from 'axios';
+
 
 export const Wrapper = styled.button`
     border: 4px solid #4C6EFF;
@@ -25,16 +27,41 @@ class Button extends Component {
 
   }
 
-  buttonClick = ()=> {
-    this.props.completeButton(this.props.page, this.props.subjectURL)
+  checkIfCompleted = ()=> {
+    
+    if (this.props.completed == null) return true;
+    if (this.props.completed[this.props.subjectURL].includes(this.props.page)) return false;
+    return true;
+  }
+
+  changeScore = ()=> {
+    
+
+    if (this.checkIfCompleted()) {
+      axios.put('/api/setScore',{
+      score: this.props.changeScoreValue + this.props.score
+      })
+      const timer = ()=> {
+        for (let i = 0; i < this.props.changeScoreValue; i++) {
+          setTimeout(()=> { this.props.changeScore(1)}, i * 70)
+        }
+      };
+      timer();
+    }
+
+  }
+
+  buttonClick = () => {  
+    if (this.props.auth) this.changeScore();
+    
+    this.props.completeButton(this.props.page, this.props.subjectURL, this.props.completed)
+    
     this.props.setPage(this.props.page + 1);
+    
     window.scrollTo(0, 0);
-    const timer = ()=> {
-      for (let i = 0; i < this.props.changeScoreValue; i++) {
-        setTimeout(()=> { this.props.changeScore(1)}, i * 70)
-      }
-    };
-    timer();
+
+    
+
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
@@ -63,9 +90,12 @@ Button.defaultProps = {
 
 function mapStateToProps(state) {
     return {
+      auth: state.auth,
       page: state.page,
       subjectURL: state.subjectURL,
-      subject: state.subject
+      subject: state.subject,
+      completed: state.completed,
+      score: state.score
     } 
 }
 
