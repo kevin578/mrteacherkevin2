@@ -83,3 +83,14 @@ export function changeScore(state = 0, action) {
     }
 } 
 
+export function checkAnswers(state = {}, action) {
+    let stateCopy = { ...state }
+    stateCopy[action.answer] = action.correct;
+    switch(action.type) {
+        case 'CHECK_ANSWER':
+            return stateCopy;
+        default:
+            return state;
+    }
+}
+

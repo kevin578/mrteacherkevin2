@@ -113,6 +113,16 @@ export const changeScore = (change)=> {
     }
 }
 
+export const checkAnswers = (correct, answer) => {
+  return (dispatch)=> {
+    dispatch({
+      type: 'CHECK_ANSWER',
+      correct,
+      answer
+    })
+  }
+}
+
 
 
 

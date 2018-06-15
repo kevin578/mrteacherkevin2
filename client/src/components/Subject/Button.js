@@ -23,27 +23,34 @@ export const Wrapper = styled.button`
 
 class Button extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      numberWrong: 0
+    }
+  }
+
   componentDidMount() {
 
   }
 
-  checkIfCompleted = ()=> {
-    
+  checkIfCompleted = ()=> { 
     if (this.props.completed == null) return true;
     if (this.props.completed[this.props.subjectURL].includes(this.props.page)) return false;
     return true;
   }
 
-  changeScore = ()=> {
+  changeScore = (newScore)=> {
     
-
     if (this.checkIfCompleted()) {
       axios.put('/api/setScore',{
-      score: this.props.changeScoreValue + this.props.score
-      })
+      score: newScore + this.props.score
+    })
       const timer = ()=> {
-        for (let i = 0; i < this.props.changeScoreValue; i++) {
-          setTimeout(()=> { this.props.changeScore(1)}, i * 70)
+        const changeValue = newScore > 0 ? 1:-1;
+
+        for (let i = 0; i < Math.abs(newScore); i++) {
+          setTimeout(()=> { this.props.changeScore(changeValue) }, i * 70)
         }
       };
       timer();
@@ -51,23 +58,30 @@ class Button extends Component {
 
   }
 
-  buttonClick = () => {  
-    if (this.props.auth) this.changeScore();
-    
+  nextPage = () => {  
+
+    if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.page, this.props.subjectURL, this.props.completed)
-    
     this.props.setPage(this.props.page + 1);
-    
     window.scrollTo(0, 0);
-
-    
-
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
-    
+  }
 
-    
+  checkQuiz = () => {
+    let matchArray = []
+    for (let item in this.props.correct) {
+      if (this.props.correct[item] == null) {
+        matchArray.push(item);
+      }
+    }
+    if (matchArray.length > 0) {
+      this.setState({numberWrong: matchArray.length})
+    }
+    else {
+      this.nextPage();
+    }
   }
 
 
@@ -75,10 +89,16 @@ class Button extends Component {
     return (
       <div>
           <Wrapper 
-          onClick = {()=> this.buttonClick()}
-          >
+          onClick = {()=> {
+            return this.props.quiz ? this.checkQuiz() : this.nextPage()
+          }}
+         
+         >
           {this.props.children}
           </Wrapper>
+          {this.state.numberWrong > 0 && 
+          <p>You still have {this.state.numberWrong} wrong</p>
+          }
       </div>
     )
   }
@@ -95,7 +115,8 @@ function mapStateToProps(state) {
       subjectURL: state.subjectURL,
       subject: state.subject,
       completed: state.completed,
-      score: state.score
+      score: state.score,
+      correct: state.correct
     } 
 }
 

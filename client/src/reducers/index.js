@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
-import { setPage, completePage, setSubjectURL, changeScore, setSubject,  addAcheievement } from './pageReducer'
+import { setPage, completePage, setSubjectURL, changeScore, setSubject,  addAcheievement, checkAnswers } from './pageReducer'
 
 
 
@@ -11,5 +11,6 @@ export default combineReducers({
     subjectURL: setSubjectURL,
     achievements: addAcheievement,
     completed: completePage,
-    score: changeScore
+    score: changeScore,
+    correct: checkAnswers
 })
