@@ -1,16 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-
-
+import Ranking from '../Ranking'
+import {connect} from 'react-redux'
+import camelCase from 'camelcase';
 
 const Wrapper = styled.div`
+    display: flex;
+
+`
+
+const Button = styled.div`
+    display: relative;
     width: 215px;
     height: 70px;
     overflow: auto;
     background-image: ${props=> props.background};
     border-radius: 8px;
     margin-bottom: 20px;
+    margin-right: 25px;
     cursor: pointer;
+    position: relative;
+    top: 10px;
 `
 
 const Subject = styled.p`
@@ -22,21 +32,36 @@ const Subject = styled.p`
 `
 
 
-const SubjectButton = (props)=> {
 
+const SubjectButton = (props)=> {
     const goToLink = ()=> {
         window.location = props.destination;
     }
 
+    const getRank = ()=> {
+        if (!(props.rank == null)) {
+          return props.rank[camelCase(props.subject)]
+        }
+    }
+
     return (
-        
-        <Wrapper 
+    <Wrapper>
+        <Button
             background = {props.background}
             onClick = {goToLink}
             >
             <Subject>{props.subject}</Subject>
-        </Wrapper>
+        </Button>
+        <Ranking rank = {getRank()}/>
+    
+    </Wrapper>
     )
 }
 
-export default SubjectButton;
+const mapStateToProps = (state)=> {
+    return {
+       rank: state.achievements,
+    }
+}
+
+export default connect(mapStateToProps)(SubjectButton);

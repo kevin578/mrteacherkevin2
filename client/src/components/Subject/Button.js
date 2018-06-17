@@ -36,6 +36,8 @@ class Button extends Component {
 
   checkIfCompleted = ()=> { 
     if (this.props.completed == null) return true;
+    if (!(this.props.subjectURL in this.props.completed)) return true;
+   
     if (this.props.completed[this.props.subjectURL].includes(this.props.page)) return false;
     return true;
   }

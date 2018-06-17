@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 import LegoMindStorms1 from './Pages/Engineering/LegoMindstorms1';
+import KerbalSpaceProgram1 from './Pages/Engineering/KerbalSpaceProgram1'
 import axios from 'axios';
 
 
@@ -40,6 +41,8 @@ class App extends Component {
           <div>
               <Route  path = "/" component = {Main} exact/>
               <Route path = "/legomindstorms1" component = {LegoMindStorms1} />
+              <Route path = "/kerbalspaceprogram1" component = {KerbalSpaceProgram1} />
+
               <Route path = "/subject" component = {Subject} />
           </div>
         </BrowserRouter>

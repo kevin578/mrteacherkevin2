@@ -7,15 +7,15 @@ import SubjectButton from './SubjectButton'
 const Engineering = styled.div`
     margin-top: 100px;
     margin-left: 120px;
-    width: 215px;
+    width: 350px;
     overflow: hidden;
 `
 
 const EngineeringTitle = styled.h1`
     text-align: center;
     font-family: Roboto;
-
 `
+
 
 class Main extends React.Component {
 
@@ -34,6 +34,7 @@ class Main extends React.Component {
                 <SubjectButton 
                     background = 'linear-gradient(45deg, #D3C075 0%, #D37722 100%)'
                     subject = 'Kerbal Space Program'
+                    destination = '/kerbalspaceprogram1'
                 />
             </Engineering>
             </div>

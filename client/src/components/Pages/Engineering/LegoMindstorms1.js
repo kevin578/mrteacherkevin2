@@ -17,7 +17,7 @@ class LegoMindstorms1 extends React.Component  {
             >
             {[
                 <Body key title = "Create a file">
-                    <Header>Goal: Make a file</Header>
+                    <Header>Make a file</Header>
                     <p>Create a new project. Name the project and program</p>
                     <Header>Resources</Header>
                     <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
@@ -25,19 +25,19 @@ class LegoMindstorms1 extends React.Component  {
                 </Body>,
 
                 <Body key title = "Play with the move block">
-                    Goal: Destroy robot
-                    <Button badge = 'one_star'>Next</Button>
+                    <p>Mess around with the move block. Try </p>
+                    <Header>Resources</Header>
+                    <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
                 </Body>,
 
-                <Body key title = "Super hard test" >
-                    <Header>Quiz</Header>
-                    <TextQuestion correctAnswer = "go">What does the speed button do?</TextQuestion>
-                    <TextQuestion correctAnswer = "stop">What does the stop button do?</TextQuestion>
-                    <Button quiz badge = 'two_star'>Next</Button>
+                <Body key title = "Yardstick" >
+                    <Header>Get your robot to move the length of a yardstick.</Header>
+                    <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
+                    <Button>Next</Button>
                 </Body>,
 
-                <Body key title = "Move your robot" >
-                    Move
+                <Body key title = "Go and come back" >
+                    <p>Get your robot to go to the </p>
                     <Button badge = 'three_star'>Next</Button>
                 </Body>,
                 <Body key title = "Go and comeback">

@@ -20,6 +20,8 @@ class TextQuestion extends Component {
           value: ''
     }
   }
+
+
   
   componentDidMount(){
     this.props.checkAnswers(null, camelCase(this.props.correctAnswer))
@@ -38,12 +40,22 @@ class TextQuestion extends Component {
 
   render() {
     return (
-      <div>
+    <div>
+      { this.props.type == 'text' &&
+        <div>
         <QuestionText>{this.props.children}</QuestionText>
         <AnswerArea value={this.state.value} onChange={this.handleChange} type = 'text'/>
-      </div>
+        </div>
+      }
+    </div>
+
+      
     )
   }
+}
+
+TextQuestion.defaultProps = {
+    type: 'text'
 }
 
 export default connect(null, actions)(TextQuestion)
