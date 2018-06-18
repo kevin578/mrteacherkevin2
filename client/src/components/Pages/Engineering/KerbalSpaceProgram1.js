@@ -44,7 +44,7 @@ class LegoMindstorms1 extends React.Component  {
                     <p>4. Add a maneuver that casuses your peroapis to be around 100,000 meters.</p>
                     <p>5. Select the maneuver autopilot on the left of the navball</p>
                     <p>6. Once the time until the maneuver is half the time of the actual maneuver, turn the throttle all the way up</p>
-                    <p>7. Once you get your desired orbit, cut the engines.
+                    <p>7. Once you get your desired orbit, cut the engines.</p>
                     <p>8. To get back down, burn retrograde until your peroapis is in the ocean.</p> 
                     <Button badge = 'one_star' changeScoreValue = {10}>I made it!</Button>
                 </Body>,
