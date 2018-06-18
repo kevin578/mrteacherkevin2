@@ -36,7 +36,16 @@ class LegoMindstorms1 extends React.Component  {
                     <Header>Orbit Kerbin</Header>
                     <p>Do a couple orbits of Kerban. Come back alive</p>
                     <Header>Resources</Header>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
+                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>p
+                    <p>Steps:</p>
+                    <p>1. Get to 10,000 meters</p>
+                    <p>2. Turn unil you're about halfway to 90 degrees.</p>
+                    <p>3. Check you map with the M button. Once your apoapsis hits 100,000 meters, cut the engines</p>
+                    <p>4. Add a maneuver that casuses your peroapis to be around 100,000 meters.</p>
+                    <p>5. Select the maneuver autopilot on the left of the navball</p>
+                    <p>6. Once the time until the maneuver is half the time of the actual maneuver, turn the throttle all the way up</p>
+                    <p>7. Once you get your desired orbit, cut the engines.
+                    <p>8. To get back down, burn retrograde until your peroapis is in the ocean.</p> 
                     <Button badge = 'one_star' changeScoreValue = {10}>I made it!</Button>
                 </Body>,
 
