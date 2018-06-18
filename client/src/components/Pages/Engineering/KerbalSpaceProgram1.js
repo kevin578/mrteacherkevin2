@@ -21,7 +21,7 @@ class LegoMindstorms1 extends React.Component  {
                     <p>Build a rocket. Go up. Come back alive</p>
                     <Header>Resources</Header>
                     <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
-                    <Button>I made it!</Button>
+                    <Button changeScoreValue = {2}>I made it!</Button>
                 </Body>,
 
                 <Body key title = "Launch a rocket into space">
@@ -37,7 +37,7 @@ class LegoMindstorms1 extends React.Component  {
                     <p>Do a couple orbits of Kerban. Come back alive</p>
                     <Header>Resources</Header>
                     <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
-                    <Button>I made it!</Button>
+                    <Button badge = 'one_star' changeScoreValue = {10}>I made it!</Button>
                 </Body>,
 
                 <Body key title = "Spacewalk">
@@ -45,36 +45,31 @@ class LegoMindstorms1 extends React.Component  {
                     <p>Make your apoapsis within 1000 meters of each other.</p>
                     <Header>Part 2:</Header>
                     <p>Go on a spacewalk. Get 50 meters away from the spaceship and come back</p>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
                     <Button>Done</Button>
                 </Body>,
                 
                 <Body key title = "Crash into the moon">
                     <Header>Crash into the moon.</Header>
                     <p>Yep. Crash into the moon. You don't need to come back alive.</p>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
-                    <Button>Done</Button>
+                    <Button badge = 'two_star'>Done</Button>
                 </Body>,
 
                 <Body key title = "Orbit the moon.">
                     <Header>Orbit the moon</Header>
                     <p>Orbit the moon. Come back alive</p>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
                     <Button>Done</Button>
                 </Body>,
 
                 <Body key title = "Land on the moon.">
                     <Header>Land on the moon</Header>
                     <p>Land on the moon. You don't need to come back alive.</p>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
-                    <Button>Done</Button>
+                    <Button badge = 'three_star'>Done</Button>
                 </Body>,
 
                 <Body key title = "Come back from the moon">
                     <Header>Come back from the moon.</Header>
                     <p>Land on the moon. Then come back alive</p>
-                    <Video src = 'https://youtube.com/embed/bpw-bBJIZr4'/>
-                    <Button>Done</Button>
+                    <Button badge = 'space_cowboy' changeScoreValue = {15}>Done</Button>
                 </Body>,
                 
 
