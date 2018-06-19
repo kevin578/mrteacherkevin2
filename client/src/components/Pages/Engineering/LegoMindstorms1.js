@@ -54,6 +54,9 @@ class LegoMindstorms1 extends React.Component  {
                 <Body key title = "Ultrasonic sensor">
                     <Header>Ultrasonic Sensor</Header>
                     <p>Get your robot to sense a wall, turn around, and go in the other direction.</p>
+                    <Header>Resources</Header>
+                    <p>The part about how the ultrasonic sensor works starts at 1:10</p>
+                    <Video src = 'https://www.youtube.com/embed/W4has2MySCs' />
                     <Button badge = 'two_star' changeScoreValue = {8}>Next</Button>
                 </Body>,
 
@@ -61,8 +64,6 @@ class LegoMindstorms1 extends React.Component  {
                 <Header>Gyro Sensor</Header>
                 <p>Use the gyro sensor to go in a straight line</p>
                 <Header>Resources</Header>
-                <p>The part about how the ultrasonic sensor works starts at 1:10</p>
-                <Video src = 'https://www.youtube.com/embed/W4has2MySCs' />
                 <Button>Next</Button>
                 </Body>,
 
