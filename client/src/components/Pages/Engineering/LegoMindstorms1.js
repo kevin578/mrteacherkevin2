@@ -72,7 +72,21 @@ class LegoMindstorms1 extends React.Component  {
                 <Video src = 'https://www.youtube.com/embed/ye3MhVA9Rhs'/>
                 <p>The good line follower program starts at 10:08</p>
                 <Button>Next</Button>
-                </Body>
+                </Body>,
+
+                <Body key title = "MyBlocks">
+                <Header>MyBlocks</Header>
+                <p>Create a Myblock that saves the straight line porgram</p>
+                <Header>Resources</Header>
+                <Button>Next</Button>
+                </Body>,
+
+                <Body key title = "Write a file">
+                <Header>Write a file</Header>
+                <p>Create a voting machine that records two choices and saves them to a file.</p>
+                <Video src = 'https://www.youtube.com/embed/RdW5NQUvWnA'/>
+                <Button>Next</Button>
+                </Body>,
 
 
 
