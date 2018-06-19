@@ -63,6 +63,7 @@ class LegoMindstorms1 extends React.Component  {
                 <Body key title = "Gyro Sensor">
                 <Header>Gyro Sensor</Header>
                 <p>Use the gyro sensor to go in a straight line</p>
+                <Video src = 'https://youtube.com/embed/CBzUYdzsOQA'></Video>
                 <Header>Resources</Header>
                 <Button>Next</Button>
                 </Body>,
