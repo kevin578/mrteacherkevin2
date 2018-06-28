@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
-import { addAcheievement } from '../../reducers/pageReducer';
+//import { addAcheievement } from '../../reducers/pageReducer';
 import axios from 'axios';
 
 

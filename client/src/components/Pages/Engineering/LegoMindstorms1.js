@@ -1,6 +1,7 @@
 import React from 'react';
 import Subject from './../../Subject/Subject'
 import { Body,Header, Video} from '../../Subject/SubjectStyles';
+import Checkbox from './../../Subject/Checkbox'
 import TextQuestion from '../../Subject/Quiz';
 import Button from '../../Subject/Button';
 
@@ -21,6 +22,7 @@ class LegoMindstorms1 extends React.Component  {
                     <p>Create a new project. Name the project and program</p>
                     <Header>Resources</Header>
                     <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
+                    <Checkbox />
                     <Button>Next</Button>
                 </Body>,
 
