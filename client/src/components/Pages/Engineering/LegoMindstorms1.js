@@ -2,7 +2,7 @@ import React from 'react';
 import Subject from './../../Subject/Subject'
 import { Body,Header, Video} from '../../Subject/SubjectStyles';
 import Checkbox from './../../Subject/Checkbox'
-import TextQuestion from '../../Subject/Quiz';
+import Question from '../../Subject/Quiz';
 import Button from '../../Subject/Button';
 
 
@@ -22,7 +22,7 @@ class LegoMindstorms1 extends React.Component  {
                     <p>Create a new project. Name the project and program</p>
                     <Header>Resources</Header>
                     <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
-                    <Checkbox />
+                    <Checkbox >This is a checkbox</Checkbox>
                     <Button>Next</Button>
                 </Body>,
 
@@ -70,11 +70,28 @@ class LegoMindstorms1 extends React.Component  {
                 <Button>Next</Button>
                 </Body>,
 
+                <Body key title = "Quiz">
+                    <Header>Quiz</Header>
+                    <p>Answer the questions</p>
+                    <Question type = 'text' correctAnswer = 'Kevin'>
+                    What's your name?
+                    </Question>
+                    <Question type = 'text' correctAnswer = 'Carlos'>
+                    What's your nombre?
+                    </Question>
+
+                    <Button>Next</Button>
+            </Body>,
+
+
                 <Body key title = "Follow a line">
                 <Header>Follow a line</Header>
                 <p>Use the color sensor to follow a line</p>
                 <Video src = 'https://www.youtube.com/embed/ye3MhVA9Rhs'/>
                 <p>The good line follower program starts at 10:08</p>
+                <Question type = 'text' correctAnswer = 'Pablo'>
+                    What's your other nombre?
+                    </Question>
                 <Button>Next</Button>
                 </Body>,
 
