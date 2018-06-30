@@ -73,24 +73,5 @@ export function completePage(state = {}, action) {
     }
 }
 
-export function changeScore(state = 0, action) {
-    
-    switch(action.type) {
-        case 'CHANGE_SCORE':
-            return state + action.change
-        default: 
-            return state;
-    }
-} 
 
-export function checkAnswers(state = {}, action) {
-    let stateCopy = { ...state }
-    stateCopy[action.answer] = action.correct;
-    switch(action.type) {
-        case 'CHECK_ANSWER':
-            return stateCopy;
-        default:
-            return state;
-    }
-}
 

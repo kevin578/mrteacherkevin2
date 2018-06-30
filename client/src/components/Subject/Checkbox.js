@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-
+import { connect } from 'react-redux'; 
+import * as actions from '../../actions';
+import { addCheckbox } from '../../actions';
 
 const Box = styled.input`
 
@@ -12,7 +14,7 @@ const Label = styled.p`
 `
 
 
-export default class Checkbox extends Component {
+class Checkbox extends Component {
 
 constructor(props) {
     super(props)
@@ -22,8 +24,13 @@ constructor(props) {
     }
     }
 
+componentDidMount(){
+  this.props.addCheckbox();
+}
+
 handleInputChange = (event) => {
     const {checked} = event.target;
+    checked ? this.props.removeCheckbox() : this.props.addCheckbox();
     this.setState({
         completed: checked
     })
@@ -39,3 +46,5 @@ handleInputChange = (event) => {
     )
   }
 }
+
+export default connect(null, actions)(Checkbox)

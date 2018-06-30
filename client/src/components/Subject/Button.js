@@ -26,7 +26,8 @@ class Button extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberWrong: 0
+      numberWrong: 0,
+      checkboxMessage: false
     }
   }
 
@@ -34,13 +35,17 @@ class Button extends Component {
 
   }
 
+
+//Once the button is clicked it runs through a cycle of several checks.
+
   checkIfCompleted = ()=> { 
-    if (this.props.completed == null) return true;
+    if (this.props.completed == null) return true; 
     if (!(this.props.subjectURL in this.props.completed)) return true;
-   
     if (this.props.completed[this.props.subjectURL].includes(this.props.page)) return false;
     return true;
   }
+
+  //changeScore saves the new score to the database then animates it for the header
 
   changeScore = (newScore)=> {
     
@@ -48,7 +53,7 @@ class Button extends Component {
       axios.put('/api/setScore',{
       score: newScore + this.props.score
     })
-      const timer = ()=> {
+    const timer = ()=> {
         const changeValue = newScore > 0 ? 1:-1;
 
         for (let i = 0; i < Math.abs(newScore); i++) {
@@ -60,11 +65,27 @@ class Button extends Component {
 
   }
 
+  //If everything is ready, this switches to the next page
+
+  checkForNextPage = () => {
+    if(Object.keys(this.props.correct).length) {
+      this.checkQuiz();
+      return;
+    } 
+    if(this.props.remainingCheckboxes > 0) {
+      this.setState({checkboxMessage: true});
+      return;
+    }
+    this.nextPage();
+  }
+
+
   nextPage = () => {  
 
-    if (this.props.auth) this.changeScore(this.props.changeScoreValue);
+    if (this.props.auth) this.changeScore(this.props.changeScoreValue); 
     this.props.completeButton(this.props.page, this.props.subjectURL, this.props.completed)
     this.props.setPage(this.props.page + 1);
+    this.props.resetAnswers();
     window.scrollTo(0, 0);
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
@@ -90,16 +111,16 @@ class Button extends Component {
   render() {
     return (
       <div>
-          <Wrapper 
-          onClick = {()=> {
-            return this.props.quiz ? this.checkQuiz() : this.nextPage()
-          }}
-         
-         >
-          {this.props.children}
+          <Wrapper onClick = {()=> {this.checkForNextPage()}}>
+            {this.props.children}
           </Wrapper>
-          {this.state.numberWrong > 0 && 
-          <p>You still have {this.state.numberWrong} wrong</p>
+          {
+            this.state.numberWrong > 0 && 
+            <p>You still have {this.state.numberWrong} wrong</p>
+          }
+          {
+            this.state.checkboxMessage &&
+            <p>You have not completed all the requirements</p>
           }
       </div>
     )
@@ -118,7 +139,8 @@ function mapStateToProps(state) {
       subject: state.subject,
       completed: state.completed,
       score: state.score,
-      correct: state.correct
+      correct: state.correct,
+      remainingCheckboxes: state.remainingCheckboxes
     } 
 }
 

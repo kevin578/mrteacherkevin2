@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
   "dependencies": {
+    "babel-eslint": "^8.2.5",
     "body-parser": "^1.18.3",
     "camelcase": "^5.0.0",
     "concurrently": "^3.5.1",

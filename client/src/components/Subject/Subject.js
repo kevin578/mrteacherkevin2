@@ -10,7 +10,6 @@ import camelCase from 'camelcase';
 
 const Body = styled.div`
     display: flex;
-
 `
 
 const Content = styled.div`

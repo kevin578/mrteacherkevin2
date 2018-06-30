@@ -82,8 +82,6 @@ class LegoMindstorms1 extends React.Component  {
                 </Body>,
                 
 
-                
-
             ]}
 
             </Subject>
