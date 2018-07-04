@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
   "dependencies": {
-    "babel-eslint": "^8.2.5",
     "body-parser": "^1.18.3",
     "camelcase": "^5.0.0",
     "concurrently": "^3.5.1",
@@ -35,5 +34,12 @@
     "redux-devtools-extension": "^2.13.2",
     "styled-components": "^3.2.6",
     "zero-fill": "^2.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.5",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.1",
+    "prettier": "^1.13.7"
   }
 }
