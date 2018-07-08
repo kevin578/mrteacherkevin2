@@ -5,15 +5,6 @@ const User = mongoose.model("users");
 
 require("dotenv").config();
 
-function getCallbackURL() {
-  if (process.env.NODE_ENV === "production") {
-    return "https://mrteacherkevin.herokuapp.com/auth/google/callback";
-  } else {
-    return "/auth/google/callback";
-  }
-}
-
-
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -28,8 +19,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: getCallbackURL(),
-      proxy: true
+      callbackURL: "/auth/google/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });
