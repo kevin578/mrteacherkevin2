@@ -1,6 +1,15 @@
 const router = require("express").Router();
 const passport = require("passport");
 
+function getCallbackURL() {
+  if (process.env.NODE_ENV === "production") {
+    return "https://mrteacherkevin.herokuapp.com/auth/google/callback";
+  } else {
+    // we are in development - return the dev keys!!!
+    return "/auth/google/callback";
+  }
+}
+
 router.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -9,7 +18,7 @@ router.get(
 );
 
 router.get(
-  "/auth/google/callback",
+  getCallbackURL(),
   passport.authenticate("google"),
   (req, res) => res.redirect("/")
 );
