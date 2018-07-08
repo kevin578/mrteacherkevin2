@@ -5,7 +5,6 @@ function getCallbackURL() {
   if (process.env.NODE_ENV === "production") {
     return "https://mrteacherkevin.herokuapp.com/auth/google/callback";
   } else {
-    // we are in development - return the dev keys!!!
     return "/auth/google/callback";
   }
 }
