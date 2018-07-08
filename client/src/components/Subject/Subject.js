@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import camelCase from "camelcase";
+import { camelize } from "../App";
 import Header from "../Header";
 import Sidebar from "./Sidebar";
 import * as actions from "../../actions";
@@ -17,11 +17,10 @@ const Content = styled.div`
   margin-top: ${headerHeight}px;
 `;
 
-
 class Subject extends React.Component {
   componentDidMount() {
     this.props.setSubjectURL(this.props.urlName);
-    this.props.setSubject(camelCase(this.props.title));
+    this.props.setSubject(camelize(this.props.title));
     this.props.resetCheckbox();
   }
 

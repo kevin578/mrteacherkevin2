@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import camelCase from "camelcase";
+import {camelize} from "../App";
 
 const TextField = styled.input`
   width: 400px;
@@ -74,15 +74,15 @@ class TextQuestion extends Component {
   }
 
   componentDidMount() {
-    this.props.checkAnswers(null, camelCase(this.props.correctAnswer));
+    this.props.checkAnswers(null, camelize(this.props.correctAnswer));
   }
 
   handleChange = event => {
     this.setState({ value: event.target.value });
     if (event.target.value == this.props.correctAnswer) {
-      this.props.checkAnswers("matched", camelCase(this.props.correctAnswer));
+      this.props.checkAnswers("matched", camelize(this.props.correctAnswer));
     } else {
-      this.props.checkAnswers(null, camelCase(this.props.correctAnswer));
+      this.props.checkAnswers(null, camelize(this.props.correctAnswer));
     }
   };
 
@@ -93,13 +93,13 @@ class TextQuestion extends Component {
           return (
             <div key={choice}>
               <HiddenCheckbox
-                id={camelCase(choice)}
+                id={camelize(choice)}
                 type="radio"
                 name="mcQuestionChoice"
                 value={choice}
                 onChange={this.handleChange}
               />
-              <MultipleChoiceLabel htmlFor={camelCase(choice)}>
+              <MultipleChoiceLabel htmlFor={camelize(choice)}>
                 {choice}
               </MultipleChoiceLabel>
             </div>

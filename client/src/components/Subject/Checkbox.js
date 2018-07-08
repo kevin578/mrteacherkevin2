@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import camelCase from "camelcase";
+import camelize from "../App";
 import { formAnimation } from "./Quiz";
 
 const CheckboxLabel = styled.label`
@@ -26,7 +26,7 @@ const HiddenCheckbox = styled.input`
     &:before {
       display: inline-block;
       content: "\f26a";
-      animation: ${formAnimation} .3s;
+      animation: ${formAnimation} 0.3s;
       color: #4c6eff;
     }
   }
@@ -57,12 +57,12 @@ class Checkbox extends Component {
     return (
       <div>
         <HiddenCheckbox
-          id={camelCase(this.props.children)}
+          id={camelize(this.props.children)}
           type="checkbox"
           checked={this.state.completed}
           onChange={this.handleInputChange}
         />
-        <CheckboxLabel htmlFor={camelCase(this.props.children)}>
+        <CheckboxLabel htmlFor={camelize(this.props.children)}>
           {this.props.children}
         </CheckboxLabel>
       </div>
