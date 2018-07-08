@@ -2,7 +2,6 @@ const router = require("express").Router();
 const passport = require("passport");
 
 function getCallbackURL() {
-  console.log(process.env.NODE_ENV);
   if (process.env.NODE_ENV === "production") {
     return "https://mrteacherkevin.herokuapp.com/auth/google/callback";
   } else {

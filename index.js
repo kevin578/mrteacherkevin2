@@ -14,7 +14,6 @@ mongoose.connect(process.env.MONGO_URI);
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-console.log('starting');
 app.use(
   cookieSession({
     maxAge:

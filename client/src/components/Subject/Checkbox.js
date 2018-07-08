@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import camelize from "../App";
+import { camelize } from "../App";
 import { formAnimation } from "./Quiz";
 
 const CheckboxLabel = styled.label`
