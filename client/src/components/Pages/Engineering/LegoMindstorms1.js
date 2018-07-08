@@ -10,6 +10,26 @@ class LegoMindstorms1 extends React.Component {
     return (
       <Subject title="Lego Mindstorms" urlName="legomindstorms1">
         {[
+          <Body key="test" title="test Quiz">
+            <Header>Test</Header>
+            <Question type="text" correctAnswer="Kevin">
+              What's your name?
+            </Question>
+            <Question type="text" correctAnswer="Carlos">
+              What's your nombre?
+            </Question>
+            <Question
+              type="mc"
+              choices={["letter a", "letter b", "letter c"]}
+              correctAnswer="letter a"
+            >
+              What's the correct letter?
+            </Question>
+            <Header>This is a checkbox</Header>
+            <Checkbox>This is a checkbox</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
           <Body key="makeFile" title="Create a file">
             <Header>Make a file</Header>
             <p>Create a new project. Name the project and program</p>
@@ -98,14 +118,14 @@ class LegoMindstorms1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "myblocks" title="MyBlocks">
+          <Body key="myblocks" title="MyBlocks">
             <Header>MyBlocks</Header>
             <p>Create a Myblock that saves the straight line porgram</p>
             <Header>Resources</Header>
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "file" title="Write a file">
+          <Body key="file" title="Write a file">
             <Header>Write a file</Header>
             <p>
               Create a voting machine that records two choices and saves them to

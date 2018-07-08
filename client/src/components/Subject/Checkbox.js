@@ -2,13 +2,34 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import { addCheckbox } from "../../actions";
+import camelCase from "camelcase";
+import { formAnimation } from "./Quiz";
 
-const Box = styled.input``;
+const CheckboxLabel = styled.label`
+  margin: 0px 0px 10px 20px;
+  cursor: pointer;
+  &:before {
+    font-family: Material-Design-Iconic-Font;
+    content: "\f279";
+    font-size: 18px;
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+    right: 5px;
+    color: #666;
+  }
+`;
 
-const Label = styled.p`
-  display: inline-block;
-  margin-left: 15px;
+const HiddenCheckbox = styled.input`
+  display: none;
+  &:checked + ${CheckboxLabel} {
+    &:before {
+      display: inline-block;
+      content: "\f26a";
+      animation: ${formAnimation} .3s;
+      color: #4c6eff;
+    }
+  }
 `;
 
 class Checkbox extends Component {
@@ -35,12 +56,15 @@ class Checkbox extends Component {
   render() {
     return (
       <div>
-        <Box
+        <HiddenCheckbox
+          id={camelCase(this.props.children)}
           type="checkbox"
           checked={this.state.completed}
           onChange={this.handleInputChange}
         />
-        <Label>{this.props.children}</Label>
+        <CheckboxLabel htmlFor={camelCase(this.props.children)}>
+          {this.props.children}
+        </CheckboxLabel>
       </div>
     );
   }
