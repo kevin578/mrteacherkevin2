@@ -26,7 +26,7 @@ const SidebarSubject = styled.div`
   border-top: 2px solid #979797;
   border-bottom: 1px solid #979797;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 `;
 const SubjectImage = styled.img`
   opacity: 0;

@@ -6,6 +6,7 @@ import { camelize } from "../App";
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const Button = styled.div`
