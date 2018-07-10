@@ -28,9 +28,7 @@ class Button extends Component {
     };
   }
 
-  componentDidMount() {
-    
-  }
+  componentDidMount() {}
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -68,21 +66,18 @@ class Button extends Component {
   checkForNextPage = () => {
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
-      return;
     }
-    if (this.props.remainingCheckboxes > 0) {
-      this.setState({ checkboxMessage: true });
-      return;
+
+    this.setState({ checkboxMessage: this.props.remainingCheckboxes > 0 });
+
+    if (this.checkQuiz() === 0 && this.props.remainingCheckboxes === 0) {
+      this.nextPage();
     }
-    this.nextPage();
   };
 
   nextPage = () => {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
-    this.props.completeButton(
-      this.props.pageKey,
-      this.props.subjectURL
-    );
+    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     this.props.setPage(this.props.page + 1);
     this.props.resetAnswers();
     window.scrollTo(0, 0);
@@ -98,11 +93,8 @@ class Button extends Component {
         matchArray.push(item);
       }
     }
-    if (matchArray.length > 0) {
-      this.setState({ numberWrong: matchArray.length });
-    } else {
-      this.nextPage();
-    }
+    this.setState({ numberWrong: matchArray.length });
+    return matchArray.length;
   };
 
   render() {
@@ -116,10 +108,7 @@ class Button extends Component {
           {this.props.children}
         </Wrapper>
         {this.state.numberWrong > 0 && (
-          <p>
-            You still have {this.state.numberWrong}
-            wrong
-          </p>
+          <p>You still have {this.state.numberWrong} wrong.</p>
         )}
         {this.state.checkboxMessage && (
           <p>You have not completed all the requirements</p>

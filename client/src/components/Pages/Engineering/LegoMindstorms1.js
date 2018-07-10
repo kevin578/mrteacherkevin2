@@ -12,18 +12,19 @@ class LegoMindstorms1 extends React.Component {
         {[
           <Body key="test" title="test Quiz">
             <Header>Test</Header>
-            <Question type="text" correctAnswer="Kevin">
-              What's your name?
-            </Question>
-            <Question type="text" correctAnswer="Carlos">
-              What's your nombre?
-            </Question>
             <Question
               type="mc"
               choices={["letter a", "letter b", "letter c"]}
               correctAnswer="letter a"
             >
               What's the correct letter?
+            </Question>
+            <Question
+              type="mc"
+              choices={["a", "b", "c"]}
+              correctAnswer="b"
+            >
+              What's theletter?
             </Question>
             <Header>This is a checkbox</Header>
             <Checkbox>This is a checkbox</Checkbox>

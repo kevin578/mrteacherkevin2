@@ -86,9 +86,4 @@ function mapStateToProps(state) {
   };
 }
 
-Header.propTypes = {
-    auth: PropTypes.object,
-    score: PropTypes.number
-  };
-
 export default connect(mapStateToProps)(Header);

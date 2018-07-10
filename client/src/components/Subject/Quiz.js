@@ -95,7 +95,7 @@ class TextQuestion extends Component {
               <HiddenCheckbox
                 id={camelize(choice)}
                 type="radio"
-                name="mcQuestionChoice"
+                name={camelize(this.props.children)}
                 value={choice}
                 onChange={this.handleChange}
               />

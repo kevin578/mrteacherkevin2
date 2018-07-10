@@ -36,6 +36,7 @@ const StarArea = styled.div`
 class SidebarItem extends React.Component {
   click = () => {
     this.props.resetAnswers();
+    this.props.resetCheckbox();
     this.props.setPage(this.props.index);
   };
 
