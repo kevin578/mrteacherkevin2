@@ -17,7 +17,7 @@ const Wrapper = styled.section`
   display: flex;
   position: fixed;
   overflow: hidden;
-  z-index: 1;
+  z-index: 99;
 `;
 
 const Logo = styled.img`

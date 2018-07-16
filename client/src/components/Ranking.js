@@ -13,7 +13,7 @@ export default props => {
   }
 
   const RankIMG = styled.img`
-    margin-left: 15px;
+
   `;
 
   const getImage = () => {

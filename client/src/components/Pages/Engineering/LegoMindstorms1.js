@@ -3,6 +3,7 @@ import Subject from "./../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import Checkbox from "./../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
+import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
 class LegoMindstorms1 extends React.Component {
@@ -12,22 +13,7 @@ class LegoMindstorms1 extends React.Component {
         {[
           <Body key="test" title="test Quiz">
             <Header>Test</Header>
-            <Question
-              type="mc"
-              choices={["letter a", "letter b", "letter c"]}
-              correctAnswer="letter a"
-            >
-              What's the correct letter?
-            </Question>
-            <Question
-              type="mc"
-              choices={["a", "b", "c"]}
-              correctAnswer="b"
-            >
-              What's theletter?
-            </Question>
-            <Header>This is a checkbox</Header>
-            <Checkbox>This is a checkbox</Checkbox>
+            <TextEditor/>
             <Button>Next</Button>
           </Body>,
 
