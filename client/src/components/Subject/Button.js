@@ -24,11 +24,16 @@ class Button extends Component {
     super(props);
     this.state = {
       numberWrong: 0,
-      checkboxMessage: false
+      checkboxMessage: false,
+      buttonText: "",
+      allTestsPassed: true
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+
+  }
+
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -105,7 +110,7 @@ class Button extends Component {
             this.checkForNextPage();
           }}
         >
-          {this.props.children}
+          {this.props.testsCompleted ? this.props.children : this.props.testButtonText}
         </Wrapper>
         {this.state.numberWrong > 0 && (
           <p>You still have {this.state.numberWrong} wrong.</p>
@@ -119,7 +124,8 @@ class Button extends Component {
 }
 
 Button.defaultProps = {
-  changeScoreValue: 5
+  changeScoreValue: 5,
+  testButtonText: "Test"
 };
 
 function mapStateToProps(state) {
@@ -132,7 +138,9 @@ function mapStateToProps(state) {
     completed: state.completed,
     score: state.score,
     correct: state.correct,
-    remainingCheckboxes: state.remainingCheckboxes
+    remainingCheckboxes: state.remainingCheckboxes,
+    test: state.tests,
+    testsCompleted: state.allTestsCompleted
   };
 }
 

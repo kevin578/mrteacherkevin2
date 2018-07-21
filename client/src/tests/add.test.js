@@ -1,4 +1,4 @@
-const add = (a, b) => a - b;
+const add = (a, b) => a + b;
 const greeting = name => `Hello ${name}!`;
 
 it("should add two numbers", () => {

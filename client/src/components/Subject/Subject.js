@@ -6,6 +6,7 @@ import Header from "../Header";
 import Sidebar from "./Sidebar";
 import * as actions from "../../actions";
 import { headerHeight } from "../Header";
+import { allTestsCompleted } from "../../actions";
 
 const Body = styled.div`
   display: flex;
@@ -51,7 +52,11 @@ class Subject extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { page: state.page, subject: state.subject };
+  return {
+    page: state.page,
+    subject: state.subject,
+    tests: state.tests
+  };
 }
 
 export default connect(

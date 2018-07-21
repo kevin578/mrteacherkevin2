@@ -6,9 +6,10 @@ import {
   completePage,
   setSubjectURL,
   setSubject,
-  addAcheievement
+  addAcheievement,
 } from "./pageReducer";
-import { changeScore, checkAnswers, setCheckboxes } from "./buttonReducer";
+import { changeScore, checkAnswers, setCheckboxes, allTestsCompleted } from "./buttonReducer";
+import { setEditorContent, setTests } from "./textEditorReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -20,5 +21,8 @@ export default combineReducers({
   completed: completePage,
   score: changeScore,
   correct: checkAnswers,
-  remainingCheckboxes: setCheckboxes
+  remainingCheckboxes: setCheckboxes,
+  textEditorContent: setEditorContent,
+  tests: setTests,
+  allTestsCompleted
 });

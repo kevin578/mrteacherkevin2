@@ -39,3 +39,12 @@ export const resetCheckbox = () => {
     });
   };
 };
+
+export const allTestsCompleted = completed => {
+  return dispatch => {
+    dispatch({
+      type: "ALL_TESTS_COMPLETED",
+      payload: completed
+    });
+  };
+};

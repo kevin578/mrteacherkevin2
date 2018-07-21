@@ -5,34 +5,11 @@ const passport = require("passport");
 const router = require("express").Router();
 const authRoutes = require("./routes/authRoutes");
 const userInfoRoutes = require("./routes/userInfoRoutes");
+const testRoutes = require("./routes/testRoutes")
 const bodyParser = require("body-parser");
-const jest = require("jest");
 
 require("./models/user");
 require("./services/passport");
-
-
-const add = (a, b) => a + b;
-const greeting = name => `Hello ${name}!`;
-
-
-
-const options = {
-  projects: ['./client/src/tests'],
-  silent: false,
-};
-
-
-jest
-  .runCLI(options, options.projects)
-  .then((success) => {
-    console.log(success.results.testResults[0]);
-  })
-  .catch((failure) => {
-    console.error(failure);
-  });
-
-
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -56,6 +33,7 @@ app.use(passport.session());
 
 app.use(authRoutes);
 app.use(userInfoRoutes);
+app.use(testRoutes);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets

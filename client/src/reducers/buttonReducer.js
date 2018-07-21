@@ -32,3 +32,12 @@ export function setCheckboxes(state = 0, action) {
       return state;
   }
 }
+
+export function allTestsCompleted(state = null, action) {
+  switch (action.type) {
+    case "ALL_TESTS_COMPLETED":
+      return action.payload;
+    default:
+      return state;
+  }
+}

@@ -13,7 +13,7 @@ class LegoMindstorms1 extends React.Component {
         {[
           <Body key="test" title="test Quiz">
             <Header>Test</Header>
-            <TextEditor/>
+            <TextEditor tests = "expect something"/>
             <Button>Next</Button>
           </Body>,
 
