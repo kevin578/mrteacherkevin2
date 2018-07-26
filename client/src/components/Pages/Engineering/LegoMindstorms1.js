@@ -13,7 +13,12 @@ class LegoMindstorms1 extends React.Component {
         {[
           <Body key="test" title="test Quiz">
             <Header>Test</Header>
-            <TextEditor tests = "expect something"/>
+            <TextEditor tests = '
+              it("should add two numbers", () => {
+                const result = add(3, 4);
+                expect(result).toBe(7);
+              })'
+            />
             <Button>Next</Button>
           </Body>,
 

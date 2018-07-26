@@ -33,7 +33,7 @@ app.use(passport.session());
 
 app.use(authRoutes);
 app.use(userInfoRoutes);
-app.use(testRoutes);
+app.use(testRoutes.router);
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets

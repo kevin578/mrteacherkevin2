@@ -34,8 +34,31 @@ class Button extends Component {
 
   }
 
-
   //Once the button is clicked it runs through a cycle of several checks.
+
+  getButton = () => {
+    if (this.props.testsCompleted) {
+      return (
+        <Wrapper
+          onClick={() => {
+            this.checkForNextPage();
+          }}
+        >
+          {this.props.children}
+        </Wrapper>
+      );
+    } else {
+      return (
+        <Wrapper
+          onClick={() => {
+            this.runTests();
+          }}
+        >
+          {this.props.testButtonText}
+        </Wrapper>
+      );
+    }
+  };
 
   checkIfCompleted = () => {
     if (this.props.completed == null) return true;
@@ -66,16 +89,24 @@ class Button extends Component {
     }
   };
 
+  runTests = ()=> {
+    axios.post("/api/testCode", {
+      tests: this.props.test
+    });
+  }
+
   //If everything is ready, this switches to the next page
 
   checkForNextPage = () => {
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
     }
-
     this.setState({ checkboxMessage: this.props.remainingCheckboxes > 0 });
-
-    if (this.checkQuiz() === 0 && this.props.remainingCheckboxes === 0) {
+    if (
+      this.checkQuiz() === 0 &&
+      this.props.remainingCheckboxes === 0 &&
+      this.props.testsCompleted === true
+    ) {
       this.nextPage();
     }
   };
@@ -105,13 +136,7 @@ class Button extends Component {
   render() {
     return (
       <div>
-        <Wrapper
-          onClick={() => {
-            this.checkForNextPage();
-          }}
-        >
-          {this.props.testsCompleted ? this.props.children : this.props.testButtonText}
-        </Wrapper>
+        {this.getButton()}
         {this.state.numberWrong > 0 && (
           <p>You still have {this.state.numberWrong} wrong.</p>
         )}
