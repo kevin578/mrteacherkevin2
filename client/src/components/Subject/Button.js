@@ -37,7 +37,8 @@ class Button extends Component {
   //Once the button is clicked it runs through a cycle of several checks.
 
   getButton = () => {
-    if (this.props.testsCompleted) {
+    //console.log(this.props.testsCompleted)
+    if (this.props.testsCompleted == null) {
       return (
         <Wrapper
           onClick={() => {
@@ -105,7 +106,7 @@ class Button extends Component {
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
-      this.props.testsCompleted === true
+      this.props.testsCompleted === true || this.props.testsCompleted === null
     ) {
       this.nextPage();
     }

@@ -11,23 +11,11 @@ class LegoMindstorms1 extends React.Component {
     return (
       <Subject title="Lego Mindstorms" urlName="legomindstorms1">
         {[
-          <Body key="test" title="test Quiz">
-            <Header>Test</Header>
-            <TextEditor tests = '
-              it("should add two numbers", () => {
-                const result = add(3, 4);
-                expect(result).toBe(7);
-              })'
-            />
-            <Button>Next</Button>
-          </Body>,
-
           <Body key="makeFile" title="Create a file">
             <Header>Make a file</Header>
             <p>Create a new project. Name the project and program</p>
             <Header>Resources</Header>
             <Video src="https://www.youtube.com/embed/IuHaIE-auLQ" />
-            <Checkbox>This is a checkbox</Checkbox>
             <Button>Next</Button>
           </Body>,
 
