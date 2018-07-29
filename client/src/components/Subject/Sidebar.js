@@ -72,6 +72,7 @@ class Sidebar extends React.Component {
           key={step.key}
           index={index}
           completed={this.getColor(step.key)}
+          currentlySelected = {this.props.page === index}
           stars={step.props.stars}
         >
           {index + 1}. {step.props.title}
@@ -98,7 +99,8 @@ function mapStateToProps(state) {
     completed: state.completed,
     subject: state.subjectURL,
     subjectName: state.subject,
-    achievements: state.achievements
+    achievements: state.achievements,
+    page: state.page
   };
 }
 

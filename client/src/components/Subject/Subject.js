@@ -16,6 +16,7 @@ const Content = styled.div`
   margin-left: 430px;
   width: 60%;
   margin-top: ${headerHeight}px;
+  padding-bottom: 120px;
 `;
 
 class Subject extends React.Component {

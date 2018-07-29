@@ -5,6 +5,10 @@ import * as actions from "../../actions";
 import { camelize } from "../App";
 import { formAnimation } from "./Quiz";
 
+const Container = styled.div`
+  margin-bottom: 7px;
+`;
+
 const CheckboxLabel = styled.label`
   margin: 0px 0px 10px 20px;
   cursor: pointer;
@@ -55,7 +59,7 @@ class Checkbox extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <HiddenCheckbox
           id={camelize(this.props.children)}
           type="checkbox"
@@ -65,7 +69,7 @@ class Checkbox extends Component {
         <CheckboxLabel htmlFor={camelize(this.props.children)}>
           {this.props.children}
         </CheckboxLabel>
-      </div>
+      </Container>
     );
   }
 }

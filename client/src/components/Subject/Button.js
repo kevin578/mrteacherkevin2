@@ -16,6 +16,7 @@ export const Wrapper = styled.button`
   width: 100px;
   height: 40px;
   margin-top: 50px;
+  margin-bottom: 10px;
   cursor: pointer;
 `;
 
@@ -30,9 +31,7 @@ class Button extends Component {
     };
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -90,11 +89,11 @@ class Button extends Component {
     }
   };
 
-  runTests = ()=> {
+  runTests = () => {
     axios.post("/api/testCode", {
       tests: this.props.test
     });
-  }
+  };
 
   //If everything is ready, this switches to the next page
 
@@ -106,7 +105,7 @@ class Button extends Component {
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
-      this.props.testsCompleted === true || this.props.testsCompleted === null
+      (this.props.testsCompleted === true || this.props.testsCompleted === null)
     ) {
       this.nextPage();
     }

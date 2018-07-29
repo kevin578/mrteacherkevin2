@@ -8,10 +8,15 @@ import yellowStar from "../../img/yellowStar.svg";
 const Wrapper = styled.div`
   width: 100%;
   height: 50px;
-  border-bottom: 2px solid ${props => (props.completed ? "#D8D8D8" : "#979797")};
+  border-bottom: 2px solid ${props =>
+    props.completed ? "#D8D8D8" : "#979797"};
   overflow: auto;
   cursor: pointer;
-  background: ${props => (props.completed ? "#5BA84C" : "transparent")};
+  background: ${props => {
+    if (props.currentlySelected) return "#f7f7f7";
+    else if (props.completed) return "#5BA84C";
+    else return "transparent";
+  }}
   color: ${props => (props.completed ? "#fff" : "default")};
   transition: 0.5s all;
   display: flex;
@@ -52,7 +57,11 @@ class SidebarItem extends React.Component {
 
   render() {
     return (
-      <Wrapper onClick={this.click} completed={this.props.completed}>
+      <Wrapper
+        onClick={this.click}
+        completed={this.props.completed}
+        currentlySelected={this.props.currentlySelected}
+      >
         <ItemName>{this.props.children}</ItemName>
         <StarArea>{this.getStars()}</StarArea>
       </Wrapper>
