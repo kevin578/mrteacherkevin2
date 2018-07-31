@@ -7,6 +7,7 @@ import {
   setSubjectURL,
   setSubject,
   addAcheievement,
+  setCoursePercentages
 } from "./pageReducer";
 import { changeScore, checkAnswers, setCheckboxes, allTestsCompleted } from "./buttonReducer";
 import { setEditorContent, setTests } from "./textEditorReducer";
@@ -24,5 +25,6 @@ export default combineReducers({
   remainingCheckboxes: setCheckboxes,
   textEditorContent: setEditorContent,
   tests: setTests,
-  allTestsCompleted
+  allTestsCompleted,
+  coursePercentages: setCoursePercentages
 });

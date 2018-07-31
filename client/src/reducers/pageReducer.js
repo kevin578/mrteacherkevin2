@@ -77,3 +77,15 @@ export function completePage(state = {}, action) {
       return state;
   }
 }
+
+export function setCoursePercentages(state = {}, action) {
+  let stateCopy = { ...state };
+  const { course, percent } = action;
+  switch (action.type) {
+    case "SET_PERCENTAGE":
+      stateCopy[course] = percent;
+      return stateCopy;
+    default:
+      return stateCopy;
+  }
+}

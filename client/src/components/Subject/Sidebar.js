@@ -43,6 +43,16 @@ const SidebarSubjectName = styled.p`
 `;
 
 class Sidebar extends React.Component {
+
+  componentDidUpdate() {
+    const {subjectURL, steps} = this.props
+    const stepCopy = steps.filter((item)=> {
+      return this.getColor(item.key);
+    });
+    const percentage = parseInt(stepCopy.length/steps.length * 100) + "%";
+    this.props.setCoursePercentage(subjectURL, percentage);
+  }
+
   getRank = () => {
     if (this.props.achievements) {
       return this.props.achievements[this.props.subjectName];
@@ -72,7 +82,7 @@ class Sidebar extends React.Component {
           key={step.key}
           index={index}
           completed={this.getColor(step.key)}
-          currentlySelected = {this.props.page === index}
+          currentlySelected={this.props.page === index}
           stars={step.props.stars}
         >
           {index + 1}. {step.props.title}
@@ -100,6 +110,7 @@ function mapStateToProps(state) {
     subject: state.subjectURL,
     subjectName: state.subject,
     achievements: state.achievements,
+    subjectURL: state.subjectURL,
     page: state.page
   };
 }

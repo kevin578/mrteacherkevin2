@@ -13,7 +13,8 @@ const Wrapper = styled.div`
   overflow: auto;
   cursor: pointer;
   background: ${props => {
-    if (props.currentlySelected) return "#f7f7f7";
+    if (props.currentlySelected && !props.completed) return "#f7f7f7";
+    else if (props.currentlySelected) return "#88c47d"
     else if (props.completed) return "#5BA84C";
     else return "transparent";
   }}

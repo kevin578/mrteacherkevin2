@@ -1,5 +1,6 @@
 import axios from "axios";
 import { store } from "./../index.js";
+import { setCoursePercentages } from "../reducers/pageReducer.js";
 
 export const addAchievemnet = (ranking, subject) => {
   const isLoggedIn = store.getState().auth;
@@ -34,6 +35,16 @@ export const changeScore = change => {
     dispatch({
       type: "CHANGE_SCORE",
       change
+    });
+  };
+};
+
+export const setCoursePercentage = (course, percent) => {
+  return dispatch => {
+    dispatch({
+      type: "SET_PERCENTAGE",
+      course,
+      percent
     });
   };
 };

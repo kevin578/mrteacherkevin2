@@ -10,14 +10,13 @@ const Wrapper = styled.div`
 
 const Button = styled.div`
   display: relative;
-  width: 215px;
-  height: 70px;
+  width: 315px;
+  height: 170px;
   overflow: auto;
   background-image: ${props => props.background};
   border-radius: 8px;
   margin-bottom: 20px;
   margin-right: 25px;
-  cursor: pointer;
   position: relative;
   top: 10px;
 `;
@@ -27,33 +26,82 @@ const Subject = styled.p`
   font-size: 18px;
   color: #ffffff;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
+`;
+const Course = styled.p`
+  color: #fff;
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 `;
 
-const SubjectButton = props => {
-  const goToLink = () => {
-    window.location = props.destination;
-  };
+const CourseContainer = styled.a`
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+`;
 
+const BadgeWrapper = styled.div`
+  width: 50px;
+  float: right;
+  position: relative;
+  bottom: 40px;
+  right: 30px;
+`;
+
+const goToLink = link => {
+  window.location = link;
+};
+
+const SubjectButton = props => {
   const getRank = () => {
     if (!(props.rank == null)) {
       return props.rank[camelize(props.subject)];
     }
   };
 
+  const getCoursePercentage = () => {
+    if (props.auth) {
+    }
+  };
+
+  const getCourses = () => {
+    return props.courses.map((course, index) => {
+      const link = props.destination + parseInt(index + 1);
+      return (
+        <CourseContainer
+          key={course}
+          href = {link}
+        >
+          <Course>{course}</Course>
+          <Course>{getCoursePercentage()}</Course>
+        </CourseContainer>
+      );
+    });
+  };
+
   return (
     <Wrapper>
       <Button background={props.background} onClick={goToLink}>
         <Subject>{props.subject}</Subject>
+        {getCourses()}
+        <BadgeWrapper>
+          <Ranking rank={getRank()} />
+        </BadgeWrapper>
       </Button>
-      <Ranking rank={getRank()} />
     </Wrapper>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    rank: state.achievements
+    rank: state.achievements,
+    auth: state.auth
   };
 };
 

@@ -3,16 +3,13 @@ import styled from "styled-components";
 import Header from "./../Header";
 import SubjectButton from "./SubjectButton";
 
-const Engineering = styled.div`
+const Subjects = styled.div`
   margin-top: 100px;
-  margin-left: 120px;
-  width: 350px;
+  margin-left: 40px;
+  margin-right: 40px;
   overflow: hidden;
-`;
-
-const EngineeringTitle = styled.h1`
-  text-align: center;
-  font-family: Roboto;
+  display: flex;
+  justify-content: space-around;
 `;
 
 class Main extends React.Component {
@@ -20,19 +17,26 @@ class Main extends React.Component {
     return (
       <div>
         <Header />
-        <Engineering>
-          <EngineeringTitle>Engineering</EngineeringTitle>
+        <Subjects>
           <SubjectButton
             background="linear-gradient(45deg, #75D39C 0%, #22D3BE 100%)"
+            destination="/legomindstorms"
             subject="Lego Mindstorms"
-            destination="/legomindstorms1"
+            courses={["Robotic Rascal", "Robotic Renegade"]}
+          >
+
+          </SubjectButton>
+          {/* <SubjectButton
+            background="linear-gradient(45deg, #D3C075 0%, #D37722 100%)"
+            subject="Kerbal Space Program"
+            destination="/kerbalspaceprogram1"
           />
           <SubjectButton
             background="linear-gradient(45deg, #D3C075 0%, #D37722 100%)"
             subject="Kerbal Space Program"
             destination="/kerbalspaceprogram1"
-          />
-        </Engineering>
+          /> */}
+        </Subjects>
       </div>
     );
   }
