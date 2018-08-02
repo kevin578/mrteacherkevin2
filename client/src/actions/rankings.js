@@ -39,12 +39,11 @@ export const changeScore = change => {
   };
 };
 
-export const setCoursePercentage = (course, percent) => {
+export const setCoursePercentagesForRedux = percentages => {
   return dispatch => {
     dispatch({
-      type: "SET_PERCENTAGE",
-      course,
-      percent
+      type: "SET_PERCENTAGES",
+      payload: percentages
     });
   };
 };

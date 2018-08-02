@@ -69,4 +69,22 @@ router.put("/api/setScore", (req, res) => {
   );
 });
 
+router.put("/api/setCoursePercentage", (req, res) => {
+  const course = req.body.subjectURL;
+  const percent = req.body.percentage;
+  var setter = { $set: {} };
+  setter.$set["coursePercentages." + course] = percent;
+
+  Users.findByIdAndUpdate(req.user.id, setter, (err, data) => {
+    if (err) res.send(errorMessage);
+    else res.send(successMessage);
+  });
+});
+
+router.get("/api/getCoursePercentages", (req,res)=> {
+  Users.findById(req.user.id, (err,data)=> {
+    res.send(data.coursePercentages)
+  })
+})
+
 module.exports = router;

@@ -10,8 +10,8 @@ const Wrapper = styled.div`
 
 const Button = styled.div`
   display: relative;
-  width: 315px;
-  height: 170px;
+  width: 345px;
+  min-height: 170px;
   overflow: auto;
   background-image: ${props => props.background};
   border-radius: 8px;
@@ -27,6 +27,7 @@ const Subject = styled.p`
   color: #ffffff;
   text-align: center;
   margin-top: 20px;
+  font-weight: 300;
 `;
 const Course = styled.p`
   color: #fff;
@@ -39,11 +40,14 @@ const CourseContainer = styled.a`
   margin-top: 0px;
   margin-bottom: 10px;
   margin-left: 15px;
-  width: 55%;
   display: flex;
+  width: 50%;
   justify-content: space-between;
   cursor: pointer;
   text-decoration: none;
+  border: white 1px solid;
+  padding: 8px;
+  border-radius: 5px;
 `;
 
 const BadgeWrapper = styled.div`
@@ -65,12 +69,17 @@ const SubjectButton = props => {
     }
   };
 
-  const getCoursePercentage = () => {
-    if (props.auth) {
+  const getCoursePercentage = (link) => {
+    if (!props.coursePercentages) return;
+    const course = link.slice(1, link.length);
+    if (props.coursePercentages.hasOwnProperty(course) ) {
+      return props.coursePercentages[course];
     }
+     
   };
 
   const getCourses = () => {
+    if (!props.courses) return;
     return props.courses.map((course, index) => {
       const link = props.destination + parseInt(index + 1);
       return (
@@ -79,7 +88,7 @@ const SubjectButton = props => {
           href = {link}
         >
           <Course>{course}</Course>
-          <Course>{getCoursePercentage()}</Course>
+          <Course>{getCoursePercentage(link)}</Course>
         </CourseContainer>
       );
     });
@@ -101,7 +110,8 @@ const SubjectButton = props => {
 const mapStateToProps = state => {
   return {
     rank: state.achievements,
-    auth: state.auth
+    auth: state.auth,
+    coursePercentages: state.coursePercentages
   };
 };
 

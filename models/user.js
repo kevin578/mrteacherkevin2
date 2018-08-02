@@ -7,7 +7,8 @@ const userSchema = new Schema({
   name: Object,
   completed: Object,
   score: Number,
-  achievements: Object
+  achievements: Object,
+  coursePercentages: Object
 });
 
 module.exports = mongoose.model("users", userSchema);

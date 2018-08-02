@@ -1,3 +1,5 @@
+import { setCoursePercentagesForRedux } from "../actions";
+
 //import {SET_PAGE, COMPLETE_BUTTON, SET_SUBJECT} from './../actions'
 
 export function setPage(state = 0, action) {
@@ -78,14 +80,12 @@ export function completePage(state = {}, action) {
   }
 }
 
-export function setCoursePercentages(state = {}, action) {
-  let stateCopy = { ...state };
-  const { course, percent } = action;
-  switch (action.type) {
-    case "SET_PERCENTAGE":
-      stateCopy[course] = percent;
-      return stateCopy;
+export function setCoursePercentages(state = null, action) {
+  switch(action.type) {
+    case "SET_PERCENTAGES":
+      return action.payload;
     default:
-      return stateCopy;
+      return state;
+
   }
 }

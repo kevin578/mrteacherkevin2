@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { headerHeight } from "../Header";
 import Ranking from "../Ranking";
+import axios from "axios";
 
 const Wrapper = styled.section`
   width: 340px;
@@ -43,14 +44,13 @@ const SidebarSubjectName = styled.p`
 `;
 
 class Sidebar extends React.Component {
-
   componentDidUpdate() {
-    const {subjectURL, steps} = this.props
-    const stepCopy = steps.filter((item)=> {
+    const { subjectURL, steps } = this.props;
+    const stepCopy = steps.filter(item => {
       return this.getColor(item.key);
     });
-    const percentage = parseInt(stepCopy.length/steps.length * 100) + "%";
-    this.props.setCoursePercentage(subjectURL, percentage);
+    const percentage = parseInt((stepCopy.length / steps.length) * 100) + "%";
+    axios.put("/api/setCoursePercentage", { subjectURL, percentage });
   }
 
   getRank = () => {
