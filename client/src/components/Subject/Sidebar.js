@@ -50,7 +50,10 @@ class Sidebar extends React.Component {
       return this.getColor(item.key);
     });
     const percentage = parseInt((stepCopy.length / steps.length) * 100) + "%";
-    axios.put("/api/setCoursePercentage", { subjectURL, percentage });
+    if (percentage != "0%") {
+          axios.put("/api/setCoursePercentage", { subjectURL, percentage });
+    }
+
   }
 
   getRank = () => {

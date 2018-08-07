@@ -7,6 +7,10 @@ import * as actions from "../actions";
 import LegoMindStorms1 from "./Pages/Engineering/LegoMindstorms1";
 import LegoMindStorms2 from "./Pages/Engineering/LegoMindstorms2";
 import KerbalSpaceProgram1 from "./Pages/Engineering/KerbalSpaceProgram1";
+import Scratch1 from "./Pages/Scratch/Scratch1"
+import Scratch2 from "./Pages/Scratch/Scratch2"
+import Scratch3 from "./Pages/Scratch/Scratch3"
+import * as pages from "./Pages";
 import axios from "axios";
 
 export function camelize(str) {
@@ -18,6 +22,14 @@ export function camelize(str) {
 }
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log(pages)
+    this.getStateFromDatabase();
+    this.props.fetchUser();
+    this.props.setPage(0);
+  }
+
   getStateFromDatabase = async () => {
     let state = await axios.get("/api/getStateFromDatabase");
     state = state.data;
@@ -28,10 +40,8 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getStateFromDatabase();
-    this.props.fetchUser();
-    this.props.setPage(0);
+  getRoutes() {
+    return;
   }
 
   render() {
@@ -39,6 +49,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
+            {this.getRoutes()}
             <Route path="/" component={Main} exact />
             <Route path="/legomindstorms1" component={LegoMindStorms1} />
             <Route path="/legomindstorms2" component={LegoMindStorms2} />
@@ -46,6 +57,10 @@ class App extends Component {
               path="/kerbalspaceprogram1"
               component={KerbalSpaceProgram1}
             />
+            <Route path="/scratch1" component={Scratch1} />
+            <Route path="/scratch2" component={Scratch2} />
+            <Route path="/scratch3" component={Scratch3} />
+
 
             <Route path="/subject" component={Subject} />
           </div>

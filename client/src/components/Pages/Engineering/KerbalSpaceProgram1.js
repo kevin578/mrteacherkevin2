@@ -4,7 +4,7 @@ import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import TextQuestion from "../../Subject/Quiz";
 import Button from "../../Subject/Button";
 
-class LegoMindstorms1 extends React.Component {
+class KerbalSpaceProgram1 extends React.Component {
   render() {
     return (
       <Subject title="Kerbal Space Program" urlName="kerbalspaceprogram1">
@@ -98,4 +98,4 @@ class LegoMindstorms1 extends React.Component {
   }
 }
 
-export default LegoMindstorms1;
+export default KerbalSpaceProgram1;

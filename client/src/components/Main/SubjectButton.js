@@ -11,12 +11,13 @@ const Wrapper = styled.div`
 const Button = styled.div`
   display: relative;
   width: 345px;
-  min-height: 170px;
+  height: 230px;
   overflow: auto;
   background-image: ${props => props.background};
   border-radius: 8px;
   margin-bottom: 20px;
-  margin-right: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
   position: relative;
   top: 10px;
 `;
@@ -45,7 +46,7 @@ const CourseContainer = styled.a`
   justify-content: space-between;
   cursor: pointer;
   text-decoration: none;
-  border: white 1px solid;
+  border: white 2px solid;
   padding: 8px;
   border-radius: 5px;
 `;
@@ -81,7 +82,7 @@ const SubjectButton = props => {
   const getCourses = () => {
     if (!props.courses) return;
     return props.courses.map((course, index) => {
-      const link = props.destination + parseInt(index + 1);
+      const link = `/${props.subject.replace(/\s+/g, "").toLowerCase()}${index + 1}`;
       return (
         <CourseContainer
           key={course}

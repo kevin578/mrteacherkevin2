@@ -56,7 +56,7 @@ function mapStateToProps(state) {
   return {
     page: state.page,
     subject: state.subject,
-    tests: state.tests
+    tests: state.tests,
   };
 }
 
