@@ -65,7 +65,7 @@ const HiddenCheckbox = styled.input`
   }
 `;
 
-class TextQuestion extends Component {
+class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -137,7 +137,7 @@ class TextQuestion extends Component {
   }
 }
 
-TextQuestion.defaultProps = {
+Question.defaultProps = {
   type: "text",
   correctAnswer: ""
 };
@@ -145,4 +145,4 @@ TextQuestion.defaultProps = {
 export default connect(
   null,
   actions
-)(TextQuestion);
+)(Question);

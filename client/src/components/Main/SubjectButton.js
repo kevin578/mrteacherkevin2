@@ -70,29 +70,32 @@ const SubjectButton = props => {
     }
   };
 
-  const getCoursePercentage = (link) => {
+  const getCoursePercentage = link => {
     if (!props.coursePercentages) return;
     const course = link.slice(1, link.length);
-    if (props.coursePercentages.hasOwnProperty(course) ) {
+    if (props.coursePercentages.hasOwnProperty(course)) {
       return props.coursePercentages[course];
     }
-     
   };
 
   const getCourses = () => {
     if (!props.courses) return;
-    return props.courses.map((course, index) => {
-      const link = `/${props.subject.replace(/\s+/g, "").toLowerCase()}${index + 1}`;
-      return (
-        <CourseContainer
-          key={course}
-          href = {link}
-        >
-          <Course>{course}</Course>
-          <Course>{getCoursePercentage(link)}</Course>
-        </CourseContainer>
-      );
-    });
+    if (props.courses.length > 0) {
+      return props.courses.map((course, index) => {
+        const link = `/${props.subject
+          .replace(/\s+/g, "")
+          .toLowerCase()}${index + 1}`;
+        if (course[0] === "*") return;
+        return (
+          <CourseContainer key={course} href={link}>
+            <Course>{course}</Course>
+            <Course>{getCoursePercentage(link)}</Course>
+          </CourseContainer>
+        );
+      });
+    } else {
+      return <Course style={{ marginLeft: 15 }}>Coming soon...</Course>;
+    }
   };
 
   return (

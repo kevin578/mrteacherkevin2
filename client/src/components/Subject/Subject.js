@@ -17,6 +17,7 @@ const Content = styled.div`
   width: 60%;
   margin-top: ${headerHeight}px;
   padding-bottom: 120px;
+  overflow: auto;
 `;
 
 class Subject extends React.Component {
@@ -56,7 +57,7 @@ function mapStateToProps(state) {
   return {
     page: state.page,
     subject: state.subject,
-    tests: state.tests,
+    tests: state.tests
   };
 }
 

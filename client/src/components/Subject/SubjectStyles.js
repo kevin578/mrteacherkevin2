@@ -9,6 +9,19 @@ const Wrapper = styled.section`
 const vidHeight = 350;
 const vidWidth = vidHeight * 1.77778;
 
+export const Image = props => {
+  let width = 350;
+  if (props.width) {
+    width = props.width;
+  }
+  const height = width / 1.7777778;
+  let styles = {
+    width,
+    height
+  };
+  return <img src={props.src} alt={props.src} style={styles} />;
+};
+
 export const Video = props => {
   const videoPlayerType = "iframe";
 
@@ -41,3 +54,4 @@ export const Header = styled.h1`
 export const Body = props => {
   return <Wrapper>{props.children}</Wrapper>;
 };
+

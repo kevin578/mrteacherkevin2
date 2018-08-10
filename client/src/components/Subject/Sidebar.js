@@ -19,7 +19,6 @@ const Wrapper = styled.section`
 
 const SidebarSubject = styled.div`
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: 80px;
   background: #a43ab4;
@@ -43,6 +42,12 @@ const SidebarSubjectName = styled.p`
   position: relative;
 `;
 
+const SidebarItemContainer = styled.div`
+    overflow-y: scroll;
+  height: 100%;
+    padding-bottom: 40px;
+`;
+
 class Sidebar extends React.Component {
   componentDidUpdate() {
     const { subjectURL, steps } = this.props;
@@ -51,9 +56,8 @@ class Sidebar extends React.Component {
     });
     const percentage = parseInt((stepCopy.length / steps.length) * 100) + "%";
     if (percentage != "0%") {
-          axios.put("/api/setCoursePercentage", { subjectURL, percentage });
+      axios.put("/api/setCoursePercentage", { subjectURL, percentage });
     }
-
   }
 
   getRank = () => {
@@ -101,7 +105,7 @@ class Sidebar extends React.Component {
           <SidebarSubjectName>{this.props.title}</SidebarSubjectName>
           <Ranking rank={this.getRank()} />
         </SidebarSubject>
-        {this.getSidebarItems()}
+        <SidebarItemContainer>{this.getSidebarItems()}</SidebarItemContainer>
       </Wrapper>
     );
   }

@@ -8,13 +8,13 @@
     {
         "background":"linear-gradient(45deg, #D3C075 0%, #D37722 100%)",
         "subject":"Kerbal Space Program",
-        "courses": ["Space Cowboy"] 
+        "courses": ["Mercury", "Gemini"] 
     },
 
     {
         "background":"linear-gradient(45deg, #B92597 0%, #8522D3 100%)",
         "subject":"Photoshop",
-        "courses": ["Deadlocked Raster", "Bourg"] 
+        "courses": ["Deadlocked Raster", "Burgeoning Bitmapper"] 
     },
 
     {
@@ -50,50 +50,50 @@
     {
         "background":"linear-gradient(45deg, #B92525 0%, #8522D3 100%)",
         "subject":"Google Docs",
-        "courses": ["Docs Dandy"] 
+        "courses": ["Doccin' Dandy", "Docs Dude"] 
     },
 
     {
         "background":"linear-gradient(45deg, #B97725 0%, #D33B22 100%)",
         "subject":"Google Sheets",
-        "courses": [] 
+        "courses": ["Simple Spreadsheeter","Super Spreadsheeter"] 
     },
 
     {
         "background":"linear-gradient(45deg, #B9A725 0%, #22D3B0 100%)",
         "subject":"Google Slides",
-        "courses": [] 
+        "courses": ["Slideshowoff","Master of Cermonies"] 
     },
 
     {
         "background":"linear-gradient(45deg, #25B940 0%, #8522D3 100%)",
         "subject":"Soundtrap",
-        "courses": [] 
+        "courses": ["Sonic Adventurer", "Hip Hop Hooray"] 
     },
 
 
     {
         "background":"linear-gradient(45deg, #00a4db 0%, #0078db 100%)",
         "subject":"Audacity",
-        "courses": [] 
+        "courses": ["Sounding Good", "*Sounding Better"] 
     },
 
     {
         "background":"linear-gradient(45deg, #00db7f 0%, #00dbb2 100%)",
         "subject":"Google Chrome",
-        "courses": [] 
+        "courses": ["Web Adventuer", "Surf Master"] 
     },
 
     {
         "background":"linear-gradient(45deg, #dbd700 0%, #99db00 100%)",
         "subject":"Mac OS",
-        "courses": [] 
+        "courses": ["Return of the Mac", "Big Mac"] 
     },
 
     {
         "background":"linear-gradient(45deg, #db0000 0%, #ed8282 100%)",
         "subject":"iMovie",
-        "courses": [] 
+        "courses": ["iHome Videos", "iOcscar Worthy"] 
     },
 
     {
@@ -105,7 +105,7 @@
     {
         "background":"linear-gradient(45deg, #a09821 0%, #7ea021 100%)",
         "subject":"LucidPress",
-        "courses": [] 
+        "courses": ["Penny Press", "Gutenberg"] 
     },
 
     {
