@@ -9,7 +9,7 @@ import Button from "../../Subject/Button";
 class Arduino1 extends React.Component {
   render() {
     return (
-      <Subject title="Sample Page" urlName="sampleURL">
+      <Subject title="Arduino" urlName="arduino1">
         {[
           <Body key="starting" title="Start something">
             <Header>Sample Header</Header>

@@ -9,7 +9,7 @@ import Button from "../../Subject/Button";
 class WeVideo1 extends React.Component {
   render() {
     return (
-      <Subject title="WeVideo" urlName="sampleURL">
+      <Subject title="WeVideo" urlName="wevideo1">
         {[
           <Body key="starting" title="Start something">
             <Header>Sample Header</Header>

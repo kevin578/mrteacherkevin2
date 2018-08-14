@@ -49,7 +49,6 @@ class Main extends React.Component {
           notStartedSubjects.push(course);
         }
       }
-      //console.log(startedSubjects)
       startedSubjects.sort(function(a, b) {
         if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
         if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;

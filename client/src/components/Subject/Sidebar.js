@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { headerHeight } from "../Header";
 import Ranking from "../Ranking";
+import courses from "../Pages/courses.json";
+
 import axios from "axios";
 
 const Wrapper = styled.section`
@@ -25,8 +27,6 @@ const SidebarSubject = styled.div`
   text-align: center;
   border-top: 2px solid #979797;
   border-bottom: 1px solid #979797;
-  display: flex;
-  justify-content: space-around;
 `;
 const SubjectImage = styled.img`
   opacity: 0;
@@ -36,16 +36,28 @@ const SubjectImage = styled.img`
 
 const SidebarSubjectName = styled.p`
   color: white;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 600;
   position: relative;
+  right: 20px;
 `;
 
 const SidebarItemContainer = styled.div`
     overflow-y: scroll;
   height: 100%;
     padding-bottom: 40px;
+`;
+
+const SidebarCourseName = styled.p`
+  color: white;
+  margin-top: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  right: 20px;
+  bottom: 10px;
+  font-style: italic;
 `;
 
 class Sidebar extends React.Component {
@@ -98,12 +110,26 @@ class Sidebar extends React.Component {
     });
   };
 
+  getSubjectNumber() {
+    if (this.props.subject) return this.props.subject.slice(-1);
+  }
+
+  getCourseTitle() {
+    if (!this.props.subject) return;
+    for (let course of courses) {
+      if (course.subject == this.props.title) {
+        const courseArrayIndex = parseInt(this.props.subject.slice(-1));
+        return course.courses[courseArrayIndex - 1];
+      }
+    }
+  }
+
   render() {
     return (
       <Wrapper>
         <SidebarSubject>
-          <SidebarSubjectName>{this.props.title}</SidebarSubjectName>
-          <Ranking rank={this.getRank()} />
+          <SidebarSubjectName>{this.props.title} {this.getSubjectNumber()}</SidebarSubjectName>
+          <SidebarCourseName>{this.getCourseTitle()}</SidebarCourseName>
         </SidebarSubject>
         <SidebarItemContainer>{this.getSidebarItems()}</SidebarItemContainer>
       </Wrapper>
