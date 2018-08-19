@@ -16,6 +16,7 @@ import {
   allTestsCompleted
 } from "./buttonReducer";
 import { setEditorContent, setTests } from "./textEditorReducer";
+import projectSubmissionReducer from "./projectSubmissionReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -31,5 +32,6 @@ export default combineReducers({
   textEditorContent: setEditorContent,
   tests: setTests,
   allTestsCompleted,
-  coursePercentages: setCoursePercentages
+  coursePercentages: setCoursePercentages,
+  projectSubmission: projectSubmissionReducer
 });

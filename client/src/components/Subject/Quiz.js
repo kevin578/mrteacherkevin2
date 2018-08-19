@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import {camelize} from "../App";
 
-const TextField = styled.input`
+export const TextField = styled.input`
   width: 400px;
   height: 30px;
   font-size: 16px;

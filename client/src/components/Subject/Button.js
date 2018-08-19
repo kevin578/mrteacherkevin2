@@ -26,6 +26,7 @@ class Button extends Component {
     this.state = {
       numberWrong: 0,
       checkboxMessage: false,
+      projectSubmissionMessage: false,
       buttonText: "",
       allTestsPassed: true
     };
@@ -36,27 +37,27 @@ class Button extends Component {
   //Once the button is clicked it runs through a cycle of several checks.
 
   getButton = () => {
-    //console.log(this.props.testsCompleted)
-    if (this.props.testsCompleted == null) {
-      return (
-        <Wrapper
-          onClick={() => {
-            this.checkForNextPage();
-          }}
-        >
-          {this.props.children}
-        </Wrapper>
-      );
-    } else {
-      return (
-        <Wrapper
-          onClick={() => {
-            this.runTests();
-          }}
-        >
-          {this.props.testButtonText}
-        </Wrapper>
-      );
+    switch (this.props.type) {
+      case "test":
+        return (
+          <Wrapper
+            onClick={() => {
+              this.runTests();
+            }}
+          >
+            {this.props.testButtonText}
+          </Wrapper>
+        );
+      default:
+        return (
+          <Wrapper
+            onClick={() => {
+              this.checkForNextPage();
+            }}
+          >
+            {this.props.children}
+          </Wrapper>
+        );
     }
   };
 
@@ -95,17 +96,19 @@ class Button extends Component {
     });
   };
 
-  //If everything is ready, this switches to the next page
-
   checkForNextPage = () => {
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
     }
-    this.setState({ checkboxMessage: this.props.remainingCheckboxes > 0 });
+    this.setState({ 
+      checkboxMessage: this.props.remainingCheckboxes > 0,
+      projectSubmissionMessage: !this.props.projectURLIsValid
+    });
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
-      (this.props.testsCompleted === true || this.props.testsCompleted === null)
+      (this.props.testsCompleted === true || this.props.testsCompleted === null) &&
+      !(this.props.projectSubmission.invalidUrlMessage)
     ) {
       this.nextPage();
     }
@@ -115,8 +118,8 @@ class Button extends Component {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     this.props.setPage(this.props.page + 1);
-    this.props.resetAnswers();
     window.scrollTo(0, 0);
+    this.props.resetAnswers();
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
@@ -143,6 +146,9 @@ class Button extends Component {
         {this.state.checkboxMessage && (
           <p>You have not completed all the requirements</p>
         )}
+        {this.props.projectSubmission.invalidUrlMessage && (
+          <p>{this.props.projectSubmission.invalidUrlMessage}</p>
+        )}
       </div>
     );
   }
@@ -150,7 +156,9 @@ class Button extends Component {
 
 Button.defaultProps = {
   changeScoreValue: 5,
-  testButtonText: "Test"
+  testButtonText: "Test",
+  children: "Next",
+  type: "default"
 };
 
 function mapStateToProps(state) {
@@ -165,7 +173,9 @@ function mapStateToProps(state) {
     correct: state.correct,
     remainingCheckboxes: state.remainingCheckboxes,
     test: state.tests,
-    testsCompleted: state.allTestsCompleted
+    testsCompleted: state.allTestsCompleted,
+    projectSubmission: state.projectSubmission
+
   };
 }
 

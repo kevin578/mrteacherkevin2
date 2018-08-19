@@ -31,7 +31,7 @@ class Main extends React.Component {
   }
 
   getSubjects() {
-    if (!this.props.coursePercentages) return;
+    if (!this.props.coursePercentages === null) return;
     let subjectPercentArray = [];
     for (let subject in this.props.coursePercentages) {
       subjectPercentArray.push(subject.slice(0, -1));

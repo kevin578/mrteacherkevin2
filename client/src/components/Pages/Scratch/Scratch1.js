@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Subject from "./../../Subject/Subject";
 import { Body, Header, Image, Video } from "../../Subject/SubjectStyles";
+import ProjectSubmission from "../../Subject/ProjectSubmission";
 import Checkbox from "./../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
@@ -47,14 +48,13 @@ class Scratch1 extends React.Component {
           </Body>,
           <Body key="movement" title="Body Movin'" />,
           <Body key="sound" title="The Sound of Music" />,
-          <Body key = "draw" title = "Let's Draw"/>,
-          <Body key = "wait" title = "Wait!"/>,
-          <Body key = "animation" title = "Animation" />,
-          <Body key = "visual effects" title = "Graphic Effects"/>,
-          <Body key = "review1" title = "Review"/>,
-          
-          <Body key = "advanceMovement" title = "Advanced Movement">
+          <Body key="draw" title="Let's Draw" />,
+          <Body key="wait" title="Wait!" />,
+          <Body key="animation" title="Animation" />,
+          <Body key="visual effects" title="Graphic Effects" />,
+          <Body key="review1" title="Review" />,
 
+          <Body key="advanceMovement" title="Advanced Movement">
             <Header>Advanced Movement</Header>
             Use the glide, move, and wait blocks to make your character move
             around the screen.
@@ -70,9 +70,29 @@ class Scratch1 extends React.Component {
             <Image src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1533821292/scratchAdvancedMovement.gif" />
             <Button>Next</Button>
           </Body>,
-          <Body key = "loops" title = "Loopy"/>,
-          <Body key = "changeBackgrounds" title = "Background Check"/>,
-          <Body key = "share" title = "Start a Scene!"/>
+          <Body key="loops" title="Loopy" />,
+          <Body key="changeBackgrounds" title="Background Check" />,
+          <Body key="share" title="Making a Scene!">
+            <Header>Making a scene!</Header>
+            <p>
+              Create your own story with animated characters from Scratch. Check
+              that all the requirements are met and then share your creation
+              with the world.
+            </p>
+
+            <Header>Before you submit your project, check that you: </Header>
+            <Checkbox>change your backdrop at some point.</Checkbox>
+            <Checkbox>make your characters move around.</Checkbox>
+            <Checkbox>have characters who say something.</Checkbox>
+            <Checkbox>make sound.</Checkbox>
+            <Checkbox>shared your project.</Checkbox>
+
+            <Header>
+              Copy and paste the URL of your project when you're done:
+            </Header>
+            <ProjectSubmission />
+            <Button>Finished!</Button>
+          </Body>
         ]}
       </Subject>
     );

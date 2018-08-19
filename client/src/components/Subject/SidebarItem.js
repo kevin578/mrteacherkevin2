@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   background: ${props => {
     if (props.currentlySelected && !props.completed) return "#f7f7f7";
-    else if (props.currentlySelected) return "#88c47d"
+    else if (props.currentlySelected) return "#88c47d";
     else if (props.completed) return "#5BA84C";
     else return "transparent";
   }}
@@ -44,6 +44,7 @@ class SidebarItem extends React.Component {
     this.props.resetAnswers();
     this.props.resetCheckbox();
     this.props.setPage(this.props.index);
+    window.scrollTo(0, 0);
   };
 
   getStars = () => {

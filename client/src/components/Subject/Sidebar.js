@@ -12,7 +12,7 @@ import axios from "axios";
 
 const Wrapper = styled.section`
   width: 340px;
-  height: 800px;
+  height: 100%;
   background: #d8d8d8;
   margin-top: ${headerHeight}px;
   position: fixed;
@@ -20,8 +20,8 @@ const Wrapper = styled.section`
 `;
 
 const SidebarSubject = styled.div`
-  position: relative;
-  width: 100%;
+  position: fixed;
+  width: 340px;
   height: 80px;
   background: #a43ab4;
   text-align: center;
@@ -44,9 +44,10 @@ const SidebarSubjectName = styled.p`
 `;
 
 const SidebarItemContainer = styled.div`
+margin-top: 80px;
     overflow-y: scroll;
   height: 100%;
-    padding-bottom: 40px;
+    padding-bottom: 100px;
 `;
 
 const SidebarCourseName = styled.p`

@@ -7,4 +7,6 @@ const Wrapper = styled.section`
   background: green;
 `;
 
-export const Footer = () => <Wrapper />;
+const Footer = () => <Wrapper />;
+
+export default Wrapper;

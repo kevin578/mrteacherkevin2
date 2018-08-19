@@ -5,32 +5,27 @@ export * from "./auth";
 export * from "./buttonActions";
 export * from "./rankings";
 export * from "./textEditorActions";
+export * from "./projectSubmissionActions";
 
 export const setPage = pageNumber => {
-  return dispatch => {
-    dispatch({
+  return {
       type: "SET_PAGE",
       payload: pageNumber
-    });
   };
 };
 
 export const setPageKey = pageKey => {
-  return dispatch => {
-    dispatch({
+  return {
       type: "SET_PAGE_KEY",
       payload: pageKey
-    });
-  };
+    };
 };
 
 export const setSubjectURL = subject => {
-  return dispatch => {
-    dispatch({
+  return {
       type: "SET_SUBJECT_URL",
       subject
-    });
-  };
+    };
 };
 
 export const setSubject = subject => {
