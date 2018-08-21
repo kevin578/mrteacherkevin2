@@ -1,19 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
-import { onTextChange, isProjectSubmissionPage } from "../../actions/projectSubmissionActions";
+import {
+  onTextChange,
+  isProjectSubmissionPage,
+  isValidUrl
+} from "../../actions/projectSubmissionActions";
 
 import { TextField } from "./Quiz";
 
 class ProjectSubmission extends React.Component {
+  componentDidMount() {
+    this.props.isProjectSubmissionPage(true);
+    this.props.isValidUrl(null);
+  }
+  componentWillUnmount() {
+    this.props.isProjectSubmissionPage(false);
+    this.props.isValidUrl(null);
+  }
 
-    componentDidMount(){
-        this.props.isProjectSubmissionPage(true);
-    }
-    componentWillUnmount() {
-        this.props.isProjectSubmissionPage(false);
-    }
-  
-    handleChange = event => {
+  handleChange = event => {
     this.props.onTextChange(event.target.value);
   };
 
@@ -24,7 +29,6 @@ class ProjectSubmission extends React.Component {
         onChange={this.handleChange}
         value={this.props.projectSubmission.inputValue}
       />
-
     );
   }
 }
@@ -32,10 +36,11 @@ class ProjectSubmission extends React.Component {
 function mapStateToProps(state) {
   return {
     projectSubmission: state.projectSubmission
+    
   };
 }
 
 export default connect(
   mapStateToProps,
-  { onTextChange, isProjectSubmissionPage }
+  { onTextChange, isProjectSubmissionPage, isValidUrl }
 )(ProjectSubmission);

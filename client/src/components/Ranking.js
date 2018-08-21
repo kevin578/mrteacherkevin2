@@ -19,9 +19,6 @@ export default props => {
   const getImage = () => {
     if (checkArray("space_cowboy")) return spaceCowboy;
 
-    if (checkArray("three_star")) return threeStar;
-    if (checkArray("two_star")) return twoStar;
-    if (checkArray("one_star")) return oneStar;
     return;
   };
   return <RankIMG src={getImage()} />;

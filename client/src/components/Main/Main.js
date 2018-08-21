@@ -6,9 +6,9 @@ import Axios from "../../../node_modules/axios";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
+import { SyncLoader } from "halogenium";
 
-const Body = styled.div`
-`;
+const Body = styled.div``;
 
 const Subjects = styled.div`
   width: 1125px;
@@ -23,11 +23,24 @@ const Subjects = styled.div`
   right: 10px;
 `;
 
+const LoaderWrapper = styled.div`
+  margin-top: 150px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+`;
+
 class Main extends React.Component {
+  state = {
+    isLoading: true
+  };
   componentDidMount() {
     Axios.get("/api/getCoursePercentages").then(percentages => {
+      this.setState({ isLoading: false });
       this.props.setCoursePercentagesForRedux(percentages.data);
     });
+
   }
 
   getSubjects() {
@@ -36,51 +49,54 @@ class Main extends React.Component {
     for (let subject in this.props.coursePercentages) {
       subjectPercentArray.push(subject.slice(0, -1));
     }
-      let startedSubjects = [];
-      let notStartedSubjects = [];
-      for (let course of courses) {
-        if (
-          subjectPercentArray.indexOf(
-            course.subject.replace(/\s+/g, "").toLowerCase()
-          ) > -1
-        ) {
-          startedSubjects.push(course);
-        } else {
-          notStartedSubjects.push(course);
-        }
+    let startedSubjects = [];
+    let notStartedSubjects = [];
+    for (let course of courses) {
+      if (
+        subjectPercentArray.indexOf(
+          course.subject.replace(/\s+/g, "").toLowerCase()
+        ) > -1
+      ) {
+        startedSubjects.push(course);
+      } else {
+        notStartedSubjects.push(course);
       }
-      startedSubjects.sort(function(a, b) {
-        if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
-        if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
-        return 0;
-      });
-      notStartedSubjects.sort(function(a, b) {
-        if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
-        if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
-        return 0;
-      });
-
-      const sortedCourses = 
-      startedSubjects.concat(notStartedSubjects);
-      
-      return sortedCourses.map(subject => {
-        return (
-          <SubjectButton
-            background={subject.background}
-            subject={subject.subject}
-            courses = {subject.courses}
-            key = {subject.subject.replace(/\s+/g, "").toLowerCase()}
-          />
-        );
-      });
     }
-  
+    startedSubjects.sort(function(a, b) {
+      if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
+      if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
+      return 0;
+    });
+    notStartedSubjects.sort(function(a, b) {
+      if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
+      if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
+      return 0;
+    });
+
+    const sortedCourses = startedSubjects.concat(notStartedSubjects);
+
+    return sortedCourses.map(subject => {
+      return (
+        <SubjectButton
+          background={subject.background}
+          subject={subject.subject}
+          courses={subject.courses}
+          key={subject.subject.replace(/\s+/g, "").toLowerCase()}
+        />
+      );
+    });
+  }
 
   render() {
     return (
       <Body>
         <Header />
-        <Subjects>{this.getSubjects()}</Subjects>
+        {this.state.isLoading && (
+          <LoaderWrapper>
+            <SyncLoader color="#345afb" size="16px" margin="4px" />
+          </LoaderWrapper>
+        )}
+        {!this.state.isLoading && <Subjects>{this.getSubjects()}</Subjects>}
       </Body>
     );
   }

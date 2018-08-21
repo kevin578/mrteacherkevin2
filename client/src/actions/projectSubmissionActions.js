@@ -11,3 +11,10 @@ export const isProjectSubmissionPage = bool => {
     payload: bool
   };
 };
+
+export const isValidUrl = bool => {
+  return {
+    type: "IS_VALID_URL",
+    payload: bool
+  };
+};

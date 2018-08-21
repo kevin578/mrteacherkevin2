@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   height: 50px;
   border-bottom: 2px solid ${props =>
     props.completed ? "#D8D8D8" : "#979797"};
-  overflow: auto;
   cursor: pointer;
   background: ${props => {
     if (props.currentlySelected && !props.completed) return "#f7f7f7";
@@ -27,6 +26,7 @@ const Wrapper = styled.div`
 const ItemName = styled.p`
   margin-left: 15px;
   margin-right: 10px;
+  width: 100%;
 `;
 
 const Star = styled.img`

@@ -17,7 +17,6 @@ const Content = styled.div`
   width: 60%;
   margin-top: ${headerHeight}px;
   padding-bottom: 120px;
-  overflow: auto;
 `;
 
 class Subject extends React.Component {

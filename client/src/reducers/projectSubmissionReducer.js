@@ -1,7 +1,7 @@
 const defaultState = {
   isProjectSubmissionPage: false,
   inputValue: "",
-  invalidUrlMessage: ""
+  isValidUrl: false,
 };
 
 export default function projectSubmisionReducer(state = defaultState, action) {
@@ -10,6 +10,8 @@ export default function projectSubmisionReducer(state = defaultState, action) {
       return { ...state, inputValue: action.payload };
     case "IS_PROJECT_SUBMISSION_PAGE":
       return { ...state, isProjectSubmissionPage: action.payload };
+    case "IS_VALID_URL":
+      return {...state, isValidUrl: action.payload };
     default:
       return state;
   }

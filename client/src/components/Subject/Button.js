@@ -62,11 +62,11 @@ class Button extends Component {
   };
 
   checkIfCompleted = () => {
-    if (this.props.completed == null) return true;
-    if (!(this.props.subjectURL in this.props.completed)) return true;
+    if (this.props.completed == null) return false;
+    if (!(this.props.subjectURL in this.props.completed)) return false;
     if (this.props.completed[this.props.subjectURL].includes(this.props.page))
-      return false;
-    return true;
+      return true;
+    return false;
   };
 
   // changeScore saves the new score to the database then animates it for the
@@ -74,6 +74,7 @@ class Button extends Component {
 
   changeScore = newScore => {
     if (this.checkIfCompleted()) {
+
       axios.put("/api/setScore", {
         score: newScore + this.props.score
       });
@@ -97,18 +98,20 @@ class Button extends Component {
   };
 
   checkForNextPage = () => {
+    this.validateURL();
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
     }
-    this.setState({ 
-      checkboxMessage: this.props.remainingCheckboxes > 0,
-      projectSubmissionMessage: !this.props.projectURLIsValid
+    this.setState({
+      checkboxMessage: this.props.remainingCheckboxes > 0
     });
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
-      (this.props.testsCompleted === true || this.props.testsCompleted === null) &&
-      !(this.props.projectSubmission.invalidUrlMessage)
+      (this.props.testsCompleted === true ||
+        this.props.testsCompleted === null) &&
+      (!this.state.projectSubmissionMessage ||
+        !this.props.projectSubmission.isProjectSubmissionPage)
     ) {
       this.nextPage();
     }
@@ -117,7 +120,9 @@ class Button extends Component {
   nextPage = () => {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.pageKey, this.props.subjectURL);
-    this.props.setPage(this.props.page + 1);
+    this.props.projectSubmission.isProjectSubmissionPage
+      ? (window.location = "/")
+      : this.props.setPage(this.props.page + 1);
     window.scrollTo(0, 0);
     this.props.resetAnswers();
     if (this.props.badge) {
@@ -136,6 +141,14 @@ class Button extends Component {
     return matchArray.length;
   };
 
+  validateURL() {
+    if (this.props.projectSubmission.inputValue.length < 8) {
+      this.setState({ projectSubmissionMessage: true });
+    } else {
+      this.setState({ projectSubmissionMessage: false });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -144,11 +157,12 @@ class Button extends Component {
           <p>You still have {this.state.numberWrong} wrong.</p>
         )}
         {this.state.checkboxMessage && (
-          <p>You have not completed all the requirements</p>
+          <p>You have not completed all the requirements.</p>
         )}
-        {this.props.projectSubmission.invalidUrlMessage && (
-          <p>{this.props.projectSubmission.invalidUrlMessage}</p>
-        )}
+        {this.state.projectSubmissionMessage &&
+          this.props.projectSubmission.isProjectSubmissionPage && (
+            <p>Please enter a valid URL.</p>
+          )}
       </div>
     );
   }
@@ -175,7 +189,6 @@ function mapStateToProps(state) {
     test: state.tests,
     testsCompleted: state.allTestsCompleted,
     projectSubmission: state.projectSubmission
-
   };
 }
 

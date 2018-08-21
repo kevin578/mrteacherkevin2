@@ -12,7 +12,6 @@ const Button = styled.div`
   display: relative;
   width: 345px;
   height: 230px;
-  overflow: auto;
   background-image: ${props => props.background};
   border-radius: 8px;
   margin-bottom: 20px;

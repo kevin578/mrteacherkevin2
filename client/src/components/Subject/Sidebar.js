@@ -44,10 +44,9 @@ const SidebarSubjectName = styled.p`
 `;
 
 const SidebarItemContainer = styled.div`
-margin-top: 80px;
-    overflow-y: scroll;
+  margin-top: 80px;
   height: 100%;
-    padding-bottom: 100px;
+  padding-bottom: 100px;
 `;
 
 const SidebarCourseName = styled.p`
@@ -129,7 +128,9 @@ class Sidebar extends React.Component {
     return (
       <Wrapper>
         <SidebarSubject>
-          <SidebarSubjectName>{this.props.title} {this.getSubjectNumber()}</SidebarSubjectName>
+          <SidebarSubjectName>
+            {this.props.title} {this.getSubjectNumber()}
+          </SidebarSubjectName>
           <SidebarCourseName>{this.getCourseTitle()}</SidebarCourseName>
         </SidebarSubject>
         <SidebarItemContainer>{this.getSidebarItems()}</SidebarItemContainer>
