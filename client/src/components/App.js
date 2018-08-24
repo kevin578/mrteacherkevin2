@@ -10,9 +10,12 @@ import * as actions from "../actions";
 import Audacity1 from "./Pages/Audacity/Audacity1";
 
 //Arduino
+import ArduinoBasics1 from "./Pages/ArduinoBasics/ArduinoBasics1";
+import ArduinoBasics2 from "./Pages/ArduinoBasics/ArduinoBasics2";
+
+
 import Arduino1 from "./Pages/Arduino/Arduino1";
 import Arduino2 from "./Pages/Arduino/Arduino2";
-import Arduino3 from "./Pages/Arduino/Arduino3";
 
 //Google Chrome 
 import GoogleChrome1 from "./Pages/GoogleChrome/GoogleChrome1";
@@ -121,7 +124,9 @@ class App extends Component {
 
             <Route path="/arduino1" component={Arduino1} />
             <Route path="/arduino2" component={Arduino2} />
-            <Route path="/arduino3" component={Arduino3} />
+
+            <Route path="/arduinobasics1" component={ArduinoBasics1} />
+            <Route path="/arduinobasics2" component={ArduinoBasics2} />
 
             <Route path="/googlechrome1" component={GoogleChrome1} />
             <Route path="/googlechrome2" component={GoogleChrome2} />

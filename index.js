@@ -5,6 +5,7 @@ const passport = require("passport");
 const router = require("express").Router();
 const authRoutes = require("./routes/authRoutes");
 const userInfoRoutes = require("./routes/userInfoRoutes");
+const projectRoutes = require("./routes/projectRoutes");
 const testRoutes = require("./routes/testRoutes")
 const bodyParser = require("body-parser");
 
@@ -33,6 +34,7 @@ app.use(passport.session());
 
 app.use(authRoutes);
 app.use(userInfoRoutes);
+app.use(projectRoutes)
 app.use(testRoutes.router);
 
 if (process.env.NODE_ENV === "production") {

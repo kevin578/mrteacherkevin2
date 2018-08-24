@@ -40,7 +40,6 @@ class Main extends React.Component {
       this.setState({ isLoading: false });
       this.props.setCoursePercentagesForRedux(percentages.data);
     });
-
   }
 
   getSubjects() {
@@ -49,6 +48,7 @@ class Main extends React.Component {
     for (let subject in this.props.coursePercentages) {
       subjectPercentArray.push(subject.slice(0, -1));
     }
+
     let startedSubjects = [];
     let notStartedSubjects = [];
     for (let course of courses) {
@@ -62,6 +62,7 @@ class Main extends React.Component {
         notStartedSubjects.push(course);
       }
     }
+    this.props.addStartedSubjects(startedSubjects);
     startedSubjects.sort(function(a, b) {
       if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
       if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;

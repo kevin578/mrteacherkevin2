@@ -79,12 +79,16 @@ const SubjectButton = props => {
 
   const getCourses = () => {
     if (!props.courses) return;
-    if (props.courses.length > 0) {
+    const courses = props.courses.filter((course)=> {
+      if (!(course[0] === "*")) return course;
+    });
+
+    if (courses.length > 0) {
       return props.courses.map((course, index) => {
         const link = `/${props.subject
           .replace(/\s+/g, "")
           .toLowerCase()}${index + 1}`;
-        if (course[0] === "*") return;
+          if (course[0] === "*") return;
         return (
           <CourseContainer key={course} href={link}>
             <Course>{course}</Course>

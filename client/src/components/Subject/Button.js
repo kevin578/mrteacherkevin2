@@ -74,7 +74,6 @@ class Button extends Component {
 
   changeScore = newScore => {
     if (this.checkIfCompleted()) {
-
       axios.put("/api/setScore", {
         score: newScore + this.props.score
       });
@@ -120,9 +119,16 @@ class Button extends Component {
   nextPage = () => {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.pageKey, this.props.subjectURL);
-    this.props.projectSubmission.isProjectSubmissionPage
-      ? (window.location = "/")
-      : this.props.setPage(this.props.page + 1);
+    if (this.props.projectSubmission.isProjectSubmissionPage) {
+      axios.post("/api/addProject", {
+        rawURL: this.props.projectSubmission.inputValue,
+        subjectURL: this.props.subjectURL,
+        subject: this.props.subject,
+        course: this.props.pageInfo.courseTitle,
+      });
+    } else {
+      this.props.setPage(this.props.page + 1);
+    }
     window.scrollTo(0, 0);
     this.props.resetAnswers();
     if (this.props.badge) {
@@ -188,7 +194,8 @@ function mapStateToProps(state) {
     remainingCheckboxes: state.remainingCheckboxes,
     test: state.tests,
     testsCompleted: state.allTestsCompleted,
-    projectSubmission: state.projectSubmission
+    projectSubmission: state.projectSubmission,
+    pageInfo: state.pageInfo
   };
 }
 

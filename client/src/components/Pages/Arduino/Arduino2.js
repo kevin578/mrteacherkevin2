@@ -1,7 +1,7 @@
 import React from "react";
-import Subject from "./../../Subject/Subject";
+import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
-import Checkbox from "./../../Subject/Checkbox";
+import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
@@ -9,7 +9,7 @@ import Button from "../../Subject/Button";
 class Arduino2 extends React.Component {
   render() {
     return (
-      <Subject title="Sample Page" urlName="arduino2">
+      <Subject title="Arduino" urlName="arduino2">
         {[
           <Body key="starting" title="Start something">
             <Header>Sample Header</Header>

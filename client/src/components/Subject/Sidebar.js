@@ -119,7 +119,9 @@ class Sidebar extends React.Component {
     for (let course of courses) {
       if (course.subject == this.props.title) {
         const courseArrayIndex = parseInt(this.props.subject.slice(-1));
-        return course.courses[courseArrayIndex - 1];
+        const title = course.courses[courseArrayIndex - 1];
+        this.props.setCourseTitle(title);
+        return title;
       }
     }
   }

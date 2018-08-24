@@ -82,9 +82,13 @@ router.put("/api/setCoursePercentage", (req, res) => {
 });
 
 router.get("/api/getCoursePercentages", (req,res)=> {
+  if (!req.user) res.send('You are not logged in')
+  else {
   Users.findById(req.user.id, (err,data)=> {
-    res.send(data.coursePercentages)
+    if (err) res.send(errorMessage) 
+    else res.send(data.coursePercentages)
   })
+}
 })
 
 module.exports = router;

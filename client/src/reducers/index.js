@@ -7,7 +7,8 @@ import {
   setSubjectURL,
   setSubject,
   addAcheievement,
-  setCoursePercentages
+  setCoursePercentages,
+  pageInfoReducer
 } from "./pageReducer";
 import {
   changeScore,
@@ -17,6 +18,7 @@ import {
 } from "./buttonReducer";
 import { setEditorContent, setTests } from "./textEditorReducer";
 import projectSubmissionReducer from "./projectSubmissionReducer";
+import mainPageReducer from "./mainPageReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -33,5 +35,7 @@ export default combineReducers({
   tests: setTests,
   allTestsCompleted,
   coursePercentages: setCoursePercentages,
-  projectSubmission: projectSubmissionReducer
+  projectSubmission: projectSubmissionReducer,
+  pageInfo: pageInfoReducer,
+  mainPage: mainPageReducer
 });

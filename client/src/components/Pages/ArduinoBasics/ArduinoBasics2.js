@@ -1,15 +1,15 @@
 import React from "react";
-import Subject from "./../../Subject/Subject";
+import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
-import Checkbox from "./../../Subject/Checkbox";
+import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
-class Arduino3 extends React.Component {
+class Arduino2 extends React.Component {
   render() {
     return (
-      <Subject title="Sample Page" urlName="arduino3">
+      <Subject title="Arduino Basics" urlName="arduinobasics2">
         {[
           <Body key="starting" title="Start something">
             <Header>Sample Header</Header>
@@ -27,4 +27,4 @@ class Arduino3 extends React.Component {
   }
 }
 
-export default Arduino3;
+export default Arduino2;

@@ -2,6 +2,19 @@ import { setCoursePercentagesForRedux } from "../actions";
 
 //import {SET_PAGE, COMPLETE_BUTTON, SET_SUBJECT} from './../actions'
 
+const defaultPageState = {
+  courseTitle: ""
+};
+
+export function pageInfoReducer(state = defaultPageState, action) {
+  switch (action.type) {
+    case "SET_COURSE_TITLE":
+      return {...state, courseTitle: action.payload};
+    default:
+      return state;
+  }
+}
+
 export function setPage(state = 0, action) {
   switch (action.type) {
     case "SET_PAGE":
