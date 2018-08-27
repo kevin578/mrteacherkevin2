@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import {camelize} from "../App";
+import { camelize } from "../App";
 
 export const TextField = styled.input`
   width: 400px;
@@ -20,6 +20,7 @@ const QuestionText = styled.h2`
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 5px;
+  margin-top: 50px;
 `;
 
 export const formAnimation = keyframes`
@@ -93,13 +94,13 @@ class Question extends Component {
           return (
             <div key={choice}>
               <HiddenCheckbox
-                id={camelize(choice)}
+                id={camelize(choice + this.props.children)}
                 type="radio"
                 name={camelize(this.props.children)}
                 value={choice}
                 onChange={this.handleChange}
               />
-              <MultipleChoiceLabel htmlFor={camelize(choice)}>
+              <MultipleChoiceLabel htmlFor={camelize(choice + this.props.children)}>
                 {choice}
               </MultipleChoiceLabel>
             </div>

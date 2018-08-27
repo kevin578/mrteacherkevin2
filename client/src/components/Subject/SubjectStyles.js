@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  height: 800px;
+  min-height: 800px;
   width: 75%;
 `;
 
@@ -23,11 +23,11 @@ export const Image = props => {
 };
 
 export const Video = props => {
-  const videoPlayerType = "iframe";
+  const videoPlayerType = "html5";
 
   if (videoPlayerType == "html5") {
     return (
-      <video width={vidWidth} height={vidHeight} controls>
+      <video width={vidWidth} height={vidHeight} controls muted>
         <source src={props.src} type="video/mp4" />
       </video>
     );
@@ -54,4 +54,15 @@ export const Header = styled.h1`
 export const Body = props => {
   return <Wrapper>{props.children}</Wrapper>;
 };
+
+
+const CodeWrapper = styled.span`
+  font-family: 'Anonymous Pro', monospace;
+`;
+
+export const Code = props => {
+  <CodeWrapper>
+    {props.children}
+  </CodeWrapper>
+}
 
