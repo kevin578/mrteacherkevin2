@@ -4,3 +4,10 @@ export const setCourseTitle = title => {
     payload: title
   };
 };
+
+export const setSubjectPageLength = arrayLength => {
+  return {
+    type: "SET_SUBJECT_PAGE_LENGTH",
+    payload: arrayLength
+  };
+};

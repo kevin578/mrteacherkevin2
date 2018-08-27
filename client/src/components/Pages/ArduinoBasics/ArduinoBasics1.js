@@ -32,7 +32,7 @@ class Arduino1 extends React.Component {
 
             <Button>Next</Button>
             <Header>Here's a video if you need help:</Header>
-            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535374830/mrteacherkevin/arduino_intro.mp4" />
+            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535374830/mrteacherkevin/Arduino/arduino_intro.mp4" />
           </Body>,
 
           <Body key="serialPrint" title="Serial Print">
@@ -84,12 +84,13 @@ class Arduino1 extends React.Component {
 
           <Body key="datatypes" title="Strings and Numbers, Oh My">
             <Header>Strings and Numbers, Oh My</Header>
-            <p style={{ fontSize: 24 }}>
-              In programming, data can be stored as different types. Three of
-              most prominant types are strings, numbers, and booleans. Answer
+            <p style={{ fontSize: 18 }}>
+              In programming, data can be stored as different types. Three of the
+              most prominent types are strings, numbers, and booleans. Answer
               the following questions, use the video or test your own code if
               needed.
             </p>
+            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535413437/mrteacherkevin/Arduino/datatypes.mp4"/  >
             <Question
               type="mc"
               correctAnswer="string"
@@ -118,7 +119,7 @@ class Arduino1 extends React.Component {
 
             <Question
               type="mc"
-              correctAnswer="string"
+              correctAnswer="Nothing, it will be an error"
               choices={[
                 "string",
                 "number",
@@ -180,11 +181,13 @@ class Arduino1 extends React.Component {
           <Body key="counting" title="The Count">
             <Header>The Count</Header>
             <p>Create a program that counts up forever. Like so</p>
-            <Image src = "https://res.cloudinary.com/ddrd9osrk/image/upload/v1535392404/mrteacherkevin/Arduino/thecount.gif"/>
+            <Image src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535392404/mrteacherkevin/Arduino/thecount.gif" />
             <p>This code may help you</p>
             <EmbeddedGist gist="kevin578/08c2944598175ca50472f11754b11275" />
             <Header>Check that you have...</Header>
-            <Checkbox>made a program that continuously counts up by one.</Checkbox>
+            <Checkbox>
+              made a program that continuously counts up by one.
+            </Checkbox>
             <Checkbox>there is one second between each count.</Checkbox>
             <Button>Next</Button>
           </Body>,
@@ -192,43 +195,61 @@ class Arduino1 extends React.Component {
           <Body key="loop" title="Out of the Loop">
             <Header>Out of the Loop</Header>
             <p>The loop below will count to 50:</p>
-            <EmbeddedGist gist="kevin578/08c2944598175ca50472f11754b11275" />
+            <EmbeddedGist gist="kevin578/dace3d0dcadf98a1d487a3c1624c7afd" />
             <Header>Create two more loops that...</Header>
             <Checkbox>count from 8 to 13.</Checkbox>
             <Checkbox>Then count from 13 to 8.</Checkbox>
             <Header>Like so...</Header>
-            <Image src = "https://res.cloudinary.com/ddrd9osrk/image/upload/v1535393460/mrteacherkevin/Arduino/outoftheloop.gif"/>
+            <Image src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535393460/mrteacherkevin/Arduino/outoftheloop.gif" />
             <Button>Next</Button>
           </Body>,
 
-          <Body key="reading" title="Reading Is Fundamental">
-            <Header>Do something again</Header>
+          <Body key="reading" title="Reading Log">
+            <Header>Reading Log</Header>
+            <p>
+              In addition to printing to the Serial Montitor you can also read
+              from it. Copy the code below, run the program, type a number into
+              the Serial Monitor, and press send. Once you you get a number to
+              show up trying switching the code to be able to print a string.
+            </p>
+            <EmbeddedGist gist="kevin578/e8b5d852037ad86043bc9e905caf1a02" />
+            <Header>Check that you have...</Header>
+            <Checkbox>printed a number.</Checkbox>
+            <Checkbox>printed a string.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
           <Body key="arduinoifthen" title="Check Yourself">
-            <Header>Do something again</Header>
-            <Button>Next</Button>
-          </Body>,
-
-          <Body key="functions" title="Functioning">
-            <Header>Do something again</Header>
-            <Button>Next</Button>
-          </Body>,
-
-          <Body key="event" title="The Main Event">
-            <Header>Do something again</Header>
-            <Button>Next</Button>
-          </Body>,
-
-          <Body key="again" title="Quiz Time">
-            <Header>Do something again</Header>
+            <Header>Check Yourself</Header>
+              
             <Button>Next</Button>
           </Body>
-        ]}
+
+]}
       </Subject>
     );
   }
 }
 
 export default Arduino1;
+
+
+
+
+
+
+        //   <Body key="functions" title="Functioning">
+        //     <Header>Do something again</Header>
+        //     <Button>Next</Button>
+        //   </Body>,
+
+        //   <Body key="event" title="The Main Event">
+        //     <Header>Do something again</Header>
+        //     <Button>Next</Button>
+        //   </Body>,
+
+        //   <Body key="again" title="Quiz Time">
+        //     <Header>Do something again</Header>
+        //     <Button>Next</Button>
+        //   </Body>
+        // 

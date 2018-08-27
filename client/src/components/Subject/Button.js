@@ -117,23 +117,29 @@ class Button extends Component {
   };
 
   nextPage = () => {
-    if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.pageKey, this.props.subjectURL);
+    if (this.props.auth) this.changeScore(this.props.changeScoreValue);
+    if (this.props.badge) {
+      this.props.addAchievemnet(this.props.badge, this.props.subject);
+    }
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
         rawURL: this.props.projectSubmission.inputValue,
         subjectURL: this.props.subjectURL,
         subject: this.props.subject,
-        course: this.props.pageInfo.courseTitle,
+        course: this.props.pageInfo.courseTitle
       });
+    }
+    console.log(this.props.page);
+    console.log(this.props.pageInfo.subjectPageLength);
+    if (this.props.page + 1 === this.props.pageInfo.subjectPageLength) {
+      window.location = "/";
+      this.props.setPage(0);
     } else {
       this.props.setPage(this.props.page + 1);
     }
     window.scrollTo(0, 0);
     this.props.resetAnswers();
-    if (this.props.badge) {
-      this.props.addAchievemnet(this.props.badge, this.props.subject);
-    }
   };
 
   checkQuiz = () => {

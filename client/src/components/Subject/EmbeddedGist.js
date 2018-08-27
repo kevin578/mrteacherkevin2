@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  margin-top: 40px;
+  margin-bottom: 40px;
+`;
 
 class EmbeddedGist extends Component {
   constructor(props) {
@@ -59,7 +65,7 @@ class EmbeddedGist extends Component {
     if (this.state.loading) {
       return <div>loading...</div>;
     } else {
-      return <div dangerouslySetInnerHTML={{ __html: this.state.src }} />;
+      return <Wrapper dangerouslySetInnerHTML={{ __html: this.state.src }} />;
     }
   }
 }

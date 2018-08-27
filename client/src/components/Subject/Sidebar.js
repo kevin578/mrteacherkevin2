@@ -61,6 +61,9 @@ const SidebarCourseName = styled.p`
 `;
 
 class Sidebar extends React.Component {
+  componentDidMount(){
+    this.props.setSubjectPageLength(this.props.steps.length);
+  }
   componentDidUpdate() {
     const { subjectURL, steps } = this.props;
     const stepCopy = steps.filter(item => {

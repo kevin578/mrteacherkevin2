@@ -17,7 +17,9 @@ export const Image = props => {
   const height = width / 1.7777778;
   let styles = {
     width,
-    height
+    height,
+    marginTop: 20,
+    marginBottom: 20
   };
   return <img src={props.src} alt={props.src} style={styles} />;
 };
