@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./../Header";
-import SubjectButton from "./SubjectButton";
+import  SubjectButton, {removeStarredCourses} from "./SubjectButton";
 import Axios from "../../../node_modules/axios";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
@@ -10,17 +10,37 @@ import { SyncLoader } from "halogenium";
 
 const Body = styled.div``;
 
-const Subjects = styled.div`
+const SubjectContainer = styled.div`
   width: 1125px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
+`
+
+const Subjects = styled.div`
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
-  justify-content: 
   position: relative;
   right: 10px;
+`;
+
+const StartedSubjects = styled(Subjects)`
+  padding-bottom: 40px;
+  border-bottom: 3px #c1c1c1 solid;
+  margin-bottom: 60px;
+`;
+
+const ComingSoonSubjects = styled(Subjects)`
+  padding-top: 40px;
+  border-top: 3px #c1c1c1 solid;
+  margin-top: 60px;
+
+`;
+
+
+const SubjectTitle = styled.h1`
+
 `;
 
 const LoaderWrapper = styled.div`
@@ -39,10 +59,11 @@ class Main extends React.Component {
     Axios.get("/api/getCoursePercentages").then(percentages => {
       this.setState({ isLoading: false });
       this.props.setCoursePercentagesForRedux(percentages.data);
+      this.sortSubjects();
     });
   }
 
-  getSubjects() {
+  sortSubjects() {
     if (!this.props.coursePercentages === null) return;
     let subjectPercentArray = [];
     for (let subject in this.props.coursePercentages) {
@@ -50,7 +71,10 @@ class Main extends React.Component {
     }
 
     let startedSubjects = [];
+    let notStartedAndComingSoon = [];
     let notStartedSubjects = [];
+    let comingSoonSubjects = [];
+
     for (let course of courses) {
       if (
         subjectPercentArray.indexOf(
@@ -59,24 +83,31 @@ class Main extends React.Component {
       ) {
         startedSubjects.push(course);
       } else {
-        notStartedSubjects.push(course);
+        notStartedAndComingSoon.push(course);
       }
     }
+
     this.props.addStartedSubjects(startedSubjects);
-    startedSubjects.sort(function(a, b) {
-      if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
-      if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
-      return 0;
+
+    notStartedAndComingSoon.forEach((subject) => {
+      const courses = removeStarredCourses(subject.courses);
+      if (courses.length > 0) {
+        notStartedSubjects.push(subject);
+      }
+      else {
+        comingSoonSubjects.push(subject);
+      }
     });
-    notStartedSubjects.sort(function(a, b) {
-      if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
-      if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
-      return 0;
-    });
+
+    this.props.addNotStartedSubjects(notStartedSubjects);
+    this.props.addComingSoonSubjects(comingSoonSubjects);
+    
 
     const sortedCourses = startedSubjects.concat(notStartedSubjects);
+  }
 
-    return sortedCourses.map(subject => {
+   getSubjects(subjectArray) {
+    return subjectArray.map(subject => {
       return (
         <SubjectButton
           background={subject.background}
@@ -88,6 +119,15 @@ class Main extends React.Component {
     });
   }
 
+  // renderSubjects(subjectArray , message) {
+  //   if (subjectArray.length > 0) {
+  //     <div>
+  //     <SubjectHeader>{message}</SubjectHeader>
+  //     <Subjects>{this.getSubjects(subjectArray)}</Subjects>
+  //     </div>
+  //   }
+  // }
+
   render() {
     return (
       <Body>
@@ -97,7 +137,24 @@ class Main extends React.Component {
             <SyncLoader color="#345afb" size="16px" margin="4px" />
           </LoaderWrapper>
         )}
-        {!this.state.isLoading && <Subjects>{this.getSubjects()}</Subjects>}
+        {!this.state.isLoading && 
+
+        <SubjectContainer>
+        {this.props.mainPage.startedSubjects && <SubjectTitle>Continue with...</SubjectTitle> }
+        <StartedSubjects>
+          {this.getSubjects(this.props.mainPage.startedSubjects)}
+        </StartedSubjects>
+
+
+        <Subjects>
+          {this.getSubjects(this.props.mainPage.notStartedSubjects)}
+        </Subjects>
+
+        <ComingSoonSubjects>
+        {this.getSubjects(this.props.mainPage.comingSoonSubjects)}
+        </ComingSoonSubjects>
+        </SubjectContainer>
+        }
       </Body>
     );
   }
@@ -105,7 +162,8 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    coursePercentages: state.coursePercentages
+    coursePercentages: state.coursePercentages,
+    mainPage: state.mainPage 
   };
 };
 
@@ -113,3 +171,5 @@ export default connect(
   mapStateToProps,
   actions
 )(Main);
+
+

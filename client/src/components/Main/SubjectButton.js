@@ -28,12 +28,14 @@ const Subject = styled.p`
   text-align: center;
   margin-top: 20px;
   font-weight: 300;
+
 `;
 const Course = styled.p`
   color: #fff;
   font-size: 14px;
   margin-top: 0px;
   margin-bottom: 0px;
+
 `;
 
 const CourseContainer = styled.a`
@@ -62,6 +64,12 @@ const goToLink = link => {
   window.location = link;
 };
 
+export const removeStarredCourses = (courses)=> {
+  return courses.filter((course)=> {
+    if (!(course[0] === "*")) return course;
+  });
+};
+
 const SubjectButton = props => {
   const getRank = () => {
     if (!(props.rank == null)) {
@@ -79,10 +87,8 @@ const SubjectButton = props => {
 
   const getCourses = () => {
     if (!props.courses) return;
-    const courses = props.courses.filter((course)=> {
-      if (!(course[0] === "*")) return course;
-    });
-
+    const courses = removeStarredCourses(props.courses);
+    
     if (courses.length > 0) {
       return props.courses.map((course, index) => {
         const link = `/${props.subject
@@ -123,3 +129,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(SubjectButton);
+
+
