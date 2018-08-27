@@ -136,7 +136,7 @@ class Main extends React.Component {
         )}
         {!this.state.isLoading && (
           <SubjectContainer>
-            {this.props.mainPage.startedSubjects.length && (
+            {this.props.mainPage.startedSubjects.length > 0 && (
               <div>
                 <SubjectTitle>Continue with:</SubjectTitle>
                 <StartedSubjects>
