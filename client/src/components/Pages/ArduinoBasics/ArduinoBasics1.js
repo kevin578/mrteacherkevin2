@@ -181,6 +181,7 @@ class Arduino1 extends React.Component {
             <Header>
               This video will show you how to use them:
             </Header>
+            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563141/mrteacherkevin/Arduino/variables.mp4"/>
             <Header>Create a document that...</Header>
             <Checkbox>has 2 string variables</Checkbox>
             <Checkbox>has 1 number variables.</Checkbox>
@@ -243,6 +244,7 @@ class Arduino1 extends React.Component {
             <p>If/then/else example:</p>
             <EmbeddedGist gist="kevin578/11b4733b0c5ecfc5f64e06cbe2d4ce07" />
             <p>This video talks about if/then statements:</p>
+            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563906/mrteacherkevin/Arduino/ifthen.mp4"/>
             <Header>Create a program that...</Header>
             <Checkbox>
               unlocks a message when the user enters the password.

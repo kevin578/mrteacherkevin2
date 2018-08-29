@@ -111,8 +111,10 @@ class Question extends Component {
   };
 
   getQuestionType = () => {
-    let { type } = this.props
-    if (this.props.choices.length > 0) type = "mc";
+    let { type } = this.props;
+    if (this.props.choices) {
+      if (this.props.choices.length > 0) type = "mc";
+    }
 
     switch (type) {
       case "text":

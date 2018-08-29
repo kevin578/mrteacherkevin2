@@ -29,7 +29,7 @@ export const Video = props => {
 
   if (videoPlayerType == "html5") {
     return (
-      <video width={vidWidth} height={vidHeight} controls muted>
+      <video width={vidWidth} height={vidHeight} controls>
         <source src={props.src} type="video/mp4" />
       </video>
     );
