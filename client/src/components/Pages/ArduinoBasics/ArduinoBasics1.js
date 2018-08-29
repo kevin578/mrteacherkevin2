@@ -15,9 +15,9 @@ class Arduino1 extends React.Component {
           <Body key="arduino_setup" title="Set up">
             <Header>Set up</Header>
             <p>
-              Before we get to making stuff blink, beep, and bop we're gonna get
+              Before we get to making stuff blink, beep, and bop, we're gonna get
               a little more comfortable with some basic principles of
-              programming. We'll practicing this in the circuit section of
+              programming. We'll be practicing this in the circuit section of
               Tinkercad. Sign up for an account, create a new ciruit, drag out
               an Arduino, and open the code (text) section. Your screen should
               look like this:
@@ -26,6 +26,15 @@ class Arduino1 extends React.Component {
               width="450"
               src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535375004/mrteacherkevin/Arduino/arduino_intro_screenshot.png"
             />
+            <p>
+              <a
+                href="https://www.tinkercad.com/#/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Link to Tinkercad
+              </a>
+            </p>
 
             <Header>Check that...</Header>
             <Checkbox>yes, my screen looks like that.</Checkbox>
@@ -85,12 +94,12 @@ class Arduino1 extends React.Component {
           <Body key="datatypes" title="Strings and Numbers, Oh My">
             <Header>Strings and Numbers, Oh My</Header>
             <p style={{ fontSize: 18 }}>
-              In programming, data can be stored as different types. Three of the
-              most prominent types are strings, numbers, and booleans. Answer
-              the following questions, use the video or test your own code if
-              needed.
+              In programming, data can be stored as different types. Three of
+              the most prominent types are strings, numbers, and booleans.
+              Answer the following questions, use the video or test your own
+              code if needed.
             </p>
-            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535413437/mrteacherkevin/Arduino/datatypes.mp4"/  >
+            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535413437/mrteacherkevin/Arduino/datatypes.mp4" />
             <Question
               type="mc"
               correctAnswer="string"
@@ -166,15 +175,25 @@ class Arduino1 extends React.Component {
             <Header>Very Variable</Header>
             <p>
               Variables can store information that can be quickly accessed when
-              the time comes. For example, instead of changing the delay 3
-              seperate times, you can define a variable just once in the
-              beginning and then use it throughout your program.
+              the time comes.
             </p>
             <EmbeddedGist gist="kevin578/a491df0e30386caa4ba8730234786d41" />
-            <Header>With the code above, make sure you have...</Header>
-            <Checkbox>filled the delay with the time variable</Checkbox>
-            <Checkbox>declared a second message variable.</Checkbox>
-            <Checkbox>made the time quicker and slower.</Checkbox>
+            <Header>
+              This video will show you how to use them:
+            </Header>
+            <Header>Create a document that...</Header>
+            <Checkbox>has 2 string variables</Checkbox>
+            <Checkbox>has 1 number variables.</Checkbox>
+            <Checkbox>
+              uses the variables to display alternating messages.
+            </Checkbox>
+            <Question correctAnswer = 'String celebrate = "Happy Birthday";'>
+              1. Declare a string variable named celebrate with a value of Happy
+              Birthday
+            </Question>
+            <Question correctAnswer = "int age = 89;">
+              2. Delcare a number variable named age with a value of 89
+            </Question>
             <Button>Next</Button>
           </Body>,
 
@@ -221,11 +240,16 @@ class Arduino1 extends React.Component {
 
           <Body key="arduinoifthen" title="Check Yourself">
             <Header>Check Yourself</Header>
-              
-            <Button>Next</Button>
+            <p>If/then/else example:</p>
+            <EmbeddedGist gist="kevin578/11b4733b0c5ecfc5f64e06cbe2d4ce07" />
+            <p>This video talks about if/then statements:</p>
+            <Header>Create a program that...</Header>
+            <Checkbox>
+              unlocks a message when the user enters the password.
+            </Checkbox>
+            <Button badge = {"programmingABCs"}>Next</Button>
           </Body>
-
-]}
+        ]}
       </Subject>
     );
   }
@@ -233,23 +257,18 @@ class Arduino1 extends React.Component {
 
 export default Arduino1;
 
+//   <Body key="functions" title="Functioning">
+//     <Header>Do something again</Header>
+//     <Button>Next</Button>
+//   </Body>,
 
+//   <Body key="event" title="The Main Event">
+//     <Header>Do something again</Header>
+//     <Button>Next</Button>
+//   </Body>,
 
-
-
-
-        //   <Body key="functions" title="Functioning">
-        //     <Header>Do something again</Header>
-        //     <Button>Next</Button>
-        //   </Body>,
-
-        //   <Body key="event" title="The Main Event">
-        //     <Header>Do something again</Header>
-        //     <Button>Next</Button>
-        //   </Body>,
-
-        //   <Body key="again" title="Quiz Time">
-        //     <Header>Do something again</Header>
-        //     <Button>Next</Button>
-        //   </Body>
-        // 
+//   <Body key="again" title="Quiz Time">
+//     <Header>Do something again</Header>
+//     <Button>Next</Button>
+//   </Body>
+//

@@ -73,7 +73,7 @@ class Button extends Component {
   // header
 
   changeScore = newScore => {
-    if (this.checkIfCompleted()) {
+    if (!this.checkIfCompleted()) {
       axios.put("/api/setScore", {
         score: newScore + this.props.score
       });
@@ -130,8 +130,6 @@ class Button extends Component {
         course: this.props.pageInfo.courseTitle
       });
     }
-    console.log(this.props.page);
-    console.log(this.props.pageInfo.subjectPageLength);
     if (this.props.page + 1 === this.props.pageInfo.subjectPageLength) {
       window.location = "/";
       this.props.setPage(0);

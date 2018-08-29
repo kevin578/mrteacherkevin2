@@ -28,6 +28,7 @@ const Subject = styled.p`
   text-align: center;
   margin-top: 20px;
   font-weight: 300;
+  opacity: .9;
 
 `;
 const Course = styled.p`
@@ -35,6 +36,7 @@ const Course = styled.p`
   font-size: 14px;
   margin-top: 0px;
   margin-bottom: 0px;
+  opacity: .9;
 
 `;
 

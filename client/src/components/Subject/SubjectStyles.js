@@ -10,7 +10,7 @@ const vidHeight = 350;
 const vidWidth = vidHeight * 1.77778;
 
 export const Image = props => {
-  let width = 350;
+  let width = 622;
   if (props.width) {
     width = props.width;
   }
