@@ -57,14 +57,10 @@ export const Body = props => {
   return <Wrapper>{props.children}</Wrapper>;
 };
 
-
 const CodeWrapper = styled.span`
-  font-family: 'Anonymous Pro', monospace;
+  font-family: "Anonymous Pro", monospace;
 `;
 
 export const Code = props => {
-  <CodeWrapper>
-    {props.children}
-  </CodeWrapper>
-}
-
+  <CodeWrapper>{props.children}</CodeWrapper>;
+};

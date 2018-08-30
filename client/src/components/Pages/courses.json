@@ -57,7 +57,7 @@
     {
         "background":"linear-gradient(45deg, #B97725 0%, #D33B22 100%)",
         "subject":"Google Sheets",
-        "courses": ["*Simple Spreadsheeter","*Super Spreadsheeter"] 
+        "courses": ["Simple Spreadsheeter","*Super Spreadsheeter"] 
     },
 
     {
