@@ -149,9 +149,9 @@ class Main extends React.Component {
               {this.getSubjects(this.props.mainPage.notStartedSubjects)}
             </Subjects>
 
-            <ComingSoonSubjects>
+            {/* <ComingSoonSubjects>
               {this.getSubjects(this.props.mainPage.comingSoonSubjects)}
-            </ComingSoonSubjects>
+            </ComingSoonSubjects> */}
           </SubjectContainer>
         )}
       </Body>

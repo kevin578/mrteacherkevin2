@@ -11,15 +11,16 @@ class Arduino2 extends React.Component {
     return (
       <Subject title="Arduino Basics" urlName="arduinobasics2">
         {[
-          <Body key="starting" title="Start something">
-            <Header>Sample Header</Header>
-            <p>Some Text</p>
-            <Button>Next</Button>
-          </Body>,
-
-          <Body key="again" title="Do somthing again">
-            <Header>Do something again</Header>
-            <Button>Next</Button>
+          <Body key="starting" title="Video">
+          <Header>Video</Header>
+            <iframe
+              width="806"
+              height="453"
+              src="https://www.youtube.com/embed/bIG5SqD336U"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            />
           </Body>
         ]}
       </Subject>

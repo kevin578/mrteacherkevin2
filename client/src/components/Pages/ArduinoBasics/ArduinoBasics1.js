@@ -224,27 +224,12 @@ class Arduino1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key="reading" title="Reading Log">
-            <Header>Reading Log</Header>
-            <p>
-              In addition to printing to the Serial Montitor you can also read
-              from it. Copy the code below, run the program, type a number into
-              the Serial Monitor, and press send. Once you you get a number to
-              show up trying switching the code to be able to print a string.
-            </p>
-            <EmbeddedGist gist="kevin578/e8b5d852037ad86043bc9e905caf1a02" />
-            <Header>Check that you have...</Header>
-            <Checkbox>printed a number.</Checkbox>
-            <Checkbox>printed a string.</Checkbox>
-            <Button>Next</Button>
-          </Body>,
-
           <Body key="arduinoifthen" title="Check Yourself">
             <Header>Check Yourself</Header>
-            <p>If/then/else example:</p>
-            <EmbeddedGist gist="kevin578/11b4733b0c5ecfc5f64e06cbe2d4ce07" />
             <p>This video talks about if/then statements:</p>
             <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563906/mrteacherkevin/Arduino/ifthen.mp4"/>
+            <Header>Starter code:</Header>
+            <EmbeddedGist gist="kevin578/11b4733b0c5ecfc5f64e06cbe2d4ce07" />
             <Header>Create a program that...</Header>
             <Checkbox>
               unlocks a message when the user enters the password.
