@@ -32,7 +32,7 @@ class Arduino2 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "flashTinker" title = "Flash On Flash Off: Tinkercad">
+          <Body key = "flashTinker" title = "Light this Candle">
           <Header>Flash On Flash Off</Header>
           <Header>In Tinkercad...</Header>
           <Checkbox>make an led blink on and off</Checkbox>
@@ -40,14 +40,10 @@ class Arduino2 extends React.Component {
           </Body>,
 
           <Body key = "flashReal" title = "Flash On Flash Off">
+          <Header>Flash On Flash Off</Header>
+          <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1536239439/mrteacherkevin/Arduino/flash.mp4"/>
           <Header>In real life...</Header>
           <Checkbox>make an led blink on and off</Checkbox>
-          <Button>Next</Button>
-          </Body>,
-
-          <Body key = "sequenceTinker" title = "Sequence: Tinkercad">
-          <Header>In Tinkercad...</Header>
-          <Checkbox>make 3 LEDs blink in a sequence.</Checkbox>
           <Button>Next</Button>
           </Body>,
 
