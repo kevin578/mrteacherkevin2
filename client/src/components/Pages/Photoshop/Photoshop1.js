@@ -125,7 +125,7 @@ class Photoshop1 extends React.Component {
 
           </Body>,
 
-          <Body key="again" title="Text">
+          <Body key="text" title="Text">
             <Header>Text</Header>
             <p>Time to add a little writing to your project.</p>
             <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535556280/mrteacherkevin/Photoshop/text.mp4"/>
@@ -146,7 +146,7 @@ class Photoshop1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key="again" title="Sharing">
+          <Body key="sharing" title="Sharing">
             <Header>Sharing</Header>
           </Body>
         ]}

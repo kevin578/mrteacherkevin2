@@ -42,7 +42,7 @@ class GoogleSheets1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key="cell" title="Style">
+          <Body key="style" title="Style">
             <Header>Style</Header>
             <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535640149/mrteacherkevin/Sheets/style.mp4" />
             <Header>Check that you...</Header>
@@ -52,7 +52,7 @@ class GoogleSheets1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key="cell" title="Share">
+          <Body key="share" title="Share">
           <Header>Share</Header>
           </Body>
         ]}
