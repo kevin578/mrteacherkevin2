@@ -5,11 +5,13 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   width: 255px;
   height: 300px;
-  margin-left: auto;  
-  margin-right: auto;
+  margin-left: 20px;
   background: #d7dcf2;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-top: 30px;
+  margin-left: auto;  
+  margin-right: auto;
 `;
 
 const Title = styled.p`
@@ -22,11 +24,11 @@ color: white;
 border-radius: 7px 7px 0 0;
 `;
 
-export default class MyProjects extends Component {
+export default class Achievements extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>My Projects</Title>
+        <Title>Achievments</Title>
       </Wrapper>
     );
   }

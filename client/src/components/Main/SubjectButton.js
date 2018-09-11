@@ -4,13 +4,15 @@ import Ranking from "../Ranking";
 import { connect } from "react-redux";
 import { camelize } from "../App";
 
+
 const Wrapper = styled.div`
   display: flex;
+  grid-column-start: auto;
 `;
 
 const Button = styled.div`
   display: relative;
-  width: 345px;
+  width: 265px;
   height: 230px;
   background-image: ${props => props.background};
   border-radius: 8px;
@@ -19,6 +21,7 @@ const Button = styled.div`
   margin-right: 15px;
   position: relative;
   top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 const Subject = styled.p`
@@ -28,16 +31,14 @@ const Subject = styled.p`
   text-align: center;
   margin-top: 20px;
   font-weight: 300;
-  opacity: .9;
-
+  opacity: 0.9;
 `;
 const Course = styled.p`
   color: #fff;
   font-size: 14px;
   margin-top: 0px;
   margin-bottom: 0px;
-  opacity: .9;
-
+  opacity: 0.9;
 `;
 
 const CourseContainer = styled.a`
@@ -45,7 +46,7 @@ const CourseContainer = styled.a`
   margin-bottom: 10px;
   margin-left: 15px;
   display: flex;
-  width: 50%;
+  width: 80%;
   justify-content: space-between;
   cursor: pointer;
   text-decoration: none;
@@ -66,8 +67,8 @@ const goToLink = link => {
   window.location = link;
 };
 
-export const removeStarredCourses = (courses)=> {
-  return courses.filter((course)=> {
+export const removeStarredCourses = courses => {
+  return courses.filter(course => {
     if (!(course[0] === "*")) return course;
   });
 };
@@ -90,13 +91,13 @@ const SubjectButton = props => {
   const getCourses = () => {
     if (!props.courses) return;
     const courses = removeStarredCourses(props.courses);
-    
+
     if (courses.length > 0) {
       return props.courses.map((course, index) => {
         const link = `/${props.subject
           .replace(/\s+/g, "")
           .toLowerCase()}${index + 1}`;
-          if (course[0] === "*") return;
+        if (course[0] === "*") return;
         return (
           <CourseContainer key={course} href={link}>
             <Course>{course}</Course>
@@ -111,12 +112,9 @@ const SubjectButton = props => {
 
   return (
     <Wrapper>
-      <Button background={props.background} onClick={goToLink}>
+      <Button background={props.background}>
         <Subject>{props.subject}</Subject>
         {getCourses()}
-        <BadgeWrapper>
-          <Ranking rank={getRank()} />
-        </BadgeWrapper>
       </Button>
     </Wrapper>
   );
@@ -131,5 +129,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(SubjectButton);
-
-

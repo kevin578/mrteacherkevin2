@@ -7,20 +7,27 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
+import Sidebar from "./Sidebar";
+import MyProjects from "./MyProjects";
+import Achievements from "./Achievments";
 
 const Body = styled.div``;
 
+const Content = styled.div`
+  display: flex;
+`;
+
 const SubjectContainer = styled.div`
-  width: 1125px;
+  width: ${props => (props.auth ? "80%" : "90%")};
   margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: ${props => (props.auth ? "60px" : "auto")};
+  margin-right: ${props => (props.auth ? "0px" : "auto")};
 `;
 
 const Subjects = styled.div`
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 285px 285px 285px;
   position: relative;
   right: 10px;
 `;
@@ -39,7 +46,7 @@ const ComingSoonSubjects = styled(Subjects)`
 
 const SubjectTitle = styled.h1`
   font-size: 28px;
-  opacity: .9;
+  opacity: 0.9;
 `;
 
 const LoaderWrapper = styled.div`
@@ -135,24 +142,27 @@ class Main extends React.Component {
           </LoaderWrapper>
         )}
         {!this.state.isLoading && (
-          <SubjectContainer>
-            {this.props.mainPage.startedSubjects.length > 0 && (
-              <div>
-                <SubjectTitle>Continue with:</SubjectTitle>
-                <StartedSubjects>
-                  {this.getSubjects(this.props.mainPage.startedSubjects)}
-                </StartedSubjects>
-              </div>
-            )}
+          <Content>
+            {this.props.auth && <Sidebar />}
+            <SubjectContainer auth = {this.props.auth}>
+              {this.props.mainPage.startedSubjects.length > 0 && (
+                <div>
+                  <SubjectTitle>Continue with:</SubjectTitle>
+                  <StartedSubjects>
+                    {this.getSubjects(this.props.mainPage.startedSubjects)}
+                  </StartedSubjects>
+                </div>
+              )}
 
-            <Subjects>
-              {this.getSubjects(this.props.mainPage.notStartedSubjects)}
-            </Subjects>
+              <Subjects>
+                {this.getSubjects(this.props.mainPage.notStartedSubjects)}
+              </Subjects>
 
-            {/* <ComingSoonSubjects>
+              {/* <ComingSoonSubjects>
               {this.getSubjects(this.props.mainPage.comingSoonSubjects)}
             </ComingSoonSubjects> */}
-          </SubjectContainer>
+            </SubjectContainer>
+          </Content>
         )}
       </Body>
     );
@@ -162,7 +172,8 @@ class Main extends React.Component {
 const mapStateToProps = state => {
   return {
     coursePercentages: state.coursePercentages,
-    mainPage: state.mainPage
+    mainPage: state.mainPage,
+    auth: state.auth
   };
 };
 
