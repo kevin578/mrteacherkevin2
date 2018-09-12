@@ -78,9 +78,14 @@ import Scratch3 from "./Pages/Scratch/Scratch3";
 import Soundtrap1 from "./Pages/Soundtrap/Soundtrap1";
 import Soundtrap2 from "./Pages/Soundtrap/Soundtrap2";
 
+//Tinkercad
+import Tinkercad1 from "./Pages/Tinkercad/Tinkercad1";
+
 //WeVideo
 import WeVideo1 from "./Pages/WeVideo/WeVideo1";
 import WeVideo2 from "./Pages/WeVideo/WeVideo2";
+
+
 
 
 
@@ -170,6 +175,8 @@ class App extends Component {
 
             <Route path="/soundtrap1" component={Soundtrap1} />
             <Route path="/soundtrap2" component={Soundtrap2} />
+
+            <Route path = "/tinkercad1" component = {Tinkercad1} />
 
             <Route path="/wevideo1" component={WeVideo1} />
             <Route path="/wevideo2" component={WeVideo2} />
