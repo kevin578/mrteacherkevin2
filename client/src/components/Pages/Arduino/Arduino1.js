@@ -11,16 +11,40 @@ class Arduino1 extends React.Component {
     return (
       <Subject title="Arduino" urlName="arduino1">
         {[
-          <Body key="starting" title="Start something">
+          <Body key="servo" title="Servo Motor">
+            <Header>Do something again</Header>
+            <Button>Next</Button>
+          </Body>,
+
+          <Body key="dcmotor" title="DC Motor">
+            <Header>Do something again</Header>
+            <Video src = "https://www.youtube.com/embed/zPnPCeU6W7E" videoPlayerType = "iframe"/>
+            <Button>Next</Button>
+          </Body>,
+
+          <Body key="motordriver" title="Motor Driver">
+            <Header>Do something again</Header>
+            <Button>Next</Button>,
+          </Body>,
+
+          <Body key="lcdscreen" title="LCD Screen">
+            <Header>Do something again</Header>
+            <Button>Next</Button>,
+          </Body>,
+
+          <Body key="rgbLED" title="RGB LED">
             <Header>Sample Header</Header>
+            <Video src = "https://www.youtube.com/embed/w9Z1-c0ee3w" videoPlayerType = "iframe"/>
             <p>Some Text</p>
             <Button>Next</Button>
           </Body>,
 
-          <Body key="again" title="Do somthing again">
-            <Header>Do something again</Header>
+          <Body key="neopixels" title="NeoPixels">
+            <Header>Sample Header</Header>
+            <p>Some Text</p>
             <Button>Next</Button>
           </Body>
+
         ]}
       </Subject>
     );

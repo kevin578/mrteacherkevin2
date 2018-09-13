@@ -25,7 +25,9 @@ export const Image = props => {
 };
 
 export const Video = props => {
-  const videoPlayerType = "html5";
+  let videoPlayerType = "html5";
+
+  if (props.videoPlayerType == "iframe") videoPlayerType = "iframe";
 
   if (videoPlayerType == "html5") {
     return (
