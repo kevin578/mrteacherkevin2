@@ -8,8 +8,6 @@ import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
 import Sidebar from "./Sidebar";
-import MyProjects from "./MyProjects";
-import Achievements from "./Achievments";
 
 const Body = styled.div``;
 
@@ -18,18 +16,18 @@ const Content = styled.div`
 `;
 
 const SubjectContainer = styled.div`
-  width: ${props => (props.auth ? "80%" : "90%")};
+  width: ${props => (props.auth ? "80%" : "1120px")};
   margin-top: 100px;
-  margin-left: ${props => (props.auth ? "60px" : "auto")};
+  margin-left: ${props => (props.auth ? "auto" : "auto")};
   margin-right: ${props => (props.auth ? "0px" : "auto")};
+  background: green;
 `;
 
 const Subjects = styled.div`
   overflow: hidden;
   display: grid;
-  grid-template-columns: 285px 285px 285px;
+  grid-template-columns: 285px 285px 285px 285px;
   position: relative;
-  right: 10px;
 `;
 
 const StartedSubjects = styled(Subjects)`

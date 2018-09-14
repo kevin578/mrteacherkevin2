@@ -17,8 +17,6 @@ const Button = styled.div`
   background-image: ${props => props.background};
   border-radius: 8px;
   margin-bottom: 20px;
-  margin-left: 15px;
-  margin-right: 15px;
   position: relative;
   top: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
