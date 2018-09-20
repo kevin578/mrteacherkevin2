@@ -39,7 +39,7 @@ const ComingSoonSubjects = styled(Subjects)`
 
 const SubjectTitle = styled.h1`
   font-size: 28px;
-  opacity: .9;
+  opacity: 0.9;
 `;
 
 const LoaderWrapper = styled.div`
