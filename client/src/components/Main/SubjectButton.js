@@ -3,16 +3,12 @@ import styled from "styled-components";
 import Ranking from "../Ranking";
 import { connect } from "react-redux";
 import { camelize } from "../App";
+import media from "./mediaQueries"; 
 
-
-const Wrapper = styled.div`
-  display: flex;
-  grid-column-start: auto;
-`;
 
 const Button = styled.div`
-  display: relative;
   width: 265px;
+  ${media.bigPhoneLoggedOut`width: 100%;`}
   height: 230px;
   background-image: ${props => props.background};
   border-radius: 8px;
@@ -109,12 +105,10 @@ const SubjectButton = props => {
   };
 
   return (
-    <Wrapper>
       <Button background={props.background}>
         <Subject>{props.subject}</Subject>
         {getCourses()}
       </Button>
-    </Wrapper>
   );
 };
 

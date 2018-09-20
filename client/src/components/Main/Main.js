@@ -8,6 +8,8 @@ import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
 import Sidebar from "./Sidebar";
+import media from "./mediaQueries";
+
 
 const Body = styled.div``;
 
@@ -15,20 +17,37 @@ const Content = styled.div`
   display: flex;
 `;
 
+const ContentLoggedOut = styled(Content)`
+`;
+
 const SubjectContainer = styled.div`
-  width: ${props => (props.auth ? "80%" : "1120px")};
+  width: "80%";
   margin-top: 100px;
-  margin-left: ${props => (props.auth ? "auto" : "auto")};
-  margin-right: ${props => (props.auth ? "0px" : "auto")};
-  background: green;
+  margin-left: auto;
+  margin-right: auto;
+  ${media.smallLaptop`margin-left: 5%;`}
+`;
+
+const SubjectContainerLoggedOut = styled(SubjectContainer)`
+  width: 1120px;
+  ${media.smallLaptopLoggedOut`width: 840px;`}
+  ${media.tabletLoggedOut`width: 555px;`}
+  ${media.bigPhoneLoggedOut`width: 80%;`}
 `;
 
 const Subjects = styled.div`
   overflow: hidden;
   display: grid;
-  grid-template-columns: 285px 285px 285px 285px;
-  position: relative;
+  grid-template-columns: 285px 285px 285px;
+  ${media.smallLaptop`grid-template-columns: 285px 285px;`}
 `;
+
+const SubjectsLoggedOut = styled(Subjects)`
+  grid-template-columns: 285px 285px 285px 285px;
+  ${media.smallLaptopLoggedOut`grid-template-columns: 285px 285px 285px;`}
+  ${media.tabletLoggedOut`grid-template-columns: 285px 285px;`}
+  ${media.bigPhoneLoggedOut`grid-template-columns: 100%;`}
+`
 
 const StartedSubjects = styled(Subjects)`
   padding-bottom: 40px;
@@ -134,12 +153,30 @@ class Main extends React.Component {
     return (
       <Body>
         <Header />
+
+        {/* Loading */}
         {this.state.isLoading && (
           <LoaderWrapper>
             <SyncLoader color="#345afb" size="16px" margin="4px" />
           </LoaderWrapper>
         )}
-        {!this.state.isLoading && (
+
+        {/* Not Loading and Not Logged In */}
+        
+        {!this.state.isLoading && !this.props.auth && (
+          <Content>
+            <SubjectContainerLoggedOut>
+              <SubjectsLoggedOut>
+                {this.getSubjects(this.props.mainPage.notStartedSubjects)}
+              </SubjectsLoggedOut>
+            </SubjectContainerLoggedOut>
+          </Content>
+        )
+        }
+
+        {/* Not Loading && Logged In*/}
+
+        {!this.state.isLoading && this.props.auth && (
           <Content>
             {this.props.auth && <Sidebar />}
             <SubjectContainer auth = {this.props.auth}>
@@ -156,9 +193,6 @@ class Main extends React.Component {
                 {this.getSubjects(this.props.mainPage.notStartedSubjects)}
               </Subjects>
 
-              {/* <ComingSoonSubjects>
-              {this.getSubjects(this.props.mainPage.comingSoonSubjects)}
-            </ComingSoonSubjects> */}
             </SubjectContainer>
           </Content>
         )}
