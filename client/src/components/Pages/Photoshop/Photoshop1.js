@@ -66,6 +66,11 @@ class Photoshop1 extends React.Component {
           </Body>,
 
           <Body key="sharing" title="Sharing">
+            <Header>Your final product should...</Header>
+            <Checkbox>have at least 3 layers.</Checkbox>
+            <Checkbox>have some text, preferably your name.</Checkbox>
+            <Checkbox>have a font is a different font than Myriad Pro.</Checkbox>
+            <Checkbox>use at least one of the Blending Options.</Checkbox>
             <Header>Sharing</Header>
           </Body>
         ]}
