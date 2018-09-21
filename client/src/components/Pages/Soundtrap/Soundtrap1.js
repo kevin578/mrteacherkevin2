@@ -9,11 +9,11 @@ import Button from "../../Subject/Button";
 class Soundtrap1 extends React.Component {
   render() {
     return (
-      <Subject title="Soundtrap" urlName="sampleURL">
+      <Subject title="Soundtrap" urlName="soundtrap1">
         {[
-          <Body key="starting" title="Start something">
-            <Header>Sample Header</Header>
-            <p>Some Text</p>
+          <Body key="loop" title="Loops">
+            <Header>Loops</Header>
+            
             <Button>Next</Button>
           </Body>,
 
