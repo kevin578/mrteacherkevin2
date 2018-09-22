@@ -125,6 +125,7 @@ class App extends Component {
           <div>
             {this.getRoutes()}
             <Route path="/" component={Main} exact />
+            <Route path = "/[object Object]" component = {Main} />
             <Route path="/audacity1" component={Audacity1} />
 
             <Route path="/arduino1" component={Arduino1} />
