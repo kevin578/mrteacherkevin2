@@ -24,14 +24,18 @@ export const Image = props => {
   return <img src={props.src} alt={props.src} style={styles} />;
 };
 
+const VideoPlayer = styled.video`
+
+`;
+
 export const Video = props => {
   const videoPlayerType = "html5";
 
   if (videoPlayerType == "html5") {
     return (
-      <video width={vidWidth} height={vidHeight} controls>
+      <VideoPlayer width={vidWidth} height={vidHeight} controls>
         <source src={props.src} type="video/mp4" />
-      </video>
+      </VideoPlayer>
     );
   } else if (videoPlayerType == "iframe") {
     return (

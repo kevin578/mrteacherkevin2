@@ -5,8 +5,8 @@ import media from "./mediaQueries";
 const Wrapper = styled.div`
   background: #d7dcf2;
   min-width: 320px;
-  @media (max-width: 550px) {
-  min-width: ${props => props.sidebarIsExpanded ? 320 : 50}px;
+  @media (max-width: 620px) {
+  display: ${props => props.sidebarIsExpanded ? "block" :"none" };;
   }
 `;
 

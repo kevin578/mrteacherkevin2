@@ -3,12 +3,20 @@ import styled from "styled-components";
 import Ranking from "../Ranking";
 import { connect } from "react-redux";
 import { camelize } from "../App";
-import media from "./mediaQueries"; 
+import media from "./mediaQueries";
 
+
+const setMobileButtonWidth = auth => {
+  if (auth) {
+    return media.bigPhone`width: 100%;`;
+  } else {
+    return media.bigPhoneLoggedOut`width: 100%;`;
+  }
+};
 
 const Button = styled.div`
   width: 265px;
-  ${media.bigPhoneLoggedOut`width: 100%;`}
+  ${props => setMobileButtonWidth(props.auth)}
   height: 230px;
   background-image: ${props => props.background};
   border-radius: 8px;
@@ -105,10 +113,10 @@ const SubjectButton = props => {
   };
 
   return (
-      <Button background={props.background}>
-        <Subject>{props.subject}</Subject>
-        {getCourses()}
-      </Button>
+    <Button background={props.background} auth={props.auth}>
+      <Subject>{props.subject}</Subject>
+      {getCourses()}
+    </Button>
   );
 };
 
