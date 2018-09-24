@@ -39,16 +39,13 @@ const IFrameStyle = styled.iframe`
 `;
 
 export const Video = props => {
-<<<<<<< HEAD
   let videoPlayerType = "html5";
 
   if (props.videoPlayerType == "iframe") videoPlayerType = "iframe";
-=======
 
   let vidWidth = 625;
   if (props.width) vidWidth = props.width;
   const vidHeight = vidWidth / 1.77778;
->>>>>>> development
 
   if (videoPlayerType == "html5") {
     return (
@@ -60,6 +57,7 @@ export const Video = props => {
     return (
       <IFrameStyle
         width={vidWidth}
+        height={vidWidth/1.77777}
         src={props.src}
         title="video"
         frameBorder="0"
