@@ -9,6 +9,7 @@ import Ranking from "../Ranking";
 import courses from "../Pages/courses.json";
 
 import axios from "axios";
+import media from "./mediaQueries";
 
 const Wrapper = styled.section`
   width: 340px;
@@ -17,6 +18,7 @@ const Wrapper = styled.section`
   margin-top: ${headerHeight}px;
   position: fixed;
   overflow: auto;
+  ${media.tablet`display: none;`}
 `;
 
 const SidebarSubject = styled.div`

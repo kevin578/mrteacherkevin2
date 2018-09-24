@@ -1,47 +1,61 @@
 import React from "react";
 import styled from "styled-components";
+import media from "./mediaQueries";
 
 const Wrapper = styled.section`
   min-height: 800px;
   width: 75%;
+  ${media.smallLaptop`width: 90%;`}
+  ${media.bigPhone`width: 100%;`}
 `;
 
-const vidHeight = 350;
-const vidWidth = vidHeight * 1.77778;
+const ImageStyle = styled.img`
+  width: ${props => props.width}px;
+  ${media.smallLaptop`width: 440px;`}
+  ${media.tablet`width: 90%;`}
+  marginTop: 20px;
+  marginBottom: 20px;
+`;
 
 export const Image = props => {
   let width = 622;
   if (props.width) {
     width = props.width;
   }
-  const height = width / 1.7777778;
-  let styles = {
-    width,
-    height,
-    marginTop: 20,
-    marginBottom: 20
-  };
-  return <img src={props.src} alt={props.src} style={styles} />;
+
+  return <ImageStyle src={props.src} alt={props.src} width = {width}/>;
 };
 
-const VideoPlayer = styled.video`
+const VideoStyle = styled.video`
+    width: ${props => props.vidWidth}px;
+    ${media.smallLaptop`width: 440px;`}
+    ${media.tablet`width: 90%;`}
+
 
 `;
 
+const IFrameStyle = styled.iframe`
+    width: ${props => props.vidWidth}px;
+`;
+
 export const Video = props => {
+
+  let vidWidth = 625;
+  if (props.width) vidWidth = props.width;
+  const vidHeight = vidWidth / 1.77778;
+
   const videoPlayerType = "html5";
 
   if (videoPlayerType == "html5") {
     return (
-      <VideoPlayer width={vidWidth} height={vidHeight} controls>
+      <VideoStyle width = {vidWidth} controls>
         <source src={props.src} type="video/mp4" />
-      </VideoPlayer>
+      </VideoStyle>
     );
   } else if (videoPlayerType == "iframe") {
     return (
-      <iframe
+      <IFrameStyle
         width={vidWidth}
-        height={vidHeight}
         src={props.src}
         title="video"
         frameBorder="0"

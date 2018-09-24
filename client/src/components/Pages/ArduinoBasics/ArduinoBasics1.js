@@ -23,7 +23,6 @@ class Arduino1 extends React.Component {
               look like this:
             </p>
             <Image
-              width="450"
               src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535375004/mrteacherkevin/Arduino/arduino_intro_screenshot.png"
             />
             <p>
