@@ -13,10 +13,7 @@ class Soundtrap1 extends React.Component {
         {[
           <Body key="loops" title="Loops">
             <Header>Loops</Header>
-            <Video
-              src="https://www.youtube.com/embed/V7Wnep0vJMc"
-              videoPlayerType="iframe"
-            />
+            <Video src="https://firebasestorage.googleapis.com/v0/b/mrteacherkevin-204010.appspot.com/o/Soundtrap%2Floops.mp4?alt=media&token=37eff083-2318-4713-ac94-dc9d1ef773d4" />
             <Header>I have...</Header>
             <Checkbox>used loops in my song</Checkbox>
             <Button>Next</Button>
@@ -24,10 +21,7 @@ class Soundtrap1 extends React.Component {
 
           <Body key="instruments" title="Instruments">
             <Header>Instruments</Header>
-            <Video
-              src="https://www.youtube.com/embed/NPuuJGnSRIA"
-              videoPlayerType="iframe"
-            />
+            <Video src="https://firebasestorage.googleapis.com/v0/b/mrteacherkevin-204010.appspot.com/o/Soundtrap%2Finstruments.mp4?alt=media&token=be8122bc-d762-4929-a28f-a967215d5211" />
             <Header>I have...</Header>
             <Checkbox>used an instrument.</Checkbox>
             <Checkbox>used the pattern maker</Checkbox>
@@ -36,10 +30,7 @@ class Soundtrap1 extends React.Component {
 
           <Body key="effects" title="Effects">
             <Header>Effects</Header>
-            <Video
-              src="https://www.youtube.com/embed/HIX4-XO2E9I"
-              videoPlayerType="iframe"
-            />
+            <Video src="https://firebasestorage.googleapis.com/v0/b/mrteacherkevin-204010.appspot.com/o/Soundtrap%2Feffects.mp4?alt=media&token=5ec068cc-e2e8-45dc-ac7d-3562d49aaf0a" />
             <Header>I have...</Header>
             <Checkbox>tried at least 2 differnt effects.</Checkbox>
             <Button>Next</Button>
@@ -47,10 +38,7 @@ class Soundtrap1 extends React.Component {
 
           <Body key="voice" title="Voice">
             <Header>Voice</Header>
-            <Video
-              src="https://www.youtube.com/embed/p8odgVdi73E"
-              videoPlayerType="iframe"
-            />
+            <Video src="https://firebasestorage.googleapis.com/v0/b/mrteacherkevin-204010.appspot.com/o/Soundtrap%2Fvoice.mp4?alt=media&token=249bc3ac-67ab-4446-b940-f2083fb7b495" />
             <Header>I have...</Header>
             <Checkbox>added a voice track to my song.</Checkbox>
             <Checkbox>added an effect to my voice.</Checkbox>

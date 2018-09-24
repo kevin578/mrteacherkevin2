@@ -1,10 +1,12 @@
 import React from "react";
 import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
+
 import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
+import EmbeddedGist from "../../Subject/EmbeddedGist";
 
 class Arduino1 extends React.Component {
   render() {
@@ -43,6 +45,11 @@ class Arduino1 extends React.Component {
             <Header>Sample Header</Header>
             <p>Some Text</p>
             <Button>Next</Button>
+          </Body>,
+
+          <Body key = "mp3shield" title = "MP3 Shield">
+            <Header>MP3 Shield</Header>
+            <EmbeddedGist gist="kevin578/f38f7792d58fa038719ffd25d2fe345c" />
           </Body>
 
         ]}
