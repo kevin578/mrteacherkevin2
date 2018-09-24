@@ -7,22 +7,48 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
+import Sidebar from "./Sidebar";
+import media from "./mediaQueries";
 
 const Body = styled.div``;
 
+const Content = styled.div`
+  display: flex;
+`;
+
+const ContentLoggedOut = styled(Content)``;
+
+
 const SubjectContainer = styled.div`
-  width: 1125px;
+  width: "80%";
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
+  ${media.smallLaptop`margin-left: 5%;`};
+  ${media.bigPhone`width: 90%;`}
+`;
+
+const SubjectContainerLoggedOut = styled(SubjectContainer)`
+  width: 1120px;
+  ${media.smallLaptopLoggedOut`width: 840px;`}
+  ${media.tabletLoggedOut`width: 555px;`}
+  ${media.bigPhoneLoggedOut`width: 90%;`}
 `;
 
 const Subjects = styled.div`
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  right: 10px;
+  display: grid;
+  grid-template-columns: 285px 285px 285px;
+  ${media.smallLaptop`grid-template-columns: 285px 285px;`};
+  ${media.bigPhone`grid-template-columns: 100%;`};
+
+`;
+
+const SubjectsLoggedOut = styled(Subjects)`
+  grid-template-columns: 285px 285px 285px 285px;
+  ${media.smallLaptopLoggedOut`grid-template-columns: 285px 285px 285px;`}
+  ${media.tabletLoggedOut`grid-template-columns: 285px 285px;`}
+  ${media.bigPhoneLoggedOut`grid-template-columns: 100%;`}
 `;
 
 const StartedSubjects = styled(Subjects)`
@@ -129,31 +155,49 @@ class Main extends React.Component {
     return (
       <Body>
         <Header />
+
+        {/* Loading */}
         {this.state.isLoading && (
           <LoaderWrapper>
             <SyncLoader color="#345afb" size="16px" margin="4px" />
           </LoaderWrapper>
         )}
-        {!this.state.isLoading && (
-          <SubjectContainer>
-            {this.props.mainPage.startedSubjects.length > 0 && (
-              <div>
-                <SubjectTitle>Continue with:</SubjectTitle>
-                <StartedSubjects>
-                  {this.getSubjects(this.props.mainPage.startedSubjects)}
-                </StartedSubjects>
-              </div>
-            )}
 
-            <Subjects>
-              {this.getSubjects(this.props.mainPage.notStartedSubjects)}
-            </Subjects>
+        {/* Not Loading and Not Logged In */}
 
-            {/* <ComingSoonSubjects>
-              {this.getSubjects(this.props.mainPage.comingSoonSubjects)}
-            </ComingSoonSubjects> */}
-          </SubjectContainer>
-        )}
+        {!this.state.isLoading &&
+          !this.props.auth && (
+            <Content>
+              <SubjectContainerLoggedOut>
+                <SubjectsLoggedOut>
+                  {this.getSubjects(this.props.mainPage.notStartedSubjects)}
+                </SubjectsLoggedOut>
+              </SubjectContainerLoggedOut>
+            </Content>
+          )}
+
+        {/* Not Loading && Logged In*/}
+
+        {!this.state.isLoading &&
+          this.props.auth && (
+            <Content>
+              {this.props.auth && <Sidebar />}
+              <SubjectContainer auth={this.props.auth}>
+                {this.props.mainPage.startedSubjects.length > 0 && (
+                  <div>
+                    <SubjectTitle>Continue with:</SubjectTitle>
+                    <StartedSubjects>
+                      {this.getSubjects(this.props.mainPage.startedSubjects)}
+                    </StartedSubjects>
+                  </div>
+                )}
+
+                <Subjects>
+                  {this.getSubjects(this.props.mainPage.notStartedSubjects)}
+                </Subjects>
+              </SubjectContainer>
+            </Content>
+          )}
       </Body>
     );
   }
@@ -162,7 +206,8 @@ class Main extends React.Component {
 const mapStateToProps = state => {
   return {
     coursePercentages: state.coursePercentages,
-    mainPage: state.mainPage
+    mainPage: state.mainPage,
+    auth: state.auth
   };
 };
 
