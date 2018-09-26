@@ -13,7 +13,7 @@ class Arduino2 extends React.Component {
         {[
           <Body key="pushbutton" title="Push Button">
             <Header>Push Button</Header>
-            <Video src = "https://www.youtube.com/embed/I-2j6rP-8nQ" videoPlayerType = "iframe"/>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/pushbutton.mp4"/>
             <Button>Next</Button>
           </Body>,
 
