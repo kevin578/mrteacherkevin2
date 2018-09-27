@@ -1,6 +1,7 @@
 import React from "react";
 import Subject from "./../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
+import ProjectSubmission from "../../Subject/ProjectSubmission";
 import Checkbox from "./../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
@@ -51,6 +52,10 @@ class Soundtrap1 extends React.Component {
             <Checkbox>at least 1 orginal instrument track.</Checkbox>
             <Checkbox>at least 1 effect.</Checkbox>
             <Checkbox>at least 1 voice track. </Checkbox>
+            <Header>Share your song info here:.</Header>
+            <ProjectSubmission />
+            <Button>Next</Button>
+
           </Body>
         ]}
       </Subject>

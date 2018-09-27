@@ -7,11 +7,12 @@ const successMessage = "Successfully saved";
 router.post("/api/addProject", (req, res)=> {
     if (!req.user.id) return;
     const {id, displayName } = req.user;
-    const {subject, subjectURL, course, rawURL} = req.body;
+    const {subject, subjectURL, course, projectURL, projectTitle} = req.body;
     const savedProject = new Project({
         userId: id,
         userName: displayName,
-        rawURL,
+        projectURL,
+        projectTitle,
         subject,
         subjectURL,
         course,
@@ -22,6 +23,14 @@ router.post("/api/addProject", (req, res)=> {
         if (err) return handleError(err);
         // saved!
       });
+})
+
+router.get("/api/getUserProjects", (req, res)=> {
+    Project.find({userId: req.user.id}, (err, projects)=> {
+        if (err) res.send(err);
+        else res.send(projects);
+    })
+
 })
 
 module.exports = router;

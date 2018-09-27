@@ -1,6 +1,13 @@
-export const onTextChange = text => {
+export const onProjectURLChange = text => {
   return {
-    type: "CHANGE_TEXT",
+    type: "CHANGE_PROJECT_URL",
+    payload: text
+  };
+};
+
+export const onProjectTitleChange = text => {
+  return {
+    type: "CHANGE_PROJECT_TITLE",
     payload: text
   };
 };

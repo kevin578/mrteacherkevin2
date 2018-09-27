@@ -124,7 +124,8 @@ class Button extends Component {
     }
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
-        rawURL: this.props.projectSubmission.inputValue,
+        projectURL: this.props.projectSubmission.projectURL,
+        projectTitle: this.props.projectSubmission.projectTitle,
         subjectURL: this.props.subjectURL,
         subject: this.props.subject,
         course: this.props.pageInfo.courseTitle
@@ -152,7 +153,7 @@ class Button extends Component {
   };
 
   validateURL() {
-    if (this.props.projectSubmission.inputValue.length < 8) {
+    if (this.props.projectSubmission.projectURL.length < 8) {
       this.setState({ projectSubmissionMessage: true });
     } else {
       this.setState({ projectSubmissionMessage: false });
