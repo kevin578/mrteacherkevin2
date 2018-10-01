@@ -66,7 +66,7 @@ class Button extends Component {
   checkIfCompleted = () => {
     if (this.props.completed == null) return false;
     if (!(this.props.subjectURL in this.props.completed)) return false;
-    if (this.props.completed[this.props.subjectURL].includes(this.props.page))
+    if (this.props.completed[this.props.subjectURL].includes(this.props.pageKey))
       return true;
     return false;
   };
@@ -126,8 +126,8 @@ class Button extends Component {
   };
 
   nextPage = () => {
-    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
+    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
@@ -162,16 +162,18 @@ class Button extends Component {
   };
 
   validateURL() {
-    if (this.props.projectSubmission.projectURL.length < 8) {
+    if (this.state.isValidProjectURL) return;
+    else if (this.props.projectSubmission.projectURL.length < 8) {
       this.setState({ isValidProjectURL: false });
     } else {
-      this.setState({ isValidProjectURL: true });
+      this.setState({ isValidProjectURL: true }, this.checkForNextPage);
     }
   }
 
   validateTitle() {
-    if (this.props.projectSubmission.projectTitle) {
-      this.setState({isValidProjectTitle: true});
+    if (this.state.isValidProjectTitle) return;
+    else if (this.props.projectSubmission.projectTitle) {
+      this.setState({isValidProjectTitle: true}, this.checkForNextPage);
     }
     else {
       this.setState({isValidProjectTitle: false});
