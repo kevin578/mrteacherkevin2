@@ -13,7 +13,7 @@ class Photoshop1 extends React.Component {
         {[
           <Body key="setup" title="Setup">
             <Header>Setup</Header>
-            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/Photoshop/intro.mp4" />
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/Photoshop/mrteacherkevin_Photoshop_photoshopIntro.mp4" />
             <Header>Check that you have...</Header>
             <Checkbox>named your project</Checkbox>
             <Checkbox>set the width and height to 11 * 8.5.</Checkbox>
