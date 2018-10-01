@@ -26,13 +26,15 @@ class Button extends Component {
     this.state = {
       numberWrong: 0,
       checkboxMessage: false,
-      projectSubmissionMessage: false,
+      isValidProjectURL: null,
+      isValidProjectTitle: null,
       buttonText: "",
       allTestsPassed: true
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -96,21 +98,28 @@ class Button extends Component {
     });
   };
 
+  projectSubmissionFormComplete(){
+    const {isProjectSubmissionPage} = this.props.projectSubmission;
+    if(!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
+    if(!this.state.isValidProjectTitle && isProjectSubmissionPage) return false;
+    return true;
+  }
+
   checkForNextPage = () => {
     this.validateURL();
+    this.validateTitle();
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
     }
     this.setState({
       checkboxMessage: this.props.remainingCheckboxes > 0
     });
+    if (!this.projectSubmissionFormComplete()) return;
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
       (this.props.testsCompleted === true ||
-        this.props.testsCompleted === null) &&
-      (!this.state.projectSubmissionMessage ||
-        !this.props.projectSubmission.isProjectSubmissionPage)
+        this.props.testsCompleted === null)
     ) {
       this.nextPage();
     }
@@ -154,9 +163,18 @@ class Button extends Component {
 
   validateURL() {
     if (this.props.projectSubmission.projectURL.length < 8) {
-      this.setState({ projectSubmissionMessage: true });
+      this.setState({ isValidProjectURL: false });
     } else {
-      this.setState({ projectSubmissionMessage: false });
+      this.setState({ isValidProjectURL: true });
+    }
+  }
+
+  validateTitle() {
+    if (this.props.projectSubmission.projectTitle) {
+      this.setState({isValidProjectTitle: true});
+    }
+    else {
+      this.setState({isValidProjectTitle: false});
     }
   }
 
@@ -170,9 +188,13 @@ class Button extends Component {
         {this.state.checkboxMessage && (
           <p>You have not completed all the requirements.</p>
         )}
-        {this.state.projectSubmissionMessage &&
+        {this.state.isValidProjectURL === false &&
           this.props.projectSubmission.isProjectSubmissionPage && (
             <p>Please enter a valid URL.</p>
+          )}
+        {this.state.isValidProjectTitle === false &&
+          this.props.projectSubmission.isProjectSubmissionPage && (
+            <p>Your project does not have a title.</p>
           )}
       </div>
     );

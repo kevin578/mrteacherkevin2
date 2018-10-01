@@ -19,10 +19,17 @@ router.post("/api/addProject", (req, res)=> {
         timeStamp: Date.now()
     })
     
-    savedProject.save(function (err) {
-        if (err) return handleError(err);
-        // saved!
-      });
+    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+    const update = {projectURL, projectTitle, timeStamp: Date.now()}
+    Project.findOneAndUpdate({userId: id, subjectURL}, update, options, (err, data)=> {
+        if (err) res.send(errorMessage);
+        else res.send(successMessage);
+    })
+
+    // savedProject.save(function (err) {
+    //     if (err) return handleError(err);
+    //     // saved!
+    //   });
 })
 
 router.get("/api/getUserProjects", (req, res)=> {
