@@ -5,7 +5,8 @@ import {
   onProjectURLChange,
   onProjectTitleChange,
   isProjectSubmissionPage,
-  isValidUrl
+  isValidUrl,
+  addProjectKey
 } from "../../actions/projectSubmissionActions";
 
 import { TextField } from "./Quiz";
@@ -20,6 +21,7 @@ class ProjectSubmission extends React.Component {
   componentDidMount() {
     this.props.isProjectSubmissionPage(true);
     this.props.isValidUrl(null);
+    this.props.addProjectKey(this.props.projectKey);
   }
   componentWillUnmount() {
     this.props.isProjectSubmissionPage(false);
@@ -75,6 +77,7 @@ export default connect(
     onProjectURLChange,
     onProjectTitleChange,
     isProjectSubmissionPage,
-    isValidUrl
+    isValidUrl,
+    addProjectKey
   }
 )(ProjectSubmission);

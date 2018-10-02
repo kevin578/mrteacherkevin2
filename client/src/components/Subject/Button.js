@@ -135,6 +135,7 @@ class Button extends Component {
       axios.post("/api/addProject", {
         projectURL: this.props.projectSubmission.projectURL,
         projectTitle: this.props.projectSubmission.projectTitle,
+        projectKey: this.props.projectSubmission.projectKey,
         subjectURL: this.props.subjectURL,
         subject: this.props.subject,
         course: this.props.pageInfo.courseTitle

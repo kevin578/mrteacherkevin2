@@ -53,7 +53,7 @@ class Soundtrap1 extends React.Component {
             <Checkbox>at least 1 effect.</Checkbox>
             <Checkbox>at least 1 voice track. </Checkbox>
             <Header>Share your song info here:.</Header>
-            <ProjectSubmission />
+            <ProjectSubmission projectKey = "soundtrapSong"/>
             <Button>Next</Button>
 
           </Body>

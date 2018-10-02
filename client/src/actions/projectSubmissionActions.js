@@ -12,6 +12,13 @@ export const onProjectTitleChange = text => {
   };
 };
 
+export const addProjectKey = key => {
+  return {
+    type: "ADD_PROJECT_KEY",
+    payload: key
+  };
+};
+
 export const isProjectSubmissionPage = bool => {
   return {
     type: "IS_PROJECT_SUBMISSION_PAGE",
@@ -23,5 +30,12 @@ export const isValidUrl = bool => {
   return {
     type: "IS_VALID_URL",
     payload: bool
+  };
+};
+
+export const setProjectsFromDatabase = projects => {
+  return {
+    type: "SET_PROJECTS_FROM_DATABASE",
+    payload: projects
   };
 };
