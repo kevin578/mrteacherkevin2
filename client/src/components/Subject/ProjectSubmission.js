@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 import styled from "styled-components";
 import {
   onProjectURLChange,
@@ -22,6 +23,18 @@ class ProjectSubmission extends React.Component {
     this.props.isProjectSubmissionPage(true);
     this.props.isValidUrl(null);
     this.props.addProjectKey(this.props.projectKey);
+    this.checkForProjectTitle();
+  }
+
+  checkForProjectTitle() {
+    const currentProject = _.find(
+      this.props.projectSubmission.projectsInDatabase,
+      { projectKey: this.props.projectKey }
+    );
+    if (currentProject) {
+    this.props.onProjectTitleChange(currentProject.projectTitle);
+    this.props.onProjectURLChange(currentProject.projectURL);
+    }
   }
   componentWillUnmount() {
     this.props.isProjectSubmissionPage(false);
@@ -30,35 +43,38 @@ class ProjectSubmission extends React.Component {
 
   handleTitleChange = event => {
     this.props.onProjectTitleChange(event.target.value);
-  }
+  };
 
   handleURLChange = event => {
     this.props.onProjectURLChange(event.target.value);
   };
 
-
   render() {
     return (
       <div>
         <div>
-        <ProjectSubmissionLabel htmlFor = "project_title">Title:</ProjectSubmissionLabel>
-        <TextField
-          id = "project_title"
-          type="text"
-          onChange={this.handleTitleChange}
-          value={this.props.projectSubmission.projectTitle}
-          placeholder="My Totally Awesome Project"
-        />
+          <ProjectSubmissionLabel htmlFor="project_title">
+            Title:
+          </ProjectSubmissionLabel>
+          <TextField
+            id="project_title"
+            type="text"
+            onChange={this.handleTitleChange}
+            value={this.props.projectSubmission.projectTitle}
+            placeholder="My Totally Awesome Project"
+          />
         </div>
         <div>
-        <ProjectSubmissionLabel htmlFor = "project_url">URL:</ProjectSubmissionLabel>
-        <TextField
-          id = "project_url"
-          type="text"
-          onChange={this.handleURLChange}
-          value={this.props.projectSubmission.projectURL}
-          placeholder="www.myawesomeproject.com"
-        />
+          <ProjectSubmissionLabel htmlFor="project_url">
+            URL:
+          </ProjectSubmissionLabel>
+          <TextField
+            id="project_url"
+            type="text"
+            onChange={this.handleURLChange}
+            value={this.props.projectSubmission.projectURL}
+            placeholder="www.myawesomeproject.com"
+          />
         </div>
       </div>
     );
