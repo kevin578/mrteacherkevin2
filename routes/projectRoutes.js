@@ -7,8 +7,9 @@ const successMessage = "Successfully saved";
 router.post("/api/addProject", (req, res)=> {
     if (!req.user.id) return;
     const {id, displayName } = req.user;
-    const {subject, subjectURL, course, projectURL, projectTitle} = req.body;
-    const savedProject = new Project({
+    const {subject, subjectURL, course, projectURL, projectTitle, projectKey} = req.body;    
+    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+    const update = {
         userId: id,
         userName: displayName,
         projectURL,
@@ -18,10 +19,7 @@ router.post("/api/addProject", (req, res)=> {
         projectKey,
         course,
         timeStamp: Date.now()
-    })
-    
-    const options = { upsert: true, new: true, setDefaultsOnInsert: true };
-    const update = {projectURL, projectTitle, course, timeStamp: Date.now()}
+    }
     Project.findOneAndUpdate({userId: id, subjectURL}, update, options, (err, data)=> {
         if (err) res.send(errorMessage);
         else res.send(successMessage);
@@ -36,7 +34,7 @@ router.post("/api/addProject", (req, res)=> {
 router.get("/api/getUserProjects", (req, res)=> {
     Project.find({userId: req.user.id}, (err, projects)=> {
         if (err) res.send(err);
-        else res.send(projects);
+        else res.json(projects);
     })
 
 })

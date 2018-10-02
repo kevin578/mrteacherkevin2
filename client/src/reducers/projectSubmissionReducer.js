@@ -4,7 +4,7 @@ const defaultState = {
   projectTitle: "",
   projectKey: "",
   isValidUrl: false,
-  projectsInDatabase: {}
+  projectsInDatabase: []
 };
 
 export default function projectSubmisionReducer(state = defaultState, action) {

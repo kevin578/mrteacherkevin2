@@ -131,6 +131,7 @@ class Button extends Component {
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
+    debugger
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
         projectURL: this.props.projectSubmission.projectURL,

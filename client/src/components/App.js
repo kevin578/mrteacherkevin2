@@ -116,8 +116,9 @@ class App extends Component {
   };
 
   getProjectInfoFromDatabase = async ()=> {
-    const projectData = axios.get("/api/getUserProjects");
-    console.log(projectData);
+    let projectData = await axios.get("/api/getUserProjects");
+    projectData = projectData.data;
+    if(projectData) this.props.setProjectsFromDatabase(projectData);
 
   }
 
