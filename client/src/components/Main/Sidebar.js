@@ -64,7 +64,7 @@ export default class Sidebar extends Component {
   getProjects() {
     // const userProjects = await axios.get("/api/getUserProjects");
     // console.log(userProjects.data);
-    return "Hello";
+    return "No Projects yet...";
   }
 
   render() {
