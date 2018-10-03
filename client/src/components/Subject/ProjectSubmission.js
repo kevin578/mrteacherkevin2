@@ -34,7 +34,7 @@ class ProjectSubmission extends React.Component {
     if (currentProject) {
     this.props.onProjectTitleChange(currentProject.projectTitle);
     this.props.onProjectURLChange(currentProject.projectURL);
-    }
+    } 
   }
   componentWillUnmount() {
     this.props.isProjectSubmissionPage(false);
