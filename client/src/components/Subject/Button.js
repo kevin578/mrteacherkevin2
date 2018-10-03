@@ -26,13 +26,15 @@ class Button extends Component {
     this.state = {
       numberWrong: 0,
       checkboxMessage: false,
-      projectSubmissionMessage: false,
+      isValidProjectURL: null,
+      isValidProjectTitle: null,
       buttonText: "",
       allTestsPassed: true
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -64,7 +66,7 @@ class Button extends Component {
   checkIfCompleted = () => {
     if (this.props.completed == null) return false;
     if (!(this.props.subjectURL in this.props.completed)) return false;
-    if (this.props.completed[this.props.subjectURL].includes(this.props.page))
+    if (this.props.completed[this.props.subjectURL].includes(this.props.pageKey))
       return true;
     return false;
   };
@@ -96,35 +98,45 @@ class Button extends Component {
     });
   };
 
+  projectSubmissionFormComplete(){
+    const {isProjectSubmissionPage} = this.props.projectSubmission;
+    if(!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
+    if(!this.state.isValidProjectTitle && isProjectSubmissionPage) return false;
+    return true;
+  }
+
   checkForNextPage = () => {
     this.validateURL();
+    this.validateTitle();
     if (Object.keys(this.props.correct).length) {
       this.checkQuiz();
     }
     this.setState({
       checkboxMessage: this.props.remainingCheckboxes > 0
     });
+    if (!this.projectSubmissionFormComplete()) return;
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
       (this.props.testsCompleted === true ||
-        this.props.testsCompleted === null) &&
-      (!this.state.projectSubmissionMessage ||
-        !this.props.projectSubmission.isProjectSubmissionPage)
+        this.props.testsCompleted === null)
     ) {
       this.nextPage();
     }
   };
 
   nextPage = () => {
-    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
+    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
+    debugger
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
-        rawURL: this.props.projectSubmission.inputValue,
+        projectURL: this.props.projectSubmission.projectURL,
+        projectTitle: this.props.projectSubmission.projectTitle,
+        projectKey: this.props.projectSubmission.projectKey,
         subjectURL: this.props.subjectURL,
         subject: this.props.subject,
         course: this.props.pageInfo.courseTitle
@@ -152,10 +164,21 @@ class Button extends Component {
   };
 
   validateURL() {
-    if (this.props.projectSubmission.inputValue.length < 8) {
-      this.setState({ projectSubmissionMessage: true });
+    if (this.state.isValidProjectURL) return;
+    else if (this.props.projectSubmission.projectURL.length < 8) {
+      this.setState({ isValidProjectURL: false });
     } else {
-      this.setState({ projectSubmissionMessage: false });
+      this.setState({ isValidProjectURL: true }, this.checkForNextPage);
+    }
+  }
+
+  validateTitle() {
+    if (this.state.isValidProjectTitle) return;
+    else if (this.props.projectSubmission.projectTitle) {
+      this.setState({isValidProjectTitle: true}, this.checkForNextPage);
+    }
+    else {
+      this.setState({isValidProjectTitle: false});
     }
   }
 
@@ -169,9 +192,13 @@ class Button extends Component {
         {this.state.checkboxMessage && (
           <p>You have not completed all the requirements.</p>
         )}
-        {this.state.projectSubmissionMessage &&
+        {this.state.isValidProjectURL === false &&
           this.props.projectSubmission.isProjectSubmissionPage && (
             <p>Please enter a valid URL.</p>
+          )}
+        {this.state.isValidProjectTitle === false &&
+          this.props.projectSubmission.isProjectSubmissionPage && (
+            <p>Your project does not have a title.</p>
           )}
       </div>
     );

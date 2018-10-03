@@ -13,7 +13,7 @@ class WeVideo1 extends React.Component {
         {[
           <Body key="gettingStarted" title="Getting Started">
             <Header>Getting Started</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoIntro.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoIntro.mp4" />
             <Header>I have...</Header>
             <Checkbox>created a new WeVideo account.</Checkbox>
             <Checkbox>created a new project folder.</Checkbox>
@@ -24,12 +24,49 @@ class WeVideo1 extends React.Component {
 
           <Body key="addMedia" title="Adding Media">
             <Header>Adding Media</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/addMedia.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/addMedia.mp4" />
             <Header>I have...</Header>
             <Checkbox>added my media into the project folder.</Checkbox>
             <Checkbox>added into the actual movie timeline.</Checkbox>
-            <Checkbox>clipped it down so it everything is nice and snappy.</Checkbox>
+            <Checkbox>
+              clipped it down so it everything is nice and snappy.
+            </Checkbox>
             <Button>Next</Button>
+          </Body>,
+
+          <Body key="text" title="Text">
+            <Header>Text</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoText.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>added text to my video.</Checkbox>
+            <Checkbox>changed the color of the text.</Checkbox>
+            <Checkbox>changed the font type.</Checkbox>
+            <Checkbox>added a new background behind my text.</Checkbox>
+            <Button>Next</Button>.
+          </Body>,
+
+          <Body key = "sound" title = "Sound">
+          <Header>Sound</Header>
+          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoSound.mp4"/>
+          <Header>I have...</Header>
+          <Checkbox>added a song from Youtube Audio Library.</Checkbox>
+          <Checkbox>faded that song out.</Checkbox>
+          <Checkbox>added a sound effect.</Checkbox>
+          <Button>Next</Button>
+          </Body>,
+
+          <Body key = "voiceover" title = "Voice Over">
+          <Header>Voice Over</Header>
+          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoVoiceOver.mp4"/>
+          <Button>Next</Button>
+          </Body>,
+
+          <Body key = "transitions" title = "Transitions">
+          <Header>Transitions</Header>
+          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/wevideo/weVideoTransitions.mp4"/>
+          <Header>I have...</Header>
+          <Checkbox>added a transition</Checkbox>
+          <Button>Next</Button>
           </Body>
         ]}
       </Subject>

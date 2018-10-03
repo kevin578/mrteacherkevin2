@@ -1,7 +1,21 @@
-export const onTextChange = text => {
+export const onProjectURLChange = text => {
   return {
-    type: "CHANGE_TEXT",
+    type: "CHANGE_PROJECT_URL",
     payload: text
+  };
+};
+
+export const onProjectTitleChange = text => {
+  return {
+    type: "CHANGE_PROJECT_TITLE",
+    payload: text
+  };
+};
+
+export const addProjectKey = key => {
+  return {
+    type: "ADD_PROJECT_KEY",
+    payload: key
   };
 };
 
@@ -16,5 +30,12 @@ export const isValidUrl = bool => {
   return {
     type: "IS_VALID_URL",
     payload: bool
+  };
+};
+
+export const setProjectsFromDatabase = projects => {
+  return {
+    type: "SET_PROJECTS_FROM_DATABASE",
+    payload: projects
   };
 };

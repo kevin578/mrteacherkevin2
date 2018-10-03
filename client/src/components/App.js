@@ -99,12 +99,13 @@ export function camelize(str) {
 
 class App extends Component {
   componentDidMount() {
-    this.getStateFromDatabase();
+    this.getUserStateFromDatabase();
+    this.getProjectInfoFromDatabase();
     this.props.fetchUser();
     this.props.setPage(0);
   }
 
-  getStateFromDatabase = async () => {
+  getUserStateFromDatabase = async () => {
     let state = await axios.get("/api/getStateFromDatabase");
     state = state.data;
     if (state) {
@@ -113,6 +114,13 @@ class App extends Component {
       this.props.achievementInit(state.achievements);
     }
   };
+
+  getProjectInfoFromDatabase = async ()=> {
+    let projectData = await axios.get("/api/getUserProjects");
+    projectData = projectData.data;
+    if(projectData) this.props.setProjectsFromDatabase(projectData);
+
+  }
 
   getRoutes() {
     return;

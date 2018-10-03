@@ -1,13 +1,22 @@
 const defaultState = {
   isProjectSubmissionPage: false,
-  inputValue: "",
+  projectURL: "",
+  projectTitle: "",
+  projectKey: "",
   isValidUrl: false,
+  projectsInDatabase: []
 };
 
 export default function projectSubmisionReducer(state = defaultState, action) {
   switch (action.type) {
-    case "CHANGE_TEXT":
-      return { ...state, inputValue: action.payload };
+    case "CHANGE_PROJECT_URL":
+      return { ...state, projectURL: action.payload };
+    case "CHANGE_PROJECT_TITLE":
+      return { ...state, projectTitle: action.payload };
+    case "ADD_PROJECT_KEY":
+      return { ...state, projectKey: action.payload};
+    case "SET_PROJECTS_FROM_DATABASE":
+      return { ... state, projectsInDatabase: action.payload};
     case "IS_PROJECT_SUBMISSION_PAGE":
       return { ...state, isProjectSubmissionPage: action.payload };
     case "IS_VALID_URL":
