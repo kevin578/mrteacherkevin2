@@ -72,6 +72,14 @@ class HtmlCss1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
+          <Body key = "changeImageWidth" title = "Changing an Image Width">
+          <Header>Changing an Image Width</Header>
+          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssChangeImageSize.mp4"/>
+          <Header>I have...</Header>
+          <Checkbox>changed the size of an image.</Checkbox>
+          <Button>Next</Button>
+          </Body>,
+
           <Body key="boxmodel" title="Margins and Padding">
             <Header>Text</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/boxmodel.mp4" />
@@ -88,7 +96,19 @@ class HtmlCss1 extends React.Component {
             <Checkbox>created a div.</Checkbox>
             <Checkbox>used a class to change an element's styling.</Checkbox>
             <Button>Next</Button>
+          </Body>,
+
+          <Body key = "containers" title = "Cleaning Everything Up">
+            <Header>Cleaning Everything Up</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containers.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>done a CSS reset.</Checkbox>
+            <Checkbox>created a container that holds an image and text.</Checkbox>
+            <Checkbox>made a picture that also acts as a link.</Checkbox>
+            <Button>Next</Button>
           </Body>
+
+
 
 
         ]}
