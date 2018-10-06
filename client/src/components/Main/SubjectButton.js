@@ -101,7 +101,7 @@ const SubjectButton = props => {
           .toLowerCase()}${index + 1}`;
         if (course[0] === "*") return;
         return (
-          <CourseContainer key={course} href={link}>
+          <CourseContainer key={course} href={`${link}?pageNumber=0`}>
             <Course>{course}</Course>
             <Course>{getCoursePercentage(link)}</Course>
           </CourseContainer>

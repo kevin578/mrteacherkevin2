@@ -106,7 +106,6 @@ class Sidebar extends React.Component {
           key={step.key}
           index={index}
           completed={this.getColor(step.key)}
-          currentlySelected={this.props.page === index}
           stars={step.props.stars}
         >
           {index + 1}. {step.props.title}
