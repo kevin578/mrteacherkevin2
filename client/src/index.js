@@ -8,7 +8,6 @@ import registerServiceWorker from "./registerServiceWorker";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import firebase from "firebase";
 
 
 export const store = createStore(
