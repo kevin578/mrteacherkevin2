@@ -1,20 +1,45 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
 import Header from "../Header";
+import Main from "../Main/Main";
 import queryString from "query-string";
+import ProjectContainer from "./ProjectContainer";
+import Sidebar from "../Main/Sidebar";
 
-export default class Projects extends Component {
+const ProjectSection = styled.section`
+  margin-top: 60px;
+  padding: 50px;
+`;
 
-    componentDidMount() {
-        //console.log(queryString.parse(this.props.location.search));
- 
-    }
+class Projects extends Component {
+  componentDidMount() {
+    //console.log(queryString.parse(this.props.location.search));
+  }
+
+  getProjectsFromDatabase = new Promise((resolve, reject) => {
+    
+    resolve();
+  });
+
+  renderProjects() {
+    return "fasdfasdfa";
+  }
 
   render() {
     return (
-    <div>
-        <Header/>
-
-    </div>
+      <Main
+        renderProjects={this.renderProjects()}
+        getProjectsFromDatabase={this.getProjectsFromDatabase}
+      />
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    projectSubmission: state.projectSubmission
+  };
+}
+
+export default connect(null)(Projects);

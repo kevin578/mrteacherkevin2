@@ -18,14 +18,14 @@ const Content = styled.div`
 
 const ContentLoggedOut = styled(Content)``;
 
-
 const SubjectContainer = styled.div`
   width: "80%";
   margin-top: 100px;
+  min-height: 700px;
   margin-left: auto;
   margin-right: auto;
   ${media.smallLaptop`margin-left: 5%;`};
-  ${media.bigPhone`width: 90%;`}
+  ${media.bigPhone`width: 90%;`};
 `;
 
 const SubjectContainerLoggedOut = styled(SubjectContainer)`
@@ -41,7 +41,6 @@ const Subjects = styled.div`
   grid-template-columns: 285px 285px 285px;
   ${media.smallLaptop`grid-template-columns: 285px 285px;`};
   ${media.bigPhone`grid-template-columns: 100%;`};
-
 `;
 
 const SubjectsLoggedOut = styled(Subjects)`
@@ -81,11 +80,20 @@ class Main extends React.Component {
     isLoading: true
   };
   componentDidMount() {
-    Axios.get("/api/getCoursePercentages").then(percentages => {
-      this.setState({ isLoading: false });
-      this.props.setCoursePercentagesForRedux(percentages.data);
-      this.sortSubjects();
-    });
+    if (!this.props.getProjectsFromDatabase) {
+      Axios.get("/api/getCoursePercentages").then(percentages => {
+        this.setState({ isLoading: false });
+        this.props.setCoursePercentagesForRedux(percentages.data);
+        this.sortSubjects();
+      });
+    } else if (this.props.getProjectsFromDatabase) {
+      {
+        this.props.getProjectsFromDatabase
+          .then(()=> {
+            this.setState({ isLoading: false });
+        });
+      }
+    }
   }
 
   sortSubjects() {
@@ -142,6 +150,14 @@ class Main extends React.Component {
     });
   }
 
+  getContent() {
+    if (this.props.renderProjects) {
+      return this.props.renderProjects;
+    } else {
+      return this.getSubjects(this.props.mainPage.notStartedSubjects);
+    }
+  }
+
   // renderSubjects(subjectArray , message) {
   //   if (subjectArray.length > 0) {
   //     <div>
@@ -169,9 +185,7 @@ class Main extends React.Component {
           !this.props.auth && (
             <Content>
               <SubjectContainerLoggedOut>
-                <SubjectsLoggedOut>
-                  {this.getSubjects(this.props.mainPage.notStartedSubjects)}
-                </SubjectsLoggedOut>
+                <SubjectsLoggedOut>{this.getContent()}</SubjectsLoggedOut>
               </SubjectContainerLoggedOut>
             </Content>
           )}
@@ -183,18 +197,17 @@ class Main extends React.Component {
             <Content>
               {this.props.auth && <Sidebar />}
               <SubjectContainer auth={this.props.auth}>
-                {this.props.mainPage.startedSubjects.length > 0 && (
-                  <div>
-                    <SubjectTitle>Continue with:</SubjectTitle>
-                    <StartedSubjects>
-                      {this.getSubjects(this.props.mainPage.startedSubjects)}
-                    </StartedSubjects>
-                  </div>
-                )}
+                {this.props.mainPage.startedSubjects.length > 0 &&
+                  this.props.getSubjects && (
+                    <div>
+                      <SubjectTitle>Continue with:</SubjectTitle>
+                      <StartedSubjects>
+                        {this.getSubjects(this.props.mainPage.startedSubjects)}
+                      </StartedSubjects>
+                    </div>
+                  )}
 
-                <Subjects>
-                  {this.getSubjects(this.props.mainPage.notStartedSubjects)}
-                </Subjects>
+                <Subjects>{this.getContent()}</Subjects>
               </SubjectContainer>
             </Content>
           )}
