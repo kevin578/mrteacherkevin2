@@ -47,7 +47,6 @@ const SidebarSubjectName = styled.p`
 
 const SidebarItemContainer = styled.div`
   margin-top: 80px;
-  height: 100%;
   padding-bottom: 100px;
 `;
 
