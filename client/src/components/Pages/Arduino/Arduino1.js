@@ -14,7 +14,10 @@ class Arduino1 extends React.Component {
       <Subject title="Arduino" urlName="arduino1">
         {[
           <Body key="servo" title="Servo Motor">
-            <Header>Do something again</Header>
+            <Header>Servo</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/servo.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>made a Servo move back and forth.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
