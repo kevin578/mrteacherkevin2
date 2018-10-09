@@ -6,14 +6,18 @@ const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
 
 router.get("/api/getStateFromDatabase", (req, res) => {
-  const id = req.user;
-  Users.findById(id, (err, user) => {
-    if (err) {
-      res.send(errorMessage);
-    } else {
-      res.json(user);
-    }
-  });
+  if (!req.user) {
+    res.send("You are not logged in");
+  } else {
+    const id = req.user;
+    Users.findById(id, (err, user) => {
+      if (err) {
+        res.send(errorMessage);
+      } else {
+        res.json(user);
+      }
+    });
+  }
 });
 
 router.put("/api/editCompletedPages", (req, res) => {
@@ -81,14 +85,14 @@ router.put("/api/setCoursePercentage", (req, res) => {
   });
 });
 
-router.get("/api/getCoursePercentages", (req,res)=> {
-  if (!req.user) res.send('You are not logged in')
+router.get("/api/getCoursePercentages", (req, res) => {
+  if (!req.user) res.send("You are not logged in");
   else {
-  Users.findById(req.user.id, (err,data)=> {
-    if (err) res.send(errorMessage) 
-    else res.send(data.coursePercentages)
-  })
-}
-})
+    Users.findById(req.user.id, (err, data) => {
+      if (err) res.send(errorMessage);
+      else res.send(data.coursePercentages);
+    });
+  }
+});
 
 module.exports = router;
