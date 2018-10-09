@@ -24,11 +24,6 @@ router.post("/api/addProject", (req, res)=> {
         if (err) res.send(errorMessage);
         else res.send(successMessage);
     })
-
-    // savedProject.save(function (err) {
-    //     if (err) return handleError(err);
-    //     // saved!
-    //   });
 })
 
 router.get("/api/getUserProjects", (req, res)=> {
@@ -37,6 +32,14 @@ router.get("/api/getUserProjects", (req, res)=> {
         else res.json(projects);
     })
 
+})
+
+router.get("/api/getProjectType/:subjectURL", (req, res)=> {
+    const {subjectURL} = req.params;
+    Project.find({subjectURL}, (err, projects)=> {
+        if (err) res.send(err);
+        else res.json(projects);
+    })
 })
 
 module.exports = router;

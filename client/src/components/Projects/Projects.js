@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import axios from "axios";
+
+import queryString from "query-string";
 import Header from "../Header";
 import Main from "../Main/Main";
-import queryString from "query-string";
 import ProjectContainer from "./ProjectContainer";
 import Sidebar from "../Main/Sidebar";
 
@@ -18,8 +20,11 @@ class Projects extends Component {
   }
 
   getProjectsFromDatabase = new Promise((resolve, reject) => {
-    
-    resolve();
+    const query = queryString.parse(this.props.location.search);
+    axios.get(`/api/getProjectType/${query.projectURL}`).then((response)=> {
+        console.log(response.data);
+        resolve();
+    });
   });
 
   renderProjects() {
