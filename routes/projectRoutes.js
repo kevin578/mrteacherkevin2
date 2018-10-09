@@ -32,10 +32,16 @@ router.post("/api/addProject", (req, res)=> {
 })
 
 router.get("/api/getUserProjects", (req, res)=> {
-    Project.find({userId: req.user.id}, (err, projects)=> {
-        if (err) res.send(err);
-        else res.json(projects);
-    })
+    if (!req.user) {
+        res.send("Not Logged in")
+    }
+    else {
+        Project.find({userId: req.user.id}, (err, projects)=> {
+            if (err) res.send(err);
+            else res.json(projects);
+        })
+    }
+
 
 })
 

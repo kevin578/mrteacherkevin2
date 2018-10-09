@@ -136,10 +136,8 @@ class HtmlCss1 extends React.Component {
           <Header>Make sure your final website has...</Header>
           <Checkbox>a different font.</Checkbox>
           <Checkbox>at least one hex color.</Checkbox>
-          <Checkbox>a div that contains multiple elements and has a different background color.</Checkbox>
-          <Checkbox>has an image that is also a link.</Checkbox>
-
-
+          <Checkbox>a div with that contains multiple elements.</Checkbox>
+          <Checkbox>an image that is also a link.</Checkbox>
           </Body>
 
 
