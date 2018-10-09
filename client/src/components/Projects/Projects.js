@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
-
 import queryString from "query-string";
 import Header from "../Header";
 import Main from "../Main/Main";
@@ -15,6 +14,11 @@ const ProjectSection = styled.section`
 `;
 
 class Projects extends Component {
+
+  state = {
+    projects: []
+  }
+
   componentDidMount() {
     //console.log(queryString.parse(this.props.location.search));
   }
@@ -22,13 +26,15 @@ class Projects extends Component {
   getProjectsFromDatabase = new Promise((resolve, reject) => {
     const query = queryString.parse(this.props.location.search);
     axios.get(`/api/getProjectType/${query.projectURL}`).then((response)=> {
-        console.log(response.data);
+        this.setState({projects: response.data});
         resolve();
     });
   });
 
   renderProjects() {
-    return "fasdfasdfa";
+    return this.state.projects. map((project)=> {
+      return <ProjectContainer key = {project.projectKey}/>
+    });
   }
 
   render() {
