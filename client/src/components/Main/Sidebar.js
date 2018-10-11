@@ -33,10 +33,10 @@ const MyProjectsTitle = styled(SidebarTitle)``;
 
 const Container = styled.div`
   min-height: 80px;
-  padding: 10px;
 `;
 
 const Achievements = styled(Container)`
+  padding: 10px;
   @media (max-width: 550px) {
     display: ${props => (props.sidebarIsExpanded ? "block" : "none")};
   }
@@ -45,6 +45,11 @@ const Achievements = styled(Container)`
 const MyProjects = styled(Container)`
   ${media.bigPhone`display: none;`};
 `;
+
+const SingleProject = styled.div`
+  border-bottom: solid 2px #979797;
+  height: 80px;
+`
 
 const TapToExpandButton = styled.div`
   postion: absolute;
@@ -58,13 +63,22 @@ const TapToExpandButton = styled.div`
 export default class Sidebar extends Component {
   state = {
     sidebarIsExpanded: false,
-    loadingProjects: false  
+    loadingProjects: false,
+    projectArray: []  
   };
 
-  getProjects() {
-    // const userProjects = await axios.get("/api/getUserProjects");
-    // console.log(userProjects.data);
-    return "No Projects yet...";
+ componentDidMount(){
+  axios.get("/api/getUserProjects")
+    .then((projects)=> {
+      const projectArray = projects.data.map((item)=> {
+        return (
+
+          <SingleProject key = {item.title}/>
+        )
+      });
+      this.setState({projectArray});
+    });
+  //console.log(userProjects.data);
   }
 
   render() {
@@ -75,7 +89,7 @@ export default class Sidebar extends Component {
           No Achievements yet...
         </Achievements>
         <MyProjectsTitle>My Projects</MyProjectsTitle>
-        <MyProjects>{this.getProjects()}</MyProjects>
+        <MyProjects>{this.state.projectArray}</MyProjects>
       </Wrapper>
     );
   }
