@@ -29,9 +29,7 @@ const Content = styled.div`
 class Subject extends React.Component {
   componentDidMount() {
     this.props.setSubjectURL(this.props.urlName);
-    this.props.setSubject(camelize(this.props.title));
-    //this.props.resetCheckbox();
-
+    this.props.setSubject(this.props.title);
   }
 
   componentDidUpdate() {

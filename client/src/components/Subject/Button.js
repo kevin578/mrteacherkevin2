@@ -132,7 +132,7 @@ class Button extends Component {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
     this.props.completeButton(this.props.pageKey, this.props.subjectURL);
     if (this.props.badge) {
-      this.props.addAchievemnet(this.props.badge, this.props.subject);
+      this.props.addAchievement(this.props.badge, this.props.subject);
     }
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
