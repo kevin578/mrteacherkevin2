@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import media from "./mediaQueries";
+import SingleProject from "./SingleProject";
 
 const Wrapper = styled.div`
   background: #d7dcf2;
@@ -46,11 +47,6 @@ const MyProjects = styled(Container)`
   ${media.bigPhone`display: none;`};
 `;
 
-const SingleProject = styled.div`
-  border-bottom: solid 2px #979797;
-  height: 80px;
-`
-
 const TapToExpandButton = styled.div`
   postion: absolute;
   margin-left: 320px;
@@ -64,21 +60,26 @@ export default class Sidebar extends Component {
   state = {
     sidebarIsExpanded: false,
     loadingProjects: false,
-    projectArray: []  
+    projectArray: []
   };
 
- componentDidMount(){
-  axios.get("/api/getUserProjects")
-    .then((projects)=> {
-      const projectArray = projects.data.map((item)=> {
+  componentDidMount() {
+    axios.get("/api/getUserProjects").then(projects => {
+      const projectArray = projects.data.map(item => {
         return (
-
-          <SingleProject key = {item.title}/>
-        )
+          <SingleProject
+            key={item.projectTitle}
+            title={item.projectTitle}
+            subject={item.subject}
+            subjectURL = {item.subjectURL}
+            projectTitle={item.projectTitle}
+            course={item.course}
+          />
+        );
       });
-      this.setState({projectArray});
+      this.setState({ projectArray });
     });
-  //console.log(userProjects.data);
+    //console.log(userProjects.data);
   }
 
   render() {

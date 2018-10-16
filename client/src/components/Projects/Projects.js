@@ -14,10 +14,9 @@ const ProjectSection = styled.section`
 `;
 
 class Projects extends Component {
-
   state = {
     projects: []
-  }
+  };
 
   componentDidMount() {
     //console.log(queryString.parse(this.props.location.search));
@@ -25,15 +24,15 @@ class Projects extends Component {
 
   getProjectsFromDatabase = new Promise((resolve, reject) => {
     const query = queryString.parse(this.props.location.search);
-    axios.get(`/api/getProjectType/${query.projectURL}`).then((response)=> {
-        this.setState({projects: response.data});
-        resolve();
+    axios.get(`/api/getProjectType/${query.projectURL}`).then(response => {
+      this.setState({ projects: response.data });
+      resolve();
     });
   });
 
   renderProjects() {
-    return this.state.projects. map((project)=> {
-      return <ProjectContainer key = {project.projectKey}/>
+    return this.state.projects.map(project => {
+      return <ProjectContainer key={project.projectKey} />;
     });
   }
 
