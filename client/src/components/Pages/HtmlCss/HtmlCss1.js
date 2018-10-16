@@ -3,13 +3,14 @@ import Subject from "./../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import Checkbox from "./../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
+import ProjectSubmission from "../../Subject/ProjectSubmission";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
 class HtmlCss1 extends React.Component {
   render() {
     return (
-      <Subject title="HTML & CSS" urlName="htmlcss1">
+      <Subject title="HTML & CSS" urlName="html&css1">
         {[
           <Body key="intro" title="Intro">
             <Header>Intro</Header>
@@ -72,12 +73,12 @@ class HtmlCss1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "changeImageWidth" title = "Changing an Image Width">
-          <Header>Changing an Image Width</Header>
-          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssChangeImageSize.mp4"/>
-          <Header>I have...</Header>
-          <Checkbox>changed the size of an image.</Checkbox>
-          <Button>Next</Button>
+          <Body key="changeImageWidth" title="Changing an Image Width">
+            <Header>Changing an Image Width</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssChangeImageSize.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>changed the size of an image.</Checkbox>
+            <Button>Next</Button>
           </Body>,
 
           <Body key="boxmodel" title="Margins and Padding">
@@ -98,51 +99,59 @@ class HtmlCss1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "containers" title = "Cleaning Everything Up">
+          <Body key="containers" title="Cleaning Everything Up">
             <Header>Cleaning Everything Up</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containers.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containers.mp4" />
             <Header>I have...</Header>
             <Checkbox>done a CSS reset.</Checkbox>
-            <Checkbox>created a container that holds an image and text.</Checkbox>
+            <Checkbox>
+              created a container that holds an image and text.
+            </Checkbox>
             <Checkbox>made a picture that also acts as a link.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "cssreset" title = "CSS Reset">
+          <Body key="cssreset" title="CSS Reset">
             <Header>CSS Reset</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssreset.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssreset.mp4" />
             <Header>I have...</Header>
             <Checkbox>done a CSS reset.</Checkbox>
           </Body>,
 
-          <Body key = "containersAbridged" title = "Containers">
+          <Body key="containersAbridged" title="Containers">
             <Header>Containers</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containersAbridged.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containersAbridged.mp4" />
             <Header>I have...</Header>
-            <Checkbox>created a container that is a different color than the rest of the site.</Checkbox>
-            <Checkbox>created a container that holds an image and text.</Checkbox>
+            <Checkbox>
+              created a container that is a different color than the rest of the
+              site.
+            </Checkbox>
+            <Checkbox>
+              created a container that holds an image and text.
+            </Checkbox>
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "imageAsLink" title = "Images as Links">
+          <Body key="imageAsLink" title="Images as Links">
             <Header>Images as Links</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/imageAsLink.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/imageAsLink.mp4" />
             <Header>I have...</Header>
             <Checkbox>made a picture that also acts as a link.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
-          <Body key = "share" title = "Share">
-          <Header>Make sure your final website has...</Header>
-          <Checkbox>a different font.</Checkbox>
-          <Checkbox>at least one hex color.</Checkbox>
-          <Checkbox>a div with that contains multiple elements.</Checkbox>
-          <Checkbox>an image that is also a link.</Checkbox>
+          <Body key="share" title="Share">
+            <Header>Make sure your final website has...</Header>
+            <Checkbox>a different font.</Checkbox>
+            <Checkbox>at least one hex color.</Checkbox>
+            <Checkbox>a div with that contains multiple elements.</Checkbox>
+            <Checkbox>an image that is also a link.</Checkbox>
+            <Header>To share, watch this:</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/shareHTML.mp4" />
+            <Header>Share your project here:</Header>
+            <ProjectSubmission key="firstwebsite" />
+            <Button>Submit</Button>
           </Body>
-
-
-
-
         ]}
       </Subject>
     );
