@@ -31,8 +31,23 @@ class Projects extends Component {
   });
 
   renderProjects() {
+    function shortenName(fullName) {
+      const firstName = fullName.split(" ")[0];
+      const lastInitial = fullName.split(" ")[1][0];
+      return `${firstName} ${lastInitial}.`;
+    }
+
     return this.state.projects.map(project => {
-      return <ProjectContainer key={project.projectKey} />;
+      const { projectTitle, projectURL, _id, userName } = project;
+      const shortenedUserName = shortenName(userName);
+      return (
+        <ProjectContainer
+          key={_id}
+          userName={shortenedUserName}
+          projectTitle={projectTitle}
+          projectURL = {projectURL}
+        />
+      );
     });
   }
 

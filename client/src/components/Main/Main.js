@@ -198,7 +198,7 @@ class Main extends React.Component {
               {this.props.auth && <Sidebar />}
               <SubjectContainer auth={this.props.auth}>
                 {this.props.mainPage.startedSubjects.length > 0 &&
-                  this.props.getSubjects && (
+                  !this.props.renderProjects && (
                     <div>
                       <SubjectTitle>Continue with:</SubjectTitle>
                       <StartedSubjects>
