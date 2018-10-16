@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import media from "./mediaQueries";
+import SingleProject from "./SingleProject";
 
 const Wrapper = styled.div`
   background: #d7dcf2;
@@ -33,10 +34,10 @@ const MyProjectsTitle = styled(SidebarTitle)``;
 
 const Container = styled.div`
   min-height: 80px;
-  padding: 10px;
 `;
 
 const Achievements = styled(Container)`
+  padding: 10px;
   @media (max-width: 550px) {
     display: ${props => (props.sidebarIsExpanded ? "block" : "none")};
   }
@@ -58,13 +59,27 @@ const TapToExpandButton = styled.div`
 export default class Sidebar extends Component {
   state = {
     sidebarIsExpanded: false,
-    loadingProjects: false  
+    loadingProjects: false,
+    projectArray: []
   };
 
-  getProjects() {
-    // const userProjects = await axios.get("/api/getUserProjects");
-    // console.log(userProjects.data);
-    return "No Projects yet...";
+  componentDidMount() {
+    axios.get("/api/getUserProjects").then(projects => {
+      const projectArray = projects.data.map(item => {
+        return (
+          <SingleProject
+            key={item.projectTitle}
+            title={item.projectTitle}
+            subject={item.subject}
+            subjectURL = {item.subjectURL}
+            projectTitle={item.projectTitle}
+            course={item.course}
+          />
+        );
+      });
+      this.setState({ projectArray });
+    });
+    //console.log(userProjects.data);
   }
 
   render() {
@@ -75,7 +90,7 @@ export default class Sidebar extends Component {
           No Achievements yet...
         </Achievements>
         <MyProjectsTitle>My Projects</MyProjectsTitle>
-        <MyProjects>{this.getProjects()}</MyProjects>
+        <MyProjects>{this.state.projectArray}</MyProjects>
       </Wrapper>
     );
   }

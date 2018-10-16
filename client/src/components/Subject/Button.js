@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router";
 import * as actions from "../../actions";
 import { connect } from "react-redux";
+
 //import { addAcheievement } from '../../reducers/pageReducer';
 import axios from "axios";
 
@@ -33,8 +35,7 @@ class Button extends Component {
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   //Once the button is clicked it runs through a cycle of several checks.
 
@@ -66,7 +67,9 @@ class Button extends Component {
   checkIfCompleted = () => {
     if (this.props.completed == null) return false;
     if (!(this.props.subjectURL in this.props.completed)) return false;
-    if (this.props.completed[this.props.subjectURL].includes(this.props.pageKey))
+    if (
+      this.props.completed[this.props.subjectURL].includes(this.props.pageKey)
+    )
       return true;
     return false;
   };
@@ -98,10 +101,11 @@ class Button extends Component {
     });
   };
 
-  projectSubmissionFormComplete(){
-    const {isProjectSubmissionPage} = this.props.projectSubmission;
-    if(!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
-    if(!this.state.isValidProjectTitle && isProjectSubmissionPage) return false;
+  projectSubmissionFormComplete() {
+    const { isProjectSubmissionPage } = this.props.projectSubmission;
+    if (!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
+    if (!this.state.isValidProjectTitle && isProjectSubmissionPage)
+      return false;
     return true;
   }
 
@@ -118,8 +122,7 @@ class Button extends Component {
     if (
       this.checkQuiz() === 0 &&
       this.props.remainingCheckboxes === 0 &&
-      (this.props.testsCompleted === true ||
-        this.props.testsCompleted === null)
+      (this.props.testsCompleted === true || this.props.testsCompleted === null)
     ) {
       this.nextPage();
     }
@@ -131,7 +134,6 @@ class Button extends Component {
     if (this.props.badge) {
       this.props.addAchievemnet(this.props.badge, this.props.subject);
     }
-    debugger
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
         projectURL: this.props.projectSubmission.projectURL,
@@ -142,11 +144,17 @@ class Button extends Component {
         course: this.props.pageInfo.courseTitle
       });
     }
-    if (this.props.page + 1 === this.props.pageInfo.subjectPageLength) {
+    if (parseInt(this.props.page, 10) + 1 === this.props.pageInfo.subjectPageLength) {
       window.location = "/";
       this.props.setPage(0);
     } else {
-      this.props.setPage(this.props.page + 1);
+      // window.location = `${this.props.subjectURL}?pageNumber=${parseInt(
+      //   this.props.page
+      // ) + 1}`;
+      this.props.history.push(`${this.props.subjectURL}?pageNumber=${parseInt(
+        this.props.page, 10
+      ) + 1}`);
+      //this.props.setPage(this.props.page + 1);
     }
     window.scrollTo(0, 0);
     this.props.resetAnswers();
@@ -175,10 +183,9 @@ class Button extends Component {
   validateTitle() {
     if (this.state.isValidProjectTitle) return;
     else if (this.props.projectSubmission.projectTitle) {
-      this.setState({isValidProjectTitle: true}, this.checkForNextPage);
-    }
-    else {
-      this.setState({isValidProjectTitle: false});
+      this.setState({ isValidProjectTitle: true }, this.checkForNextPage);
+    } else {
+      this.setState({ isValidProjectTitle: false });
     }
   }
 
@@ -230,7 +237,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(Button);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    actions
+  )(Button)
+);

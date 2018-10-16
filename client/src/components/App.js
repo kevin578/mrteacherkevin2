@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Main from "./Main/Main";
 import Subject from "./Subject/Subject";
+import Projects from "./Projects/Projects";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
@@ -133,6 +134,7 @@ class App extends Component {
           <div>
             {this.getRoutes()}
             <Route path="/" component={Main} exact />
+            <Route path = "/projects" component = {Projects}/>
             <Route path = "/[object Object]" component = {Main} />
             <Route path="/audacity1" component={Audacity1} />
 

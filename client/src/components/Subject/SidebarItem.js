@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {withRouter} from "react-router";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import greyStar from "../../img/greyStar.svg";
@@ -40,10 +41,19 @@ const StarArea = styled.div`
 `;
 
 class SidebarItem extends React.Component {
+
+
+   constructor(props) {
+    super(props);
+
+    this.state = {
+      completed: false
+    };
+  }
+
   click = () => {
     this.props.resetAnswers();
-    this.props.resetCheckbox();
-    this.props.setPage(this.props.index);
+    this.props.history.push(`${this.props.subjectURL}?pageNumber=${this.props.index}`);
     window.scrollTo(0, 0);
   };
 
@@ -57,12 +67,14 @@ class SidebarItem extends React.Component {
     return starArray;
   };
 
+ 
+
   render() {
     return (
       <Wrapper
         onClick={this.click}
         completed={this.props.completed}
-        currentlySelected={this.props.currentlySelected}
+        currentlySelected={(this.props.index == this.props.page)}
       >
         <ItemName>{this.props.children}</ItemName>
         <StarArea>{this.getStars()}</StarArea>
@@ -71,7 +83,14 @@ class SidebarItem extends React.Component {
   }
 }
 
-export default connect(
-  null,
+function mapStateToProps(state) {
+  return {
+    subjectURL: state.subjectURL,
+    page: state.page
+  };
+}
+
+export default withRouter(connect(
+  mapStateToProps,
   actions
-)(SidebarItem);
+)(SidebarItem));

@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import styled from "styled-components";
+import _ from "lodash";
+import queryString from "query-string";
 import { camelize } from "../App";
 import Header from "../Header";
 import Sidebar from "./Sidebar";
@@ -27,11 +30,24 @@ class Subject extends React.Component {
   componentDidMount() {
     this.props.setSubjectURL(this.props.urlName);
     this.props.setSubject(camelize(this.props.title));
-    this.props.resetCheckbox();
+    //this.props.resetCheckbox();
+
   }
 
   componentDidUpdate() {
     this.props.setPageKey(this.props.children[this.props.page].key);
+    this.setPage();
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  setPage() {
+    const query = queryString.parse(this.props.location.search);
+    if ("pageNumber" in query) {
+      this.props.setPage(query.pageNumber);
+    }
   }
 
   render() {
@@ -64,7 +80,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(Subject);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    actions
+  )(Subject)
+);
