@@ -19,7 +19,7 @@ import Arduino1 from "./Pages/Arduino/Arduino1";
 import Arduino2 from "./Pages/Arduino/Arduino2";
 
 //Google Chrome 
-import GoogleApps from "./Pages/GoogleApps/GoogleApps";
+import GoogleApps1 from "./Pages/GoogleApps/GoogleApps1";
 //import GoogleChrome2 from "./Pages/GoogleChrome/GoogleChrome2";
 
 //Google Docs
@@ -144,7 +144,7 @@ class App extends Component {
             <Route path="/arduinobasics1" component={ArduinoBasics1} />
             <Route path="/arduinobasics2" component={ArduinoBasics2} />
 
-            <Route path="/googleapps" component={GoogleApps} />
+            <Route path="/googleapps1" component={GoogleApps1} />
             {/* <Route path="/googlechrome2" component={GoogleChrome2} /> */}
 
             <Route path="/googledocs1" component={GoogleDocs1} />
