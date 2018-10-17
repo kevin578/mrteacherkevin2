@@ -152,7 +152,6 @@ class Button extends Component {
         this.props.page
       ) + 1}`;
       //this.props.history.push(`${this.props.subjectURL}?pageNumber=${parseInt(this.props.page, 10) + 1}`);
-      //this.props.setPage(this.props.page + 1);
     }
     window.scrollTo(0, 0);
     this.props.resetAnswers();

@@ -99,18 +99,6 @@ class HtmlCss1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
-          <Body key="containers" title="Cleaning Everything Up">
-            <Header>Cleaning Everything Up</Header>
-            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/containers.mp4" />
-            <Header>I have...</Header>
-            <Checkbox>done a CSS reset.</Checkbox>
-            <Checkbox>
-              created a container that holds an image and text.
-            </Checkbox>
-            <Checkbox>made a picture that also acts as a link.</Checkbox>
-            <Button>Next</Button>
-          </Body>,
-
           <Body key="cssreset" title="CSS Reset">
             <Header>CSS Reset</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssreset.mp4" />
