@@ -51,7 +51,7 @@ class Checkbox extends Component {
   }
 
   componentWillUnmount() {
-    this.props.removeCheckbox();
+      this.props.removeCheckbox();
   }
 
   handleInputChange = event => {
@@ -79,7 +79,14 @@ class Checkbox extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    remainingCheckboxes: state.remainingCheckboxes
+  };
+
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(Checkbox);

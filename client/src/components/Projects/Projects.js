@@ -15,20 +15,24 @@ const ProjectSection = styled.section`
 
 class Projects extends Component {
   state = {
-    projects: []
+    projects: [],
+    isLoading: false
   };
 
   componentDidMount() {
-    //console.log(queryString.parse(this.props.location.search));
+    this.getProjectsFromDatabase();
   }
 
-  getProjectsFromDatabase = new Promise((resolve, reject) => {
+  getProjectsFromDatabase() {
+    this.setState({isLoading: true});
     const query = queryString.parse(this.props.location.search);
     axios.get(`/api/getProjectType/${query.projectURL}`).then(response => {
-      this.setState({ projects: response.data });
-      resolve();
-    });
+      this.setState({ 
+        projects: response.data,
+        isLoading: false
+      });
   });
+}
 
   renderProjects() {
     function shortenName(fullName) {
@@ -55,7 +59,7 @@ class Projects extends Component {
     return (
       <Main
         renderProjects={this.renderProjects()}
-        getProjectsFromDatabase={this.getProjectsFromDatabase}
+        isLoading={this.state.isLoading}
       />
     );
   }

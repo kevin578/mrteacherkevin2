@@ -80,18 +80,15 @@ class Main extends React.Component {
     isLoading: true
   };
   componentDidMount() {
-    if (!this.props.getProjectsFromDatabase) {
+    if (!this.props.renderProjects) {
       Axios.get("/api/getCoursePercentages").then(percentages => {
         this.setState({ isLoading: false });
         this.props.setCoursePercentagesForRedux(percentages.data);
         this.sortSubjects();
       });
-    } else if (this.props.getProjectsFromDatabase) {
+    } else if (this.props.renderProjects) {
       {
-        this.props.getProjectsFromDatabase
-          .then(()=> {
-            this.setState({ isLoading: false });
-        });
+        this.setState({ isLoading: this.props.isLoading });
       }
     }
   }
