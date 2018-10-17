@@ -1,12 +1,12 @@
 import React from "react";
-import Subject from "./../../Subject/Subject";
+import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
-import Checkbox from "./../../Subject/Checkbox";
+import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
-class GoogleChrome1 extends React.Component {
+class GoogleApps2 extends React.Component {
   render() {
     return (
       <Subject title="Sample Page" urlName="sampleURL">
@@ -27,4 +27,4 @@ class GoogleChrome1 extends React.Component {
   }
 }
 
-export default GoogleChrome1;
+export default GoogleChrome2;
