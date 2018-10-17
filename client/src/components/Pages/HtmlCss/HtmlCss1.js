@@ -10,7 +10,7 @@ import Button from "../../Subject/Button";
 class HtmlCss1 extends React.Component {
   render() {
     return (
-      <Subject title="HTML & CSS" urlName="html&css1">
+      <Subject title="HTML & CSS" urlName="htmlcss1">
         {[
           <Body key="intro" title="Intro">
             <Header>Intro</Header>
