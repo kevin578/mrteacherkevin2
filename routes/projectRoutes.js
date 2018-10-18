@@ -36,8 +36,6 @@ router.get("/api/getUserProjects", (req, res)=> {
             else res.json(projects);
         })
     }
-
-
 })
 
 router.get("/api/getProjectType/:subjectURL", (req, res)=> {

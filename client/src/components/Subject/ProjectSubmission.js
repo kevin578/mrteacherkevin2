@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import styled from "styled-components";
+
 import {
   onProjectURLChange,
   onProjectTitleChange,
@@ -32,9 +33,9 @@ class ProjectSubmission extends React.Component {
       { projectKey: this.props.projectKey }
     );
     if (currentProject) {
-    this.props.onProjectTitleChange(currentProject.projectTitle);
-    this.props.onProjectURLChange(currentProject.projectURL);
-    } 
+      this.props.onProjectTitleChange(currentProject.projectTitle);
+      this.props.onProjectURLChange(currentProject.projectURL);
+    }
   }
   componentWillUnmount() {
     this.props.isProjectSubmissionPage(false);

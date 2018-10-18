@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdjust } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   height: 100px;
@@ -13,6 +15,8 @@ const ProjectTitle = styled.a``;
 
 const User = styled.p``;
 
+const VotingContainer = styled.div``;
+
 export default class ProjectContainer extends Component {
   render() {
     const { projectTitle, userName, projectURL } = this.props;
@@ -22,6 +26,9 @@ export default class ProjectContainer extends Component {
           {projectTitle}
         </ProjectTitle>
         <User>by {userName}</User>
+        <VotingContainer>
+        
+        </VotingContainer>
       </Wrapper>
     );
   }
