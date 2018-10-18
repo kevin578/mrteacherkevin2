@@ -137,7 +137,7 @@ class HtmlCss1 extends React.Component {
             <Header>To share, watch this:</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/shareHTML.mp4" />
             <Header>Share your project here:</Header>
-            <ProjectSubmission key="firstwebsite" />
+            <ProjectSubmission projectKey="firstwebsite" />
             <Button>Submit</Button>
           </Body>
         ]}
