@@ -140,6 +140,7 @@ class Main extends React.Component {
         <SubjectButton
           background={subject.background}
           subject={subject.subject}
+          subjectURL={subject.subjectURL}
           courses={subject.courses}
           key={subject.subject.replace(/\s+/g, "").toLowerCase()}
         />

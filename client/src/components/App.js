@@ -156,7 +156,7 @@ class App extends Component {
             <Route path="/googleslides1" component={GoogleSlides1} />
             <Route path="/googleslides2" component={GoogleSlides2} />
 
-            <Route path="/html&css1" component={HtmlCss1} />
+            <Route path="/htmlcss1" component={HtmlCss1} />
 
             <Route path="/illustrator1" component={Illustrator1} />
             <Route path="/illustrator2" component={Illustrator2} />

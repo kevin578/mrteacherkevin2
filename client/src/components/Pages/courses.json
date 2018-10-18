@@ -45,6 +45,7 @@
     {
         "background":"linear-gradient(45deg, #255CB9 0%, #8522D3 100%);",
         "subject":"HTML & CSS",
+        "subjectURL": "htmlcss",
         "courses": ["First website"] 
     },
 

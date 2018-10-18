@@ -95,11 +95,20 @@ const SubjectButton = props => {
     const courses = removeStarredCourses(props.courses);
 
     if (courses.length > 0) {
-      return props.courses.map((course, index) => {
-        const link = `/${props.subject
-          .replace(/\s+/g, "")
-          .toLowerCase()}${index + 1}`;
+      
+      return props.courses.map((course, index) => {  
         if (course[0] === "*") return;
+        function getSubjectURL() {
+          if (props.subjectURL) {
+            return props.subjectURL;
+          }
+          else {
+            return props.subject.replace(/\s+/g, "").toLowerCase();
+          }
+        }
+        const subjectURL = getSubjectURL();
+        const link = `/${subjectURL}${index + 1}`;
+      
         return (
           <CourseContainer key={course} href={`${link}?pageNumber=0`}>
             <Course>{course}</Course>
