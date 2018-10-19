@@ -42,14 +42,16 @@ class Projects extends Component {
     }
 
     return this.state.projects.map(project => {
-      const { projectTitle, projectURL, _id, userName } = project;
+      const { projectTitle, projectURL, _id, userName, projectKey } = project;
       const shortenedUserName = shortenName(userName);
       return (
         <ProjectContainer
           key={_id}
+          projectId={_id}
           userName={shortenedUserName}
           projectTitle={projectTitle}
           projectURL = {projectURL}
+
         />
       );
     });

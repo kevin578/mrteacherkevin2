@@ -18,8 +18,9 @@ const User = styled.p``;
 const VotingContainer = styled.div``;
 
 export default class ProjectContainer extends Component {
+
   render() {
-    const { projectTitle, userName, projectURL } = this.props;
+    const { projectTitle, userName, projectURL, projectId } = this.props;
     return (
       <Wrapper>
         <ProjectTitle href={projectURL} target="_blank">
@@ -27,7 +28,9 @@ export default class ProjectContainer extends Component {
         </ProjectTitle>
         <User>by {userName}</User>
         <VotingContainer>
-          <VotingIcon iconType = "fun"/>
+          <VotingIcon iconType = "wellDone" projectId = {projectId}/>
+          <VotingIcon iconType = "creative" projectId = {projectId}/>
+          <VotingIcon iconType = "fun" projectId = {projectId}/>
         </VotingContainer>
       </Wrapper>
     );
