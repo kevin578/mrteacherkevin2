@@ -104,6 +104,7 @@ class HtmlCss1 extends React.Component {
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/htmlcss/cssreset.mp4" />
             <Header>I have...</Header>
             <Checkbox>done a CSS reset.</Checkbox>
+            <Button>Next</Button>
           </Body>,
 
           <Body key="containersAbridged" title="Containers">

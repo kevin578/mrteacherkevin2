@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGrinTears, faSplotch, faPaintBrush, faGrin } from "@fortawesome/free-solid-svg-icons";
+import VotingIcon from "./VotingIcon";
 
 const Wrapper = styled.div`
   height: 100px;
@@ -11,11 +10,6 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const VotingIcon = styled(FontAwesomeIcon)`
-margin-right: 20px;
-font-size: 24px;
-cursor: pointer;
-`;
 
 const ProjectTitle = styled.a``;
 
@@ -33,9 +27,7 @@ export default class ProjectContainer extends Component {
         </ProjectTitle>
         <User>by {userName}</User>
         <VotingContainer>
-        <VotingIcon icon= {faSplotch} />  
-        <VotingIcon icon= {faPaintBrush}/> 
-        <VotingIcon icon= {faGrin}/>  
+          <VotingIcon iconType = "fun"/>
         </VotingContainer>
       </Wrapper>
     );
