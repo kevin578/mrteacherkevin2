@@ -16,7 +16,7 @@ const Icon = styled(FontAwesomeIcon)`
   margin-right: 20px;
   font-size: 24px;
   cursor: pointer;
-  color: ${props=> props.iconColor};
+  color: ${props=> props.iconcolor};
 `;
 
 class VotingIcon extends Component {
@@ -58,13 +58,19 @@ class VotingIcon extends Component {
       projectId
     } = this.props;
     const { selectedProjectVotingIcon } = this.props.projects;
-    _.set(selectedProjectVotingIcon, projectId, iconType);
+    if (_.get(selectedProjectVotingIcon, projectId) == iconType) {
+        _.set(selectedProjectVotingIcon, projectId, null); 
+    }
+    else {
+        _.set(selectedProjectVotingIcon, projectId, iconType);
+    }
+
     changeProjectVotingIcon(selectedProjectVotingIcon);
   };
 
   render() {
     const { icon, message } = this.RetrieveIconData();
-    return <Icon icon={icon} onClick={this.click} iconColor = {this.getColor()}/>;
+    return <Icon icon={icon} onClick={this.click} iconcolor = {this.getColor()}/>;
   }
 }
 
