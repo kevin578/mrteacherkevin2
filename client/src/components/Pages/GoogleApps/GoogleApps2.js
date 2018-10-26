@@ -49,7 +49,21 @@ class GoogleApps2 extends React.Component {
             <Checkbox>added an image.</Checkbox>
             <Checkbox>added a shape.</Checkbox>
           </Body>,
-
+          
+          <Body key = "share" title = "Share">
+            <Header>Share</Header>
+            <Header>I have...</Header>
+            <Checkbox>a story that consists of exactly 5 slides.</Checkbox>
+            <Checkbox>one slide that has an image background.</Checkbox>
+            <Checkbox>one slide that has a gradient background.</Checkbox>
+            <Checkbox>text with a font different than Ariel.</Checkbox>
+            <Checkbox>a shape with a different fill and line color.</Checkbox>
+            <Checkbox>text in the speaker notes.</Checkbox>
+            <Checkbox>text that is not exactly what I'm going to say.</Checkbox>
+            <Checkbox>an animation.</Checkbox>
+            <Checkbox>a transition.</Checkbox>
+            <Checkbox>an example of word art.</Checkbox>
+          </Body>
           
 
         ]}
