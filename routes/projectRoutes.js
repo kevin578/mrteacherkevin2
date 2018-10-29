@@ -44,6 +44,18 @@ router.get("/api/getProjectType/:subjectURL", (req, res)=> {
         if (err) res.send(err);
         else res.json(projects);
     })
+});
+
+router.get("/api/getProjectVotes", (req, res)=> {
+    const {id } = req.query;
+    Project.findById(id, (err, project)=> {
+        if (err) res.send(err);
+        else res.json(project.votes);
+    })
+})
+
+router.post("/api/changeProjectVotes", (req, res)=> {
+    res.send(req.body.projectVotes);
 })
 
 module.exports = router;

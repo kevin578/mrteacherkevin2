@@ -15,7 +15,10 @@ const ProjectTitle = styled.a``;
 
 const User = styled.p``;
 
-const VotingContainer = styled.div``;
+
+const VotingContainer = styled.div`
+  display: flex;
+`;
 
 export default class ProjectContainer extends Component {
 
