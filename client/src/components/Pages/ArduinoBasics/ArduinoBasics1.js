@@ -14,17 +14,8 @@ class Arduino1 extends React.Component {
         {[
           <Body key="arduino_setup" title="Set up">
             <Header>Set up</Header>
-            <p>
-              Before we get to making stuff blink, beep, and bop, we're gonna get
-              a little more comfortable with some basic principles of
-              programming. We'll be practicing this in the circuit section of
-              Tinkercad. Sign up for an account, create a new ciruit, drag out
-              an Arduino, and open the code (text) section. Your screen should
-              look like this:
-            </p>
-            <Image
-              src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535375004/mrteacherkevin/Arduino/arduino_intro_screenshot.png"
-            />
+            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535374830/mrteacherkevin/Arduino/arduino_intro.mp4" />
+            <Header>Link to Tinkercad:</Header>
             <p>
               <a
                 href="https://www.tinkercad.com/#/"
@@ -34,59 +25,29 @@ class Arduino1 extends React.Component {
                 Link to Tinkercad
               </a>
             </p>
-
+            <Header>Your screen should look like this...</Header>
+            <Image src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/arduino_intro_screenshot.png"/>
             <Header>Check that...</Header>
             <Checkbox>yes, my screen looks like that.</Checkbox>
-
             <Button>Next</Button>
-            <Header>Here's a video if you need help:</Header>
-            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535374830/mrteacherkevin/Arduino/arduino_intro.mp4" />
           </Body>,
 
           <Body key="serialPrint" title="Serial Print">
             <Header>Serial Print</Header>
-            <p>
-              Replace the existing Ardino code with the code below. Start the
-              Simulation and click on Serial Monitor. What do you see? Try
-              changing the message that gets displayed in the Serial Monitor.
-            </p>
-            <EmbeddedGist gist="kevin578/ac5fe9de6e6ae2a6bc1bfb52f003f666" />
-            <Header>Check that you have...</Header>
-            <Checkbox>
-              changed the message that prints to the Serial Monitor.
-            </Checkbox>
+            <Video src = "">
+            <Header>I have...</Header>
+            <Checkbox>printed something to the serial montior using void setup().</Checkbox>
+            <Checkbox>printed something to the serial montior using void loop().</Checkbox>
             <Button>Next</Button>
+            {/* <EmbeddedGist gist="kevin578/ac5fe9de6e6ae2a6bc1bfb52f003f666" /> */}
           </Body>,
 
           <Body key="delay" title="What's the Delay?">
             <Header>What's the Delay?</Header>
-            <p>
-              Try running the code below. Notice the difference? Play around and
-              try to fulfill the requirements below.
-            </p>
-            <EmbeddedGist gist="kevin578/6cccfb733fda6fb71148b2e23509e617" />
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/delay.mp4"/>
             <Header>I have...</Header>
-            <Checkbox>changed both messages.</Checkbox>
-            <Checkbox>made them alternate quickly.</Checkbox>
-            <Checkbox>made them alternate slowly.</Checkbox>
-            <Checkbox>added a third message</Checkbox>
-            <Header>Now answer the following questions...</Header>
-            <Question
-              type="mc"
-              choices={[
-                "It corrects misspellings",
-                "It doesn't skip to a new line",
-                "It makes it the lone text in the Serial Montior",
-                "It doesn't hightlight the text"
-              ]}
-              correctAnswer="It doesn't skip to a new line"
-            >
-              Instead of Serial.println, try just Serial.print. What's the
-              difference?
-            </Question>
-            <Question correctAnswer="3">
-              How many seconds does delay(3000) wait for? (Just put a number)
-            </Question>
+            <Checkbox>added a longer delay between messages.</Checkbox>
+            <Checkbox>added a shorter delay between messages.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
@@ -172,14 +133,6 @@ class Arduino1 extends React.Component {
 
           <Body key="variable" title="Very Variable">
             <Header>Very Variable</Header>
-            <p>
-              Variables can store information that can be quickly accessed when
-              the time comes.
-            </p>
-            <EmbeddedGist gist="kevin578/a491df0e30386caa4ba8730234786d41" />
-            <Header>
-              This video will show you how to use them:
-            </Header>
             <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563141/mrteacherkevin/Arduino/variables.mp4"/>
             <Header>Create a document that...</Header>
             <Checkbox>has 2 string variables</Checkbox>
@@ -187,13 +140,6 @@ class Arduino1 extends React.Component {
             <Checkbox>
               uses the variables to display alternating messages.
             </Checkbox>
-            <Question correctAnswer = 'String celebrate = "Happy Birthday";'>
-              1. Declare a string variable named celebrate with a value of Happy
-              Birthday
-            </Question>
-            <Question correctAnswer = "int age = 89;">
-              2. Delcare a number variable named age with a value of 89
-            </Question>
             <Button>Next</Button>
           </Body>,
 
