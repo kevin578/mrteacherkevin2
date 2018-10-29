@@ -34,7 +34,7 @@ class Arduino1 extends React.Component {
 
           <Body key="serialPrint" title="Serial Print">
             <Header>Serial Print</Header>
-            <Video src = "">
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/serialMonitor.mp4"/>
             <Header>I have...</Header>
             <Checkbox>printed something to the serial montior using void setup().</Checkbox>
             <Checkbox>printed something to the serial montior using void loop().</Checkbox>
