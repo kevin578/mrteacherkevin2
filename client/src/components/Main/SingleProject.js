@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   height: 70px;
   padding-left: 10px;
   cursor: pointer;
+
 `;
 
 const Subject = styled.p``;

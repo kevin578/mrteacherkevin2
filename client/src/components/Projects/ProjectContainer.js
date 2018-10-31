@@ -9,11 +9,20 @@ const Wrapper = styled.div`
   border: 1px solid #b3bdce;
   border-radius: 5px;
   padding: 10px;
+  background: #0b935b;
 `;
 
-const ProjectTitle = styled.a``;
+const ProjectTitle = styled.a`
+color: #fff;
+display: block;
+text-align: center;
+font-size: 18px;
+`;
 
-const User = styled.p``;
+const User = styled(ProjectTitle)`
+margin-top: 10px;
+  font-size: 14px;
+`;
 
 const VotingContainer = styled.div``;
 
