@@ -6,10 +6,11 @@ import { faAdjust } from "@fortawesome/free-solid-svg-icons";
 const Wrapper = styled.div`
   height: 100px;
   width: 245px;
-  border: 1px solid #b3bdce;
+  box-shadow: 3px 3px 0px 2px rgba(247, 122, 39,0.74);
   border-radius: 5px;
   padding: 10px;
   background: #0b935b;
+  margin-bottom: 30px;
 `;
 
 const ProjectTitle = styled.a`
