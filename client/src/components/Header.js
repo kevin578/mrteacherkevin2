@@ -4,6 +4,7 @@ import image from "./../img/logo2.png";
 import { connect } from "react-redux";
 import zeroFill from "zero-fill";
 import PropTypes from "prop-types";
+import googleButton from "../img/btn_google_light.svg";
 
 export const headerHeight = 60;
 const imgHeight = headerHeight - 20;
@@ -35,8 +36,7 @@ const HeaderLinks = styled.div`
 const HeaderLink = styled.a`
   margin-right: 40px;
   display: block;
-  margin-top: ${headerHeight / 2}px;
-  transform: translateY(-20%);
+  margin-top: 10px;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -59,7 +59,7 @@ class Header extends React.Component {
     } else {
       return (
         <HeaderLinks>
-          <HeaderLink href="/auth/google">Login with Google</HeaderLink>
+          <HeaderLink href="/auth/google"><img src = {googleButton}/></HeaderLink>
         </HeaderLinks>
       );
     }
