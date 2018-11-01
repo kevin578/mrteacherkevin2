@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
+
   margin-right: 20px;
   display: flex;
 `;
@@ -23,10 +24,12 @@ const Icon = styled(FontAwesomeIcon)`
   font-size: 24px;
   cursor: pointer;
   color: ${props => props.iconcolor};
+  opacity: .9;
 `;
 
 const Number = styled.div`
   margin-top: 5px;
+  color: #fff;
 `;
 
 class VotingIcon extends Component {
@@ -68,7 +71,7 @@ class VotingIcon extends Component {
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
-    const color = matched == iconType ? "green" : "black";
+    const color = matched == iconType ? "#f48d49" : "#fff";
     return color;
   };
 

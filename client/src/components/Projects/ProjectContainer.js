@@ -26,6 +26,8 @@ margin-top: 10px;
 
 
 const VotingContainer = styled.div`
+  margin-top: 20px;
+  justify-content: space-around;
   display: flex;
 `;
 
