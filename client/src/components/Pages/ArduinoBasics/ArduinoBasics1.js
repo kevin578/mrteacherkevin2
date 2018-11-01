@@ -161,7 +161,7 @@ class Arduino1 extends React.Component {
 
           <Body key="arduinoifthen" title="Check Yourself">
             <Header>Check Yourself</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/loopy.mp4"/>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/checkyourself.mp4"/>
             <Header>Create a program that...</Header>
             <Checkbox>unlocks a message when the user enters the password.</Checkbox>
             <Button>Next</Button>
