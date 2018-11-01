@@ -52,7 +52,6 @@ class Header extends React.Component {
       return (
         <HeaderLinks>
           <HeaderLink>{zeroFill(5)(this.props.score)}</HeaderLink>
-          <HeaderLink>Profile</HeaderLink>
           <HeaderLink href="/api/logout">Logout</HeaderLink>
         </HeaderLinks>
       );

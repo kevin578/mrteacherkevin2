@@ -27,12 +27,12 @@ const Button = styled.div`
 `;
 
 const Subject = styled.p`
-  font-family: Helvetica-Bold;
+
   font-size: 18px;
   color: #ffffff;
   text-align: center;
   margin-top: 20px;
-  font-weight: 300;
+  font-weight: 600;
   opacity: 0.9;
 `;
 const Course = styled.p`
