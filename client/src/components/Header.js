@@ -36,12 +36,18 @@ const HeaderLinks = styled.div`
 const HeaderLink = styled.a`
   margin-right: 40px;
   display: block;
-  margin-top: 10px;
+  margin-top: ${headerHeight / 2}px;
+  transform: translateY(-20%);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
 `;
+
+const GoogleButtonLink = styled(HeaderLink)`
+  margin-top: 9px;
+  transform: translateY(0%);
+`
 
 class Header extends React.Component {
 
@@ -59,7 +65,7 @@ class Header extends React.Component {
     } else {
       return (
         <HeaderLinks>
-          <HeaderLink href="/auth/google"><img src = {googleButton}/></HeaderLink>
+          <GoogleButtonLink><a href="/auth/google"><img src = {googleButton}/></a></GoogleButtonLink>
         </HeaderLinks>
       );
     }
