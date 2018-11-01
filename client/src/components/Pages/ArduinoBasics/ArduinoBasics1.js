@@ -134,52 +134,37 @@ class Arduino1 extends React.Component {
           <Body key="variable" title="Very Variable">
             <Header>Very Variable</Header>
             <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563141/mrteacherkevin/Arduino/variables.mp4"/>
-            <Header>Create a document that...</Header>
-            <Checkbox>has 2 string variables</Checkbox>
-            <Checkbox>has 1 number variables.</Checkbox>
-            <Checkbox>
-              uses the variables to display alternating messages.
-            </Checkbox>
+            <Header>I have...</Header>
+            <Checkbox>an integer variable.</Checkbox>
+            <Checkbox>a number variable.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
           <Body key="counting" title="The Count">
             <Header>The Count</Header>
-            <p>Create a program that counts up forever. Like so</p>
-            <Image src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535392404/mrteacherkevin/Arduino/thecount.gif" />
-            <p>This code may help you</p>
-            <EmbeddedGist gist="kevin578/08c2944598175ca50472f11754b11275" />
-            <Header>Check that you have...</Header>
-            <Checkbox>
-              made a program that continuously counts up by one.
-            </Checkbox>
-            <Checkbox>there is one second between each count.</Checkbox>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/thecount.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>a variable that increases by one.</Checkbox>
+            <Checkbox>a variable that increases 2.</Checkbox>
+            <Checkbox>one second between each increase.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
           <Body key="loop" title="Out of the Loop">
             <Header>Out of the Loop</Header>
-            <p>The loop below will count to 50:</p>
-            <EmbeddedGist gist="kevin578/dace3d0dcadf98a1d487a3c1624c7afd" />
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/loopy.mp4"/>
             <Header>Create two more loops that...</Header>
-            <Checkbox>count from 8 to 13.</Checkbox>
-            <Checkbox>Then count from 13 to 8.</Checkbox>
-            <Header>Like so...</Header>
-            <Image src="https://res.cloudinary.com/ddrd9osrk/image/upload/v1535393460/mrteacherkevin/Arduino/outoftheloop.gif" />
+            <Checkbox>count from 10 to 30,</Checkbox>
+            <Checkbox>and then count from 30 to 10.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
           <Body key="arduinoifthen" title="Check Yourself">
             <Header>Check Yourself</Header>
-            <p>This video talks about if/then statements:</p>
-            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563906/mrteacherkevin/Arduino/ifthen.mp4"/>
-            <Header>Starter code:</Header>
-            <EmbeddedGist gist="kevin578/11b4733b0c5ecfc5f64e06cbe2d4ce07" />
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/loopy.mp4"/>
             <Header>Create a program that...</Header>
-            <Checkbox>
-              unlocks a message when the user enters the password.
-            </Checkbox>
-            <Button badge = {"programmingABCs"}>Next</Button>
+            <Checkbox>unlocks a message when the user enters the password.</Checkbox>
+            <Button>Next</Button>
           </Body>
         ]}
       </Subject>
