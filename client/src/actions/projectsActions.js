@@ -40,6 +40,7 @@ export const setProjectsFromDatabase = projects => {
   };
 };
 export const changeProjectVotingIcon = projects => {
+    
     return {
       type: "CHANGE_PROJECT_VOTING_ICON",
       payload: projects

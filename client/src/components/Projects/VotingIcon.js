@@ -43,6 +43,7 @@ class VotingIcon extends Component {
     const projectVotes = await Axios.get("/api/getProjectVotes", {
       params: { id: projectId }
     });
+    
   }
 
   RetrieveIconData() {
@@ -68,10 +69,12 @@ class VotingIcon extends Component {
   }
 
   getColor = () => {
+    let checkedColor = "#f48d49";
+    let notCheckedColor = "#fff";
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
-    const color = matched == iconType ? "#f48d49" : "#fff";
+    const color = matched == iconType ? checkedColor : notCheckedColor;
     return color;
   };
 
@@ -84,10 +87,8 @@ class VotingIcon extends Component {
     } = this.props;
     const { selectedProjectVotingIcon } = this.props.projects;
     if (_.get(selectedProjectVotingIcon, projectId) == iconType) {
-      this.removeVote();
       _.set(selectedProjectVotingIcon, projectId, null);
     } else {
-      this.addVote(selectedProjectVotingIcon, projectId, iconType);
       _.set(selectedProjectVotingIcon, projectId, iconType);
     }
 
@@ -97,23 +98,6 @@ class VotingIcon extends Component {
   
   
   };
-
-  removeVote() {
-    this.setState((previousState)=> {
-      return {
-       votes: previousState.votes -1
-      };
-    });
-    
-  }
-
-  addVote() {
-    this.setState((previousState)=> {
-      return {
-       votes: previousState.votes  + 1
-      };
-    });
-  }
 
   render() {
     const { icon, message } = this.RetrieveIconData();
