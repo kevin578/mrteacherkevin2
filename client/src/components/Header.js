@@ -47,7 +47,7 @@ const HeaderLink = styled.a`
 const GoogleButtonLink = styled(HeaderLink)`
   margin-top: 9px;
   transform: translateY(0%);
-`
+`;
 
 class Header extends React.Component {
 
