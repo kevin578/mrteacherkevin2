@@ -62,20 +62,22 @@ class Scratch1 extends React.Component {
           </Body>,
           <Body key="animation" title="Animation">
             <Header>Animation</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/animation.mp4"/>
             <Header>I have...</Header>
             <Checkbox>animated a sprite.</Checkbox>
             <Button>Next</Button>
           </Body>,
-          <Body key="visualEffects" title="Graphic Effects">
-            <Header>Graphic Effets</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/graphicEffects.mp4"/>
-            <Header>I have...</Header>
-            <Checkbox>added a graphic effect.</Checkbox>
-            <Button>Next</Button>
-          </Body>,
 
-          <Body key="changeBackgrounds" title="Background Check" />,
+          <Body key="changeBackgrounds" title="Background Check">
+            <Header>Backgrounds</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/backdrops.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>changed the background during my program.</Checkbox>
+            <Checkbox>used the "when the backdrop switches" event block.</Checkbox>
+          </Body>,
           <Body key="share" title="Making a Scene!">
+  
+          
           </Body>
         ]}
       </Subject>
