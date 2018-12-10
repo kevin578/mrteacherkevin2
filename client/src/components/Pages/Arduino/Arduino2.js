@@ -1,6 +1,6 @@
 import React from "react";
 import Subject from "../../Subject/Subject";
-import { Body, Header, Video } from "../../Subject/SubjectStyles";
+import { Body, Header, Video, Image } from "../../Subject/SubjectStyles";
 import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";
@@ -41,6 +41,10 @@ class Arduino2 extends React.Component {
 
           <Body key="ultrasonic" title="Ultrasonic Sensor">
             <Header>Ultrasonic Sensor</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/ultrasonic.mp4"/>
+            <a href = "https://github.com/ErickSimoes/Ultrasonic" target = "_blank" style = {{marginTop: 30, display: "block"}}>Link to the library</a>
+            <p>Your wiring should look like this:</p>
+            <Image src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/Screen+Shot+2018-12-10+at+10.27.34+AM.png"/>
             <Button>Next</Button>
           </Body>
         ]}
