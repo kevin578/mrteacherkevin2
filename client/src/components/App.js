@@ -6,88 +6,81 @@ import Projects from "./Projects/Projects";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import asyncComponent from "./AsyncComponent";
 
 //Audacity
-import Audacity1 from "./Pages/Audacity/Audacity1";
+const Audacity1_async = asyncComponent(()=> import("./Pages/Audacity/Audacity1"));
 
 //Arduino
-import ArduinoBasics1 from "./Pages/ArduinoBasics/ArduinoBasics1";
-import ArduinoBasics2 from "./Pages/ArduinoBasics/ArduinoBasics2";
-
-
-import Arduino1 from "./Pages/Arduino/Arduino1";
-import Arduino2 from "./Pages/Arduino/Arduino2";
+const ArduinoBasics1_async = asyncComponent(()=> import("./Pages/ArduinoBasics/ArduinoBasics1"));
+const ArduinoBasics2_async = asyncComponent(()=> import("./Pages/ArduinoBasics/ArduinoBasics2"));
+const Arduino1_async = asyncComponent(()=> import("./Pages/Arduino/Arduino1"));
+const Arduino2_async = asyncComponent(()=> import("./Pages/Arduino/Arduino2"));
 
 //Google Chrome 
-import GoogleApps1 from "./Pages/GoogleApps/GoogleApps1";
-import GoogleApps2 from "./Pages/GoogleApps/GoogleApps2";
+const GoogleApps1_async = asyncComponent(()=> import("./Pages/GoogleApps/GoogleApps1"));
+const GoogleApps2_async = asyncComponent(()=> import("./Pages/GoogleApps/GoogleApps2"));
 
 
 //Google Docs
-
-import GoogleDocs1 from "./Pages/GoogleDocs/GoogleDocs1";
-import GoogleDocs2 from "./Pages/GoogleDocs/GoogleDocs2";
+const GoogleDocs1_async = asyncComponent(()=> import("./Pages/GoogleDocs/GoogleDocs1"));
+const GoogleDocs2_async = asyncComponent(()=> import("./Pages/GoogleDocs/GoogleDocs2"));
 
 //Google Sheets
-
-import GoogleSheets1 from "./Pages/GoogleSheets/GoogleSheets1";
-import GoogleSheets2 from "./Pages/GoogleSheets/GoogleSheets2";
+const GoogleSheets1_async = asyncComponent(()=> import("./Pages/GoogleSheets/GoogleSheets1"));
+const GoogleSheets2_async = asyncComponent(()=> import("./Pages/GoogleSheets/GoogleSheets2"));
 
 //Google Slides
-
-import GoogleSlides1 from "./Pages/GoogleSlides/GoogleSlides1";
-import GoogleSlides2 from "./Pages/GoogleSlides/GoogleSlides2";
+const GoogleSlides1_async = asyncComponent(()=> import("./Pages/GoogleSlides/GoogleSlides1"));
+const GoogleSlides2_async = asyncComponent(()=> import("./Pages/GoogleSlides/GoogleSlides2"));
 
 //HTML & CSS
-
-import HtmlCss1 from "./Pages/HtmlCss/HtmlCss1";
+const HtmlCss1_async = asyncComponent(()=> import("./Pages/HtmlCss/HtmlCss1"));
 
 //Illustrator
-
-import Illustrator1 from "./Pages/Illustrator/Illustrator1";
-import Illustrator2 from "./Pages/Illustrator/Illustrator2";
+const Illustrator1_async = asyncComponent(()=> import("./Pages/Illustrator/Illustrator1"));
+const Illustrator2_async = asyncComponent(()=> import("./Pages/Illustrator/Illustrator2"));
 
 //iMovie
+const IMovie1_async = asyncComponent(()=> import("./Pages/IMovie/IMovie1"));
+const IMovie2_async = asyncComponent(()=> import("./Pages/IMovie/IMovie2"));
 
-import IMovie1 from "./Pages/IMovie/IMovie1";
-import IMovie2 from "./Pages/IMovie/IMovie2";
 
 //Lego Mindstorms
-import LegoMindStorms1 from "./Pages/Engineering/LegoMindstorms1";
-import LegoMindStorms2 from "./Pages/Engineering/LegoMindstorms2";
+const LegoMindStorms1_async = asyncComponent(()=> import("./Pages/Engineering/LegoMindstorms1"));
+const LegoMindStorms2_async = asyncComponent(()=> import("./Pages/Engineering/LegoMindstorms2"));
 
 //LucidPress
-import LucidPress1 from "./Pages/LucidPress/LucidPress1";
-import LucidPress2 from "./Pages/LucidPress/LucidPress2";
+const LucidPress1_async = asyncComponent(()=> import("./Pages/LucidPress/LucidPress1"));
+const LucidPress2_async = asyncComponent(()=> import("./Pages/LucidPress/LucidPress2"));
 
 //MacOS
-import MacOS1 from "./Pages/MacOS/MacOS1";
-import MacOS2 from "./Pages/MacOS/MacOS2";
+const MacOS1_async = asyncComponent(()=> import("./Pages/MacOS/MacOS1"));
+const MacOS2_async = asyncComponent(()=> import("./Pages/MacOS/MacOS2"));
 
 //Photoshop
-import Photoshop1 from "./Pages/Photoshop/Photoshop1";
-import Photoshop2 from "./Pages/Photoshop/Photoshop2";
+const Photoshop1_async = asyncComponent(()=> import("./Pages/Photoshop/Photoshop1"));
+const Photoshop2_async = asyncComponent(()=> import("./Pages/Photoshop/Photoshop2"));
 
 //Kerbal SpaceProgram
-import KerbalSpaceProgram1 from "./Pages/Engineering/KerbalSpaceProgram1";
+const KerbalSpaceProgram1_async = asyncComponent(()=> import("./Pages/Engineering/KerbalSpaceProgram1"));
 
 //Scratch
-import Scratch1 from "./Pages/Scratch/Scratch1";
-import Scratch2 from "./Pages/Scratch/Scratch2";
-import Scratch3 from "./Pages/Scratch/Scratch3";
+const Scratch1_async = asyncComponent(()=> import("./Pages/Scratch/Scratch1"));
+const Scratch2_async = asyncComponent(()=> import("./Pages/Scratch/Scratch2"));
+const Scratch3_async = asyncComponent(()=> import("./Pages/Scratch/Scratch3"));
 
 //Soundtrap
-import Soundtrap1 from "./Pages/Soundtrap/Soundtrap1";
-import Soundtrap2 from "./Pages/Soundtrap/Soundtrap2";
+const Soundtrap1_async = asyncComponent(()=> import("./Pages/Soundtrap/Soundtrap1"));
+const Soundtrap2_async = asyncComponent(()=> import("./Pages/Soundtrap/Soundtrap2"));
 
 //Tinkercad
-import Tinkercad1 from "./Pages/Tinkercad/Tinkercad1";
+const Tinkercad1_async = asyncComponent(()=> import("./Pages/Tinkercad/Tinkercad1"));
+
 
 //WeVideo
-import WeVideo1 from "./Pages/WeVideo/WeVideo1";
-import WeVideo2 from "./Pages/WeVideo/WeVideo2";
-
-
+const WeVideo1_async = asyncComponent(()=> import("./Pages/WeVideo/WeVideo1"));
+const WeVideo2_async = asyncComponent(()=> import("./Pages/WeVideo/WeVideo2"));
 
 
 
@@ -133,65 +126,64 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            {this.getRoutes()}
             <Route path="/" component={Main} exact />
             <Route path = "/projects" component = {Projects}/>
             <Route path = "/[object Object]" component = {Main} />
-            <Route path="/audacity1" component={Audacity1} />
+            <Route path="/audacity1" component={Audacity1_async} />
 
-            <Route path="/arduino1" component={Arduino1} />
-            <Route path="/arduino2" component={Arduino2} />
+            <Route path="/arduino1" component={Arduino1_async} />
+            <Route path="/arduino2" component={Arduino2_async} />
 
-            <Route path="/arduinobasics1" component={ArduinoBasics1} />
-            <Route path="/arduinobasics2" component={ArduinoBasics2} />
+            <Route path="/arduinobasics1" component={ArduinoBasics1_async} />
+            <Route path="/arduinobasics2" component={ArduinoBasics2_async} />
 
-            <Route path="/googleapps1" component={GoogleApps1} />
-            <Route path="/googleapps2" component={GoogleApps2} />
+            <Route path="/googleapps1" component={GoogleApps1_async} />
+            <Route path="/googleapps2" component={GoogleApps2_async} />
 
-            <Route path="/googledocs1" component={GoogleDocs1} />
-            <Route path="/googledocs2" component={GoogleDocs2} />
+            <Route path="/googledocs1" component={GoogleDocs1_async} />
+            <Route path="/googledocs2" component={GoogleDocs2_async} />
 
-            <Route path="/googlesheets1" component={GoogleSheets1} />
-            <Route path="/googlesheets2" component={GoogleSheets2} />
+            <Route path="/googlesheets1" component={GoogleSheets1_async} />
+            <Route path="/googlesheets2" component={GoogleSheets2_async} />
 
-            <Route path="/googleslides1" component={GoogleSlides1} />
-            <Route path="/googleslides2" component={GoogleSlides2} />
+            <Route path="/googleslides1" component={GoogleSlides1_async} />
+            <Route path="/googleslides2" component={GoogleSlides2_async} />
 
-            <Route path="/htmlcss1" component={HtmlCss1} />
+            <Route path="/htmlcss1" component={HtmlCss1_async} />
 
-            <Route path="/illustrator1" component={Illustrator1} />
-            <Route path="/illustrator2" component={Illustrator2} />
+            <Route path="/illustrator1" component={Illustrator1_async} />
+            <Route path="/illustrator2" component={Illustrator2_async} />
 
-            <Route path="/imovie1" component={IMovie1} />
-            <Route path="/imovie2" component={IMovie2} />
+            <Route path="/imovie1" component={IMovie1_async} />
+            <Route path="/imovie2" component={IMovie2_async} />
 
-            <Route path="/legomindstorms1" component={LegoMindStorms1} />
-            <Route path="/legomindstorms2" component={LegoMindStorms2} />
+            <Route path="/legomindstorms1" component={LegoMindStorms1_async} />
+            <Route path="/legomindstorms2" component={LegoMindStorms2_async} />
 
-            <Route path="/lucidpress1" component={LucidPress1} />
-            <Route path="/lucidpress2" component={LucidPress2} />
+            <Route path="/lucidpress1" component={LucidPress1_async} />
+            <Route path="/lucidpress2" component={LucidPress2_async} />
 
-            <Route path="/macos1" component={MacOS1} />
-            <Route path="/macos2" component={MacOS2} />
+            <Route path="/macos1" component={MacOS1_async} />
+            <Route path="/macos2" component={MacOS2_async} />
 
-            <Route path="/photoshop1" component={Photoshop1} />
-            <Route path="/photoshop2" component={Photoshop2} />
+            <Route path="/photoshop1" component={Photoshop1_async} />
+            <Route path="/photoshop2" component={Photoshop2_async} />
             
             <Route
               path="/kerbalspaceprogram1"
-              component={KerbalSpaceProgram1}
+              component={KerbalSpaceProgram1_async}
             />
-            <Route path="/scratch1" component={Scratch1} />
-            <Route path="/scratch2" component={Scratch2} />
-            <Route path="/scratch3" component={Scratch3} />
+            <Route path="/scratch1" component={Scratch1_async} />
+            <Route path="/scratch2" component={Scratch2_async} />
+            <Route path="/scratch3" component={Scratch3_async} />
 
-            <Route path="/soundtrap1" component={Soundtrap1} />
-            <Route path="/soundtrap2" component={Soundtrap2} />
+            <Route path="/soundtrap1" component={Soundtrap1_async} />
+            <Route path="/soundtrap2" component={Soundtrap2_async} />
 
-            <Route path = "/tinkercad1" component = {Tinkercad1} />
+            <Route path = "/tinkercad1" component = {Tinkercad1_async} />
 
-            <Route path="/wevideo1" component={WeVideo1} />
-            <Route path="/wevideo2" component={WeVideo2} />
+            <Route path="/wevideo1" component={WeVideo1_async} />
+            <Route path="/wevideo2" component={WeVideo2_async} />
 
             <Route path="/subject" component={Subject} />
           </div>
