@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Main from "./Main/Main";
-import Subject from "./Subject/Subject";
-import Projects from "./Projects/Projects";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import asyncComponent from "./AsyncComponent";
 
+
+const Projects_async = asyncComponent(()=> import("./Projects/Projects"));
 //Audacity
 const Audacity1_async = asyncComponent(()=> import("./Pages/Audacity/Audacity1"));
 
@@ -127,7 +127,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route path="/" component={Main} exact />
-            <Route path = "/projects" component = {Projects}/>
+            <Route path = "/projects" component = {Projects_async}/>
             <Route path = "/[object Object]" component = {Main} />
             <Route path="/audacity1" component={Audacity1_async} />
 
@@ -185,7 +185,6 @@ class App extends Component {
             <Route path="/wevideo1" component={WeVideo1_async} />
             <Route path="/wevideo2" component={WeVideo2_async} />
 
-            <Route path="/subject" component={Subject} />
           </div>
         </BrowserRouter>
       </div>
