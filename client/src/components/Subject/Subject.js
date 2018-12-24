@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import styled from "styled-components";
 import _ from "lodash";
+import { Helmet } from "react-helmet";
 import queryString from "query-string";
 import { camelize } from "../App";
 import Header from "../Header";
@@ -37,10 +38,6 @@ class Subject extends React.Component {
     this.setPage();
   }
 
-  componentWillUnmount() {
-
-  }
-
   setPage() {
     const query = queryString.parse(this.props.location.search);
     if ("pageNumber" in query) {
@@ -51,6 +48,9 @@ class Subject extends React.Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <title>{this.props.title} | {this.props.pageInfo.courseTitle} | {this.props.children[this.props.page].props.title}</title>
+        </Helmet>
         <Header />
         <Body>
           <Sidebar
@@ -74,7 +74,8 @@ function mapStateToProps(state) {
   return {
     page: state.page,
     subject: state.subject,
-    tests: state.tests
+    tests: state.tests,
+    pageInfo: state.pageInfo
   };
 }
 

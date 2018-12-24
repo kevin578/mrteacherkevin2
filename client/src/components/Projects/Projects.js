@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import queryString from "query-string";
+import {Helmet} from "react-helmet";
 import Header from "../Header";
 import Main from "../Main/Main";
 import ProjectContainer from "./ProjectContainer";
@@ -16,7 +17,8 @@ const ProjectSection = styled.section`
 class Projects extends Component {
   state = {
     projects: [],
-    isLoading: false
+    isLoading: false,
+    title: ""
   };
 
   componentDidMount() {
@@ -29,7 +31,9 @@ class Projects extends Component {
     axios.get(`/api/getProjectType/${query.projectURL}`).then(response => {
       this.setState({ 
         projects: response.data,
-        isLoading: false
+        isLoading: false,
+        title: `Projects | ${response.data[0].course}`
+
       });
   });
 }
@@ -56,11 +60,17 @@ class Projects extends Component {
   }
 
   render() {
+    const {state} = this;
     return (
+      <React.Fragment>
+      <Helmet>
+        <title>{state.title}</title>
+      </Helmet>
       <Main
         renderProjects={this.renderProjects()}
         isLoading={this.state.isLoading}
       />
+      </React.Fragment>
     );
   }
 }

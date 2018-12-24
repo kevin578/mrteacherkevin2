@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "./../Header";
 import SubjectButton, { removeStarredCourses } from "./SubjectButton";
 import Axios from "../../../node_modules/axios";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
@@ -86,10 +87,8 @@ class Main extends React.Component {
         this.props.setCoursePercentagesForRedux(percentages.data);
         this.sortSubjects();
       });
-    } else if (this.props.renderProjects) {
-      {
-        this.setState({ isLoading: this.props.isLoading });
-      }
+    } else {
+      this.setState({ isLoading: this.props.isLoading });
     }
   }
 
@@ -168,8 +167,13 @@ class Main extends React.Component {
   render() {
     return (
       <Body>
+        <Helmet>
+          <meta
+            name="description"
+            content="Learn all about programming, engineering, web design, word processing, graphic design and other technology skills as you complete fun projects."
+          />
+        </Helmet>
         <Header />
-
         {/* Loading */}
         {this.state.isLoading && (
           <LoaderWrapper>
