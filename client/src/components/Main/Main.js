@@ -167,12 +167,6 @@ class Main extends React.Component {
   render() {
     return (
       <Body>
-        <Helmet>
-          <meta
-            name="description"
-            content="Learn all about programming, engineering, web design, word processing, graphic design and other technology skills as you complete fun projects."
-          />
-        </Helmet>
         <Header />
         {/* Loading */}
         {this.state.isLoading && (
