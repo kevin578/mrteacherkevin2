@@ -11,15 +11,38 @@ class Scratch3 extends React.Component {
     return (
       <Subject title="Scratch" urlName="scratch3">
         {[
-          <Body key="starting" title="Start something">
-            <Header>Third Scratch Page</Header>
-            <p>Some Text</p>
+          <Body key="gravity" title="Gravity">
+            <Header>Gravity</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/third/gravity.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>made a realistic gravity effect.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
-          <Body key="again" title="Do somthing again">
-            <Header>Do something again</Header>
+          <Body key="platform" title="Platform Game">
+            <Header>Platform Game</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/third/platform.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>created an object my sprite can land on.</Checkbox>
             <Button>Next</Button>
+          </Body>,
+
+          <Body key="scrolling" title="Scrolling">
+            <Header>Scrolling</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/third/scrolling.mp4"/>
+            <Header>I have...</Header>
+            <Checkbox>made a scrolling effect.</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
+          <Body key="launch" title="Launching">
+            <Header>Launching</Header>
+            <p>Coming soon...</p>
+          </Body>,
+
+          <Body key="inventory" title="Inventory">
+            <Header>Inventory</Header>
+            <p>Coming soon...</p>
           </Body>
         ]}
       </Subject>
