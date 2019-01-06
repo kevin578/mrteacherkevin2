@@ -9,7 +9,7 @@ import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
 import Sidebar from "./Sidebar";
-import media from "./mediaQueries";
+import media, { bigMedia } from "./mediaQueries";
 
 const Body = styled.div``;
 
@@ -27,6 +27,7 @@ const SubjectContainer = styled.div`
   margin-right: auto;
   ${media.smallLaptop`margin-left: 5%;`};
   ${media.bigPhone`width: 90%;`};
+  ${bigMedia.desktop`margin-left: 75px;`}
 `;
 
 const SubjectContainerLoggedOut = styled(SubjectContainer)`
@@ -42,6 +43,9 @@ const Subjects = styled.div`
   grid-template-columns: 285px 285px 285px;
   ${media.smallLaptop`grid-template-columns: 285px 285px;`};
   ${media.bigPhone`grid-template-columns: 100%;`};
+  ${bigMedia.desktop`grid-template-columns: 285px 285px 285px 285px`};
+  ${bigMedia.bigDesktop`grid-template-columns: 285px 285px 285px 285px 285px`};
+
 `;
 
 const SubjectsLoggedOut = styled(Subjects)`
