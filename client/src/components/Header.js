@@ -42,23 +42,23 @@ const Hamburger = styled(ReactSVG)`
   display: none;
   ${media.bigPhone`display: block;`}
   ${media.smallPhone`margin-left: 10px;`}
-
 `;
 
 const HeaderLinks = styled.div`
   margin-left: 50%;
   display: flex;
-
   ${media.smallLaptop`margin-left: 40%;`};
   ${media.bigPhone`
   display: ${props=> props.show ? "block" : "none"};
   position: absolute;
-  color: black;
-  background: green;
-  width: 400px;
+  margin-top: 10px;
+  left: 20px;
+  width: 200px;
   top: 50px;
-  height: 400px;
   margin-left: 0px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   `};
 `;
 
@@ -71,11 +71,26 @@ const HeaderLink = styled.a`
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  ${media.bigPhone`
+  color: #282828;
+  width: 190px;
+  border-bottom: 2px solid #cecece;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  `}
+
+`;
+
+const MobileHeaderLink = styled(HeaderLink)`
+  display: none;
+  ${media.bigPhone`display: block;`}
 `;
 
 const GoogleButtonLink = styled(HeaderLink)`
   margin-top: 9px;
   transform: translateY(0%);
+  ${media.tablet`transform: translateX(-120px);`}
+  ${media.bigPhone`display: none;`}
 `;
 
 class Header extends React.Component {
@@ -83,7 +98,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showHamburgerMenu: true
+      showHamburgerMenu: false
     };
 
   }
@@ -101,12 +116,11 @@ class Header extends React.Component {
       );
     } else {
       return (
-        <HeaderLinks>
-          <GoogleButtonLink>
-            <a href="/auth/google">
+        <HeaderLinks show = {this.state.showHamburgerMenu}>
+          <GoogleButtonLink href = "/auth/google">
               <img src={googleButton} />
-            </a>
           </GoogleButtonLink>
+          <MobileHeaderLink href="/auth/google">Sign in with Google</MobileHeaderLink>
         </HeaderLinks>
       );
     }
@@ -117,7 +131,11 @@ class Header extends React.Component {
   };
 
   hamburgerClicked = () => {
-    
+    this.setState((prevState)=> {
+      return {
+        showHamburgerMenu: !(prevState.showHamburgerMenu)
+      };
+    });
   }
 
   render() {
