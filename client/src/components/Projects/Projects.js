@@ -9,9 +9,9 @@ import Main from "../Main/Main";
 import ProjectContainer from "./ProjectContainer";
 import Sidebar from "../Main/Sidebar";
 
-const ProjectSection = styled.section`
-  margin-top: 60px;
-  padding: 50px;
+const ProjectSection = styled(Main)`
+  background: #ffcf87;
+  
 `;
 
 class Projects extends Component {
@@ -66,7 +66,7 @@ class Projects extends Component {
       <Helmet>
         <title>{state.title}</title>
       </Helmet>
-      <Main
+      <ProjectSection
         renderProjects={this.renderProjects()}
         isLoading={this.state.isLoading}
       />
