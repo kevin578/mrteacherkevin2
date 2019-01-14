@@ -178,6 +178,7 @@ class Button extends Component {
   }
 
   validateTitle() {
+    console.log(this.state);
     if (this.state.isValidProjectTitle) return;
     else if (this.props.projectSubmission.projectTitle) {
       this.setState({ isValidProjectTitle: true }, this.checkForNextPage);
@@ -229,7 +230,7 @@ function mapStateToProps(state) {
     remainingCheckboxes: state.remainingCheckboxes,
     test: state.tests,
     testsCompleted: state.allTestsCompleted,
-    projectSubmission: state.projectSubmission,
+    projectSubmission: state.projects,
     pageInfo: state.pageInfo
   };
 }
