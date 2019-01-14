@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdjust } from "@fortawesome/free-solid-svg-icons";
+import VotingIcon from "./VotingIcon";
 
 const Wrapper = styled.div`
-  height: 110px;
+  height: 130px;
   width: 245px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   margin-bottom: 30px;
@@ -30,7 +29,13 @@ margin-top: 10px;
   font-size: 14px;
 `;
 
-const VotingContainer = styled.div``;
+
+const VotingContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+  margin-left: 20px;
+  justify-content: space-around;
+`;
 
 const colors = [
   {
@@ -45,16 +50,8 @@ const colors = [
 
 export default class ProjectContainer extends Component {
 
-  getBackgroundNumber = ()=> {
-    const getRandomInt = (max)=> {
-      return Math.floor(Math.random() * Math.floor(max));
-    };
-    return getRandomInt(colors.length);
-  }
-
   render() {
-    const { projectTitle, userName, projectURL } = this.props;
-    const backgroundNumber = this.getBackgroundNumber();
+    const { projectTitle, userName, projectURL, projectId } = this.props;
     return (
       <Wrapper >
         <TextContainer>
@@ -64,9 +61,12 @@ export default class ProjectContainer extends Component {
           <User>by {userName}</User>
         </TextContainer>
         <VotingContainer>
-        
+          <VotingIcon iconType = "wellDone" projectId = {projectId}/>
+          <VotingIcon iconType = "creative" projectId = {projectId}/>
+          <VotingIcon iconType = "fun" projectId = {projectId}/>
         </VotingContainer>
       </Wrapper>
     );
   }
 }
+

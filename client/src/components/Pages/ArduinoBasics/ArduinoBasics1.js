@@ -26,25 +26,48 @@ class Arduino1 extends React.Component {
               </a>
             </p>
             <Header>Your screen should look like this...</Header>
-            <Image src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/arduino_intro_screenshot.png"/>
+            <Image src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/arduino_intro_screenshot.png" />
             <Header>Check that...</Header>
             <Checkbox>yes, my screen looks like that.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
+          <Body key="scratchPrint" title="Scratch - Say Something">
+            <Header>Say something</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/say.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>made my sprite say something.</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
           <Body key="serialPrint" title="Serial Print">
             <Header>Serial Print</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/serialMonitor.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/serialMonitor.mp4" />
             <Header>I have...</Header>
-            <Checkbox>printed something to the serial montior using void setup().</Checkbox>
-            <Checkbox>printed something to the serial montior using void loop().</Checkbox>
+            <Checkbox>
+              printed something to the serial montior using void setup().
+            </Checkbox>
+            <Checkbox>
+              printed something to the serial montior using void loop().
+            </Checkbox>
             <Button>Next</Button>
             {/* <EmbeddedGist gist="kevin578/ac5fe9de6e6ae2a6bc1bfb52f003f666" /> */}
           </Body>,
 
+          <Body key="scratchDelay" title="Scratch - Wait">
+            <Header>Wait</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/delay.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>
+              made my sprite say multple things while waiting in between each
+              one.
+            </Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
           <Body key="delay" title="What's the Delay?">
             <Header>What's the Delay?</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/delay.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/delay.mp4" />
             <Header>I have...</Header>
             <Checkbox>added a longer delay between messages.</Checkbox>
             <Checkbox>added a shorter delay between messages.</Checkbox>
@@ -131,9 +154,19 @@ class Arduino1 extends React.Component {
             <Button>Next</Button>
           </Body>,
 
+          <Body key="scratchDelay" title="Scratch - Variables">
+            <Header>Variables</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/variables.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>
+              used a varable to change the wait values.
+            </Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
           <Body key="variable" title="Very Variable">
             <Header>Very Variable</Header>
-            <Video src = "https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563141/mrteacherkevin/Arduino/variables.mp4"/>
+            <Video src="https://res.cloudinary.com/ddrd9osrk/video/upload/v1535563141/mrteacherkevin/Arduino/variables.mp4" />
             <Header>I have...</Header>
             <Checkbox>an integer variable.</Checkbox>
             <Checkbox>a number variable.</Checkbox>
@@ -142,7 +175,7 @@ class Arduino1 extends React.Component {
 
           <Body key="counting" title="The Count">
             <Header>The Count</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/thecount.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/thecount.mp4" />
             <Header>I have...</Header>
             <Checkbox>a variable that increases by one.</Checkbox>
             <Checkbox>a variable that increases 2.</Checkbox>
@@ -152,7 +185,7 @@ class Arduino1 extends React.Component {
 
           <Body key="loop" title="Out of the Loop">
             <Header>Out of the Loop</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/loopy.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/loopy.mp4" />
             <Header>Create two more loops that...</Header>
             <Checkbox>count from 10 to 30,</Checkbox>
             <Checkbox>and then count from 30 to 10.</Checkbox>
@@ -161,9 +194,11 @@ class Arduino1 extends React.Component {
 
           <Body key="arduinoifthen" title="Check Yourself">
             <Header>Check Yourself</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/checkyourself.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/checkyourself.mp4" />
             <Header>Create a program that...</Header>
-            <Checkbox>unlocks a message when the user enters the password.</Checkbox>
+            <Checkbox>
+              unlocks a message when the user enters the password.
+            </Checkbox>
             <Button>Next</Button>
           </Body>
         ]}

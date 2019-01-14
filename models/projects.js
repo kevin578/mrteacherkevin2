@@ -11,8 +11,7 @@ const projectSchema = new Schema({
     subject: String,
     subjectURL: String,
     course: String,
-    likes: Number,
-    creativeScore: Number
+    votes: Object
 })
 
 module.exports = mongoose.model("projects", projectSchema);

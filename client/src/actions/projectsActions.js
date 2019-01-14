@@ -39,3 +39,10 @@ export const setProjectsFromDatabase = projects => {
     payload: projects
   };
 };
+export const changeProjectVotingIcon = projects => {
+    
+    return {
+      type: "CHANGE_PROJECT_VOTING_ICON",
+      payload: projects
+    };
+};

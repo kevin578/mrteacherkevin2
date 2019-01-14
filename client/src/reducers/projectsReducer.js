@@ -4,10 +4,11 @@ const defaultState = {
   projectTitle: "",
   projectKey: "",
   isValidUrl: false,
-  projectsInDatabase: []
+  projectsInDatabase: [],
+  selectedProjectVotingIcon: {}
 };
 
-export default function projectSubmisionReducer(state = defaultState, action) {
+export default function projectsReducer(state = defaultState, action) {
   switch (action.type) {
     case "CHANGE_PROJECT_URL":
       return { ...state, projectURL: action.payload };
@@ -21,6 +22,8 @@ export default function projectSubmisionReducer(state = defaultState, action) {
       return { ...state, isProjectSubmissionPage: action.payload };
     case "IS_VALID_URL":
       return {...state, isValidUrl: action.payload };
+    case "CHANGE_PROJECT_VOTING_ICON":
+      return {...state, selectedProjectVotingIcon: action.payload };
     default:
       return state;
   }
