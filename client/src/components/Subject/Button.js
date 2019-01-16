@@ -178,7 +178,6 @@ class Button extends Component {
   }
 
   validateTitle() {
-    console.log(this.state);
     if (this.state.isValidProjectTitle) return;
     else if (this.props.projectSubmission.projectTitle) {
       this.setState({ isValidProjectTitle: true }, this.checkForNextPage);

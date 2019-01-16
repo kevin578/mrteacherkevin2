@@ -158,9 +158,7 @@ class Arduino1 extends React.Component {
             <Header>Variables</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/variables.mp4" />
             <Header>I have...</Header>
-            <Checkbox>
-              used a varable to change the wait values.
-            </Checkbox>
+            <Checkbox>used a varable to change the wait values.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
@@ -170,6 +168,14 @@ class Arduino1 extends React.Component {
             <Header>I have...</Header>
             <Checkbox>an integer variable.</Checkbox>
             <Checkbox>a number variable.</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
+          <Body key="scratchCount" title="Scratch - Counting">
+            <Header>Counting</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/count.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>made my sprite count.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
@@ -189,6 +195,14 @@ class Arduino1 extends React.Component {
             <Header>Create two more loops that...</Header>
             <Checkbox>count from 10 to 30,</Checkbox>
             <Checkbox>and then count from 30 to 10.</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+
+          <Body key="scratchifThen" title="Scratch - If/Then">
+            <Header>If/Then</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/scratch/password.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>used an if/then statement.</Checkbox>
             <Button>Next</Button>
           </Body>,
 

@@ -5,7 +5,8 @@ const defaultState = {
   projectKey: "",
   isValidUrl: false,
   projectsInDatabase: [],
-  selectedProjectVotingIcon: {}
+  selectedProjectVotingIcon: {},
+  projectIconValues: {}
 };
 
 export default function projectsReducer(state = defaultState, action) {
@@ -24,6 +25,19 @@ export default function projectsReducer(state = defaultState, action) {
       return {...state, isValidUrl: action.payload };
     case "CHANGE_PROJECT_VOTING_ICON":
       return {...state, selectedProjectVotingIcon: action.payload };
+    case "CHANGE_ICON_VOTE_NUMBER": {
+      const {projectID, icon, value} = action.payload;
+      return {
+        ...state,
+        projectIconValues: {
+          ...state.projectIconValues,
+          [projectID]: {
+            ...state.projectIconValues[projectID],
+            icon: value 
+          }
+        }
+      };
+  }
     default:
       return state;
   }

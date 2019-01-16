@@ -12,6 +12,7 @@ import {
   faPaintBrush,
   faGrin
 } from "@fortawesome/free-solid-svg-icons";
+import { changeIconVoteNumber } from "../../actions";
 
 const Wrapper = styled.div`
 
@@ -32,10 +33,14 @@ const Number = styled.div`
   color: #727882;
 `;
 
+let checkedColor = "#f48d49";
+let notCheckedColor = "#727882";
+
 class VotingIcon extends Component {
   state = {
     votes: 0,
-    showVotes: false
+    prevVotes: 0,
+    orginalVoteNumber: 0,
   };
 
   async componentDidMount() {
@@ -43,7 +48,6 @@ class VotingIcon extends Component {
     const projectVotes = await Axios.get("/api/getProjectVotes", {
       params: { id: projectId }
     });
-    
   }
 
   RetrieveIconData() {
@@ -69,8 +73,6 @@ class VotingIcon extends Component {
   }
 
   getColor = () => {
-    let checkedColor = "#f48d49";
-    let notCheckedColor = "#727882";
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
@@ -83,28 +85,43 @@ class VotingIcon extends Component {
       projectKey,
       iconType,
       changeProjectVotingIcon,
+      changeIconVoteNumber,
       projectId
     } = this.props;
     const { selectedProjectVotingIcon } = this.props.projects;
     if (_.get(selectedProjectVotingIcon, projectId) == iconType) {
       _.set(selectedProjectVotingIcon, projectId, null);
+      
     } else {
       _.set(selectedProjectVotingIcon, projectId, iconType);
     }
-
-    changeProjectVotingIcon(selectedProjectVotingIcon);
-  
-  
-  
-  
+    changeProjectVotingIcon(selectedProjectVotingIcon); 
   };
+
+  sendVoteNumberToDatabase = ()=> {
+    const {prevVotes, votes} = this.state;
+    if (prevVotes != votes) {
+      this.setState({prevVotes: votes});
+    };
+  }
+
+  getVoteNumber = ()=> {
+    this.sendVoteNumberToDatabase();
+    if(this.getColor() == checkedColor) {
+      return this.state.votes + 1;
+    }
+    else {
+      return this.state.votes;
+
+    }
+  }
 
   render() {
     const { icon, message } = this.RetrieveIconData();
     return (
       <Wrapper>
         <Icon icon={icon} onClick={this.click} iconcolor={this.getColor()} />
-        <Number>{this.state.votes}</Number>
+        <Number>{this.getVoteNumber()}</Number>
       </Wrapper>
     );
   }

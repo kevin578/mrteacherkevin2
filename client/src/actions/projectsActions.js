@@ -46,3 +46,10 @@ export const changeProjectVotingIcon = projects => {
       payload: projects
     };
 };
+
+export const changeIconVoteNumber = (projectID, icon, value) => {
+  return {
+    type: "CHANGE_ICON_VOTE_NUMBER",
+    payload: {projectID, icon, value}
+  };
+};
