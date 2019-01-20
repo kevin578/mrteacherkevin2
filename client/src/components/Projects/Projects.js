@@ -8,10 +8,10 @@ import Header from "../Header";
 import Main from "../Main/Main";
 import ProjectContainer from "./ProjectContainer";
 import Sidebar from "../Main/Sidebar";
+import * as actions from "./../../actions";
 
 const ProjectSection = styled(Main)`
   background: #ffcf87;
-  
 `;
 
 class Projects extends Component {
@@ -33,8 +33,8 @@ class Projects extends Component {
         projects: response.data,
         isLoading: false,
         title: `Projects | ${response.data[0].course}`
-
       });
+
   });
 }
 
@@ -46,7 +46,8 @@ class Projects extends Component {
     }
 
     return this.state.projects.map(project => {
-      const { projectTitle, projectURL, _id, userName, projectKey } = project;
+      const { projectTitle, projectURL, _id, userName, projectKey, votes, selectedIcon  } = project;
+      this.props.changeProjectVotingIcon({[_id]: selectedIcon});
       const shortenedUserName = shortenName(userName);
       return (
         <ProjectContainer
@@ -55,7 +56,7 @@ class Projects extends Component {
           userName={shortenedUserName}
           projectTitle={projectTitle}
           projectURL = {projectURL}
-
+          votes = {votes}
         />
       );
     });
@@ -83,4 +84,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(null)(Projects);
+export default connect(mapStateToProps, actions)(Projects);

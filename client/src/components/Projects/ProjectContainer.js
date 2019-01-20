@@ -3,7 +3,7 @@ import styled from "styled-components";
 import VotingIcon from "./VotingIcon";
 
 const Wrapper = styled.div`
-  height: 130px;
+  min-height: 130px;
   width: 245px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   margin-bottom: 30px;
@@ -51,9 +51,9 @@ const colors = [
 export default class ProjectContainer extends Component {
 
   render() {
-    const { projectTitle, userName, projectURL, projectId } = this.props;
+    const { projectTitle, userName, projectURL, projectId, votes } = this.props;
     return (
-      <Wrapper >
+      <Wrapper>
         <TextContainer>
           <ProjectTitle href={projectURL} target="_blank">
             {projectTitle}
@@ -61,9 +61,9 @@ export default class ProjectContainer extends Component {
           <User>by {userName}</User>
         </TextContainer>
         <VotingContainer>
-          <VotingIcon iconType = "wellDone" projectId = {projectId}/>
-          <VotingIcon iconType = "creative" projectId = {projectId}/>
-          <VotingIcon iconType = "fun" projectId = {projectId}/>
+          <VotingIcon iconType = "wellDone" projectId = {projectId} votes = {votes.wellDone}/>
+          <VotingIcon iconType = "creative" projectId = {projectId} votes = {votes.creative}/>
+          <VotingIcon iconType = "fun" projectId = {projectId} votes = {votes.fun}/>
         </VotingContainer>
       </Wrapper>
     );

@@ -55,7 +55,12 @@ router.get("/api/getProjectVotes", (req, res)=> {
 })
 
 router.post("/api/changeProjectVotes", (req, res)=> {
-    res.send(req.body.projectVotes);
+    if (!req.user.id) return;
+    const {voteCount, selectedIcon, id, user} = req.body;
+    Project.findOneAndUpdate({_id: id}, {selectedIcon}, (err, res)=> {
+    });
+
+
 })
 
 module.exports = router;

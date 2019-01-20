@@ -13,11 +13,12 @@ import {
   faGrin
 } from "@fortawesome/free-solid-svg-icons";
 import { changeIconVoteNumber } from "../../actions";
+import { notEqual } from "assert";
 
 const Wrapper = styled.div`
-
   margin-right: 20px;
   display: flex;
+  position: relative;
 `;
 
 const Icon = styled(FontAwesomeIcon)`
@@ -26,6 +27,18 @@ const Icon = styled(FontAwesomeIcon)`
   cursor: pointer;
   color: ${props => props.iconcolor};
   opacity: .9;
+`;
+
+const IconInfo = styled.div`
+  width: 160px;
+  position: absolute;
+  left: 0px;
+  top: 35px;
+  background: white;
+  border: 1px solid black;
+  display: ${(props)=> props.showMessage? "block" : "none"};
+  font-size: 12px;
+  padding: 3px;
 `;
 
 const Number = styled.div`
@@ -38,9 +51,10 @@ let notCheckedColor = "#727882";
 
 class VotingIcon extends Component {
   state = {
-    votes: 0,
-    prevVotes: 0,
-    orginalVoteNumber: 0,
+    votes: this.props.votes,
+    previousVotes: this.props.votes,
+    showMessage: false,
+    isHovered: false,
   };
 
   async componentDidMount() {
@@ -65,18 +79,22 @@ class VotingIcon extends Component {
       case "creative":
         return {
           icon: faPaintBrush,
-          message: "Wow, this is so creative!"
+          message: "This project is so creative!"
         };
       default:
         return null;
     }
   }
 
-  getColor = () => {
+  iconIsSelected = ()=> {
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
-    const color = matched == iconType ? checkedColor : notCheckedColor;
+    return (matched == iconType);
+  }
+
+  getColor = () => {
+    const color = this.iconIsSelected() ? checkedColor : notCheckedColor;
     return color;
   };
 
@@ -95,33 +113,58 @@ class VotingIcon extends Component {
     } else {
       _.set(selectedProjectVotingIcon, projectId, iconType);
     }
+    this.setState({showMessage: false});
     changeProjectVotingIcon(selectedProjectVotingIcon); 
   };
 
-  sendVoteNumberToDatabase = ()=> {
-    const {prevVotes, votes} = this.state;
-    if (prevVotes != votes) {
-      this.setState({prevVotes: votes});
-    };
+  sendVoteNumberToDatabase = (voteCount)=> {
+      if(voteCount === this.state.previousVotes) return;
+      this.setState({previousVotes: voteCount});
+      Axios.post("/api/changeProjectVotes", {
+        voteCount,
+        selectedIcon: this.iconIsSelected()? this.props.iconType : null,
+        id: this.props.projectId,
+        user: this.props.auth._id
+      });
   }
 
   getVoteNumber = ()=> {
-    this.sendVoteNumberToDatabase();
+    const  { votes } = this.props;
     if(this.getColor() == checkedColor) {
-      return this.state.votes + 1;
+      const newVoteNumber = votes + 1;
+      this.sendVoteNumberToDatabase(newVoteNumber);
+      return newVoteNumber;
     }
     else {
-      return this.state.votes;
+      this.sendVoteNumberToDatabase(votes);
+      return votes;
 
     }
+  }
+
+  mouseOver = ()=> {
+    this.setState({isHovered: true});
+    setTimeout(()=> {
+      if (this.state.isHovered) {
+        this.setState({showMessage: true});
+      }
+    }, 300);
+  }
+
+  mouseExit = ()=> {
+    this.setState({
+      isHovered: false,
+      showMessage: false
+    });
   }
 
   render() {
     const { icon, message } = this.RetrieveIconData();
     return (
       <Wrapper>
-        <Icon icon={icon} onClick={this.click} iconcolor={this.getColor()} />
+        <Icon icon={icon} onClick={this.click} iconcolor={this.getColor()} onMouseEnter = {this.mouseOver} onMouseLeave = {this.mouseExit}/>
         <Number>{this.getVoteNumber()}</Number>
+        <IconInfo showMessage = {this.state.showMessage}>{message}</IconInfo>
       </Wrapper>
     );
   }
@@ -129,7 +172,8 @@ class VotingIcon extends Component {
 
 function mapStateToProps(state) {
   return {
-    projects: state.projects
+    projects: state.projects,
+    auth: state.auth
   };
 }
 

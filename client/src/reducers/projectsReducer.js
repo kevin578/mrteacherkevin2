@@ -6,8 +6,9 @@ const defaultState = {
   isValidUrl: false,
   projectsInDatabase: [],
   selectedProjectVotingIcon: {},
-  projectIconValues: {}
 };
+
+
 
 export default function projectsReducer(state = defaultState, action) {
   switch (action.type) {
@@ -24,20 +25,10 @@ export default function projectsReducer(state = defaultState, action) {
     case "IS_VALID_URL":
       return {...state, isValidUrl: action.payload };
     case "CHANGE_PROJECT_VOTING_ICON":
-      return {...state, selectedProjectVotingIcon: action.payload };
-    case "CHANGE_ICON_VOTE_NUMBER": {
-      const {projectID, icon, value} = action.payload;
-      return {
-        ...state,
-        projectIconValues: {
-          ...state.projectIconValues,
-          [projectID]: {
-            ...state.projectIconValues[projectID],
-            icon: value 
-          }
-        }
-      };
-  }
+      return {...state, 
+        selectedProjectVotingIcon: {
+          ...state.selectedProjectVotingIcon,
+          ...action.payload }};
     default:
       return state;
   }
