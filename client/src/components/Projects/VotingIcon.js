@@ -26,7 +26,7 @@ const Icon = styled(FontAwesomeIcon)`
   font-size: 24px;
   cursor: pointer;
   color: ${props => props.iconcolor};
-  opacity: .9;
+  opacity: 0.9;
 `;
 
 const IconInfo = styled.div`
@@ -36,7 +36,7 @@ const IconInfo = styled.div`
   top: 35px;
   background: white;
   border: 1px solid black;
-  display: ${(props)=> props.showMessage? "block" : "none"};
+  display: ${props => (props.showMessage ? "block" : "none")};
   font-size: 12px;
   padding: 3px;
 `;
@@ -54,7 +54,7 @@ class VotingIcon extends Component {
     votes: this.props.votes,
     previousVotes: this.props.votes,
     showMessage: false,
-    isHovered: false,
+    isHovered: false
   };
 
   async componentDidMount() {
@@ -63,6 +63,10 @@ class VotingIcon extends Component {
       params: { id: projectId }
     });
   }
+  componentWillUnmount() {
+  }
+
+
 
   RetrieveIconData() {
     switch (this.props.iconType) {
@@ -79,19 +83,19 @@ class VotingIcon extends Component {
       case "creative":
         return {
           icon: faPaintBrush,
-          message: "This project is so creative!"
+          message: "This project is really creative!"
         };
       default:
         return null;
     }
   }
 
-  iconIsSelected = ()=> {
+  iconIsSelected = () => {
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
-    return (matched == iconType);
-  }
+    return matched == iconType;
+  };
 
   getColor = () => {
     const color = this.iconIsSelected() ? checkedColor : notCheckedColor;
@@ -109,62 +113,74 @@ class VotingIcon extends Component {
     const { selectedProjectVotingIcon } = this.props.projects;
     if (_.get(selectedProjectVotingIcon, projectId) == iconType) {
       _.set(selectedProjectVotingIcon, projectId, null);
-      
     } else {
       _.set(selectedProjectVotingIcon, projectId, iconType);
     }
-    this.setState({showMessage: false});
-    changeProjectVotingIcon(selectedProjectVotingIcon); 
+    this.setState({ showMessage: false });
+    changeProjectVotingIcon(selectedProjectVotingIcon);
   };
 
-  sendVoteNumberToDatabase = (voteCount)=> {
-      if(voteCount === this.state.previousVotes) return;
-      this.setState({previousVotes: voteCount});
-      Axios.post("/api/changeProjectVotes", {
-        voteCount,
-        selectedIcon: this.iconIsSelected()? this.props.iconType : null,
-        id: this.props.projectId,
-        user: this.props.auth._id
-      });
-  }
+  sendVoteNumberToDatabase = async voteCount => {
+    if (voteCount === this.state.previousVotes) return;
+    this.setState({
+      previousVotes: voteCount,
+    });
+    
+    window.onbeforeunload=function(){
+      return "";
+  };
 
-  getVoteNumber = ()=> {
-    const  { votes } = this.props;
-    if(this.getColor() == checkedColor) {
+    await Axios.post("/api/changeProjectVotes", {
+      voteCount,
+      selectedIcon: this.iconIsSelected() ? this.props.iconType : null,
+      id: this.props.projectId,
+      user: this.props.auth._id
+    });
+    window.onbeforeunload= null;
+
+  };
+
+  getVoteNumber = () => {
+    const { votes } = this.props;
+    if (this.getColor() == checkedColor) {
       const newVoteNumber = votes + 1;
       this.sendVoteNumberToDatabase(newVoteNumber);
       return newVoteNumber;
-    }
-    else {
+    } else {
       this.sendVoteNumberToDatabase(votes);
       return votes;
-
     }
-  }
+  };
 
-  mouseOver = ()=> {
-    this.setState({isHovered: true});
-    setTimeout(()=> {
+  mouseOver = () => {
+    this.setState({ isHovered: true });
+    setTimeout(() => {
       if (this.state.isHovered) {
-        this.setState({showMessage: true});
+        this.setState({ showMessage: true });
       }
     }, 300);
-  }
+  };
 
-  mouseExit = ()=> {
+  mouseExit = () => {
     this.setState({
       isHovered: false,
       showMessage: false
     });
-  }
+  };
 
   render() {
     const { icon, message } = this.RetrieveIconData();
     return (
       <Wrapper>
-        <Icon icon={icon} onClick={this.click} iconcolor={this.getColor()} onMouseEnter = {this.mouseOver} onMouseLeave = {this.mouseExit}/>
+        <Icon
+          icon={icon}
+          onClick={this.click}
+          iconcolor={this.getColor()}
+          onMouseEnter={this.mouseOver}
+          onMouseLeave={this.mouseExit}
+        />
         <Number>{this.getVoteNumber()}</Number>
-        <IconInfo showMessage = {this.state.showMessage}>{message}</IconInfo>
+        <IconInfo showMessage={this.state.showMessage}>{message}</IconInfo>
       </Wrapper>
     );
   }
