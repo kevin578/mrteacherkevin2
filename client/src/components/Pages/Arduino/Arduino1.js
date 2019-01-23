@@ -1,7 +1,6 @@
 import React from "react";
 import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
-import SharingWidget from "../../Subject/SharingWidget";
 import Checkbox from "../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
 import TextEditor from "../../Subject/TextEditor";

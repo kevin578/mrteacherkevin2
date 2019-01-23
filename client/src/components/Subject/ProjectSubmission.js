@@ -29,7 +29,7 @@ class ProjectSubmission extends React.Component {
 
   checkForProjectTitle() {
     const currentProject = _.find(
-      this.props.projectSubmission.projectsInDatabase,
+      this.props.projects.projectsInDatabase,
       { projectKey: this.props.projectKey }
     );
     if (currentProject) {
@@ -61,7 +61,7 @@ class ProjectSubmission extends React.Component {
             id="project_title"
             type="text"
             onChange={this.handleTitleChange}
-            value={this.props.projectSubmission.projectTitle}
+            value={this.props.projects.projectTitle}
             placeholder="My Totally Awesome Project"
           />
         </div>
@@ -73,7 +73,7 @@ class ProjectSubmission extends React.Component {
             id="project_url"
             type="text"
             onChange={this.handleURLChange}
-            value={this.props.projectSubmission.projectURL}
+            value={this.props.projects.projectURL}
             placeholder="www.myawesomeproject.com"
           />
         </div>
@@ -84,7 +84,7 @@ class ProjectSubmission extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    projectSubmission: state.projectSubmission
+    projects: state.projects
   };
 }
 

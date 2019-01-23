@@ -3,6 +3,7 @@ import Subject from "./../../Subject/Subject";
 import { Body, Header, Video, Image } from "../../Subject/SubjectStyles";
 import Checkbox from "./../../Subject/Checkbox";
 import Question from "../../Subject/Quiz";
+import ProjectSubmission from "../../Subject/ProjectSubmission";
 import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
@@ -34,8 +35,8 @@ class Scratch2 extends React.Component {
             <Button>Next</Button>
           </Body>,
           <Body key="moveBlock" title="Step Up">
-          <Header>Step Up</Header>
-          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/moveSteps.mp4" />
+            <Header>Step Up</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/moveSteps.mp4" />
             <Header>I can...</Header>
             <Checkbox>use the move block to make my sprite move.</Checkbox>
             <Checkbox>
@@ -45,15 +46,15 @@ class Scratch2 extends React.Component {
           </Body>,
           <Body key="variable" title="Variables">
             <Header>Variables</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/variables.mp4"/>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/variables.mp4" />
             <Header>I have...</Header>
             <Checkbox>used a variable in a meaningful way.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
           <Body key="events" title="The Main Event">
-          <Header>The Main Event</Header>
-          <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/broadcast.mp4" />
+            <Header>The Main Event</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/broadcast.mp4" />
             <Header>I have...</Header>
             <Checkbox>broadcasted an event and used a listener.</Checkbox>
             <Button>Next</Button>
@@ -68,6 +69,18 @@ class Scratch2 extends React.Component {
             <Header>I have...</Header>
             <Checkbox>used a clone</Checkbox>
             <Button>Next</Button>
+          </Body>,
+          <Body key="clones" title="Attack of the Clones">
+            <Header>I have...</Header>
+            <Checkbox>used a clone</Checkbox>
+            <Button>Next</Button>
+          </Body>,
+          <Body key = "share" title= "Share">
+            <Header>Share</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/scratch2share.mp4" />
+            <Header>Post your project here:</Header>
+            <ProjectSubmission projectKey = "scratchGame"/>
+            <Button>Done</Button>
           </Body>
         ]}
       </Subject>
