@@ -18,7 +18,6 @@ const projectSchema = new Schema({
     subject: String,
     subjectURL: String,
     course: String,
-    selectedIcon: String,
     votes: {type: votesSchema, default: votesSchema}
 });
 

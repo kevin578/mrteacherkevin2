@@ -63,10 +63,7 @@ class VotingIcon extends Component {
       params: { id: projectId }
     });
   }
-  componentWillUnmount() {
-  }
-
-
+  componentWillUnmount() {}
 
   RetrieveIconData() {
     switch (this.props.iconType) {
@@ -103,6 +100,9 @@ class VotingIcon extends Component {
   };
 
   click = () => {
+    window.onbeforeunload = function() {
+      return "";
+    };
     const {
       projectKey,
       iconType,
@@ -123,12 +123,8 @@ class VotingIcon extends Component {
   sendVoteNumberToDatabase = async voteCount => {
     if (voteCount === this.state.previousVotes) return;
     this.setState({
-      previousVotes: voteCount,
+      previousVotes: voteCount
     });
-    
-    window.onbeforeunload=function(){
-      return "";
-  };
 
     await Axios.post("/api/changeProjectVotes", {
       voteCount,
@@ -136,8 +132,8 @@ class VotingIcon extends Component {
       id: this.props.projectId,
       user: this.props.auth._id
     });
-    window.onbeforeunload= null;
 
+    window.onbeforeunload = null;
   };
 
   getVoteNumber = () => {

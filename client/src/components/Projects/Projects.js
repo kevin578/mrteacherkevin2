@@ -34,6 +34,7 @@ class Projects extends Component {
         isLoading: false,
         title: `Projects | ${response.data[0].course}`
       });
+    
 
   });
 }
@@ -47,7 +48,6 @@ class Projects extends Component {
 
     return this.state.projects.map(project => {
       const { projectTitle, projectURL, _id, userName, projectKey, votes, selectedIcon  } = project;
-      this.props.changeProjectVotingIcon({[_id]: selectedIcon});
       const shortenedUserName = shortenName(userName);
       return (
         <ProjectContainer
