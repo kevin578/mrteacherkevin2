@@ -51,21 +51,9 @@ const colors = [
 ];
 
 class ProjectContainer extends Component {
-  state = {
-    votingIconsFromDatabase: {}
-  };
 
   componentDidMount() {
-    this.getVotingIconsFromDatabase();
   }
-
-  getVotingIconsFromDatabase = async () => {
-    const iconList = await axios.get("/api/getUserSelectedIcons");
-    //this.setState({votingIconsFromDatabase: icons});
-    for (let icon in iconList.data) {
-      this.props.changeProjectVotingIcon({[icon]: iconList.data[icon].icon});
-    }
-  };
 
   render() {
     const { projectTitle, userName, projectURL, projectId, votes } = this.props;

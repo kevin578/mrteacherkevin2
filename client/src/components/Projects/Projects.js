@@ -23,7 +23,15 @@ class Projects extends Component {
 
   componentDidMount() {
     this.getProjectsFromDatabase();
+    this.getVotingIconsFromDatabase();
   }
+
+  getVotingIconsFromDatabase = async () => {
+    const iconList = await axios.get("/api/getUserSelectedIcons");  
+    for (let icon in iconList.data) {  
+      this.props.changeProjectVotingIcon({[icon]: iconList.data[icon].icon});
+    }
+  };
 
   getProjectsFromDatabase() {
     this.setState({isLoading: true});
