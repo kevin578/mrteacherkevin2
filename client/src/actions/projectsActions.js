@@ -53,3 +53,12 @@ export const changeIconVoteNumber = (projectID, icon, value) => {
     payload: {projectID, icon, value}
   };
 };
+
+export const setVotingIconsFromDatabase = (votingIconsInDatabase) => {
+  return {
+    type: "SET_VOTING_ICONS_FROM_DATABASE",
+    payload: votingIconsInDatabase
+  };
+};
+
+

@@ -29,7 +29,10 @@ class Projects extends Component {
   getVotingIconsFromDatabase = async () => {
     const iconList = await axios.get("/api/getUserSelectedIcons");  
     for (let icon in iconList.data) {  
-      this.props.changeProjectVotingIcon({[icon]: iconList.data[icon].icon});
+      const projectId = icon;
+      const projectIcon = iconList.data[icon].icon;
+      this.props.changeProjectVotingIcon({[projectId]: projectIcon});  
+      this.props.setVotingIconsFromDatabase({projectId, projectIcon});
     }
   };
 
@@ -65,6 +68,7 @@ class Projects extends Component {
           projectTitle={projectTitle}
           projectURL = {projectURL}
           votes = {votes}
+
         />
       );
     });

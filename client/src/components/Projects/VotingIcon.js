@@ -63,7 +63,6 @@ class VotingIcon extends Component {
       params: { id: projectId }
     });
   }
-  componentWillUnmount() {}
 
   RetrieveIconData() {
     switch (this.props.iconType) {
@@ -137,16 +136,31 @@ class VotingIcon extends Component {
   };
 
   getVoteNumber = () => {
-    const { votes } = this.props;
+    const { projects, projectId, iconType } = this.props;
+    const {votingIconsInDatabase} = projects;
+    let {votes} = this.props;
+    
+    if (iconIsInDatabase()) votes--;
+    
+    function iconIsInDatabase() {
+      const matchedProject = _.find(votingIconsInDatabase, {projectId});
+      if (!matchedProject) return false;
+      return matchedProject.projectIcon === iconType;
+    }
+    
     if (this.getColor() == checkedColor) {
       const newVoteNumber = votes + 1;
       this.sendVoteNumberToDatabase(newVoteNumber);
       return newVoteNumber;
     } else {
       this.sendVoteNumberToDatabase(votes);
+      }
       return votes;
-    }
   };
+
+  modifyVoteNumber = () => {
+
+  }
 
   mouseOver = () => {
     this.setState({ isHovered: true });
