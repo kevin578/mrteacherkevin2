@@ -27,7 +27,10 @@ class Arduino1 extends React.Component {
           </Body>,
 
           <Body key="motordriver" title="Motor Driver">
-            <Header>Do something again</Header>
+            <Header>Motor Driver</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/arduino/motor_driver.mp4" />
+            <Header>I have...</Header>
+            <Checkbox>used a motor driver to power a motor</Checkbox>
             <Button>Next</Button>,
           </Body>,
 

@@ -124,14 +124,12 @@ class VotingIcon extends Component {
     this.setState({
       previousVotes: voteCount
     });
-
     await Axios.post("/api/changeProjectVotes", {
       voteCount,
       selectedIcon: this.iconIsSelected() ? this.props.iconType : null,
       id: this.props.projectId,
       user: this.props.auth._id
     });
-
     window.onbeforeunload = null;
   };
 
