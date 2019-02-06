@@ -9,14 +9,17 @@ const projectRoutes = require("./routes/projectRoutes");
 const testRoutes = require("./routes/testRoutes")
 const bodyParser = require("body-parser");
 
+
 require("./models/user");
 require("./services/passport");
 
 mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 app.use(
   cookieSession({
     maxAge:

@@ -6,6 +6,7 @@ import media from "./Main/mediaQueries";
 import zeroFill from "zero-fill";
 import PropTypes from "prop-types";
 import googleButton from "../img/btn_google_light.svg";
+import GoogleButton from "./SignIn/GoogleButton"
 import ReactSVG from "react-svg";
 import hamburger from "../img/baseline-menu-24px.svg";
 
@@ -116,8 +117,8 @@ class Header extends React.Component {
     } else {
       return (
         <HeaderLinks show = {this.state.showHamburgerMenu}>
-          <GoogleButtonLink href = "/auth/google">
-              <img src={googleButton} />
+          <GoogleButtonLink>
+            <GoogleButton />
           </GoogleButtonLink>
           <MobileHeaderLink href="/auth/google">Sign in with Google</MobileHeaderLink>
         </HeaderLinks>
