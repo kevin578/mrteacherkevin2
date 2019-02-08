@@ -11,6 +11,7 @@ const userSchema = new Schema({
   googleId: String,
   displayName: String,
   name: Object,
+  email: String,
   completed: Object,
   score: Number,
   achievements: Object,

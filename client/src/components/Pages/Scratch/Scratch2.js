@@ -12,6 +12,14 @@ class Scratch2 extends React.Component {
     return (
       <Subject title="Scratch" urlName="scratch2">
         {[
+          <Body key="intro" title="What you'll be making">
+            <Header>What you'll be making</Header>
+            <p>You will be making an interactive game.</p>
+            <a href="http://mrteacherkevin.herokuapp.com/projects?projectURL=scratch2">
+              Click here to see some projects.
+            </a>
+            <Button>Next</Button>
+          </Body>,
           <Body key="ifthenelse" title="If then else">
             <Header>If then else</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/inthenelse.mp4" />
@@ -75,11 +83,11 @@ class Scratch2 extends React.Component {
             <Checkbox>used a clone</Checkbox>
             <Button>Next</Button>
           </Body>,
-          <Body key = "share" title= "Share">
+          <Body key="share" title="Share">
             <Header>Share</Header>
-            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/scratch2share.mp4" />
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/scratch2share.mp4" />
             <Header>Post your project here:</Header>
-            <ProjectSubmission projectKey = "scratchGame"/>
+            <ProjectSubmission projectKey="scratchGame" />
             <Button>Done</Button>
           </Body>
         ]}
