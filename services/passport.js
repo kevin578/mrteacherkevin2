@@ -23,19 +23,24 @@ passport.use(
       userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
     },
     async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile.id });
-      console.log(profile);
-      if (existingUser) {
-        done(null, existingUser);
-      } else {
-        const user = await new User({ 
-          googleId: profile.id,
-          displayName: profile.displayName,
-          name: profile.name,
-          email: profile.email,
-        }).save();
-        done(null, user);
+ 
+      const findUser = {
+        googleId: profile.id
       }
+      const userInfo = {
+        googleId: profile.id,
+        displayName: profile.displayName,
+        name: profile.name,
+        email: profile._json.email
+      }
+      const config = {
+        upsert: true, 
+        new: true
+      }
+
+      const user = await User.findOneAndUpdate(findUser, userInfo, config);
+      console.log(user);
+      done(null, user);
     }
   )
 );
