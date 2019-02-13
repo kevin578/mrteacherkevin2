@@ -51,7 +51,8 @@ class Soundtrap1 extends React.Component {
             <Checkbox>at least 3 tracks.</Checkbox>
             <Checkbox>at least 1 orginal instrument track.</Checkbox>
             <Checkbox>at least 1 effect.</Checkbox>
-            <Checkbox>at least 1 voice track. </Checkbox>
+            <Header>Watch this before you share:</Header>
+            <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/soundtrap/soundtrapshare.mp4" />
             <Header>Share your song info here:.</Header>
             <ProjectSubmission projectKey = "soundtrapSong"/>
             <Button>Next</Button>
