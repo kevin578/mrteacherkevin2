@@ -103,7 +103,7 @@ class LegoMindstorms1 extends React.Component {
             <Checkbox>made your robot sense a wall, back up, turn around, and go the other way.</Checkbox>
             <Button>Next</Button>
             <Header>This video's got a bunch of info for you:</Header>
-            <Video src="https://www.youtube.com/embed/DsxoIAB-sYk" />
+            <Video src="https://www.youtube.com/embed/DsxoIAB-sYk" iframe/>
           </Body>,
 
           <Body key="ultrasonic" title="Ultrasonic sensor">
