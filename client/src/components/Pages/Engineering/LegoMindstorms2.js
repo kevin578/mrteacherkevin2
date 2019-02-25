@@ -11,14 +11,18 @@ class LegoMindstorms2 extends React.Component {
     return (
       <Subject title="Lego Mindstorms" urlName="legomindstorms2">
         {[
-          <Body key="starting" title="Start something">
-            <Header>Sample Header</Header>
-            <p>Some Text</p>
+          <Body key="lineFollower" title="Line Follower">
+            <Header>Line Follower</Header>
+            <Video src = "https://www.youtube.com/watch?v=ye3MhVA9Rhs" iframe/>
+            <Header>I have...</Header>
+            <Checkbox>made my robot follow line.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
-          <Body key="again" title="Do somthing again">
-            <Header>Do something again</Header>
+          <Body key="straigh-line" title="Straight Line">
+            <Header>Straight Line</Header>
+            <Header>I have...</Header>
+            <Checkbox>made my robot go straight.</Checkbox>
             <Button>Next</Button>
           </Body>
         ]}
