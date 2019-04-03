@@ -3,7 +3,7 @@ import axios from "axios";
 import Main from "./Main/Main";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import {fetchUser, setProjectsFromDatabase, setPage, completeInit }from "../state/actions";
 import asyncComponent from "./AsyncComponent";
 
 
@@ -106,7 +106,6 @@ class App extends Component {
     if (state) {
       this.props.completeInit(state.completed);
       if (state.score) this.props.changeScore(state.score);
-      this.props.achievementInit(state.achievements);
     }
   };
 
@@ -194,5 +193,5 @@ class App extends Component {
 
 export default connect(
   null,
-  actions
+  {fetchUser, setProjectsFromDatabase, setPage, completeInit}
 )(App);

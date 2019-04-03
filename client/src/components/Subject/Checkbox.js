@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 import { camelize } from "../App";
 import { formAnimation } from "./Quiz";
-import { resetCheckbox } from "../../actions";
+import { resetCheckbox } from "../../state/actions";
 
 const Container = styled.div`
   margin-bottom: 7px;

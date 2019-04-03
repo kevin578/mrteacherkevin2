@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
 import Mindstorms from "./../../img/mindstorms.jpg";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 import { headerHeight } from "../Header";
 import Ranking from "../Ranking";
 import courses from "../Pages/courses.json";

@@ -9,7 +9,7 @@ import {
   isProjectSubmissionPage,
   isValidUrl,
   addProjectKey
-} from "../../actions/projectsActions";
+} from "../../state/actions/projectsActions";
 
 import { TextField } from "./Quiz";
 

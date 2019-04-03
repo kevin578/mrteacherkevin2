@@ -5,7 +5,7 @@ import SubjectButton, { removeStarredCourses } from "./SubjectButton";
 import Axios from "../../../node_modules/axios";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import {setCoursePercentagesForRedux, addStartedSubjects, addNotStartedSubjects } from "../../state/actions";
 import courses from "../Pages/courses.json";
 import { SyncLoader } from "halogenium";
 import Sidebar from "./Sidebar";
@@ -132,7 +132,6 @@ class Main extends React.Component {
     });
 
     this.props.addNotStartedSubjects(notStartedSubjects);
-    this.props.addComingSoonSubjects(comingSoonSubjects);
 
     const sortedCourses = startedSubjects.concat(notStartedSubjects);
   }
@@ -226,5 +225,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  actions
+  {setCoursePercentagesForRedux, addStartedSubjects, addNotStartedSubjects  }
 )(Main);

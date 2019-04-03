@@ -8,9 +8,9 @@ import queryString from "query-string";
 import { camelize } from "../App";
 import Header from "../Header";
 import Sidebar from "./Sidebar";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 import { headerHeight } from "../Header";
-import { allTestsCompleted } from "../../actions";
+import { allTestsCompleted } from "../../state/actions";
 import media from "./mediaQueries";
 
 const Body = styled.div`

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router";
-import * as actions from "../../actions";
+import {changeScore, resetAnswers, completeButton, addAchievemnet } from "../../state/actions";
 import { connect } from "react-redux";
-
-//import { addAcheievement } from '../../reducers/pageReducer';
 import axios from "axios";
 
 export const Wrapper = styled.button`
@@ -237,6 +235,6 @@ function mapStateToProps(state) {
 export default withRouter(
   connect(
     mapStateToProps,
-    actions
+    {changeScore, resetAnswers, completeButton, addAchievemnet}
   )(Button)
 );

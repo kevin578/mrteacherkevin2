@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import _ from "lodash";
 import Axios from "axios";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +12,7 @@ import {
   faPaintBrush,
   faGrin
 } from "@fortawesome/free-solid-svg-icons";
-import { changeIconVoteNumber } from "../../actions";
+import { changeIconVoteNumber } from "../../state/actions";
 import { notEqual } from "assert";
 
 const Wrapper = styled.div`

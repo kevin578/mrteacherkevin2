@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {withRouter} from "react-router";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 import greyStar from "../../img/greyStar.svg";
 import yellowStar from "../../img/yellowStar.svg";
 

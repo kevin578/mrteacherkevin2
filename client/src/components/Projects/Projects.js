@@ -8,7 +8,7 @@ import Header from "../Header";
 import Main from "../Main/Main";
 import ProjectContainer from "./ProjectContainer";
 import Sidebar from "../Main/Sidebar";
-import * as actions from "./../../actions";
+import * as actions from "../../state/actions";
 
 const ProjectSection = styled(Main)`
   background: #ffcf87;

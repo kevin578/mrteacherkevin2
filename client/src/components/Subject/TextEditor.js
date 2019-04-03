@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import brace from "brace";
 import AceEditor from "react-ace";
-import * as actions from "../../actions";
+import * as actions from "../../state/actions";
 import { connect } from "react-redux";
 import "brace/mode/html";
 import "brace/theme/monokai";
-import { addTests } from "../../actions";
+import { addTests } from "../../state/actions";
 
 class TextEditor extends React.Component {
   constructor(props, context) {

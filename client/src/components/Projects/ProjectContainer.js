@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import VotingIcon from "./VotingIcon";
 import axios from "axios";
-import {changeProjectVotingIcon} from "../../actions";
+import {changeProjectVotingIcon} from "../../state/actions";
 
 const Wrapper = styled.div`
   min-height: 130px;

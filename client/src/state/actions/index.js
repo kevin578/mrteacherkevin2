@@ -1,5 +1,5 @@
 import axios from "axios";
-import { store } from "./../index.js";
+import { store } from "../../index.js";
 
 export * from "./auth";
 export * from "./buttonActions";
