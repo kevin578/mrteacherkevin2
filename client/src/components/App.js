@@ -3,7 +3,7 @@ import axios from "axios";
 import Main from "./Main/Main";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import {fetchUser, setProjectsFromDatabase, setPage, completeInit }from "../state/actions";
+import {fetchUser, setProjectsFromDatabase, setPage, completeInit, changeScore }from "../state/actions";
 import asyncComponent from "./AsyncComponent";
 
 
@@ -92,7 +92,7 @@ export function camelize(str) {
     .replace(/\s+/g, "");
 }
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.getUserStateFromDatabase();
     this.getProjectInfoFromDatabase();
@@ -193,5 +193,5 @@ class App extends Component {
 
 export default connect(
   null,
-  {fetchUser, setProjectsFromDatabase, setPage, completeInit}
+  {fetchUser, setProjectsFromDatabase, setPage, completeInit, changeScore}
 )(App);

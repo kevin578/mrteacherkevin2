@@ -93,7 +93,7 @@ const GoogleButtonLink = styled(HeaderLink)`
   ${media.bigPhone`display: none;`}
 `;
 
-class Header extends React.Component {
+export class Header extends React.Component {
 
   constructor(props) {
     super(props);

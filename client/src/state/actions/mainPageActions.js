@@ -1,31 +1,15 @@
-    // startedSubjects.sort(function(a, b) {
-    //   if (a.subject.toLowerCase() < b.subject.toLowerCase()) return -1;
-    //   if (a.subject.toLowerCase() > b.subject.toLowerCase()) return 1;
-    //   return 0;
-    // });
-
-
-
-
-
-export const addStartedSubjects = (subjects)=> {
-
-    return {
+ 
+export const addStartedSubjects = (subjects)=> ({
         type: "ADD_STARTED_SUBJECTS",
         payload: subjects
-    };
-};
+    });
 
-export const addNotStartedSubjects = (subjects)=> {
-    return {
+export const addNotStartedSubjects = (subjects)=> ({
         type: "ADD_NOT_STARTED_SUBJECTS",
         payload: subjects
-    };
-};
+});
 
-export const addComingSoonSubjects = (subjects)=> {
-    return {
+export const addComingSoonSubjects = (subjects)=> ({
         type: "ADD_COMING_SOON_SUBJECTS",
         payload: subjects
-    };
-};
+});
