@@ -107,7 +107,7 @@ const SubjectButton = props => {
             return props.subjectURL;
           }
           else {
-            return props.subject.replace(/\s+/g, "").toLowerCase();
+            return props.subject.replace(/\s+|:+/g, "").toLowerCase();
           }
         }
         const subjectURL = getSubjectURL();

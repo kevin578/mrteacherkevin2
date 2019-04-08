@@ -58,6 +58,9 @@ const LucidPress2_async = asyncComponent(()=> import("./Pages/LucidPress/LucidPr
 const MacOS1_async = asyncComponent(()=> import("./Pages/MacOS/MacOS1"));
 const MacOS2_async = asyncComponent(()=> import("./Pages/MacOS/MacOS2"));
 
+//micro:bit
+const Microbit1_async = asyncComponent(()=> import("./Pages/Microbit/Microbit1"));
+
 //Photoshop
 const Photoshop1_async = asyncComponent(()=> import("./Pages/Photoshop/Photoshop1"));
 const Photoshop2_async = asyncComponent(()=> import("./Pages/Photoshop/Photoshop2"));
@@ -165,6 +168,8 @@ class App extends Component {
 
             <Route path="/macos1" component={MacOS1_async} />
             <Route path="/macos2" component={MacOS2_async} />
+
+            <Route path="/microbit1" component={Microbit1_async} />
 
             <Route path="/photoshop1" component={Photoshop1_async} />
             <Route path="/photoshop2" component={Photoshop2_async} />

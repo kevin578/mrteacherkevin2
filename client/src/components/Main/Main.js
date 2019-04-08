@@ -111,7 +111,7 @@ class Main extends React.Component {
     for (let course of courses) {
       if (
         subjectPercentArray.indexOf(
-          course.subject.replace(/\s+/g, "").toLowerCase()
+          course.subject.replace(/\s+|:+/g, "").toLowerCase()
         ) > -1
       ) {
         startedSubjects.push(course);

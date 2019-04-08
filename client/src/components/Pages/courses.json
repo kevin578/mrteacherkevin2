@@ -86,6 +86,12 @@
     },
 
     {
+        "background":"linear-gradient(45deg, #dbd700 0%, #99db00 100%)",
+        "subject":"micro:bit",
+        "courses": ["Micro Machine", "*Big Mac"] 
+    },
+
+    {
         "background":"linear-gradient(45deg, #25B940 0%, #8522D3 100%)",
         "subject":"Soundtrap",
         "courses": ["Sonic Adventurer", "*Hip Hop Hooray"] 
