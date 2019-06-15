@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import VotingIcon from "./VotingIcon";
-import axios from "axios";
 import {changeProjectVotingIcon} from "../../actions";
 
 const Wrapper = styled.div`
@@ -38,17 +37,6 @@ const VotingContainer = styled.div`
   margin-left: 20px;
   justify-content: space-around;
 `;
-
-const colors = [
-  {
-    background: "#873cc4",
-    shadow: "#e5c730"
-  },
-  {
-    background: "#0b935b",
-    shadow: ""
-  }
-];
 
 class ProjectContainer extends Component {
 

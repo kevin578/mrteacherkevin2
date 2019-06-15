@@ -4,10 +4,8 @@ import styled from "styled-components";
 import axios from "axios";
 import queryString from "query-string";
 import {Helmet} from "react-helmet";
-import Header from "../Header";
 import Main from "../Main/Main";
 import ProjectContainer from "./ProjectContainer";
-import Sidebar from "../Main/Sidebar";
 import * as actions from "./../../actions";
 
 const ProjectSection = styled(Main)`
@@ -58,7 +56,7 @@ class Projects extends Component {
     }
 
     return this.state.projects.map(project => {
-      const { projectTitle, projectURL, _id, userName, projectKey, votes, selectedIcon  } = project;
+      const { projectTitle, projectURL, _id, userName, votes  } = project;
       const shortenedUserName = shortenName(userName);
       return (
         <ProjectContainer

@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Ranking from "../Ranking";
 import { connect } from "react-redux";
-import { camelize } from "../App";
 import media from "./mediaQueries";
-
 
 const setMobileButtonWidth = auth => {
   if (auth) {
@@ -31,7 +28,6 @@ const Button = styled.div`
 `;
 
 const Subject = styled.p`
-
   font-size: 18px;
   color: #ffffff;
   text-align: center;
@@ -61,31 +57,13 @@ const CourseContainer = styled.a`
   border-radius: 5px;
 `;
 
-const BadgeWrapper = styled.div`
-  width: 50px;
-  float: right;
-  position: relative;
-  bottom: 40px;
-  right: 30px;
-`;
-
-const goToLink = link => {
-  window.location = link;
-};
-
 export const removeStarredCourses = courses => {
   return courses.filter(course => {
-    if (!(course[0] === "*")) return course;
+    return !(course[0] === "*");
   });
 };
 
 const SubjectButton = props => {
-  const getRank = () => {
-    if (!(props.rank == null)) {
-      return props.rank[camelize(props.subject)];
-    }
-  };
-
   const getCoursePercentage = link => {
     if (!props.coursePercentages) return;
     const course = link.slice(1, link.length);
@@ -99,20 +77,18 @@ const SubjectButton = props => {
     const courses = removeStarredCourses(props.courses);
 
     if (courses.length > 0) {
-      
-      return props.courses.map((course, index) => {  
+      return props.courses.map((course, index) => {
         if (course[0] === "*") return;
+
         function getSubjectURL() {
           if (props.subjectURL) {
             return props.subjectURL;
           }
-          else {
-            return props.subject.replace(/\s+|:+/g, "").toLowerCase();
-          }
+          return props.subject.replace(/\s+|:+/g, "").toLowerCase();
         }
         const subjectURL = getSubjectURL();
         const link = `/${subjectURL}${index + 1}`;
-      
+
         return (
           <CourseContainer key={course} href={`${link}?pageNumber=0`}>
             <Course>{course}</Course>
@@ -120,9 +96,8 @@ const SubjectButton = props => {
           </CourseContainer>
         );
       });
-    } else {
-      return <Course style={{ marginLeft: 15 }}>Coming soon...</Course>;
     }
+    return <Course style={{ marginLeft: 15 }}>Coming soon...</Course>;
   };
 
   return (

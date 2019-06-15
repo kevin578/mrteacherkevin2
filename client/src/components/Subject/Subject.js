@@ -2,15 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import styled from "styled-components";
-import _ from "lodash";
 import { Helmet } from "react-helmet";
 import queryString from "query-string";
-import { camelize } from "../App";
 import Header from "../Header";
 import Sidebar from "./Sidebar";
 import * as actions from "../../actions";
 import { headerHeight } from "../Header";
-import { allTestsCompleted } from "../../actions";
 import media from "./mediaQueries";
 
 const Body = styled.div`

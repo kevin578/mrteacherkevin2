@@ -4,7 +4,6 @@ import image from "./../img/logo2.png";
 import { connect } from "react-redux";
 import media from "./Main/mediaQueries";
 import zeroFill from "zero-fill";
-import PropTypes from "prop-types";
 import googleButton from "../img/btn_google_light.svg";
 import ReactSVG from "react-svg";
 import hamburger from "../img/baseline-menu-24px.svg";
@@ -117,7 +116,7 @@ class Header extends React.Component {
       return (
         <HeaderLinks show = {this.state.showHamburgerMenu}>
           <GoogleButtonLink href = "/auth/google">
-              <img src={googleButton} />
+              <img src={googleButton} alt = "googleButton"/>
           </GoogleButtonLink>
           <MobileHeaderLink href="/auth/google">Sign in with Google</MobileHeaderLink>
         </HeaderLinks>

@@ -7,13 +7,10 @@ import * as actions from "../../actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGrinTears,
   faSplotch,
   faPaintBrush,
   faGrin
 } from "@fortawesome/free-solid-svg-icons";
-import { changeIconVoteNumber } from "../../actions";
-import { notEqual } from "assert";
 
 const Wrapper = styled.div`
   margin-right: 20px;
@@ -57,13 +54,6 @@ class VotingIcon extends Component {
     isHovered: false
   };
 
-  async componentDidMount() {
-    const { projectId } = this.props;
-    const projectVotes = await Axios.get("/api/getProjectVotes", {
-      params: { id: projectId }
-    });
-  }
-
   RetrieveIconData() {
     switch (this.props.iconType) {
       case "wellDone":
@@ -90,7 +80,7 @@ class VotingIcon extends Component {
     const { projects, iconType, projectId } = this.props;
     const { selectedProjectVotingIcon } = projects;
     const matched = _.get(selectedProjectVotingIcon, projectId);
-    return matched == iconType;
+    return matched === iconType;
   };
 
   getColor = () => {
@@ -103,14 +93,12 @@ class VotingIcon extends Component {
       return "";
     };
     const {
-      projectKey,
       iconType,
       changeProjectVotingIcon,
-      changeIconVoteNumber,
       projectId
     } = this.props;
     const { selectedProjectVotingIcon } = this.props.projects;
-    if (_.get(selectedProjectVotingIcon, projectId) == iconType) {
+    if (_.get(selectedProjectVotingIcon, projectId) === iconType) {
       _.set(selectedProjectVotingIcon, projectId, null);
     } else {
       _.set(selectedProjectVotingIcon, projectId, iconType);
@@ -146,7 +134,7 @@ class VotingIcon extends Component {
       return matchedProject.projectIcon === iconType;
     }
     
-    if (this.getColor() == checkedColor) {
+    if (this.getColor() === checkedColor) {
       const newVoteNumber = votes + 1;
       this.sendVoteNumberToDatabase(newVoteNumber);
       return newVoteNumber;

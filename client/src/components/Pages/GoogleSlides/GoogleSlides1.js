@@ -3,8 +3,6 @@ import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import ProjectSubmission from "../../Subject/ProjectSubmission";
 import Checkbox from "../../Subject/Checkbox";
-import Question from "../../Subject/Quiz";
-import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
 class GoogleSlides1 extends React.Component {

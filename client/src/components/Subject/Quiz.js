@@ -80,7 +80,7 @@ class Question extends Component {
 
   handleChange = event => {
     this.setState({ value: event.target.value });
-    if (event.target.value == this.props.correctAnswer) {
+    if (event.target.value === this.props.correctAnswer) {
       this.props.checkAnswers("matched", camelize(this.props.correctAnswer));
     } else {
       this.props.checkAnswers(null, camelize(this.props.correctAnswer));
@@ -135,6 +135,8 @@ class Question extends Component {
             {this.getMultipleChoices()}
           </div>
         );
+      default:
+        return;
     }
   };
 

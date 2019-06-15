@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { camelize } from "../App";
 import { formAnimation } from "./Quiz";
-import { resetCheckbox } from "../../actions";
 
 const Container = styled.div`
   margin-bottom: 7px;

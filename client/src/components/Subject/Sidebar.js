@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
-import Mindstorms from "./../../img/mindstorms.jpg";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import { headerHeight } from "../Header";
-import Ranking from "../Ranking";
 import courses from "../Pages/courses.json";
 
 import axios from "axios";
@@ -29,11 +27,6 @@ const SidebarSubject = styled.div`
   text-align: center;
   border-top: 2px solid #979797;
   border-bottom: 1px solid #979797;
-`;
-const SubjectImage = styled.img`
-  opacity: 0;
-  position: absolute;
-  left: 2px;
 `;
 
 const SidebarSubjectName = styled.p`
@@ -70,8 +63,8 @@ class Sidebar extends React.Component {
     const stepCopy = steps.filter(item => {
       return this.getColor(item.key);
     });
-    const percentage = parseInt((stepCopy.length / steps.length) * 100) + "%";
-    if (percentage != "0%") {
+    const percentage = parseInt((stepCopy.length / steps.length) * 100, 10) + "%";
+    if (percentage !== "0%") {
       axios.put("/api/setCoursePercentage", { subjectURL, percentage });
     }
   }
@@ -120,8 +113,8 @@ class Sidebar extends React.Component {
   getCourseTitle() {
     if (!this.props.subject) return;
     for (let course of courses) {
-      if (course.subject == this.props.title) {
-        const courseArrayIndex = parseInt(this.props.subject.slice(-1));
+      if (course.subject === this.props.title) {
+        const courseArrayIndex = parseInt(this.props.subject.slice(-1), 10);
         const title = course.courses[courseArrayIndex - 1];
         this.props.setCourseTitle(title);
         return title;

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { store } from "./../index.js";
-import { setCoursePercentages } from "../reducers/pageReducer.js";
 
 export const addAchievemnet = (ranking, subject) => {
   const isLoggedIn = store.getState().auth;

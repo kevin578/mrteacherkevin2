@@ -1,7 +1,6 @@
 import React from "react";
 import Subject from "./../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
-import TextQuestion from "../../Subject/Quiz";
 import Button from "../../Subject/Button";
 
 class KerbalSpaceProgram1 extends React.Component {

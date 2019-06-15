@@ -2,8 +2,6 @@ import React from "react";
 import Subject from "../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import Checkbox from "../../Subject/Checkbox";
-import Question from "../../Subject/Quiz";
-import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
 
 class GoogleApps1 extends React.Component {

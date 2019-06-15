@@ -1,18 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import Subject from "./../../Subject/Subject";
-import { Body, Header, Image, Video } from "../../Subject/SubjectStyles";
-import ProjectSubmission from "../../Subject/ProjectSubmission";
+import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import Checkbox from "./../../Subject/Checkbox";
-import Question from "../../Subject/Quiz";
-import TextEditor from "../../Subject/TextEditor";
 import Button from "../../Subject/Button";
-import whenGreenFlagClicked from "../../../img/scratch_blocks/whenGreenFlagClicked.png";
-import sayFor2Sec from "../../../img/scratch_blocks/SayFor2Sec.png";
-
-const ScratchBlocks = styled.img`
-  margin-right: 15px;
-`;
 
 class Scratch1 extends React.Component {
   render() {

@@ -74,7 +74,7 @@ class SidebarItem extends React.Component {
       <Wrapper
         onClick={this.click}
         completed={this.props.completed}
-        currentlySelected={(this.props.index == this.props.page)}
+        currentlySelected={(this.props.index === this.props.page)}
       >
         <ItemName>{this.props.children}</ItemName>
         <StarArea>{this.getStars()}</StarArea>

@@ -47,15 +47,6 @@ const MyProjects = styled(Container)`
   ${media.bigPhone`display: none;`};
 `;
 
-const TapToExpandButton = styled.div`
-  postion: absolute;
-  margin-left: 320px;
-  maring-bottom: 300px;
-  width: 40px;
-  height: 40px;
-  background: red;
-`;
-
 export default class Sidebar extends Component {
   state = {
     sidebarIsExpanded: false,

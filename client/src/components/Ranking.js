@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import oneStar from "../img/badges/oneStar.svg";
-import twoStar from "../img/badges/twoStar.svg";
-import threeStar from "../img/badges/threeStar.svg";
 import spaceCowboy from "../img/badges/spaceCowboy.svg";
 import programmingABCs from "../img/badges/programmingABCs.svg";
 

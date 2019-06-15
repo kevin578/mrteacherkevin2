@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Header from "./../Header";
 import SubjectButton, { removeStarredCourses } from "./SubjectButton";
 import Axios from "../../../node_modules/axios";
-import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import courses from "../Pages/courses.json";
@@ -16,8 +15,6 @@ const Body = styled.div``;
 const Content = styled.div`
   display: flex;
 `;
-
-const ContentLoggedOut = styled(Content)``;
 
 const SubjectContainer = styled.div`
   width: "80%";
@@ -59,12 +56,6 @@ const StartedSubjects = styled(Subjects)`
   padding-bottom: 40px;
   border-bottom: 3px #c1c1c1 solid;
   margin-bottom: 60px;
-`;
-
-const ComingSoonSubjects = styled(Subjects)`
-  padding-top: 40px;
-  border-top: 3px #c1c1c1 solid;
-  margin-top: 60px;
 `;
 
 const SubjectTitle = styled.h1`
@@ -134,7 +125,6 @@ class Main extends React.Component {
     this.props.addNotStartedSubjects(notStartedSubjects);
     this.props.addComingSoonSubjects(comingSoonSubjects);
 
-    const sortedCourses = startedSubjects.concat(notStartedSubjects);
   }
 
   getSubjects(subjectArray) {

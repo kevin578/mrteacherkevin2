@@ -20,7 +20,7 @@ export default function projectsReducer(state = defaultState, action) {
     case "ADD_PROJECT_KEY":
       return { ...state, projectKey: action.payload};
     case "SET_PROJECTS_FROM_DATABASE":
-      return { ... state, projectsInDatabase: action.payload};
+      return { ...state, projectsInDatabase: action.payload};
     case "SET_VOTING_ICONS_FROM_DATABASE":
       return { ...state, votingIconsInDatabase: [...state.votingIconsInDatabase, action.payload]};
     case "IS_PROJECT_SUBMISSION_PAGE":
