@@ -47,12 +47,6 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "query-string": "^6.2.0",
-    "react-ace": "^6.1.4",
-    "react-gist": "^1.2.1",
-    "react-helmet": "^5.2.0",
-    "react-svg": "^7.2.2",
-    "redux-devtools-extension": "^2.13.2",
-    "styled-components": "^3.2.6",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {

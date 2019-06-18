@@ -100,7 +100,7 @@ class App extends Component {
     this.getUserStateFromDatabase();
     this.getProjectInfoFromDatabase();
     this.props.fetchUser();
-    this.props.setPage(0);
+    //this.props.setPage(0);
   }
 
   getUserStateFromDatabase = async () => {

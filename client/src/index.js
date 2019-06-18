@@ -9,6 +9,7 @@ import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+
 export const store = createStore(
   reducers,
   {},
@@ -20,6 +21,6 @@ ReactDOM.render(
     <App />
   </Provider>,
 
-  document.getElementById("root")
+  document.getElementById("root") || document.createElement("div") // for testing purposes
 );
 registerServiceWorker();
