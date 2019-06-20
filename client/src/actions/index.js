@@ -1,13 +1,12 @@
-import axios from "axios";
-//import { store } from "./../index.js";
+import axios from 'axios';  
 
-// export * from "./auth";
-// export * from "./buttonActions";
-// export * from "./rankings";
-// export * from "./textEditorActions";
-// export * from "./projectsActions";
-// export * from "./pageActions";
-// export * from "./mainPageActions";
+export * from "./auth";
+export * from "./buttonActions";
+export * from "./rankings";
+export * from "./textEditorActions";
+export * from "./projectsActions";
+export * from "./pageActions";
+export * from "./mainPageActions";
 
 export const setPage = pageNumber => {
   return {
@@ -48,21 +47,20 @@ export const completeInit = completeObject => {
   };
 };
 
-// export const completeButton = (pageKey, subject) => {
-//   const isLoggedIn = store.getState().auth;
-//   if (isLoggedIn) {
-//     axios.put("/api/editCompletedPages", {
-//       pageKey,
-//       subject,
-//       store: store.getState().completed
-//     });
-//   }
+export const completeButton = ({pageKey, subject, completed, auth}) => {
+  if (auth) {
+    axios.put("/api/editCompletedPages", {
+      pageKey,
+      subject,
+      store: completed
+    });
+  }
 
-//   return dispatch => {
-//     dispatch({
-//       type: "COMPLETE_BUTTON",
-//       pageKey,
-//       subject
-//     });
-//   };
-// };
+  return dispatch => {
+    dispatch({
+      type: "COMPLETE_BUTTON",
+      pageKey,
+      subject
+    });
+  };
+};

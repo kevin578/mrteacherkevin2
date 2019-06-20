@@ -130,9 +130,19 @@ class Button extends Component {
 
   nextPage = () => {
     if (this.props.auth) this.changeScore(this.props.changeScoreValue);
-    this.props.completeButton(this.props.pageKey, this.props.subjectURL);
+    this.props.completeButton({
+      pageKey: this.props.pageKey,
+      subjectURL: this.props.subjectURL,
+      completed: this.props.completed,
+      auth: this.props.auth
+    });
     if (this.props.badge) {
-      this.props.addAchievement(this.props.badge, this.props.subject);
+      this.props.addAchievement({
+        badge: this.props.badge,
+        subject: this.props.subject,
+        auth: this.props.auth,
+        achievements: this.props.achievements
+      });
     }
     if (this.props.projectSubmission.isProjectSubmissionPage) {
       axios.post("/api/addProject", {
@@ -144,12 +154,16 @@ class Button extends Component {
         course: this.props.pageInfo.courseTitle
       });
     }
-    if (parseInt(this.props.page, 10) + 1 === this.props.pageInfo.subjectPageLength) {
+    if (
+      parseInt(this.props.page, 10) + 1 ===
+      this.props.pageInfo.subjectPageLength
+    ) {
       window.location = "/";
       this.props.setPage(0);
     } else {
       window.location = `${this.props.subjectURL}?pageNumber=${parseInt(
-        this.props.page, 10
+        this.props.page,
+        10
       ) + 1}`;
       //this.props.history.push(`${this.props.subjectURL}?pageNumber=${parseInt(this.props.page, 10) + 1}`);
     }
@@ -219,6 +233,7 @@ Button.defaultProps = {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    achievements: state.achievements,
     page: state.page,
     pageKey: state.pageKey,
     subjectURL: state.subjectURL,

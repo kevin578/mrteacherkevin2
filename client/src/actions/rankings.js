@@ -1,13 +1,11 @@
 import axios from "axios";
-import { store } from "./../index.js";
 
-export const addAchievemnet = (ranking, subject) => {
-  const isLoggedIn = store.getState().auth;
-  if (isLoggedIn) {
+export const addAchievemnet = ({ranking, subject, auth, achievements}) => {
+  if (auth) {
     axios.put("/api/editAchievements", {
       ranking,
       subject,
-      store: store.getState().achievements
+      store: achievements
     });
   }
 
