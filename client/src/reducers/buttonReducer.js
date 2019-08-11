@@ -1,3 +1,6 @@
+//page, pageKey, achievements, remainingcheckboxes, 
+
+
 export function changeScore(state = 0, action) {
   switch (action.type) {
     case "CHANGE_SCORE":

@@ -1,14 +1,6 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import {
-  setPage,
-  setPageKey,
-  completePage,
-  setSubjectURL,
-  setSubject,
-  addAcheievement,
-  setCoursePercentages,
-  pageInfoReducer
+import { pageReducer, addAcheievement, completePage
 } from "./pageReducer";
 import {
   changeScore,
@@ -22,10 +14,7 @@ import mainPageReducer from "./mainPageReducer";
 
 export default combineReducers({
   auth: authReducer,
-  page: setPage,
-  pageKey: setPageKey,
-  subject: setSubject,
-  subjectURL: setSubjectURL,
+  page: pageReducer,
   achievements: addAcheievement,
   completed: completePage,
   score: changeScore,
@@ -34,8 +23,6 @@ export default combineReducers({
   textEditorContent: setEditorContent,
   tests: setTests,
   allTestsCompleted,
-  coursePercentages: setCoursePercentages,
   projects: projectsReducer,
-  pageInfo: pageInfoReducer,
-  mainPage: mainPageReducer
+  mainPage: mainPageReducer,
 });

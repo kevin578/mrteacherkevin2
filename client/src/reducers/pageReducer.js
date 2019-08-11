@@ -1,55 +1,33 @@
 const defaultPageState = {
   courseTitle: "",
-  subjectPageLength: 0
+  subjectPageLength: 0,
+  number: 0,
+  pageKey: "",
+  subjectURL: "",
+  subject: "",
+  coursePercentages: []
 };
 
-export function pageInfoReducer(state = defaultPageState, action) {
+export function pageReducer(state = defaultPageState, action) {
   switch (action.type) {
+    case "SET_PAGE":
+      return { ...defaultPageState, number: action.payload };
     case "SET_COURSE_TITLE":
       return { ...state, courseTitle: action.payload };
     case "SET_SUBJECT_PAGE_LENGTH":
       return { ...state, subjectPageLength: action.payload };
-    default:
-      return state;
-  }
-}
-
-export function setPage(state = 0, action) {
-  switch (action.type) {
-    case "SET_PAGE":
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
-export function setPageKey(state = null, action) {
-  switch (action.type) {
     case "SET_PAGE_KEY":
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
-export function setSubjectURL(state = null, action) {
-  switch (action.type) {
+      return { ...state, pageKey: action.payload };
     case "SET_SUBJECT_URL":
-      return action.subject;
-    default:
-      return state;
-  }
-}
-
-export function setSubject(state = null, action) {
-  switch (action.type) {
+      return { ...state, subjectURL: action.payload };
     case "SET_SUBJECT":
-      return action.subject;
+      return { ...state, subject: action.payload };
+    case "SET_PERCENTAGES":
+      return { ...state, percentages: action.payload };
     default:
       return state;
   }
 }
-
 export function addAcheievement(state = null, action) {
   let stateCopy = { ...state };
   const subject = action.subject;
@@ -87,15 +65,6 @@ export function completePage(state = {}, action) {
 
     case "COMPLETE_INIT":
       return action.payload ? action.payload : null;
-    default:
-      return state;
-  }
-}
-
-export function setCoursePercentages(state = null, action) {
-  switch (action.type) {
-    case "SET_PERCENTAGES":
-      return action.payload;
     default:
       return state;
   }

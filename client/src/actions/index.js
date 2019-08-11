@@ -25,7 +25,7 @@ export const setPageKey = pageKey => {
 export const setSubjectURL = subject => {
   return {
       type: "SET_SUBJECT_URL",
-      subject
+      payload: subject
     };
 };
 
@@ -33,7 +33,7 @@ export const setSubject = subject => {
   return dispatch => {
     dispatch({
       type: "SET_SUBJECT",
-      subject
+      payload: subject
     });
   };
 };

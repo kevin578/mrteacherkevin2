@@ -28,25 +28,28 @@ class Subject extends React.Component {
   componentDidMount() {
     this.props.setSubjectURL(this.props.urlName);
     this.props.setSubject(this.props.title);
+    this.props.setPageKey(this.props.children[this.props.page.number].key);
+    this.setPage();
   }
 
   componentDidUpdate() {
-    this.props.setPageKey(this.props.children[this.props.page].key);
-    this.setPage();
+    // this.props.setPageKey(this.props.children[this.props.page.number].key);
+    // this.setPage();
   }
 
   setPage() {
     const query = queryString.parse(this.props.location.search);
-    if ("pageNumber" in query) {
+    if (("pageNumber" in query) && (query.pageNumber != this.props.page.number)) {
       this.props.setPage(query.pageNumber);
     }
   }
 
   render() {
+    //debugger;
     return (
       <div>
         <Helmet>
-          <title>{this.props.title} | {this.props.pageInfo.courseTitle} | {this.props.children[this.props.page].props.title}</title>
+          <title>{this.props.title} | {this.props.page.courseTitle} | {this.props.children[this.props.page.number].props.title}</title>
         </Helmet>
         <Header />
         <Body>
@@ -57,7 +60,7 @@ class Subject extends React.Component {
           />/
           <Content
             key={this.props.subject + this.props.page}
-            title={this.props.children[this.props.page].props.title}
+            title={this.props.children[this.props.page.number].props.title}
           >
             {this.props.children[this.props.page]}
           </Content>
@@ -72,7 +75,6 @@ function mapStateToProps(state) {
     page: state.page,
     subject: state.subject,
     tests: state.tests,
-    pageInfo: state.pageInfo
   };
 }
 
