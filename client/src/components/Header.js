@@ -42,7 +42,8 @@ const Hamburger = styled(ReactSVG)`
   margin-top: 7px;
   margin-left: 30px;
   display: none;
-  ${media.bigPhone`display: block;`} ${media.smallPhone`margin-left: 10px;`};
+  ${media.bigPhone`display: block;`} ;
+  ${media.smallPhone`margin-left: 10px;`};
 `;
 
 const HeaderLinks = styled.div`
@@ -89,7 +90,8 @@ const MobileHeaderLink = styled(HeaderLink)`
 const GoogleButtonLink = styled(HeaderLink)`
   margin-top: 9px;
   transform: translateY(0%);
-  ${media.tablet`transform: translateX(-120px);`} ${media.bigPhone`display: none;`};
+  ${media.tablet`transform: translateX(-120px);`};
+  ${media.bigPhone`display: none;`};
 `;
 
 class Header extends React.Component {
@@ -116,9 +118,6 @@ class Header extends React.Component {
           <GoogleButtonLink>
             <SignInButton />
           </GoogleButtonLink>
-          <MobileHeaderLink href="/auth/google">
-            Sign in with Google
-          </MobileHeaderLink>
         </HeaderLinks>
       );
     }

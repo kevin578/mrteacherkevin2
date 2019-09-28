@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
 
+
 const customStyles = {
   overlay: {
     position: "fixed",
@@ -34,7 +35,7 @@ export default class UserInfoModal extends Component {
   render() {
     return (
       <div>
-        <Modal isOpen={false} style={customStyles} contentLabel="Example Modal">
+        <Modal isOpen={this.props.isOpen} style={customStyles} contentLabel="Example Modal">
           <h1>Hello</h1>
         </Modal>
       </div>
