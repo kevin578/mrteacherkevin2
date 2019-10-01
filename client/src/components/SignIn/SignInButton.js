@@ -34,11 +34,11 @@ const SignInButton = props => {
     console.log("clicked");
   };
 
-  
   return (
     <AuthContainer>
       <Button onClick={buttonClicked()}>Sign up</Button>
-      <SignInLink> href="#">Sign in</SignInLink>
+      <SignInLink href="#">Sign in</SignInLink>
+      <UserInfoModal isOpen="true" />
     </AuthContainer>
   );
 };

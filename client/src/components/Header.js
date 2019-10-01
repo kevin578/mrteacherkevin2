@@ -9,7 +9,6 @@ import googleButton from "../img/btn_google_light.svg";
 import SignInButton from "./SignIn/SignInButton";
 import ReactSVG from "react-svg";
 import hamburger from "../img/baseline-menu-24px.svg";
-import UserInfoModal from "./SignIn/UserInfoModal";
 
 export const headerHeight = 60;
 const imgHeight = headerHeight - 20;
@@ -138,7 +137,6 @@ class Header extends React.Component {
   render() {
     return (
       <Wrapper>
-        <UserInfoModal />
         <Hamburger src={hamburger} onClick={this.hamburgerClicked} />
         <Logo src={image} onClick={this.goHome} />
         {this.getHeaderContent()}

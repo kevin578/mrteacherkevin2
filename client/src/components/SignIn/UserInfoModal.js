@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import Modal from "react-modal";
+
 
 
 const customStyles = {
@@ -31,12 +33,17 @@ const customStyles = {
   }
 };
 
+
+const NameInput = styled.input`
+`
+
 export default class UserInfoModal extends Component {
   render() {
     return (
       <div>
         <Modal isOpen={this.props.isOpen} style={customStyles} contentLabel="Example Modal">
-          <h1>Hello</h1>
+          <h1>Sign up</h1>
+          <NameInput type = "text"/>
         </Modal>
       </div>
     );
