@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import UserInfoModal from "./UserInfoModal";
+import { set } from "mongoose";
 
 const Button = styled.div`
   width: 120px;
@@ -30,15 +31,17 @@ const AuthContainer = styled.div`
 `;
 
 const SignInButton = props => {
-  const buttonClicked = () => {
-    console.log("clicked");
-  };
+  const [modalIsOpen, setModalIOpen] = useState(false);
+
+  function toggleModal() {
+    setModalIOpen(!modalIsOpen)
+  }
 
   return (
     <AuthContainer>
-      <Button onClick={buttonClicked()}>Sign up</Button>
+      <Button onClick={toggleModal}>Sign up</Button>
       <SignInLink href="#">Sign in</SignInLink>
-      <UserInfoModal isOpen="true" />
+      <UserInfoModal toggleModal = {toggleModal} isOpen= {modalIsOpen} />
     </AuthContainer>
   );
 };

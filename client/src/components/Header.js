@@ -41,7 +41,7 @@ const Hamburger = styled(ReactSVG)`
   margin-top: 7px;
   margin-left: 30px;
   display: none;
-  ${media.bigPhone`display: block;`} ;
+  ${media.bigPhone`display: block;`};
   ${media.smallPhone`margin-left: 10px;`};
 `;
 
@@ -97,7 +97,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showHamburgerMenu: false
+      showHamburgerMenu: false,
     };
   }
 
@@ -115,7 +115,7 @@ class Header extends React.Component {
       return (
         <HeaderLinks show={this.state.showHamburgerMenu}>
           <GoogleButtonLink>
-            <SignInButton />
+            <SignInButton/>
           </GoogleButtonLink>
         </HeaderLinks>
       );

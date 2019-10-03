@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
-
-
+import DatePicker from "react-date-picker";
+import { TextField } from "../Subject/Quiz";
 
 const customStyles = {
   overlay: {
@@ -33,19 +33,37 @@ const customStyles = {
   }
 };
 
+const Header = styled.h1`
+  font-weight: 400;
+  margin-bottom: 40px;
+`;
 
-const NameInput = styled.input`
-`
+const CloseButton = styled.button`
+  border:none;
+  background: transparent;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+`;
 
-export default class UserInfoModal extends Component {
-  render() {
+const UserInfoModal = (props)=>{
+  
     return (
       <div>
-        <Modal isOpen={this.props.isOpen} style={customStyles} contentLabel="Example Modal">
-          <h1>Sign up</h1>
-          <NameInput type = "text"/>
+        <Modal
+          isOpen={props.isOpen}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <Header>Sign up</Header>
+          <TextField placeholder = "Username" name="name-input" type="text" />
+          <TextField placeholder = "Password" name="password-input" type="password" />
+          <CloseButton onClick = {props.toggleModal}>&times;</CloseButton>
         </Modal>
       </div>
     );
-  }
-}
+  };
+
+  export default UserInfoModal;
