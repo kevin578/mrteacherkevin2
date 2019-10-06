@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import UserInfoModal from "./UserInfoModal";
 import { set } from "mongoose";
-
-const Button = styled.div`
-  width: 120px;
-  height: 40px;
-  border-radius: 3px;
-  background: #ff9000;
-  text-align: center;
-  line-height: 40px;
-  &:hover {
-    box-shadow: 0px 0px 5px #fff;
-  }
-`;
+import { Button } from "../shared/utilityComponents";
 
 const SignInLink = styled.a`
   line-height: 40px;
