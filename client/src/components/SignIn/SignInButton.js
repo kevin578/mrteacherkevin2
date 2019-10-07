@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import UserInfoModal from "./UserInfoModal";
-import { set } from "mongoose";
+import SignInModal from "./SignInModal";
 import { Button } from "../shared/utilityComponents";
 
-const SignInLink = styled.a`
+const SignInLink = styled.button`
   line-height: 40px;
   margin-left: 40px;
-  text-decoration: underline;
-  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  width: 80px;
+  cursor: pointer;
+  background: none;
+  border: none;
   color: #fff;
   &:hover {
     transform: scale(1.05);
@@ -20,17 +24,23 @@ const AuthContainer = styled.div`
 `;
 
 const SignInButton = props => {
-  const [modalIsOpen, setModalIOpen] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
+  const [signInModal, setSignInModal] = useState(false);
 
   function toggleModal() {
-    setModalIOpen(!modalIsOpen)
+    setSignUpModal(!signUpModal);
+  }
+
+  function toggleSignInModal() {
+    setSignInModal(!signInModal);
   }
 
   return (
     <AuthContainer>
       <Button onClick={toggleModal}>Sign up</Button>
-      <SignInLink href="#">Sign in</SignInLink>
-      <UserInfoModal toggleModal = {toggleModal} isOpen= {modalIsOpen} />
+      <SignInLink onClick = {toggleSignInModal}>Sign in</SignInLink>
+      <UserInfoModal toggleModal={toggleModal} isOpen={signUpModal} />
+      <SignInModal toggleModal = {toggleSignInModal} isOpen = { signInModal } />
     </AuthContainer>
   );
 };

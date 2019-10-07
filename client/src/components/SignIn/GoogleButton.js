@@ -113,7 +113,7 @@ const GoogleButton = props => {
             fill="#FFFFFF"
           >
             <tspan x="50" y="24">
-              Sign up with Google
+              {props.text}
             </tspan>
           </text>
         </g>
