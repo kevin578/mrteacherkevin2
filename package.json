@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "12.4.0",
-    "npm": "6.9.0"
-  },
   "scripts": {
     "start": "node index.js",
     "client": "cd client && yarn start",
@@ -38,7 +34,6 @@
     "dotenv": "^5.0.1",
     "eslint-config-airbnb": "^17.0.0",
     "express": "^4.16.3",
-    "firebase": "^5.8.2",
     "jest": "^23.4.1",
     "jest-expo": "^30.0.0",
     "lodash": "^4.17.11",
@@ -46,18 +41,13 @@
     "mongoose": "^5.1.2",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
     "query-string": "^6.2.0",
-    "react-ace": "^6.1.4",
-    "react-gist": "^1.2.1",
-    "react-helmet": "^5.2.0",
-    "react-modal": "^3.8.1",
-    "react-svg": "^7.2.2",
+    "react-scripts": "^3.2.0",
     "redux-devtools-extension": "^2.13.2",
-    "styled-components": "^3.2.6",
     "zero-fill": "^2.2.3"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.1",

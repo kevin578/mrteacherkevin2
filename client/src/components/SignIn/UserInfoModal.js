@@ -26,6 +26,8 @@ const BirthdaySelect = styled.select`
     no-repeat #fff;
 `;
 
+
+
 const BirthdayOption = styled.option``;
 
 const BirthdayLabel = styled.label``;

@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
@@ -20,21 +21,38 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
-      userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
+      userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
       const existingUser = await User.findOne({ googleId: profile.id });
       if (existingUser) {
         done(null, existingUser);
       } else {
-        const user = await new User({ 
+        const user = await new User({
           googleId: profile.id,
           displayName: profile.displayName,
-          name: profile.name   
+          name: profile.name
         }).save();
         done(null, user);
       }
     }
   )
+);
+
+passport.use(
+  new LocalStrategy(function(username, password, done) {
+    console.log(username, password);
+    // User.findOne({ username: username }, function(err, user) {
+    //   if (err) {
+    //     return done(err);
+    //   }
+    //   if (!user) {
+    //     return done(null, false, { message: "Incorrect username." });
+    //   }
+    //   if (!user.validPassword(password)) {
+    //     return done(null, false, { message: "Incorrect password." });
+    //   }
+    //   return done(null, user);
+    // });
+  })
 );

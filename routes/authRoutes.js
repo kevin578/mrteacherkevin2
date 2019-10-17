@@ -23,4 +23,13 @@ router.get("/api/logout", (req, res) => {
   res.redirect("/");
 });
 
+router.post("/api/login-email", (req, res) => {
+  res.send(req.body);
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
+  });
+});
+
 module.exports = router;
