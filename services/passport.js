@@ -3,6 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
+const bcrypt = require("bcryptjs");
 
 require("dotenv").config();
 
@@ -40,26 +41,22 @@ passport.use(
 );
 
 passport.use(
-  new LocalStrategy(function(username, password, done) {
-    console.log(username, password);
-      if (username && password) {
-        return done("user");
-      }
-      else {
-        return done(null, "user");
-      }
-
-    // User.findOne({ username: username }, function(err, user) {
-    //   if (err) {
-    //     return done(err);
-    //   }
-    //   if (!user) {
-    //     return done(null, false, { message: "Incorrect username." });
-    //   }
-    //   if (!user.validPassword(password)) {
-    //     return done(null, false, { message: "Incorrect password." });
-    //   }
-    //   return done(null, user);
-    // });
-  })
+  new LocalStrategy(
+    { usernameField: "email", passReqToCallback: true },
+    function(req, email, password, done) {
+      const passwordHash = bcrypt.hashSync(password, 8);
+      new User({
+        email: email,
+        password: passwordHash,
+        username: req.query.username
+      })
+        .save()
+        .then(user => {
+          done(null, user, {
+            saved: true,
+            message: "Saved"
+          });
+        });
+    }
+  )
 );

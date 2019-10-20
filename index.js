@@ -3,15 +3,16 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const router = require("express").Router();
+require("./models/user");
+require("./services/passport");
 const authRoutes = require("./routes/authRoutes");
 const userInfoRoutes = require("./routes/userInfoRoutes");
 const projectRoutes = require("./routes/projectRoutes");
-const testRoutes = require("./routes/testRoutes")
+const testRoutes = require("./routes/testRoutes");
 const bodyParser = require("body-parser");
 
 
-require("./models/user");
-require("./services/passport");
+
 
 mongoose.connect(process.env.MONGO_URI);
 
