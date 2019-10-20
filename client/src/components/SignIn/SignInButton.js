@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import UserInfoModal from "./UserInfoModal";
+import SignUpModal from "./SignUpModal";
 import SignInModal from "./SignInModal";
 import { Button } from "../shared/utilityComponents";
 
@@ -39,7 +39,7 @@ const SignInButton = props => {
     <AuthContainer>
       <Button onClick={toggleModal}>Sign up</Button>
       <SignInLink onClick = {toggleSignInModal}>Sign in</SignInLink>
-      <UserInfoModal toggleModal={toggleModal} isOpen={signUpModal} />
+      <SignUpModal toggleModal={toggleModal} isOpen={signUpModal} />
       <SignInModal toggleModal = {toggleSignInModal} isOpen = { signInModal } />
     </AuthContainer>
   );

@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const router = require("express").Router();
 const passport = require("passport");
-const validator = require("email-validator");
 
 router.get(
   "/auth/google",
@@ -37,31 +36,22 @@ router.post(
 
 async function validateLocalRequest(req, res, next) {
 
-  //check for valid email
-  if (!validator.validate(req.query.email)) {
-    return res.json({
-      error: true,
-      invalidInput: "email",
-      errorMessage: "Please enter a valid email."
-    });
-  }
-
   //check if email already exists in database
   const checkEmail = await User.findOne({ email: req.query.email });
   if (checkEmail) {
     return res.json({
       error: true,
-      invalidInputType: "email",
+      errorType: "email",
       errorMessage: "Email already in use."
     });
   }
 
   //check if username already exists
-  const checkUsername = await User.findOne({ username: req.query.username });
+  const checkUsername = await User.findOne({ username: req.query.userName });
   if (checkUsername) {
     return res.json({
       error: true,
-      invalidInputType: "username",
+      errorType: "userName",
       errorMessage: "Username already in use."
     });
   }

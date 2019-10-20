@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "axios": "^0.18.0",
     "halogenium": "^2.2.3",
+    "email-validator": "^2.0.4",
     "react": "^16.10.1",
     "react-ace": "^8.0.0",
     "react-date-picker": "^7.8.2",
