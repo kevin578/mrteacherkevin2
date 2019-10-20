@@ -23,13 +23,13 @@ router.get("/api/logout", (req, res) => {
   res.redirect("/");
 });
 
-router.post("/api/login-email", (req, res) => {
-  res.send(req.body);
+router.post(
+  "/api/login-email",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true
-  });
-});
+    failureRedirect: "https://expressjs.com/en/guide/using-middleware.html"
+  }),
+  (req, res)=> res.send("Done")
+);
 
 module.exports = router;
