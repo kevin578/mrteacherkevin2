@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
-import { TextField } from "../Subject/Quiz";
 import axios from "axios";
 import { months, years } from "./month_year";
 import validator from "email-validator";
@@ -93,7 +92,7 @@ const SignUpModal = props => {
     if (checkForEmptyInputs()) return;
     setIsLoading(true);
     axios
-      .post("/api/login-email", null, {
+      .post("/api/signup-email", null, {
         params: {
           userName,
           password,

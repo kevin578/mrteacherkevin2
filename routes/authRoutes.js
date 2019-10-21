@@ -26,16 +26,23 @@ router.get("/api/logout", (req, res) => {
 });
 
 router.post(
-  "/api/login-email",
+  "/api/signin-email",
+  passport.authenticate("local-signin", {}),
+  (req, res) => {
+    res.send("User session initiated");
+  }
+);
+
+router.post(
+  "/api/signup-email",
   validateLocalRequest,
-  passport.authenticate("local", {}),
+  passport.authenticate("local-signup", {}),
   (req, res) => {
     res.send("User saved in database");
   }
 );
 
 async function validateLocalRequest(req, res, next) {
-
   //check if email already exists in database
   const checkEmail = await User.findOne({ email: req.query.email });
   if (checkEmail) {

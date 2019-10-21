@@ -41,6 +41,7 @@ passport.use(
 );
 
 passport.use(
+  "local-signup",
   new LocalStrategy(
     { usernameField: "email", passReqToCallback: true },
     function(req, email, password, done) {
@@ -48,7 +49,7 @@ passport.use(
       new User({
         email: email,
         password: passwordHash,
-        username: req.query.username
+        userName: req.query.userName
       })
         .save()
         .then(user => {
@@ -57,6 +58,53 @@ passport.use(
             message: "Saved"
           });
         });
+    }
+  )
+);
+
+passport.use(
+  "local-signin",
+  new LocalStrategy(
+    { usernameField: "userName", passReqToCallback: true },
+    function(req, userName, password, done) {
+      const findUserName = new Promise(resolve => {
+        User.findOne({ userName }).then(user => {
+          if (user) {
+            return checkPassword(user);
+          } else {
+            resolve();
+          }
+        });
+      });
+
+      const findEmail = new Promise(resolve => {
+        User.findOne({ email: userName }).then(user => {
+          if (user) {
+            return checkPassword(user);
+          } else {
+            resolve();
+          }
+        });
+      });
+
+      function checkPassword(user) {
+        bcrypt.compare(password, user.password, function(err, res) {
+          if (res) {
+            return done(null, user);
+          } else {
+            return req.res.json({
+              error: true,
+              errorMessage: "Incorrect Password"
+            });
+          }
+        });
+      }
+      Promise.all([findEmail, findUserName]).then(() => {
+        return req.res.json({
+          error: true,
+          message: "Username does not exist"
+        });
+      });
     }
   )
 );
