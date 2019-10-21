@@ -67,6 +67,7 @@ passport.use(
   new LocalStrategy(
     { usernameField: "userName", passReqToCallback: true },
     function(req, userName, password, done) {
+      
       const findUserName = new Promise(resolve => {
         User.findOne({ userName }).then(user => {
           if (user) {
@@ -94,6 +95,7 @@ passport.use(
           } else {
             return req.res.json({
               error: true,
+              errorType: "password",
               errorMessage: "Incorrect Password"
             });
           }
@@ -102,7 +104,8 @@ passport.use(
       Promise.all([findEmail, findUserName]).then(() => {
         return req.res.json({
           error: true,
-          message: "Username does not exist"
+          errorType: "userName",
+          errorMessage: "Username does not exist"
         });
       });
     }
