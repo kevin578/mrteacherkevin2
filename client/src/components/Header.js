@@ -105,9 +105,10 @@ class Header extends React.Component {
     if (this.props.auth == null) {
       return;
     } else if (this.props.auth) {
+      const { userName } = this.props.auth;
       return (
         <HeaderLinks show={this.state.showHamburgerMenu}>
-          <HeaderLink>{zeroFill(5)(this.props.score)}</HeaderLink>
+          <HeaderLink href = "/profile">{userName}</HeaderLink>
           <HeaderLink href="/api/logout">Logout</HeaderLink>
         </HeaderLinks>
       );

@@ -19,6 +19,7 @@ const Input = styled.input`
   border-radius: 3px;
   left: 50px;
   font-size: 16px;
+  padding-left: 5px;
 `;
 
 const ErrorMessage = styled.p`
