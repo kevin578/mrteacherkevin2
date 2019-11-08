@@ -7,6 +7,7 @@ import * as actions from "../actions";
 import asyncComponent from "./AsyncComponent";
 
 
+const Profile = asyncComponent(()=> import("./Profile"));
 const Projects_async = asyncComponent(()=> import("./Projects/Projects"));
 //Audacity
 const Audacity1_async = asyncComponent(()=> import("./Pages/Audacity/Audacity1"));
@@ -130,6 +131,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route path="/" component={Main} exact />
+            <Route path="/profile" component={Profile} />
             <Route path = "/projects" component = {Projects_async}/>
             <Route path = "/[object Object]" component = {Main} />
             <Route path="/audacity1" component={Audacity1_async} />

@@ -10,6 +10,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   googleId: String,
   displayName: String,
+  email: String,
+  password: String,
+  userName: String,
+  birthday: Date,
   name: Object,
   email: String,
   completed: Object,

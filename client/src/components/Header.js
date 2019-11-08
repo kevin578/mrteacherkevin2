@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import media from "./Main/mediaQueries";
 import zeroFill from "zero-fill";
 import googleButton from "../img/btn_google_light.svg";
+import SignInButton from "./SignIn/SignInButton";
 import ReactSVG from "react-svg";
 import hamburger from "../img/baseline-menu-24px.svg";
 
@@ -39,8 +40,8 @@ const Hamburger = styled(ReactSVG)`
   margin-top: 7px;
   margin-left: 30px;
   display: none;
-  ${media.bigPhone`display: block;`}
-  ${media.smallPhone`margin-left: 10px;`}
+  ${media.bigPhone`display: block;`};
+  ${media.smallPhone`margin-left: 10px;`};
 `;
 
 const HeaderLinks = styled.div`
@@ -48,7 +49,7 @@ const HeaderLinks = styled.div`
   display: flex;
   ${media.smallLaptop`margin-left: 40%;`};
   ${media.bigPhone`
-  display: ${props=> props.show ? "block" : "none"};
+  display: ${props => (props.show ? "block" : "none")};
   position: absolute;
   margin-top: 10px;
   left: 20px;
@@ -76,49 +77,46 @@ const HeaderLink = styled.a`
   border-bottom: 2px solid #cecece;
   padding-left: 10px;
   padding-bottom: 10px;
-  `}
-
+  `};
 `;
 
 const MobileHeaderLink = styled(HeaderLink)`
   display: none;
-  ${media.bigPhone`display: block;`}
+  ${media.bigPhone`display: block;`};
 `;
 
 const GoogleButtonLink = styled(HeaderLink)`
   margin-top: 9px;
   transform: translateY(0%);
-  ${media.tablet`transform: translateX(-120px);`}
-  ${media.bigPhone`display: none;`}
+  ${media.tablet`transform: translateX(-120px);`};
+  ${media.bigPhone`display: none;`};
 `;
 
 class Header extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      showHamburgerMenu: false
+      showHamburgerMenu: false,
     };
-
   }
 
   getHeaderContent = () => {
     if (this.props.auth == null) {
       return;
     } else if (this.props.auth) {
+      const { userName } = this.props.auth;
       return (
-        <HeaderLinks show = {this.state.showHamburgerMenu}>
-          <HeaderLink>{zeroFill(5)(this.props.score)}</HeaderLink>
+        <HeaderLinks show={this.state.showHamburgerMenu}>
+          <HeaderLink href = "/profile">{userName}</HeaderLink>
           <HeaderLink href="/api/logout">Logout</HeaderLink>
         </HeaderLinks>
       );
     } else {
       return (
-        <HeaderLinks show = {this.state.showHamburgerMenu}>
-          <GoogleButtonLink href = "/auth/google">
-              <img src={googleButton} alt = "googleButton"/>
+        <HeaderLinks show={this.state.showHamburgerMenu}>
+          <GoogleButtonLink>
+            <SignInButton/>
           </GoogleButtonLink>
-          <MobileHeaderLink href="/auth/google">Sign in with Google</MobileHeaderLink>
         </HeaderLinks>
       );
     }
@@ -129,17 +127,17 @@ class Header extends React.Component {
   };
 
   hamburgerClicked = () => {
-    this.setState((prevState)=> {
+    this.setState(prevState => {
       return {
-        showHamburgerMenu: !(prevState.showHamburgerMenu)
+        showHamburgerMenu: !prevState.showHamburgerMenu
       };
     });
-  }
+  };
 
   render() {
     return (
       <Wrapper>
-        <Hamburger src={hamburger} onClick = {this.hamburgerClicked}/>
+        <Hamburger src={hamburger} onClick={this.hamburgerClicked} />
         <Logo src={image} onClick={this.goHome} />
         {this.getHeaderContent()}
       </Wrapper>
