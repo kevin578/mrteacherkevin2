@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-
-
 export const Button = styled.div`
   width: 120px;
   height: 40px;
   border-radius: 3px;
-  background: ${(props)=> props.background? props.background : "#ff9000" };
+  background: ${props => (props.background ? props.background : "#ff9000")};
   text-align: center;
   line-height: 40px;
   font-weight: 600;
@@ -18,4 +16,13 @@ export const Button = styled.div`
   }
 `;
 
-
+export const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  }
+};

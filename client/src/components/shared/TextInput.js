@@ -9,7 +9,7 @@ const Container = styled.div`
 const Label = styled.label`
   margin-right: 10px;
   display: inline-block;
-  width: 80px;
+  width: ${props => (props.labelWidth ? props.labelWidth : "80px")};
 `;
 
 const Input = styled.input`
@@ -23,19 +23,21 @@ const Input = styled.input`
 `;
 
 const ErrorMessage = styled.p`
-    font-size: 10px;
-    color: red;
-    margin-left: 100px;
+  font-size: 10px;
+  color: red;
+  margin-left: 100px;
 `;
 
 const TextInput = (props, { type = "text" }) => {
-  const showErrorMessage = (props.errorMessage);
+  const showErrorMessage = props.errorMessage;
 
   return (
     <Container>
-      <Label htmlFor={props.name}>{props.label}</Label>
+      <Label labelWidth={props.labelWidth} htmlFor={props.name}>
+        {props.label}
+      </Label>
       <Input
-        disabled = {props.disabled}
+        disabled={props.disabled}
         name={props.name}
         value={props.value}
         onChange={props.onChange}

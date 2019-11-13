@@ -1,0 +1,97 @@
+Arguments: 
+  /usr/local/Cellar/node/12.12.0/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js dev
+
+PATH: 
+  /Users/kevinbriggs/.npm-packages/bin:/opt/local/bin:/opt/local/sbin:/Users/kevinbriggs/.rvm/gems/ruby-2.4.0/bin:/Users/kevinbriggs/.rvm/gems/ruby-2.4.0@global/bin:/Users/kevinbriggs/.rvm/rubies/ruby-2.4.0/bin:/Users/kevinbriggs/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/kevinbriggs/.npm-packages/bin:/opt/local/bin:/opt/local/sbin:/Users/kevinbriggs/.rvm/gems/ruby-2.4.0/bin:/Users/kevinbriggs/.rvm/gems/ruby-2.4.0@global/bin:/Users/kevinbriggs/.rvm/rubies/ruby-2.4.0/bin:/Users/kevinbriggs/.rbenv/shims:/Users/kevinbriggs/.rvm/bin:/Documents/code/bin:/Documents/code/bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.12.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/kevinbriggs/Documents/mrteacherkevin2/package.json: Unexpected token < in JSON at position 96
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "mrteacherkevin2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+  <<<<<<< HEAD
+    "engines": {
+      "node": "12.4.0",
+      "npm": "6.9.0"
+    },
+  =======
+  >>>>>>> signin
+    "scripts": {
+      "start": "node index.js",
+      "client": "cd client && yarn start",
+      "server": "nodemon index.js",
+      "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+      "test": "mocha services/tests/*"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/kevin578/mrteacherkevin2.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/kevin578/mrteacherkevin2/issues"
+    },
+    "homepage": "https://github.com/kevin578/mrteacherkevin2#readme",
+    "dependencies": {
+      "@fortawesome/free-regular-svg-icons": "^5.4.1",
+      "@fortawesome/free-solid-svg-icons": "^5.4.1",
+      "@fortawesome/react-fontawesome": "^0.1.3",
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.18.3",
+      "brace": "^0.11.1",
+      "chai": "^4.1.2",
+      "cli": "^1.0.1",
+      "concurrently": "^3.5.1",
+      "cookie-session": "^2.0.0-beta.3",
+      "dotenv": "^5.0.1",
+      "eslint-config-airbnb": "^17.0.0",
+      "express": "^4.16.3",
+      "jest": "^23.4.1",
+      "jest-expo": "^30.0.0",
+      "lodash": "^4.17.11",
+      "mocha": "^5.2.0",
+      "mongoose": "^5.1.2",
+      "passport": "^0.4.0",
+      "passport-google-oauth20": "^1.0.0",
+      "passport-local": "^1.0.0",
+      "query-string": "^6.2.0",
+  <<<<<<< HEAD
+  =======
+      "react-scripts": "^3.2.0",
+      "redux-devtools-extension": "^2.13.2",
+  >>>>>>> signin
+      "zero-fill": "^2.2.3"
+    },
+    "devDependencies": {
+      "eslint": "^4.19.1",
+      "eslint-config-prettier": "^2.9.0",
+      "eslint-plugin-prettier": "^2.6.1",
+      "prettier": "^1.13.7"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

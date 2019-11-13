@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import media from "./Main/mediaQueries";
 import zeroFill from "zero-fill";
 import googleButton from "../img/btn_google_light.svg";
-import SignInButton from "./SignIn/SignInButton";
+import AuthContainer from "./SignIn/AuthContainer";
 import ReactSVG from "react-svg";
 import hamburger from "../img/baseline-menu-24px.svg";
 
@@ -115,7 +115,7 @@ class Header extends React.Component {
       return (
         <HeaderLinks show={this.state.showHamburgerMenu}>
           <GoogleButtonLink>
-            <SignInButton/>
+            <AuthContainer/>
           </GoogleButtonLink>
         </HeaderLinks>
       );
