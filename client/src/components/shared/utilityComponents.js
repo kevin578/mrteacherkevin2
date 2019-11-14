@@ -26,3 +26,13 @@ export const modalStyles = {
     transform: "translate(-50%, -50%)"
   }
 };
+
+export const CloseButton = styled.button`
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+`;
