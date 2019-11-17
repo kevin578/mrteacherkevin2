@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button as ButtonPrototype } from "../shared/utilityComponents";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import ChangePasswordModal from "./ChangePassword";
 import DeleteModal from "./DeleteModal";
 import Header from "../Header";
 
@@ -20,7 +21,8 @@ const Button = styled(ButtonPrototype)`
 
 const DeleteAccountButton = styled(Button)`
   margin-top: 20px;
-  background: #dc3545;
+  background: none;
+  color: #0000EE;
 `;
 
 const ChangePasswordButton = styled(Button)`
@@ -30,6 +32,17 @@ const ChangePasswordButton = styled(Button)`
 `;
 
 const Profile = props => {
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  function toggleShowPasswordModal() {
+    setShowChangePasswordModal(!showChangePasswordModal);
+  }
+
+  function toggleDeleteModal() {
+    setShowDeleteModal(!showDeleteModal);
+  }
+
   function getEmail() {
     if (props.auth) {
       return props.auth.email;
@@ -46,11 +59,16 @@ const Profile = props => {
         <p>
           <b>email:</b> {getEmail()}
         </p>
-          <ChangePasswordButton>Change Password</ChangePasswordButton>
-          <DeleteAccountButton>Delete Account</DeleteAccountButton>
-          <DeleteModal 
-            isOpen = {true}
+          <ChangePasswordButton onClick = {toggleShowPasswordModal}>Change Password</ChangePasswordButton>
+          <ChangePasswordModal 
+            isOpen = {showChangePasswordModal}
+            toggleShowModal = {toggleShowPasswordModal}
+            email = {getEmail()}
           />
+          {/* <DeleteAccountButton>Delete Account</DeleteAccountButton>
+          <DeleteModal
+            isOpen = {false}
+          /> */}
       </ProfileContainer>
     </React.Fragment>
   );

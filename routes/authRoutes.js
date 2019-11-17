@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const router = require("express").Router();
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
 
 router.get(
   "/auth/google",
@@ -64,5 +65,26 @@ async function validateLocalRequest(req, res, next) {
   }
   next();
 }
+
+router.post("/api/change-password", async (req, res) => {
+  const { email, currentPassword, newPassword } = req.query;
+  const user = await User.findOne({ email });
+  const passwordMatches = await bcrypt.compare(currentPassword, user.password);
+  if (!passwordMatches) {
+    res.json({
+      success: false,
+      message: "Incorrect password"
+    });
+  }
+  const newPasswordHash = await bcrypt.hashSync(newPassword, 8);
+  user
+    .update({ password: newPasswordHash })
+    .then(() => {
+      res.json({
+        success: true,
+        message: "Password changed"
+      });  
+    });
+});
 
 module.exports = router;

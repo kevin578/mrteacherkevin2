@@ -48,7 +48,6 @@ passport.use(
       }
 
       const user = await User.findOneAndUpdate(findUser, userInfo, config);
-      console.log(user);
       done(null, user);
     }
   )
