@@ -73,23 +73,29 @@ const SignUpModal = props => {
     clearErrorMessages();
     if (!userName) {
       setUserNameError("Username cannot be blank.");
+      return true;
     }
     if (!password) {
       setPasswordError("Password cannot be blank.");
+      return true;
     } else if (password.length < 6) {
       setPasswordError("Password contain at least 6 characters.");
+      return true;
     }
     if (!email) {
       setEmailError("Email cannot be blank.");
+      return true;
     } else if (!validator.validate(email)) {
       setEmailError("Please enter a valid email");
+      return true;
     }
-
-    return userNameError || passwordError || emailError;
+    return false;
   }
 
   function handleEmailSignup() {
-    if (checkForEmptyInputs()) return;
+    if (checkForEmptyInputs()) {
+      return;
+    }
     setIsLoading(true);
     axios
       .post("/api/signup-email", null, {

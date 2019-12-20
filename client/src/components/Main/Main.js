@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./../Header";
+import Footer, {FOOTER_HEIGHT} from "../Footer/Footer";
 import SubjectButton, { removeStarredCourses } from "./SubjectButton";
 import Axios from "../../../node_modules/axios";
 import { connect } from "react-redux";
@@ -10,7 +11,10 @@ import { SyncLoader } from "halogenium";
 import Sidebar from "./Sidebar";
 import media, { bigMedia } from "./mediaQueries";
 
-const Body = styled.div``;
+const Body = styled.div`
+  position: relative;
+  min-height: 110vh;
+`;
 
 const Content = styled.div`
   display: flex;
@@ -22,6 +26,7 @@ const SubjectContainer = styled.div`
   min-height: 700px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: ${`${FOOTER_HEIGHT + 50}px`};
   ${media.smallLaptop`margin-left: 5%;`};
   ${media.bigPhone`width: 90%;`};
   ${bigMedia.desktop`margin-left: 75px;`}
@@ -42,7 +47,6 @@ const Subjects = styled.div`
   ${media.bigPhone`grid-template-columns: 100%;`};
   ${bigMedia.desktop`grid-template-columns: 285px 285px 285px 285px`};
   ${bigMedia.bigDesktop`grid-template-columns: 285px 285px 285px 285px 285px`};
-
 `;
 
 const SubjectsLoggedOut = styled(Subjects)`
@@ -124,7 +128,6 @@ class Main extends React.Component {
 
     this.props.addNotStartedSubjects(notStartedSubjects);
     this.props.addComingSoonSubjects(comingSoonSubjects);
-
   }
 
   getSubjects(subjectArray) {
@@ -149,15 +152,6 @@ class Main extends React.Component {
     }
   }
 
-  // renderSubjects(subjectArray , message) {
-  //   if (subjectArray.length > 0) {
-  //     <div>
-  //     <SubjectHeader>{message}</SubjectHeader>
-  //     <Subjects>{this.getSubjects(subjectArray)}</Subjects>
-  //     </div>
-  //   }
-  // }
-
   render() {
     return (
       <Body>
@@ -171,36 +165,35 @@ class Main extends React.Component {
 
         {/* Not Loading and Not Logged In */}
 
-        {!this.state.isLoading &&
-          !this.props.auth && (
-            <Content>
-              <SubjectContainerLoggedOut>
-                <SubjectsLoggedOut>{this.getContent()}</SubjectsLoggedOut>
-              </SubjectContainerLoggedOut>
-            </Content>
-          )}
+        {!this.state.isLoading && !this.props.auth && (
+          <Content>
+            <SubjectContainerLoggedOut>
+              <SubjectsLoggedOut>{this.getContent()}</SubjectsLoggedOut>
+            </SubjectContainerLoggedOut>
+          </Content>
+        )}
 
         {/* Not Loading && Logged In*/}
 
-        {!this.state.isLoading &&
-          this.props.auth && (
-            <Content>
-              {this.props.auth && <Sidebar />}
-              <SubjectContainer auth={this.props.auth}>
-                {this.props.mainPage.startedSubjects.length > 0 &&
-                  !this.props.renderProjects && (
-                    <div>
-                      <SubjectTitle>Continue with:</SubjectTitle>
-                      <StartedSubjects>
-                        {this.getSubjects(this.props.mainPage.startedSubjects)}
-                      </StartedSubjects>
-                    </div>
-                  )}
+        {!this.state.isLoading && this.props.auth && (
+          <Content>
+            {this.props.auth && <Sidebar />}
+            <SubjectContainer auth={this.props.auth}>
+              {this.props.mainPage.startedSubjects.length > 0 &&
+                !this.props.renderProjects && (
+                  <div>
+                    <SubjectTitle>Continue with:</SubjectTitle>
+                    <StartedSubjects>
+                      {this.getSubjects(this.props.mainPage.startedSubjects)}
+                    </StartedSubjects>
+                  </div>
+                )}
 
-                <Subjects>{this.getContent()}</Subjects>
-              </SubjectContainer>
-            </Content>
-          )}
+              <Subjects>{this.getContent()}</Subjects>
+            </SubjectContainer>
+          </Content>
+        )}
+        <Footer />
       </Body>
     );
   }

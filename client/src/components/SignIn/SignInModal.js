@@ -25,9 +25,36 @@ const SignInModal = props => {
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleClick() {
+  function clearFields() {
+    setUserName("");
+    setPassword("");
     setUserNameError("");
     setPasswordError("");
+  }
+
+  function handleClose() {
+    clearFields();
+    props.toggleModal();
+  }
+
+  function checkForBlanks() {
+    if (userName === "") {
+      setUserNameError("Username cannot be blank.");
+      return true;
+    }
+    if (password === "") {
+      setPasswordError("Password cannot be blank");
+      return true;
+    }
+    return false;
+  }
+
+  function handleSubmit() {
+    setUserNameError("");
+    setPasswordError("");
+    if (checkForBlanks()) {
+      return;
+    }
     setIsLoading(true);
     axios
       .post("/api/signin-email", null, {
@@ -87,11 +114,11 @@ const SignInModal = props => {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <SignupButton onClick={handleClick}>Sign in with email</SignupButton>
+        <SignupButton onClick={handleSubmit}>Sign in with email</SignupButton>
         {isLoading && <Loader color="blue" />}
         <Or_Text>or</Or_Text>
         <GoogleButton text="Sign in with Google" />
-        <CloseButton onClick={props.toggleModal}>&times;</CloseButton>
+        <CloseButton onClick={handleClose}>&times;</CloseButton>
       </Modal>
     </div>
   );

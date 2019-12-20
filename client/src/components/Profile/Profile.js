@@ -3,13 +3,7 @@ import { Button as ButtonPrototype } from "../shared/utilityComponents";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import ChangePasswordModal from "./ChangePassword";
-import DeleteModal from "./DeleteModal";
-import Header from "../Header";
-
-const ProfileContainer = styled.div`
-  margin-top: 85px;
-  margin-left: 50px;
-`;
+import DefaultLayout from "../DefaultLayout";
 
 const Button = styled(ButtonPrototype)`
   height: 30px;
@@ -52,9 +46,7 @@ const Profile = props => {
   }
 
   return (
-    <React.Fragment>
-      <Header />
-      <ProfileContainer>
+    <DefaultLayout>
         <h2>Profile</h2>
         <p>
           <b>email:</b> {getEmail()}
@@ -69,8 +61,7 @@ const Profile = props => {
           <DeleteModal
             isOpen = {false}
           /> */}
-      </ProfileContainer>
-    </React.Fragment>
+      </DefaultLayout>
   );
 };
 

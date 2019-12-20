@@ -55,7 +55,7 @@ async function validateLocalRequest(req, res, next) {
   }
 
   //check if username already exists
-  const checkUsername = await User.findOne({ username: req.query.userName });
+  const checkUsername = await User.findOne({ userName: req.query.userName });
   if (checkUsername) {
     return res.json({
       error: true,
