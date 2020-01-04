@@ -3,18 +3,19 @@ AWS.config.update({ region: "us-east-1" });
 var fs = require("fs");
 var Handlebars = require("handlebars");
 
-function sendEmail(name, email, msg) {
+function sendEmail(emailOptions) {
   return new Promise((resolve, reject) => {
-    getTemplate()
-      .then(template => sendTemplate(name, email, msg, template))
+    const { templateName } = emailOptions;
+    getTemplate(templateName)
+      .then(template => sendTemplate(emailOptions, template))
       .then(() => resolve())
       .catch(err => reject(err));
   });
 }
 
-function getTemplate() {
+function getTemplate(templateName) {
   return new Promise((resolve, reject) => {
-    fs.readFile(`${__dirname}/emailTemplates/message.html`, function(
+    fs.readFile(`${__dirname}/emailTemplates/${templateName}.html`, function(
       err,
       data
     ) {
@@ -24,21 +25,20 @@ function getTemplate() {
   });
 }
 
-function sendTemplate(name, email, msg, template) {
+function sendTemplate(emailOptions, template) {
+    const  {data, fallbackText, subject, sendTo } = emailOptions;
   return new Promise((resolve, reject) => {
-
     const compiledTemplate = Handlebars.compile(template);
-    const compiledHTML = compiledTemplate({name, email, msg});
-
+    const compiledHTML = compiledTemplate(data);
     var params = {
       Destination: {
-        ToAddresses: ["kevinbriggs1@gmail.com"]
+        ToAddresses: sendTo
       },
       Message: {
         Body: {
           Text: {
             Charset: "UTF-8",
-            Data: `Name: ${name}, Email: ${email}, Message: ${msg}`
+            Data: fallbackText
           },
           Html: {
             Data: compiledHTML,
@@ -47,7 +47,7 @@ function sendTemplate(name, email, msg, template) {
         },
         Subject: {
           Charset: "UTF-8",
-          Data: "Message from mrteacherkevin.com"
+          Data: subject
         }
       },
       Source: "kevinbriggs1@gmail.com",
