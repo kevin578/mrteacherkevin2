@@ -50,8 +50,7 @@ function sendTemplate(emailOptions, template) {
           Data: subject
         }
       },
-      Source: "kevinbriggs1@gmail.com",
-      ReplyToAddresses: ["kevinbriggs1@gmail.com"]
+      Source: "mrteacherkevin@gmail.com"
     };
 
     var sendPromise = new AWS.SES({ apiVersion: "2010-12-01" })

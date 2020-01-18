@@ -12,10 +12,17 @@ import {
 } from "./modalStyles";
 import TextInput from "../shared/TextInput";
 import { ClipLoader as HalgeniumLoader } from "halogenium";
+import ForgotPassword from "./ForgotPassword";
 
 const Loader = styled(HalgeniumLoader)`
   position: absolute;
   left: 250px;
+`;
+
+const ForgotLink = styled.a`
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
 `;
 
 const SignInModal = props => {
@@ -24,6 +31,7 @@ const SignInModal = props => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(true);
 
   function clearFields() {
     setUserName("");
@@ -87,37 +95,52 @@ const SignInModal = props => {
     setErrorMessage(errorMessage);
   }
 
+  const signInContent = ()=> (
+    <React.Fragment>
+      <Header>Sign in</Header>
+
+      <TextInput
+        loading={isLoading}
+        label="Username:"
+        name="username"
+        value={userName}
+        errorMessage={userNameError}
+        onChange={e => setUserName(e.target.value)}
+      />
+      <TextInput
+        loading={isLoading}
+        label="Password:"
+        name="password"
+        type="password"
+        errorMessage={passwordError}
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+
+      <SignupButton onClick={handleSubmit}>Sign in with email</SignupButton>
+      {isLoading && <Loader color="blue" />}
+      <Or_Text>or</Or_Text>
+      <GoogleButton text="Sign in with Google" />
+      <ForgotLink href="/api/forgotPassword">Forgot Password</ForgotLink>
+    </React.Fragment>
+  );
+
+  function getModalContent() {
+    if (forgotPassword) {
+      return <ForgotPassword />;
+    } else {
+      return signInContent();
+    }
+  }
+
   return (
     <div>
       <Modal
         isOpen={props.isOpen}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Sign in Modal"
       >
-        <Header>Sign in</Header>
-
-        <TextInput
-          loading={isLoading}
-          label="Username:"
-          name="username"
-          value={userName}
-          errorMessage={userNameError}
-          onChange={e => setUserName(e.target.value)}
-        />
-        <TextInput
-          loading={isLoading}
-          label="Password:"
-          name="password"
-          type="password"
-          errorMessage={passwordError}
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-
-        <SignupButton onClick={handleSubmit}>Sign in with email</SignupButton>
-        {isLoading && <Loader color="blue" />}
-        <Or_Text>or</Or_Text>
-        <GoogleButton text="Sign in with Google" />
+        { getModalContent() }
         <CloseButton onClick={handleClose}>&times;</CloseButton>
       </Modal>
     </div>

@@ -15,7 +15,6 @@ const userSchema = new Schema({
   userName: String,
   birthday: Date,
   name: Object,
-  email: String,
   completed: Object,
   score: Number,
   achievements: Object,
