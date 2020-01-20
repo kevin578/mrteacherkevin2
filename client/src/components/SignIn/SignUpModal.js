@@ -78,8 +78,8 @@ const SignUpModal = props => {
     if (!password) {
       setPasswordError("Password cannot be blank.");
       return true;
-    } else if (password.length < 6) {
-      setPasswordError("Password contain at least 6 characters.");
+    } else if (password.length <= 6) {
+      setPasswordError("Password must contain at least 6 characters.");
       return true;
     }
     if (!email) {

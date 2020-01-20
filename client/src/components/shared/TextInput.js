@@ -25,7 +25,7 @@ const Input = styled.input`
 const ErrorMessage = styled.p`
   font-size: 10px;
   color: red;
-margin-left: ${props=> props.errorMarginLeft? props.errorMarginLeft : "100px"};
+  margin-left: ${props=> props.errorMarginLeft? props.errorMarginLeft : "100px"};
 `;
 
 const TextInput = (props, { type = "text" }) => {

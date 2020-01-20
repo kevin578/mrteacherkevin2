@@ -10,6 +10,7 @@ import asyncComponent from "./AsyncComponent";
 const Profile = asyncComponent(()=> import("./Profile/Profile"));
 const About = asyncComponent(()=> import("./Footer/About"));
 const Contact = asyncComponent(()=> import("./Footer/Contact"));
+const ResetPassword = asyncComponent(()=> import("./SignIn/ResetPassword"));
 const Projects_async = asyncComponent(()=> import("./Projects/Projects"));
 //Audacity
 const Audacity1_async = asyncComponent(()=> import("./Pages/Audacity/Audacity1"));
@@ -139,6 +140,7 @@ class App extends Component {
 
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
+            <Route path = "/resetpassword/:id?/:passwordHash?" component={ResetPassword} />
 
             <Route path="/audacity1" component={Audacity1_async} />
 

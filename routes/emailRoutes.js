@@ -37,7 +37,7 @@ router.post("/api/forgotPassword", async (req, res) => {
     const emailOptions = {
       data: {link},
       templateName: "passwordReset",
-      fallbackText: `Click on the following linke to reset your password: ${link}`,
+      fallbackText: `Click on the following link to reset your password: ${link}`,
       subject: "Password reset instructions",
       sendTo: [user.email]
     };
@@ -53,8 +53,8 @@ router.post("/api/forgotPassword", async (req, res) => {
 });
 
 function createLink(user) {
-  const token = jwt.sign({email: user.email }, user.id);
-  return `http://localhost:3000/reset-password/${token}`;
+  const token = jwt.sign({email: user.email }, user.password + user.updatedAt.$date);
+  return `http://localhost:3000/resetpassword/${user.id}/${token}`;
 }
 
 module.exports = router;

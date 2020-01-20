@@ -3,6 +3,7 @@ const User = mongoose.model("users");
 const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 router.get(
   "/auth/google",
@@ -86,5 +87,15 @@ router.post("/api/change-password", async (req, res) => {
       });  
     });
 });
+
+router.post("/api/resetPassword", async (req, res)=> {
+  const { id } = req.body;
+  const user = await User.findById(id)
+  var decoded = jwt.verify(req.body.jwt, user.password + user.updatedAt.$date);
+  res.send(decoded)
+  // console.log(decoded.foo) 
+
+
+})
 
 module.exports = router;

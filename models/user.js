@@ -20,7 +20,7 @@ const userSchema = new Schema({
   achievements: Object,
   coursePercentages: Object,
   votes: Object
-});
+}, { timestamps: true });
 
 
 

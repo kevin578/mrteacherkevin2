@@ -20,7 +20,9 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  function sendEmail() {}
+  function sendEmail() {
+      
+  }
 
   return (
     <React.Fragment>
