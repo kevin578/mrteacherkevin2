@@ -5,8 +5,8 @@ import axios from "axios";
 import { months, years } from "./month_year";
 import validator from "email-validator";
 import GoogleButton from "./GoogleButton";
+import FormButton from "../shared/FormButton";
 import TextInput from "../shared/TextInput";
-import { ClipLoader as HalgeniumLoader } from "halogenium";
 
 import {
   customStyles,
@@ -41,11 +41,6 @@ const BirthdayLabel = styled.label``;
 
 const BirthdayContainer = styled.div`
   margin-bottom: 20px;
-`;
-
-const Loader = styled(HalgeniumLoader)`
-  position: absolute;
-  left: 250px;
 `;
 
 const SignUpModal = props => {
@@ -115,8 +110,7 @@ const SignUpModal = props => {
     if (res.data.error) {
       const { errorType, errorMessage } = res.data;
       handleSignupError(errorType, errorMessage);
-    }
-    else {
+    } else {
       window.location.reload();
     }
   }
@@ -173,10 +167,11 @@ const SignUpModal = props => {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <SignupButton onClick={handleEmailSignup}>
-          Sign up with email
-        </SignupButton>
-        {isLoading && <Loader color="blue" />}
+        <FormButton
+          text="Sign up with email"
+          isLoading={isLoading}
+          onClick={handleEmailSignup}
+        />
         <Or_Text>or</Or_Text>
         <GoogleButton text="Sign up with Google" />
         <CloseButton onClick={props.toggleModal}>&times;</CloseButton>

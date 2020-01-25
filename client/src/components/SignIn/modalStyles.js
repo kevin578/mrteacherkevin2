@@ -8,7 +8,7 @@ export const customStyles = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 22, 72, 0.75)",
+    backgroundColor: "#345afb",
     zIndex: 100
   },
   content: {

@@ -78,24 +78,28 @@ router.post("/api/change-password", async (req, res) => {
     });
   }
   const newPasswordHash = await bcrypt.hashSync(newPassword, 8);
-  user
-    .update({ password: newPasswordHash })
-    .then(() => {
-      res.json({
-        success: true,
-        message: "Password changed"
-      });  
+  user.update({ password: newPasswordHash }).then(() => {
+    res.json({
+      success: true,
+      message: "Password changed"
     });
+  });
 });
 
-router.post("/api/resetPassword", async (req, res)=> {
-  const { id } = req.body;
-  const user = await User.findById(id)
-  var decoded = jwt.verify(req.body.jwt, user.password + user.updatedAt.$date);
-  res.send(decoded)
-  // console.log(decoded.foo) 
-
-
-})
+router.post("/api/resetPassword", async (req, res) => {
+  const decodedJWT = jwt.verify(req.body.jwt, process.env.JWT_KEY);
+  const { id, oldPassword } = decodedJWT;
+  const user = await User.findById(id);
+  const newPasswordHash = await bcrypt.hashSync(req.body.password, 8);
+  if (oldPassword != user.password) {
+    res.json({ sucess: false, message: "Link has expired" });
+  }
+  user.update({ password: newPasswordHash }).then(() => {
+    res.json({
+      success: true,
+      message: "Password changed"
+    });
+  });
+});
 
 module.exports = router;

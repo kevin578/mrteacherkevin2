@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import axios from "axios";
 import DefaultLayout from "../DefaultLayout";
-import { Header, SignupButton } from "./modalStyles";
+import { Header } from "./modalStyles";
+import FormButton from "../shared/FormButton";
 import TextInput from "../shared/TextInput";
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 14px;
+`;
 
 const ResetPassword = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +17,8 @@ const ResetPassword = () => {
   const [newPasswordError, setNewPasswordError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [showSuccessScreen, setShowSuccessScreen] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   function updatePassword() {
     setNewPasswordError("");
@@ -23,43 +32,58 @@ const ResetPassword = () => {
     }
     const url = window.location.href.split("/");
     const jwt = url[url.length - 1];
-    const id = url[url.length - 2];
-    axios.post("/api/resetPassword", {
-      password: newPassword,
-      jwt,
-      id
-    })
-    .then((res)=> {
-        console.log(res.data)
-    });
+    setIsLoading(true);
+    axios
+      .post("/api/resetPassword", {
+        password: newPassword,
+        jwt
+      })
+      .then(res => {
+        setIsLoading(false);
+        if (res.data.message == "Link has expired") {
+          setShowErrorMessage(true);
+        } else {
+          setShowSuccessScreen(true);
+        }
+      });
   }
 
   return (
     <DefaultLayout>
       <Header>Reset Password</Header>
-      <TextInput
-        loading={isLoading}
-        label="New Password:"
-        name="newPassword"
-        value={newPassword}
-        errorMessage={newPasswordError}
-        errorMarginLeft="150px"
-        labelWidth="140px"
-        type="password"
-        onChange={e => setNewPassword(e.target.value)}
-      />
-      <TextInput
-        loading={isLoading}
-        label="Confirm Password:"
-        name="confirmPassword"
-        value={confirmPassword}
-        errorMessage={confirmPasswordError}
-        labelWidth="140px"
-        errorMarginLeft="150px"
-        type="password"
-        onChange={e => setConfirmPassword(e.target.value)}
-      />
-      <SignupButton onClick={updatePassword}>Update Password</SignupButton>
+      {!showSuccessScreen && (
+        <React.Fragment>
+          <TextInput
+            loading={isLoading}
+            label="New Password:"
+            name="newPassword"
+            value={newPassword}
+            errorMessage={newPasswordError}
+            errorMarginLeft="150px"
+            labelWidth="140px"
+            type="password"
+            onChange={e => setNewPassword(e.target.value)}
+          />
+          <TextInput
+            loading={isLoading}
+            label="Confirm Password:"
+            name="confirmPassword"
+            value={confirmPassword}
+            errorMessage={confirmPasswordError}
+            labelWidth="140px"
+            errorMarginLeft="150px"
+            type="password"
+            onChange={e => setConfirmPassword(e.target.value)}
+          />
+          {showErrorMessage && <ErrorMessage>Link has expired.</ErrorMessage>}
+          <FormButton
+            text="Update Password"
+            isLoading={isLoading}
+            onClick={updatePassword}
+          />
+        </React.Fragment>
+      )}
+      {showSuccessScreen && <p>Password successfully updated</p>}
     </DefaultLayout>
   );
 };

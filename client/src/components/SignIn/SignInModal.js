@@ -3,26 +3,15 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import axios from "axios";
 import GoogleButton from "./GoogleButton";
-import {
-  customStyles,
-  Header,
-  SignupButton,
-  CloseButton,
-  Or_Text
-} from "./modalStyles";
+import { customStyles, Header, CloseButton, Or_Text } from "./modalStyles";
 import TextInput from "../shared/TextInput";
-import { ClipLoader as HalgeniumLoader } from "halogenium";
+import FormButton from "../shared/FormButton";
 import ForgotPassword from "./ForgotPassword";
 
-const Loader = styled(HalgeniumLoader)`
-  position: absolute;
-  left: 250px;
-`;
-
-const ForgotLink = styled.a`
-  display: block;
-  margin-top: 15px;
+const ForgotLink = styled.p`
+  text-decoration: underline;
   font-size: 14px;
+  cursor: pointer;
 `;
 
 const SignInModal = props => {
@@ -31,7 +20,7 @@ const SignInModal = props => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [forgotPassword, setForgotPassword] = useState(true);
+  const [forgotPassword, setForgotPassword] = useState(false);
 
   function clearFields() {
     setUserName("");
@@ -95,7 +84,7 @@ const SignInModal = props => {
     setErrorMessage(errorMessage);
   }
 
-  const signInContent = ()=> (
+  const signInContent = () => (
     <React.Fragment>
       <Header>Sign in</Header>
 
@@ -117,17 +106,22 @@ const SignInModal = props => {
         onChange={e => setPassword(e.target.value)}
       />
 
-      <SignupButton onClick={handleSubmit}>Sign in with email</SignupButton>
-      {isLoading && <Loader color="blue" />}
+      <FormButton
+        isLoading={isLoading}
+        text="Sign in with email"
+        onClick={handleSubmit}
+      />
       <Or_Text>or</Or_Text>
       <GoogleButton text="Sign in with Google" />
-      <ForgotLink href="/api/forgotPassword">Forgot Password</ForgotLink>
+      <ForgotLink onClick={() => setForgotPassword(true)}>
+        Forgot Password
+      </ForgotLink>
     </React.Fragment>
   );
 
   function getModalContent() {
     if (forgotPassword) {
-      return <ForgotPassword />;
+      return <ForgotPassword goBackToSignIn={() => setForgotPassword(false)} />;
     } else {
       return signInContent();
     }
@@ -140,7 +134,7 @@ const SignInModal = props => {
         style={customStyles}
         contentLabel="Sign in Modal"
       >
-        { getModalContent() }
+        {getModalContent()}
         <CloseButton onClick={handleClose}>&times;</CloseButton>
       </Modal>
     </div>

@@ -3,8 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import DefaultLayout from "../DefaultLayout";
 import TextInput from "../shared/TextInput";
-import { ClipLoader as HalgeniumLoader } from "halogenium";
-import { Button as ButtonPrototype } from "../shared/utilityComponents";
+import FormButton from "../shared/FormButton";
 
 const MessageInput = styled.textarea`
   margin-left: 21px;
@@ -22,20 +21,15 @@ const MessageLabel = styled.label`
   top: 11px;
 `;
 
-const Button = styled(ButtonPrototype)`
-  margin-top: 60px;
-`;
+const FormButtonStyle = {
+  marginTop: 60,
+  width: 150
+};
 
 const ErrorMessage = styled.p`
   color: red;
   font-size: 10px;
   margin-left: 94px;
-`;
-
-const Loader = styled(HalgeniumLoader)`
-  position: relative;
-  left: 150px;
-  bottom: 40px;
 `;
 
 const Contact = () => {
@@ -90,25 +84,29 @@ const Contact = () => {
           onChange={e => setName(e.target.value)}
           value={name}
           label="Name:"
-          isLoading = {isLoading}
+          isLoading={isLoading}
         />
         <TextInput
           onChange={e => setEmail(e.target.value)}
           value={email}
           label="Email:"
           errorMessage={emailError}
-          isLoading = {isLoading}
+          isLoading={isLoading}
         />
         {messageError && <ErrorMessage>{messageError}</ErrorMessage>}
-        <MessageLabel disabled = {isLoading}>
+        <MessageLabel disabled={isLoading}>
           Message:
           <MessageInput
             value={message}
             onChange={e => setMessage(e.target.value)}
           />
         </MessageLabel>
-        <Button onClick={validateForm}>Submit</Button>
-        {isLoading && <Loader color="blue" />}
+        <FormButton
+          style = {FormButtonStyle}
+          text="Submit"
+          isLoading={isLoading}
+          onClick={validateForm}
+        />
       </React.Fragment>
     );
   };

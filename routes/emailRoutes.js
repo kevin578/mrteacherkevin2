@@ -29,7 +29,7 @@ router.post("/api/sendContactEmail", (req, res) => {
 router.post("/api/forgotPassword", async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    res.send("Email not found");
+    res.json({ success: false, message: "email not found"});
   } else if (user.googleId) {
     res.send("Google account");
   } else {
@@ -53,8 +53,11 @@ router.post("/api/forgotPassword", async (req, res) => {
 });
 
 function createLink(user) {
-  const token = jwt.sign({email: user.email }, user.password + user.updatedAt.$date);
-  return `http://localhost:3000/resetpassword/${user.id}/${token}`;
+  const token = jwt.sign({
+    id: user.id,
+    oldPassword: user.password 
+  }, process.env.JWT_KEY);
+  return `http://localhost:3000/resetpassword/${token}`;
 }
 
 module.exports = router;

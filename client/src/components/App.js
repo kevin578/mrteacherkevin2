@@ -140,7 +140,7 @@ class App extends Component {
 
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
-            <Route path = "/resetpassword/:id?/:passwordHash?" component={ResetPassword} />
+            <Route path = "/resetpassword/:jwt" component={ResetPassword} />
 
             <Route path="/audacity1" component={Audacity1_async} />
 
