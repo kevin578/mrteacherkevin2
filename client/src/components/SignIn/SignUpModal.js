@@ -8,13 +8,7 @@ import GoogleButton from "./GoogleButton";
 import FormButton from "../shared/FormButton";
 import TextInput from "../shared/TextInput";
 
-import {
-  customStyles,
-  Header,
-  SignupButton,
-  CloseButton,
-  Or_Text
-} from "./modalStyles";
+import { customStyles, Header, CloseButton, Or_Text } from "./modalStyles";
 
 const BirthdaySelect = styled.select`
   width: 150px;
@@ -43,11 +37,19 @@ const BirthdayContainer = styled.div`
   margin-bottom: 20px;
 `;
 
+const BirthdayError = styled.p`
+  color: red;
+  font-size: 12px;
+`;
+
 const SignUpModal = props => {
   const [userName, setUserName] = useState("");
   const [userNameError, setUserNameError] = useState("");
   const [password, setPassword] = useState("");
+  const [month, setMonth] = useState("Month");
+  const [year, setYear] = useState("Year");
   const [passwordError, setPasswordError] = useState("");
+  const [birthdayError, setBirthdayError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +63,7 @@ const SignUpModal = props => {
   function clearErrorMessages() {
     setUserNameError("");
     setPasswordError("");
+    setBirthdayError("");
     setEmailError("");
   }
 
@@ -75,6 +78,10 @@ const SignUpModal = props => {
       return true;
     } else if (password.length <= 6) {
       setPasswordError("Password must contain at least 6 characters.");
+      return true;
+    }
+    if (month == "Month" || year == "Year") {
+      setBirthdayError("Please select a valid birthday");
       return true;
     }
     if (!email) {
@@ -153,10 +160,16 @@ const SignUpModal = props => {
 
         <BirthdayContainer>
           <BirthdayLabel htmlFor="birth-month">Birthday:</BirthdayLabel>
-          <BirthdaySelect name="birth-month">
+          <BirthdaySelect
+            onChange={e => setMonth(e.target.value)}
+            name="birth-month"
+          >
             {setOptions(months)}
           </BirthdaySelect>
-          <BirthdaySelect>{setOptions(years())}</BirthdaySelect>
+          <BirthdaySelect onChange={e => setYear(e.target.value)}>
+            {setOptions(years())}
+          </BirthdaySelect>
+          {birthdayError && <BirthdayError>{birthdayError}</BirthdayError>}
         </BirthdayContainer>
 
         <TextInput
