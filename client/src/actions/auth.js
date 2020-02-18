@@ -11,3 +11,8 @@ export const fetchUser = () => {
     });
   };
 };
+
+export const updateUser = (userObject)=> ({
+  type: "UPDATE_USER",
+  payload: userObject
+});

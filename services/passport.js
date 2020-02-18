@@ -41,11 +41,11 @@ passport.use(
         displayName: profile.displayName,
         name: profile.name,
         email: profile._json.email
-      }
+      };
       const config = {
-        upsert: true, 
+        upsert: true,
         new: true
-      }
+      };
 
       const user = await User.findOneAndUpdate(findUser, userInfo, config);
       done(null, user);
@@ -62,7 +62,9 @@ passport.use(
       new User({
         email: email,
         password: passwordHash,
-        userName: req.query.userName
+        userName: req.query.userName,
+        birthMonth: req.query.month,
+        birthYear: req.query.year
       })
         .save()
         .then(user => {
@@ -80,7 +82,6 @@ passport.use(
   new LocalStrategy(
     { usernameField: "userName", passReqToCallback: true },
     function(req, userName, password, done) {
-      
       const findUserName = new Promise(resolve => {
         User.findOne({ userName }).then(user => {
           if (user) {

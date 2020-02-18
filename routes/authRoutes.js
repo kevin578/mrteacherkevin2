@@ -102,4 +102,24 @@ router.post("/api/resetPassword", async (req, res) => {
   });
 });
 
+router.post("/api/setUsernameAndBirthday", async (req, res)=> {
+  const {id, month, year, userName} = req.query;
+  const userNameExists = await User.findOne({userName});
+  if (userNameExists) {
+    res.json({success: false, msg: "Username already exists"})
+  }
+  if (month == "Month" || year == "Year") {
+    res.json({success: false, msg: "Enter a valid birthday"})
+  }
+  let user = await User.findById(id);
+  user.userName = userName;
+  user.birthMonth = month;
+  user.birthYear = year;
+  await user.save()
+  .catch(()=> {
+    res.json({succes: false, msg: "Error saving information"});
+  });
+  res.send({success: true, msg: "Successfully saved", user});
+});
+
 module.exports = router;

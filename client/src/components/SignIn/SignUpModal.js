@@ -2,45 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import axios from "axios";
-import { months, years } from "./month_year";
 import validator from "email-validator";
 import GoogleButton from "./GoogleButton";
 import FormButton from "../shared/FormButton";
 import TextInput from "../shared/TextInput";
-
+import BirthdaySelect from "./BirthdaySelect";
 import { customStyles, Header, CloseButton, Or_Text } from "./modalStyles";
-
-const BirthdaySelect = styled.select`
-  width: 150px;
-  padding: 5px 35px 5px 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  height: 34px;
-  border-radius: 0px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #fff;
-  border: none;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-left: 27px;
-  background: url(https://png.pngtree.com/svg/20161117/b360928f8b.svg) 96% / 15%
-    no-repeat #fff;
-`;
-
-const BirthdayOption = styled.option``;
-
-const BirthdayLabel = styled.label``;
-
-const BirthdayContainer = styled.div`
-  margin-bottom: 20px;
-`;
-
-const BirthdayError = styled.p`
-  color: red;
-  font-size: 12px;
-`;
 
 const SignUpModal = props => {
   const [userName, setUserName] = useState("");
@@ -53,12 +20,6 @@ const SignUpModal = props => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  function setOptions(options) {
-    return options.map((optionValue, i) => (
-      <BirthdayOption key={`${optionValue}${i}`}>{optionValue}</BirthdayOption>
-    ));
-  }
 
   function clearErrorMessages() {
     setUserNameError("");
@@ -104,7 +65,9 @@ const SignUpModal = props => {
         params: {
           userName,
           password,
-          email
+          month,
+          year,
+          email,
         }
       })
       .then(res => {
@@ -132,6 +95,10 @@ const SignUpModal = props => {
     setErrorMessage(errorMessage);
   }
 
+  function handleGoogleClick() {
+    window.location = "/auth/google";
+  }
+
   return (
     <div>
       <Modal
@@ -157,21 +124,13 @@ const SignUpModal = props => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-
-        <BirthdayContainer>
-          <BirthdayLabel htmlFor="birth-month">Birthday:</BirthdayLabel>
-          <BirthdaySelect
-            onChange={e => setMonth(e.target.value)}
-            name="birth-month"
-          >
-            {setOptions(months)}
-          </BirthdaySelect>
-          <BirthdaySelect onChange={e => setYear(e.target.value)}>
-            {setOptions(years())}
-          </BirthdaySelect>
-          {birthdayError && <BirthdayError>{birthdayError}</BirthdayError>}
-        </BirthdayContainer>
-
+        <BirthdaySelect 
+          month = {month}
+          setMonth = {setMonth}
+          year = {year}
+          setYear = {setYear}
+          birthdayError = {birthdayError}
+        />
         <TextInput
           loading={isLoading}
           label="Email:"
@@ -186,7 +145,7 @@ const SignUpModal = props => {
           onClick={handleEmailSignup}
         />
         <Or_Text>or</Or_Text>
-        <GoogleButton text="Sign up with Google" />
+        <GoogleButton text="Sign up with Google" onClick = {handleGoogleClick}/>
         <CloseButton onClick={props.toggleModal}>&times;</CloseButton>
       </Modal>
     </div>
