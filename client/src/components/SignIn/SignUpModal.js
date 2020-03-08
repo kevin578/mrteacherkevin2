@@ -7,6 +7,7 @@ import GoogleButton from "./GoogleButton";
 import FormButton from "../shared/FormButton";
 import TextInput from "../shared/TextInput";
 import BirthdaySelect from "./BirthdaySelect";
+import { checkUsername } from "../shared/helperFunctions";
 import { customStyles, Header, CloseButton, Or_Text } from "./modalStyles";
 
 const SignUpModal = props => {
@@ -30,8 +31,8 @@ const SignUpModal = props => {
 
   function checkForEmptyInputs() {
     clearErrorMessages();
-    if (!userName) {
-      setUserNameError("Username cannot be blank.");
+    if (!checkUsername(userName).success) {
+      setUserNameError(checkUsername(userName).msg);
       return true;
     }
     if (!password) {

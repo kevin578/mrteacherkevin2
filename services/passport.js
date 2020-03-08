@@ -82,24 +82,16 @@ passport.use(
   new LocalStrategy(
     { usernameField: "userName", passReqToCallback: true },
     function(req, userName, password, done) {
-      const findUserName = new Promise(resolve => {
-        User.findOne({ userName }).then(user => {
-          if (user) {
-            return checkPassword(user);
-          } else {
-            resolve();
-          }
-        });
-      });
-
-      const findEmail = new Promise(resolve => {
-        User.findOne({ email: userName }).then(user => {
-          if (user) {
-            return checkPassword(user);
-          } else {
-            resolve();
-          }
-        });
+      User.findOne({ userName }).then(user => {
+        if (user) {
+          return checkPassword(user);
+        } else {
+          return req.res.json({
+            error: true,
+            errorType: "userName",
+            errorMessage: "Username does not exist"
+          });
+        }
       });
 
       function checkPassword(user) {
@@ -115,13 +107,6 @@ passport.use(
           }
         });
       }
-      Promise.all([findEmail, findUserName]).then(() => {
-        return req.res.json({
-          error: true,
-          errorType: "userName",
-          errorMessage: "Username does not exist"
-        });
-      });
     }
   )
 );

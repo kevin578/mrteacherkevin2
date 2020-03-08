@@ -1,9 +1,9 @@
 export const checkUsername = (username)=> {
-    if (username.length < 7) {
-        return false;
+    if (username.length < 7 || username.length > 15) {
+        return { success: false, msg: "Username must be between 7 and 15 characters." }
     } 
-    if (userName.includes(" ")) {
-        return false;
+    if (username.includes(" ")) {
+        return { success: false, msg: "Username cannont have spaces."};
     }
-    return true;
+    return {success: true};
 };

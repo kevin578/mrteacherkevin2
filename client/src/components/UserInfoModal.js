@@ -30,8 +30,8 @@ const UserInfoModal = props => {
   function handleSumbit() {
     setBirthdayError("");
     setUserNameError("");
-    if (!checkUsername()) {
-      return setUserNameError("Please enter a valid username.");
+    if (!checkUsername(userName).success) {
+      return setUserNameError(checkUsername().msg);
     }
     setIsLoading(true);
     const id = props.auth._id;
