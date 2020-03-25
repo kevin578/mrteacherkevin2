@@ -61,7 +61,7 @@ const UserInfoModal = props => {
 
   return (
     <Modal
-      isOpen={props.auth && !props.auth.userName}
+      isOpen={props.auth && !props.auth.userName || false}
       style={customStyles}
       contentLabel="Example Modal"
     >

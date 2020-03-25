@@ -1,7 +1,10 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const JWTstrategy = require("passport-jwt").Strategy;
+const ExtractJWT = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const User = mongoose.model("users");
 const bcrypt = require("bcryptjs");
 
@@ -12,7 +15,8 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-  const user = await User.findById(id);
+  let user = await User.findById(id);
+  // user._doc.authToken = jwt.sign({ email: user.email },'top_secret');
   done(null, user);
 });
 
@@ -106,6 +110,22 @@ passport.use(
             });
           }
         });
+      }
+    }
+  )
+);
+
+passport.use(
+  new JWTstrategy(
+    {
+      secretOrKey: "top_secret",
+      jwtFromRequest: ExtractJWT.fromUrlQueryParameter("authToken")
+    },
+    async (token, done) => {
+      try {
+        return done(null, token.email);
+      } catch (error) {
+        done(error);
       }
     }
   )

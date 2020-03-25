@@ -47,20 +47,24 @@ export const completeInit = completeObject => {
   };
 };
 
-export const completeButton = ({pageKey, subject, completed, auth}) => {
+export const completeButton = ({pageKey, subjectURL, completed, auth}) => {
   if (auth) {
     axios.put("/api/editCompletedPages", {
       pageKey,
-      subject,
-      store: completed
-    });
+      subjectURL,
+      store: completed,
+    }, { 
+    params: {
+      authToken: auth.authToken
+    }
+  });
   }
 
   return dispatch => {
     dispatch({
       type: "COMPLETE_BUTTON",
       pageKey,
-      subject
+      subjectURL
     });
   };
 };

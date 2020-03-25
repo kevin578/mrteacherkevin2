@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const Users = require("../models/user");
-
+const passport = require('passport');
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
 
@@ -23,7 +23,7 @@ router.get("/api/getStateFromDatabase", (req, res) => {
 router.put("/api/editCompletedPages", (req, res) => {
   const id = req.user;
 
-  const subject = req.body.subject;
+  const subject = req.body.subjectURL;
   const pageKey = req.body.pageKey;
   const stateCopy = req.body.store == null ? {} : req.body.store;
 
@@ -61,6 +61,7 @@ router.put("/api/editAchievements", (req, res) => {
 });
 
 router.put("/api/setScore", (req, res) => {
+  console.log(req.params)
   Users.findByIdAndUpdate(
     req.user.id,
     {

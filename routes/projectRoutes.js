@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
+const passport = require('passport');
 const User = require("../models/user");
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";

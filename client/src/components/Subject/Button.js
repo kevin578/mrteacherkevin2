@@ -54,9 +54,7 @@ class Button extends Component {
       default:
         return (
           <Wrapper
-            onClick={() => {
-              this.checkForNextPage();
-            }}
+            onClick={this.checkForNextPage}
           >
             {this.props.children}
           </Wrapper>
@@ -80,7 +78,8 @@ class Button extends Component {
   changeScore = newScore => {
     if (!this.checkIfCompleted()) {
       axios.put("/api/setScore", {
-        score: newScore + this.props.score
+        score: newScore + this.props.score,
+        params: {authToken: this.props.auth.authToken}
       });
       const timer = () => {
         const changeValue = newScore > 0 ? 1 : -1;
