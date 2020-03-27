@@ -5,6 +5,10 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+router.get("/api/sanityCheck", (req, res)=> {
+  res.send("Everything is running.")
+});
+
 router.get(
   "/auth/google",
   passport.authenticate("google", {

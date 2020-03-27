@@ -3,11 +3,6 @@ if (typeof jest == 'undefined') {
     var jest = require("jest");
 }
 
-
-router.post("/api/testCode", (req, res)=> {
-
-})
-
 module.exports.router = router;
 
     // testVariable = req.body.tests
