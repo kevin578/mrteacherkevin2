@@ -2,6 +2,6 @@ FROM node:alpine
 WORKDIR "/app"
 COPY ./package.json ./
 RUN npm i -g nodemon
-# RUN npm install
+RUN npm install
 COPY ./ ./
-# CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]
