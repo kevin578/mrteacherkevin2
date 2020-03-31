@@ -2,26 +2,22 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const Users = require("../models/user");
 const passport = require("passport");
-const secureEndpoint = require("../services/secureEndpoint").default;
+const validateUser = require("../services/validateUser").default;
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
 
-router.get("/api/getStateFromDatabase", secureEndpoint, (req, res) => {
-  if (!req.user) {
-   res.send("You are not logged in");
-  } else {
-    const id = req.user;
-    Users.findById(id, (err, user) => {
-      if (err) {
-        res.send(errorMessage);
-      } else {
-        res.json(user);
-      }
-    });
-  }
+router.get("/api/getStateFromDatabase", (req, res) => {
+  const id = req.user;
+  Users.findById(id, (err, user) => {
+    if (err) {
+      res.send(errorMessage);
+    } else {
+      res.json(user);
+    }
+  });
 });
 
-router.put("/api/editCompletedPages", (req, res) => {
+router.put("/api/editCompletedPages", validateUser, (req, res) => {
   const id = req.user;
   const subject = req.body.subjectURL;
   const pageKey = req.body.pageKey;
@@ -39,7 +35,7 @@ router.put("/api/editCompletedPages", (req, res) => {
   });
 });
 
-router.put("/api/editAchievements", (req, res) => {
+router.put("/api/editAchievements", validateUser, (req, res) => {
   const subject = req.body.subject;
   const ranking = req.body.ranking;
   const stateCopy = req.body.store == null ? {} : req.body.store;
@@ -60,7 +56,7 @@ router.put("/api/editAchievements", (req, res) => {
   );
 });
 
-router.put("/api/setScore", (req, res) => {
+router.put("/api/setScore", validateUser, (req, res) => {
   Users.findByIdAndUpdate(
     req.user.id,
     {
@@ -73,7 +69,7 @@ router.put("/api/setScore", (req, res) => {
   );
 });
 
-router.put("/api/setCoursePercentage", (req, res) => {
+router.put("/api/setCoursePercentage", validateUser, (req, res) => {
   const course = req.body.subjectURL;
   const percent = req.body.percentage;
   var setter = { $set: {} };
@@ -85,14 +81,11 @@ router.put("/api/setCoursePercentage", (req, res) => {
   });
 });
 
-router.get("/api/getCoursePercentages", (req, res) => {
-  if (!req.user) res.send("You are not logged in");
-  else {
+router.get("/api/getCoursePercentages", validateUser, (req, res) => {
     Users.findById(req.user.id, (err, data) => {
       if (err) res.send(errorMessage);
       else res.send(data.coursePercentages);
     });
-  }
 });
 
 module.exports = router;

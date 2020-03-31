@@ -1,8 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
-const JWTstrategy = require("passport-jwt").Strategy;
-const ExtractJWT = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const bcrypt = require("bcryptjs");
@@ -108,34 +106,6 @@ passport.use(
             });
           }
         });
-      }
-    }
-  )
-);
-
-var tokenExtractor = function(req) {
-  let token;
-  if (req && req.cookies && req.cookies['authToken']) {
-    token = req.cookies['authToken'];
-  } else if (req && req.query && req.query.authToken) {
-    token = req.query.authToken;
-  } else {
-    token = null;
-  }
-  return token;
-};
-
-passport.use(
-  new JWTstrategy(
-    {
-      secretOrKey: process.env.JWT_KEY,
-      jwtFromRequest: tokenExtractor,
-    },
-    async (token, done) => {
-      try {
-        return done(null, token.id);
-      } catch (error) {
-        done(error);
       }
     }
   )

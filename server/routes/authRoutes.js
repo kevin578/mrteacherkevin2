@@ -4,7 +4,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const secureEndpoint = require("../services/secureEndpoint").default;
+const validateUser = require("../services/validateUser").default;
 
 
 router.get("/api/sanityCheck", (req, res)=> {
@@ -26,7 +26,7 @@ router.get(
 
 router.get("/api/current_user", (req, res) => {
   if (req.user) {
-      res.cookie("authToken", jwt.sign({ id: req.user._id }, process.env.JWT_KEY));
+      res.cookie("authToken", jwt.sign({ email: req.user.email }, process.env.JWT_KEY));
   }
   res.send(req.user);
 });
@@ -112,7 +112,7 @@ router.post("/api/resetPassword", async (req, res) => {
   });
 });
 
-router.post("/api/setUsernameAndBirthday", async (req, res)=> {
+router.post("/api/setUsernameAndBirthday", validateUser, async (req, res)=> {
   const {id, month, year, userName} = req.query;
   const userNameExists = await User.findOne({userName});
   if (userNameExists) {

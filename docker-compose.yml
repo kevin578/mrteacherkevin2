@@ -6,14 +6,15 @@ services:
       context: ./db
     restart: always
     container_name: mrtk_mongo
-    ports: 
-      - '27017:27017'
   nginx:
     restart: always
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
     container_name: mrtk_nginx
+    depends_on: 
+      - server
+      - client
     ports:
       - '3000:80'
   server:

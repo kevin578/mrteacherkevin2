@@ -5,8 +5,9 @@ const passport = require('passport');
 const User = require("../models/user");
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
+const validateUser = require("../services/validateUser").default;
 
-router.post("/api/addProject", (req, res) => {
+router.post("/api/addProject", validateUser, (req, res) => {
   if (!req.user.id) return;
   const { id, displayName } = req.user;
   const {
@@ -40,7 +41,7 @@ router.post("/api/addProject", (req, res) => {
   );
 });
 
-router.get("/api/getUserProjects", (req, res) => {
+router.get("/api/getUserProjects", validateUser, (req, res) => {
   if (!req.user) {
     res.send("Not Logged in");
   } else {
@@ -67,16 +68,14 @@ router.get("/api/getProjectVotes", (req, res) => {
   });
 });
 
-router.get("/api/getUserSelectedIcons", (req, res) => {
-  if (!req.user) return res.send("You are not logged in.");
+router.get("/api/getUserSelectedIcons", validateUser,(req, res) => {
   User.findById(req.user.id, (err, user) => {
     if (err) res.send(err);
     else res.json(user.votes);
   });
 });
 
-router.post("/api/changeProjectVotes", async (req, res) => {
-  if (!req.user.id) return;
+router.post("/api/changeProjectVotes", validateUser, async (req, res) => {
   const { voteCount, selectedIcon, id, user } = req.body;
   const projectUpdateString = `votes.${selectedIcon}`;
   const userUpdateString = `votes.${id}`;
