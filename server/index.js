@@ -11,8 +11,7 @@ const projectRoutes = require("./routes/projectRoutes");
 const testRoutes = require("./routes/testRoutes");
 const emailRoutes = require("./routes/emailRoutes");
 const bodyParser = require("body-parser");
-
-
+const cookieParser = require("cookie-parser");
 
 
 mongoose.connect(process.env.MONGO_URI);
@@ -21,6 +20,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(
   cookieSession({
@@ -42,6 +42,7 @@ app.use(userInfoRoutes);
 app.use(projectRoutes);
 app.use(emailRoutes);
 app.use(testRoutes.router);
+
 
 if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets

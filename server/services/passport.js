@@ -4,7 +4,6 @@ const LocalStrategy = require("passport-local").Strategy;
 const JWTstrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const User = mongoose.model("users");
 const bcrypt = require("bcryptjs");
 
@@ -16,7 +15,6 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   let user = await User.findById(id);
-  // user._doc.authToken = jwt.sign({ email: user.email },'top_secret');
   done(null, user);
 });
 
@@ -115,15 +113,27 @@ passport.use(
   )
 );
 
+var tokenExtractor = function(req) {
+  let token;
+  if (req && req.cookies && req.cookies['authToken']) {
+    token = req.cookies['authToken'];
+  } else if (req && req.query && req.query.authToken) {
+    token = req.query.authToken;
+  } else {
+    token = null;
+  }
+  return token;
+};
+
 passport.use(
   new JWTstrategy(
     {
-      secretOrKey: "top_secret",
-      jwtFromRequest: ExtractJWT.fromUrlQueryParameter("authToken")
+      secretOrKey: process.env.JWT_KEY,
+      jwtFromRequest: tokenExtractor,
     },
     async (token, done) => {
       try {
-        return done(null, token.email);
+        return done(null, token.id);
       } catch (error) {
         done(error);
       }

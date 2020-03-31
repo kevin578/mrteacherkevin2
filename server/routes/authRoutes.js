@@ -4,9 +4,11 @@ const router = require("express").Router();
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const secureEndpoint = require("../services/secureEndpoint").default;
+
 
 router.get("/api/sanityCheck", (req, res)=> {
-  res.send("Everything is running.")
+  res.send("Everything is running.");
 });
 
 router.get(
@@ -23,10 +25,14 @@ router.get(
 );
 
 router.get("/api/current_user", (req, res) => {
+  if (req.user) {
+      res.cookie("authToken", jwt.sign({ id: req.user._id }, process.env.JWT_KEY));
+  }
   res.send(req.user);
 });
 
 router.get("/api/logout", (req, res) => {
+  res.clearCookie("authToken");
   req.logout();
   res.redirect("/");
 });

@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const Users = require("../models/user");
-const passport = require('passport');
+const passport = require("passport");
+const secureEndpoint = require("../services/secureEndpoint").default;
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
 
-router.get("/api/getStateFromDatabase", (req, res) => {
+router.get("/api/getStateFromDatabase", secureEndpoint, (req, res) => {
   if (!req.user) {
-    res.send("You are not logged in");
+   res.send("You are not logged in");
   } else {
     const id = req.user;
     Users.findById(id, (err, user) => {
@@ -22,7 +23,6 @@ router.get("/api/getStateFromDatabase", (req, res) => {
 
 router.put("/api/editCompletedPages", (req, res) => {
   const id = req.user;
-
   const subject = req.body.subjectURL;
   const pageKey = req.body.pageKey;
   const stateCopy = req.body.store == null ? {} : req.body.store;
@@ -61,7 +61,6 @@ router.put("/api/editAchievements", (req, res) => {
 });
 
 router.put("/api/setScore", (req, res) => {
-  console.log(req.params)
   Users.findByIdAndUpdate(
     req.user.id,
     {
