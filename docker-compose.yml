@@ -5,6 +5,10 @@ services:
       dockerfile: Dockerfile.dev
       context: ./db
     restart: always
+    volumes:
+      - ./db/data:/data/db
+    ports: 
+      - '27017:27017'
     container_name: mrtk_mongo
   nginx:
     restart: always
@@ -23,7 +27,9 @@ services:
       context: ./server
     container_name: mrtk_server
     links:
-      - mongo   
+      - mongo 
+    depends_on:
+      - mongo  
     volumes:
       - /app/node_modules
       - ./server:/app
