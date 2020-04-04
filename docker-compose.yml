@@ -1,41 +1,22 @@
 version: '3'
 services:
-  mongo:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./db
-    restart: always
-    volumes:
-      - ./db/data:/data/db
-    ports: 
-      - '27017:27017'
-    container_name: mrtk_mongo
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
       context: ./nginx
     container_name: mrtk_nginx
     depends_on: 
       - server
       - client
-    ports:
-      - '3000:80'
   server:
     build:
-      dockerfile: Dockerfile.dev
       context: ./server
-    container_name: mrtk_server
-    links:
-      - mongo 
-    depends_on:
-      - mongo  
+    container_name: mrtk_server 
     volumes:
       - /app/node_modules
       - ./server:/app
   client:
     build:
-      dockerfile: Dockerfile.dev
       context: ./client
     container_name: mrtk_client
     volumes:
