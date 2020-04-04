@@ -2,6 +2,7 @@ const router = require("express").Router();
 const sendEmail = require("../services/sendEmail");
 var jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const validateUser = require("../services/validateUser").default;
 
 router.post("/api/sendContactEmail", (req, res) => {
   const { name, email, message } = req.query;

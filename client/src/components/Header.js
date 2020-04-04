@@ -3,7 +3,6 @@ import styled from "styled-components";
 import image from "./../img/logo2.png";
 import { connect } from "react-redux";
 import media from "./Main/mediaQueries";
-import zeroFill from "zero-fill";
 import googleButton from "../img/btn_google_light.svg";
 import AuthContainer from "./SignIn/AuthContainer";
 import ReactSVG from "react-svg";
