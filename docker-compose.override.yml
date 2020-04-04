@@ -13,6 +13,8 @@ services:
   server: 
     depends_on:
       - mongo 
+    build:
+      dockerfile: Dockerfile.dev
     links:
       - mongo 
   client:
