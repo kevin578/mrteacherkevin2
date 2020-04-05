@@ -58,7 +58,7 @@ class Sidebar extends React.Component {
   componentDidMount(){
     this.props.setSubjectPageLength(this.props.steps.length);
   }
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { subjectURL, steps } = this.props;
     const stepCopy = steps.filter(item => {
       return this.getColor(item.key);
@@ -66,6 +66,9 @@ class Sidebar extends React.Component {
     const percentage = parseInt((stepCopy.length / steps.length) * 100, 10) + "%";
     if (percentage !== "0%") {
       axios.put("/api/setCoursePercentage", { subjectURL, percentage });
+    }
+    if (prevProps.subject != this.props.subject) {
+      this.getCourseTitle();
     }
   }
 
@@ -117,7 +120,6 @@ class Sidebar extends React.Component {
         const courseArrayIndex = parseInt(this.props.subject.slice(-1), 10);
         const title = course.courses[courseArrayIndex - 1];
         this.props.setCourseTitle(title);
-        return title;
       }
     }
   }
@@ -129,7 +131,7 @@ class Sidebar extends React.Component {
           <SidebarSubjectName>
             {this.props.title} {this.getSubjectNumber()}
           </SidebarSubjectName>
-          <SidebarCourseName>{this.getCourseTitle()}</SidebarCourseName>
+          <SidebarCourseName>{this.props.courseTitle}</SidebarCourseName>
         </SidebarSubject>
         <SidebarItemContainer>{this.getSidebarItems()}</SidebarItemContainer>
       </Wrapper>
@@ -144,7 +146,8 @@ function mapStateToProps(state) {
     subjectName: state.subject,
     achievements: state.achievements,
     subjectURL: state.subjectURL,
-    page: state.page
+    page: state.page,
+    courseTitle: state.pageInfo.courseTitle
   };
 }
 
