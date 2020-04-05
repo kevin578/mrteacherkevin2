@@ -160,11 +160,11 @@ class Button extends Component {
       window.location = "/";
       this.props.setPage(0);
     } else {
-      window.location = `${this.props.subjectURL}?pageNumber=${parseInt(
+       const newURL = `${this.props.subjectURL}?pageNumber=${parseInt(
         this.props.page,
         10
       ) + 1}`;
-      //this.props.history.push(`${this.props.subjectURL}?pageNumber=${parseInt(this.props.page, 10) + 1}`);
+      this.props.history.push(newURL);
     }
     window.scrollTo(0, 0);
     this.props.resetAnswers();

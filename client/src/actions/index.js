@@ -53,11 +53,7 @@ export const completeButton = ({pageKey, subjectURL, completed, auth}) => {
       pageKey,
       subjectURL,
       store: completed,
-    }, { 
-    params: {
-      authToken: auth.authToken
-    }
-  });
+    });
   }
 
   return dispatch => {
