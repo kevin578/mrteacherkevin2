@@ -8,8 +8,6 @@ import TextInput from "./shared/TextInput";
 import FormButton from "./shared/FormButton";
 import { checkUsername } from "./shared/helperFunctions";
 
-customStyles.overlay.backgroundColor = "#345afb4d";
-
 const Header = styled(HeaderPrototype)`
   margin-bottom: 15px;
 `;
