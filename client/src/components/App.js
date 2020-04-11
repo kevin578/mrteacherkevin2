@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import asyncComponent from "./AsyncComponent";
 import UserInfoModal from "./UserInfoModal";
+import RedirectModal from "./Main/RedirectModal"
 
 const Profile = asyncComponent(() => import("./Profile/Profile"));
 const About = asyncComponent(() => import("./Footer/About"));
@@ -177,6 +178,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <RedirectModal />
         <UserInfoModal auth = {this.props.auth} updateUser = {this.props.updateUser}/>
         <BrowserRouter>
           <div>
