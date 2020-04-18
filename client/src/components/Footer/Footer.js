@@ -29,9 +29,10 @@ const Footer = () => {
   return (
     <Wrapper>
       <LinkContainer>
-        <Link href = "/about">About</Link>
+        {/* <Link href = "/about">About</Link> */}
         <Link href = "/contact">Contact</Link>
         <Link target = "_blank" href = "https://www.youtube.com/channel/UCeebzVOg5Iv4hVqKTFdaqUQ">YouTube</Link>
+        <Link target = "_blank" href = "http://legacy.mrteacherkevin.rocks">Legacy Site</Link>
       </LinkContainer>
     </Wrapper>
   );

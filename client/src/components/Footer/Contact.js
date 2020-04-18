@@ -80,6 +80,7 @@ const Contact = () => {
   const ContactForm = () => {
     return (
       <React.Fragment>
+        <p>I'd love to hear from you! Leave your contact info and a message, and I'll get back to you.</p>
         <TextInput
           onChange={e => setName(e.target.value)}
           value={name}

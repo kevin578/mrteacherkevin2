@@ -31,7 +31,8 @@ class Button extends Component {
       isValidProjectURL: null,
       isValidProjectTitle: null,
       buttonText: "",
-      allTestsPassed: true
+      allTestsPassed: true,
+      showLoginError: false
     };
   }
 
@@ -101,7 +102,14 @@ class Button extends Component {
   };
 
   projectSubmissionFormComplete() {
+
     const { isProjectSubmissionPage } = this.props.projectSubmission;
+    if (isProjectSubmissionPage && !this.state.auth) {
+      this.setState({showLoginError: true })
+      return false;
+    } else {
+      this.setState({showLoginError: false })
+    }
     if (!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
     if (!this.state.isValidProjectTitle && isProjectSubmissionPage)
       return false;
@@ -217,6 +225,8 @@ class Button extends Component {
           this.props.projectSubmission.isProjectSubmissionPage && (
             <p>Your project does not have a title.</p>
           )}
+        {this.state.showLoginError && 
+        <p>You must be logged in to submit a project.</p>}
       </div>
     );
   }

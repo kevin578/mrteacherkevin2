@@ -56,12 +56,14 @@ function sendTemplate(emailOptions, template) {
     var sendPromise = new AWS.SES({ apiVersion: "2010-12-01" })
       .sendEmail(params)
       .promise();
-
+    
     sendPromise
       .then(function(data) {
+        console.log(data)
         resolve(data.MessageId);
       })
       .catch(function(err) {
+        console.log(err)
         reject(err);
       });
   });

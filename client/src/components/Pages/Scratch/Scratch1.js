@@ -2,6 +2,7 @@ import React from "react";
 import Subject from "./../../Subject/Subject";
 import { Body, Header, Video } from "../../Subject/SubjectStyles";
 import Checkbox from "./../../Subject/Checkbox";
+import ProjectSubmission from "../../Subject/ProjectSubmission";
 import Button from "../../Subject/Button";
 
 class Scratch1 extends React.Component {
@@ -64,10 +65,14 @@ class Scratch1 extends React.Component {
             <Header>I have...</Header>
             <Checkbox>changed the background during my program.</Checkbox>
             <Checkbox>used the "when the backdrop switches" event block.</Checkbox>
+            <Button>Next</Button>
           </Body>,
           <Body key="share" title="Making a Scene!">
-  
-          
+            <Header>Share</Header>
+            <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/scratch2share.mp4" />
+            <Header>Post your project here:</Header>
+            <ProjectSubmission projectKey="scratchScene" />
+            <Button>Done</Button>          
           </Body>
         ]}
       </Subject>
