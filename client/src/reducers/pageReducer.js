@@ -73,9 +73,8 @@ export function addAcheievement(state = null, action) {
 
 export function completePage(state = {}, action) {
   let stateCopy = { ...state };
-  const subject = action.subject;
+  const subject = action.subjectURL;
   const pageKey = action.pageKey;
-
   switch (action.type) {
     case "COMPLETE_BUTTON":
       if (subject in stateCopy && !stateCopy[subject].includes(pageKey)) {

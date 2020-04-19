@@ -76,11 +76,6 @@ class Scratch2 extends React.Component {
             <Checkbox>used a clone</Checkbox>
             <Button>Next</Button>
           </Body>,
-          <Body key="clones" title="Attack of the Clones">
-            <Header>I have...</Header>
-            <Checkbox>used a clone</Checkbox>
-            <Button>Next</Button>
-          </Body>,
           <Body key="share" title="Share">
             <Header>Share</Header>
             <Video src="https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/second/scratch2share.mp4" />

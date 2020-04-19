@@ -105,7 +105,7 @@ const SignUpModal = props => {
       <Modal
         isOpen={props.isOpen}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="signup-modal"
       >
         <Header>Sign up</Header>
         <TextInput
