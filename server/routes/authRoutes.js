@@ -8,6 +8,7 @@ const validateUser = require("../services/validateUser").default;
 
 
 router.get("/api/sanityCheck", (req, res)=> {
+  console.log('everything is running')	
   res.send("Everything is running.");
 });
 
