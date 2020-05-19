@@ -3,28 +3,34 @@ services:
   nginx: 
     ports: 
       - '80:80'
-      - '443:443'
+      - '443:443'  
     volumes:
+      - web-root:/var/www/html
       - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+      - certbot-var:/var/lib/letsencrypt        
       - dhparam:/etc/ssl/certs
-      networks:
-        - app-network
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email kevinbriggs1@gmail.com --agree-tos --force-renewal -d mrteacherkevin.rocks 
+        # certbot:
+        # image: certbot/certbot
+        #container_name: certbot
+        # volumes:
+        # - certbot-etc:/etc/letsencrypt
+        # - certbot-var:/var/lib/letsencrypt
+        # - web-root:/var/www/html
+        #depends_on:
+        # - nginx
+        #  command: certonly --webroot --webroot-path=/var/www/html --email kevinbriggs1@gmail.com --agree-tos --force-renewal -d mrteacherkevin.rocks         
 volumes:
   certbot-etc:
   certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /root/mrteacherkevin/client/public/
+      o: bind
   dhparam:
     driver: local
     driver_opts:
       type: none
-      device: /root/mrteacherkevin/nginx/dhparam/
+      device: /root/mrteacherkevin/nginx/dhparam
       o: bind
