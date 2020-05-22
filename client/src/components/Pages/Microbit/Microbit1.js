@@ -14,7 +14,7 @@ class Microbit1 extends React.Component {
             <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/microbit/microbitIntro.mp4" />
             <Header>I have...</Header>
             <Checkbox>lit up some of the micro:bit LEDs.</Checkbox>
-            <Checkbox>loaded program onto the micro:bit.</Checkbox>
+            <Checkbox>loaded a program onto the micro:bit.</Checkbox>
             <Button>Next</Button>
           </Body>,
 
