@@ -7,20 +7,19 @@ const jwt = require("jsonwebtoken");
 const validateUser = require("../services/validateUser").default;
 
 
-router.get("/api/sanityCheck", (req, res)=> {
-  console.log('everything is running')	
+router.get("/api/sanityCheck", (req, res)=> {	
   res.send("Everything is running.");
 });
 
 router.get(
-  "/auth/google",
+  "/api/auth/google",
   passport.authenticate("google", {
     scope: ["profile", "email"]
   })
 );
 
 router.get(
-  "/auth/google/callback",
+  "/api/auth/google/callback",
   passport.authenticate("google"),
   (req, res) => res.redirect("/")
 );

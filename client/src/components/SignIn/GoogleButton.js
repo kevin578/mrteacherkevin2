@@ -12,7 +12,7 @@ const GoogleButton = props => {
 
   return (
     <SVG_Container
-      onClick = {()=> window.location = "/auth/google"}
+      onClick = {()=> window.location = "/api/auth/google"}
       width="200px"
       height="44px"
       viewBox="0 0 200 44"

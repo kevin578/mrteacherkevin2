@@ -97,7 +97,7 @@ const SignUpModal = props => {
   }
 
   function handleGoogleClick() {
-    window.location = "/auth/google";
+    window.location = "/api/auth/google";
   }
 
   return (
