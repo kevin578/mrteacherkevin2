@@ -18,7 +18,7 @@ const projectSchema = new Schema({
     subject: String,
     subjectURL: String,
     course: String,
-    votes: {type: votesSchema, default: votesSchema}
+    votes: [votesSchema]
 });
 
 module.exports = mongoose.model("projects", projectSchema);
