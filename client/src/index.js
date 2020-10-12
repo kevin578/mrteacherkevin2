@@ -4,7 +4,6 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import App from "./components/App";
-import registerServiceWorker from "./registerServiceWorker";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -35,4 +34,3 @@ ReactDOM.render(
 
   document.getElementById("root") || document.createElement("div") // for testing purposes
 );
-registerServiceWorker();
