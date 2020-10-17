@@ -36,7 +36,7 @@ if [ $1 == "nginx_log" ]; then
 fi
 
 if [ $1 == "start_prod" ]; then
-    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build 
 fi
 
 if [ $1 == "build_prod" ]; then
