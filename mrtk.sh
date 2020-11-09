@@ -16,7 +16,7 @@ if [ $# -eq 0 ]; then
 fi
 
 if [ $1 == "start_dev" ]; then
-    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 fi
 
 if [ $1 == "start_dev_verbose" ]; then

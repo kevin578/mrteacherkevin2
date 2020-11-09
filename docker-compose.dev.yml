@@ -21,5 +21,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
   nginx:
+    build:
+      dockerfile: Dockerfile.dev
     ports:
       - '3000:80'

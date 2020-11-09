@@ -5,6 +5,7 @@ const passport = require("passport");
 const validateUser = require("../services/validateUser").default;
 const errorMessage = "Something went wrong";
 const successMessage = "Successfully saved";
+const RecentActivity = require("../models/recentActivity");
 
 router.get("/api/getStateFromDatabase", (req, res) => {
   const id = req.user;
@@ -17,7 +18,7 @@ router.get("/api/getStateFromDatabase", (req, res) => {
   });
 });
 
-router.put("/api/editCompletedPages", validateUser, (req, res) => {
+router.put("/api/editCompletedPages", validateUser, async (req, res) => {
   const id = req.user;
   const subject = req.body.subjectURL;
   const pageKey = req.body.pageKey;
@@ -28,10 +29,17 @@ router.put("/api/editCompletedPages", validateUser, (req, res) => {
   } else if (!(subject in stateCopy)) {
     stateCopy[subject] = [pageKey];
   }
-
-  Users.findByIdAndUpdate(id, { completed: stateCopy }, (err, data) => {
+  
+  Users.findByIdAndUpdate(id, { completed: stateCopy }, async (err, data) => {
     if (err) res.send(errorMessage);
-    else res.send(successMessage);
+    else {
+      RecentActivity.create({
+        id,
+        category: "Completed Page",
+        description: `${req.user.userName} completed ${req.body.subjectURL}: ${req.body.pageKey}`
+      });
+      res.send(successMessage);
+    } 
   });
 });
 

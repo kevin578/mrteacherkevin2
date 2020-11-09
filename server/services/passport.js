@@ -3,7 +3,9 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
+const RecentActivity = require("../models/recentActivity");
 const bcrypt = require("bcryptjs");
+
 
 require("dotenv").config();
 
@@ -34,6 +36,11 @@ passport.use(
           displayName: profile.displayName,
           name: profile.name
         }).save();
+        RecentActivity.create({
+          id: user.id, 
+          category: "Signup",
+          description: `${profile.name.givenName} ${profile.name.familyName} signed up with Google`
+        });
         done(null, user);
       }
       const userInfo = {
@@ -46,7 +53,6 @@ passport.use(
         upsert: true,
         new: true
       };
-
       const user = await User.findOneAndUpdate(findUser, userInfo, config);
       done(null, user);
     }
@@ -68,6 +74,11 @@ passport.use(
       })
         .save()
         .then(user => {
+           RecentActivity.create({
+             id: req.query.userName, 
+             category: "Signup",
+             description: `${req.query.userName} signed up with Email`
+           });
           done(null, user, {
             saved: true,
             message: "Saved"
