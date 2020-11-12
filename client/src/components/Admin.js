@@ -18,15 +18,33 @@ const DateCell = styled(cell)``;
 const CategoryCell = styled(cell)``;
 const DescriptionCell = styled(cell)``;
 
+const PaginationLinkConainer = styled.div``;
+
+const PaginationLink = styled.span`
+  margin: 10px;
+  ${(props) => {
+    if (!props.currentlySelected) {
+      return `
+        color: #0000EE;
+        text-decoration: underline;
+        cursor: pointer;
+      `  
+    }
+  }}
+  
+
+`;
+
 const Admin = (props) => {
   const [recentActivity, setRecentActivity] = useState([]);
-  const [visibleRecentActivity, setVisibleRecentActivity] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const rowsPerPage = 5; 
 
   useEffect(()=> {
     fetch('/api/getRecentActivity')
     .then(res => res.json())
     .then(res => {
-      setRecentActivity(res);
+      setRecentActivity(res)
     })
   }, []);
 
@@ -40,12 +58,17 @@ const Admin = (props) => {
       const hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
       const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`
       return `${hour}:${minutes}${suffix}`
-  }
+  } 
+
+  // function sortRecentActivity(arg) {
+  //   [...recentActivity][arg].
+  // }
 
   function renderRecentActivity() {
-    return recentActivity.map((row)=> {
+    const startIndex = currentPage * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+    return recentActivity.slice(startIndex, endIndex).map((row)=> {
       const date = new Date(row.createdAt);
-
       return (
         <tr key = {row.id}>
           <DateCell>{`${getDayName(date)}, ${date.getMonth() + 1}/${date.getDate()}, ${getTime(date)}`}</DateCell>
@@ -54,6 +77,15 @@ const Admin = (props) => {
         </tr>
       )
     })
+  }
+
+  function renderPaginationLinks() {
+    let paginationLinks = [];
+    for(let i = 0; i <= recentActivity.length; i += rowsPerPage) {
+      const index = (i / rowsPerPage) + 1;
+      paginationLinks.push(<PaginationLink currentlySelected = {index - 1 == currentPage} onClick = {()=> setCurrentPage(index - 1)}>{index}</PaginationLink>);
+    }
+    return paginationLinks
   }
 
   return (
@@ -68,6 +100,9 @@ const Admin = (props) => {
         { renderRecentActivity() }
         </tbody>
       </Table>
+      <PaginationLinkConainer>
+        {renderPaginationLinks()}
+      </PaginationLinkConainer>
     </DefaultLayout>
   )
 }
