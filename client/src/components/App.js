@@ -14,7 +14,7 @@ const Contact = asyncComponent(() => import("./Footer/Contact"));
 const ResetPassword = asyncComponent(() => import("./SignIn/ResetPassword"));
 const Projects_async = asyncComponent(() => import("./Projects/Projects"));
 
-const Admin_async = asyncComponent(()=> import('./Admin'));
+const Admin_async = asyncComponent(()=> import('./Admin/Admin'));
  
 //Audacity
 const Audacity1_async = asyncComponent(() =>

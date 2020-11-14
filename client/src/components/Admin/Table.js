@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import DefaultLayout from './DefaultLayout';
-import styled, {css} from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled, { css } from "styled-components";
 
 const border = css`
   border: 1px solid #525252;
 `;
 
-const Table = styled.table`
+const TableContainer = styled.table`
   ${border}
   border-collapse: collapse;  
 `;
@@ -28,31 +27,20 @@ const PaginationLink = styled.span`
         color: #0000EE;
         text-decoration: underline;
         cursor: pointer;
-      `  
+      `;  
     }
   }}
-  
-
 `;
 
-const Admin = (props) => {
-  const [recentActivity, setRecentActivity] = useState([]);
+const Table = (props)=> {
   const [currentPage, setCurrentPage] = useState(0);
   const rowsPerPage = 5; 
-
-  useEffect(()=> {
-    fetch('/api/getRecentActivity')
-    .then(res => res.json())
-    .then(res => {
-      setRecentActivity(res)
-    })
-  }, []);
 
   function getDayName(date) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return days[date.getDay()];
   }
-
+  
   function getTime(date) {
       const suffix = date.getHours() > 11 ? "PM" : "AM";
       const hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
@@ -60,51 +48,55 @@ const Admin = (props) => {
       return `${hour}:${minutes}${suffix}`
   } 
 
-  // function sortRecentActivity(arg) {
-  //   [...recentActivity][arg].
-  // }
-
-  function renderRecentActivity() {
+  function renderTableData() {
     const startIndex = currentPage * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
-    return recentActivity.slice(startIndex, endIndex).map((row)=> {
+    return props.data.slice(startIndex, endIndex).map((row)=> {
       const date = new Date(row.createdAt);
       return (
-        <tr key = {row.id}>
+        <tr key = {`table-row-${row.createdAt}`}>
           <DateCell>{`${getDayName(date)}, ${date.getMonth() + 1}/${date.getDate()}, ${getTime(date)}`}</DateCell>
           <CategoryCell>{row.category}</CategoryCell>
           <DescriptionCell>{row.description}</DescriptionCell>
         </tr>
-      )
-    })
+      );
+    });
   }
-
+  
   function renderPaginationLinks() {
+    if (props.data.length <= rowsPerPage) return;
     let paginationLinks = [];
-    for(let i = 0; i <= recentActivity.length; i += rowsPerPage) {
+    for(let i = 0; i < props.data.length; i += rowsPerPage) {
       const index = (i / rowsPerPage) + 1;
-      paginationLinks.push(<PaginationLink currentlySelected = {index - 1 == currentPage} onClick = {()=> setCurrentPage(index - 1)}>{index}</PaginationLink>);
+      paginationLinks.push(
+        <PaginationLink 
+          key = {`pagination-link-${i}`} 
+          currentlySelected = {index - 1 == currentPage} 
+          onClick = {()=> setCurrentPage(index - 1)}
+        >
+          {index}
+        </PaginationLink>);
     }
-    return paginationLinks
+    return paginationLinks;
   }
 
   return (
-    <DefaultLayout>
-      <Table>
-        <tbody>
-          <tr>
-            <th>Time</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-        { renderRecentActivity() }
-        </tbody>
-      </Table>
-      <PaginationLinkConainer>
-        {renderPaginationLinks()}
-      </PaginationLinkConainer>
-    </DefaultLayout>
-  )
-}
+    <React.Fragment>
+      <TableContainer>
+      <tbody>
+        <tr>
+          {props.keys.map(key => <th key = {`header_${key}`}>{key}</th>)}
+        </tr>
+      { renderTableData() }
+      </tbody>
+    </TableContainer>
+    <PaginationLinkConainer>
+      {renderPaginationLinks()}
+    </PaginationLinkConainer>
+  </React.Fragment>
+  );
+};
 
-export default Admin;
+export default Table;
+
+
