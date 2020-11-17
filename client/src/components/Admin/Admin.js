@@ -39,7 +39,8 @@ const Admin = (props) => {
   return (
     <DefaultLayout>
       { recentActivity.length > 0 &&
-        <Table 
+        <Table
+          title = "Recent Activity" 
           columns= {[
             {title: "Created At", key: "createdAt", filter: filterCreatedAt}, 
             {title: "Type", key: "category"}, 
@@ -50,6 +51,7 @@ const Admin = (props) => {
       }
       { users.length > 0 &&
         <Table 
+        title = {`${users.length} Users`}
         columns= {[
           {title: "Signed up", key: "createdAt", filter: filterCreatedAt}, 
           {title: "UserName", key: "userName"},

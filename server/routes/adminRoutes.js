@@ -12,4 +12,9 @@ router.get("/api/getUsers", async (req, res)=> {
   res.json(users);
 });
 
+router.get("/api/getUser", (req, res)=> {
+  res.json(req.params);
+  //const user = await User.find(userName)
+});
+
 module.exports = router;
