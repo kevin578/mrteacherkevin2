@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
     echo "dev_db: Use internact MongoDB shell for development"
     echo "server_log: Listen to Node server log"
     echo "nginx_log: Listen to nginx server log"
-    echo "start_prod: Start the staging server"
+    echo "start_staging: Start the staging server"
     echo "start_prod: Start the production server"
     echo "build_prod: Pull the latest from master and rebuild containers"
     echo ""
@@ -37,7 +37,7 @@ if [ $1 == "nginx_log" ]; then
 fi
 
 if [ $1 == "start_staging" ]; then
-    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build 
+    docker-compose -f docker-compose.yml -f docker-compose.staging.yml up --build 
 fi
 
 if [ $1 == "start_prod" ]; then
