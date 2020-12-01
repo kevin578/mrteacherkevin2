@@ -125,7 +125,6 @@ class VotingIcon extends Component {
     const { projects, projectId, iconType } = this.props;
     const {votingIconsInDatabase} = projects;
     let {votes} = this.props;
-    
     if (iconIsInDatabase()) votes--;
     
     function iconIsInDatabase() {
@@ -143,10 +142,6 @@ class VotingIcon extends Component {
       }
       return votes;
   };
-
-  modifyVoteNumber = () => {
-
-  }
 
   mouseOver = () => {
     this.setState({ isHovered: true });

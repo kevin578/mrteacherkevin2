@@ -8,6 +8,11 @@ const recentActivity = new Schema({
   },
   category: String,
   description: String
-}, { timestamps: true });
+}, { 
+  timestamps: true,
+  capped: {
+    max: 500
+  }
+});
 
 module.exports = mongoose.model("recentActivity", recentActivity);

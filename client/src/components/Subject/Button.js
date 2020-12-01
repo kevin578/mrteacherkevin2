@@ -104,11 +104,11 @@ class Button extends Component {
   projectSubmissionFormComplete() {
 
     const { isProjectSubmissionPage } = this.props.projectSubmission;
-    if (isProjectSubmissionPage && !this.state.auth) {
-      this.setState({showLoginError: true })
+    if (isProjectSubmissionPage && !this.props.auth) {
+      this.setState({showLoginError: true });
       return false;
     } else {
-      this.setState({showLoginError: false })
+      this.setState({showLoginError: false });
     }
     if (!this.state.isValidProjectURL && isProjectSubmissionPage) return false;
     if (!this.state.isValidProjectTitle && isProjectSubmissionPage)

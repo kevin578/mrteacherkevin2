@@ -43,8 +43,6 @@ class Projects extends Component {
         isLoading: false,
         title: `Projects | ${response.data[0].course}`
       });
-    
-
   });
 }
 
@@ -54,7 +52,6 @@ class Projects extends Component {
       const lastInitial = fullName.split(" ")[1][0];
       return `${firstName} ${lastInitial}.`;
     }
-
     return this.state.projects.map(project => {
       const { projectTitle, projectURL, _id, userName, votes  } = project;
       const shortenedUserName = shortenName(userName);
@@ -66,7 +63,6 @@ class Projects extends Component {
           projectTitle={projectTitle}
           projectURL = {projectURL}
           votes = {votes}
-
         />
       );
     });

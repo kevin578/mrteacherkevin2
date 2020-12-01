@@ -38,9 +38,9 @@ const Cell = styled.td`
   padding: 10px 20px;  
 `;
 
-const PaginationRow = styled.tfoot``;
+const PaginationRow = styled.tr``;
 
-const PaginationLinkConainer = styled.div`
+const PaginationLinkConainer = styled.td`
   width: 200px;
   padding: 10px;
 `;
@@ -141,7 +141,9 @@ const Table = (props)=> {
         { renderTableData() }
         {/* { (currentPage == lastPage - 1) && renderFillerRows() } */}
         </tbody>
-        {renderPaginationLinks()}
+        <tfoot>
+          {renderPaginationLinks()}
+        </tfoot>
       </TableElement>
     </TableContainer>
   );

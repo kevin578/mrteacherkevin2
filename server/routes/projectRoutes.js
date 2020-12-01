@@ -97,7 +97,6 @@ router.post("/api/changeProjectVotes", validateUser, async (req, res) => {
   const changeVoteIcon = new Promise((resolve, reject) => {
     var setter = { $set: {} };
     setter.$set[`votes.${id}.icon`] = selectedIcon;
-
     User.findOneAndUpdate(
       { _id: user },
       setter,

@@ -50,7 +50,9 @@ class Checkbox extends Component {
   }
 
   componentWillUnmount() {
+    if (!this.state.completed) {
       this.props.removeCheckbox();
+    }
   }
 
   handleInputChange = event => {

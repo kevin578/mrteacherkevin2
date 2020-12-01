@@ -5,7 +5,7 @@ const votesSchema = new Schema({
     wellDone: {type: Number, default: 0},
     creative: {type: Number, default: 0},
     fun: {type: Number, default: 0},
-})
+});
 
 
 const projectSchema = new Schema({
@@ -18,7 +18,7 @@ const projectSchema = new Schema({
     subject: String,
     subjectURL: String,
     course: String,
-    votes: [votesSchema]
+    votes: votesSchema
 });
 
 module.exports = mongoose.model("projects", projectSchema);

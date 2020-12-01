@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import DefaultLayout from "../DefaultLayout";
+import { filterCreatedAt } from "../../lib/dateTime";
 
 function getAdminData(url, callback) {
   fetch(url)
@@ -10,21 +11,21 @@ function getAdminData(url, callback) {
   });
 }
 
-function getDayName(date) {
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  return days[date.getDay()];
+function addUserLinkToDescription(description) {
+  if (description === undefined) return description;
+  let descriptionArr = description.split(" ");
+  const username = descriptionArr.shift();
+  return (
+    <React.Fragment>
+      {addUserLink(username)}
+      {" "}
+      <span>{descriptionArr.join(" ")}</span>
+    </React.Fragment>
+  );
 }
 
-function getTime(date) {
-    const suffix = date.getHours() > 11 ? "PM" : "AM";
-    const hour = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
-    const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`
-    return `${hour}:${minutes}${suffix}`
-} 
-
-function filterCreatedAt(createdAt) {
-  const date = new Date(createdAt);
-  return `${getDayName(date)}, ${date.getMonth() + 1}/${date.getDate()}, ${getTime(date)}`
+function addUserLink(user) {
+return <a href = {`/admin/${user}`}>{user}</a>;
 }
 
 const Admin = (props) => {
@@ -44,7 +45,7 @@ const Admin = (props) => {
           columns= {[
             {title: "Created At", key: "createdAt", filter: filterCreatedAt}, 
             {title: "Type", key: "category"}, 
-            {title: "Description", key: "description"}
+            {title: "Description", key: "description", filter: addUserLinkToDescription}
           ]}
           data={recentActivity}
         />
@@ -54,7 +55,7 @@ const Admin = (props) => {
         title = {`${users.length} Users`}
         columns= {[
           {title: "Signed up", key: "createdAt", filter: filterCreatedAt}, 
-          {title: "UserName", key: "userName"},
+          {title: "UserName", key: "userName", filter: addUserLink},
           {title: "Email", key: "email"}
         ]}
           data={users}
