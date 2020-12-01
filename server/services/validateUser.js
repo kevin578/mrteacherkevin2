@@ -1,8 +1,5 @@
 const jwt = require("jsonwebtoken");
-
-// const secureEndpointstList = [
-
-// ];
+const User = require('../models/user');
 
 function secureEndpoint(req, res, next) {
   let token;
@@ -29,4 +26,21 @@ function secureEndpoint(req, res, next) {
   });
 }
 
+async function isAdmin(req, res, next) {
+  if (req.user && req.user.id) {
+    const user = await User.find({email: req.user.email});
+    if (user.admin || process.env.HARDCODED_ADMIN_USERS.includes(req.user.email)) {
+      next();
+    } else {
+      res.status(403).send({
+        message: "User is not admin",
+      });
+    }
+
+  }
+}
+
+const checkForAdmin = [secureEndpoint, isAdmin];
+
+exports.checkForAdmin = checkForAdmin;
 exports.default = secureEndpoint;

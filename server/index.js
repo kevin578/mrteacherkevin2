@@ -10,9 +10,9 @@ const userInfoRoutes = require("./routes/userInfoRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const testRoutes = require("./routes/testRoutes");
 const emailRoutes = require("./routes/emailRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 
@@ -41,7 +41,9 @@ app.use(authRoutes);
 app.use(userInfoRoutes);
 app.use(projectRoutes);
 app.use(emailRoutes);
+app.use(adminRoutes);
 app.use(testRoutes.router);
+
 
 
 if (process.env.NODE_ENV === "production") {

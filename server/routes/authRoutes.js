@@ -34,6 +34,7 @@ router.get("/api/current_user", (req, res) => {
 router.get("/api/logout", (req, res) => {
   res.clearCookie("authToken");
   req.logout();
+  
   res.redirect("/");
 });
 

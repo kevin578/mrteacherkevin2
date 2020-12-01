@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 //   icon: String
 // })
 
-const userSchema = new Schema({
+const user = new Schema({
   googleId: String,
   displayName: String,
   email: String,
@@ -20,10 +20,9 @@ const userSchema = new Schema({
   score: Number,
   achievements: Object,
   coursePercentages: Object,
-  votes: Object
+  votes: Object,
+  admin: { type: Boolean, default: false }
 }, { timestamps: true });
 
 
-
-
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("users", user);

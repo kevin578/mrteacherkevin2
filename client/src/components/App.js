@@ -13,6 +13,10 @@ const About = asyncComponent(() => import("./Footer/About"));
 const Contact = asyncComponent(() => import("./Footer/Contact"));
 const ResetPassword = asyncComponent(() => import("./SignIn/ResetPassword"));
 const Projects_async = asyncComponent(() => import("./Projects/Projects"));
+
+const Admin_async = asyncComponent(()=> import("./Admin/Admin"));
+const AdminUser_async = asyncComponent(()=> import("./Admin/AdminUser")); 
+
 //Audacity
 const Audacity1_async = asyncComponent(() =>
   import("./Pages/Audacity/Audacity1")
@@ -186,6 +190,8 @@ class App extends Component {
             <Route path="/profile" component={Profile} />
             <Route path="/projects" component={Projects_async} />
             <Route path="/[object Object]" component={Main} />
+            <Route exact path="/admin" component={Admin_async} />
+            <Route path="/admin/:user" component={AdminUser_async} />
 
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
