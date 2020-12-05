@@ -9,7 +9,7 @@ const validateUser = require("../services/validateUser").default;
 
 router.post("/api/addProject", validateUser, (req, res) => {
   if (!req.user.id) return;
-  const { id, displayName } = req.user;
+  const { id, userName } = req.user;
   const {
     subject,
     subjectURL,
@@ -21,7 +21,7 @@ router.post("/api/addProject", validateUser, (req, res) => {
   const options = { upsert: true, new: true, setDefaultsOnInsert: true };
   const update = {
     userId: id,
-    userName: displayName,
+    userName: userName,
     projectURL,
     projectTitle,
     subject,

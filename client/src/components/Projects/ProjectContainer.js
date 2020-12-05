@@ -44,7 +44,14 @@ class ProjectContainer extends Component {
   }
 
   render() {
-    const { projectTitle, userName, projectURL, projectId, votes } = this.props;
+    let { projectTitle, userName, projectURL, projectId, votes } = this.props;
+    if (!votes) {
+      votes = {
+        wellDone: 0,
+        creative: 0,
+        fun: 0
+      }
+    }
     return (
       <Wrapper>
         <TextContainer>
