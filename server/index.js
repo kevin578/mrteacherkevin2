@@ -14,7 +14,7 @@ const adminRoutes = require("./routes/adminRoutes");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_STAGING_URI, { useNewUrlParser: true });
 
 const app = express();
 

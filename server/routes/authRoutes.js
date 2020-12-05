@@ -25,6 +25,8 @@ router.get(
 );
 
 router.get("/api/current_user", (req, res) => {
+  var ip = req.headers
+  console.log(ip)
   if (req.user) {
       res.cookie("authToken", jwt.sign({ email: req.user.email }, process.env.JWT_KEY));
   }
