@@ -41,7 +41,7 @@ const Cell = styled.td`
 const PaginationRow = styled.tr``;
 
 const PaginationLinkConainer = styled.td`
-  width: 200px;
+  width: 210px;
   padding: 10px;
 `;
 
