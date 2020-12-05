@@ -1,5 +1,13 @@
 version: '3'
 services:
   nginx:
+    depends_on:
+      - client
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/webroot:/usr/share/nginx/html
+      - /etc/letsencrypt:/etc/letsencrypt
     build:
       dockerfile: Dockerfile.staging
