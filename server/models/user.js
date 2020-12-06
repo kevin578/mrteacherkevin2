@@ -21,7 +21,8 @@ const user = new Schema({
   achievements: Object,
   coursePercentages: Object,
   votes: Object,
-  admin: { type: Boolean, default: false }
+  admin: { type: Boolean, default: false },
+  last_ip_address: String
 }, { timestamps: true });
 
 

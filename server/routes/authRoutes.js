@@ -25,10 +25,9 @@ router.get(
 );
 
 router.get("/api/current_user", (req, res) => {
-  var ip = req.headers
-  console.log(ip)
   if (req.user) {
-      res.cookie("authToken", jwt.sign({ email: req.user.email }, process.env.JWT_KEY));
+    res.cookie("authToken", jwt.sign({ email: req.user.email }, process.env.JWT_KEY));
+    User.findByIdAndUpdate(req.user.id, {last_ip_address: req.headers["x-ip-address"]});
   }
   res.send(req.user);
 });
