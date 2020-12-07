@@ -24,8 +24,8 @@ const AdminUser = (props)=> {
     fetch(`/api/getUser?user=${user}`)
     .then((res)=> res.json())
     .then((res)=> {
-      if (res.length) {
-        setUserData(res[0]);
+      if (res) {
+        setUserData(res);
       } else {
         setErrorMessage(`${user} is not a valid user`);
       }
@@ -64,6 +64,7 @@ const AdminUser = (props)=> {
             getKeyPair("Last Activity: ", getTimeWithYear(userData.updatedAt)),
             getKeyPair("Account Created: ", getTimeWithYear(userData.createdAt)),
             getKeyPair("Birthday: ", `${userData.birthMonth} ${userData.birthYear}`),
+            userData.userLocationString ? getKeyPair("Location: ", userData.userLocationString) : null,
             getKeyPair("Completed Courses:", getObjectValues(userData.coursePercentages))
           ]}
         </div>

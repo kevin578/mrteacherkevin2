@@ -1,9 +1,8 @@
 version: '3'
 services:
   nginx:
+    image: nginx
     restart: always
-    build:
-      context: ./nginx
     container_name: mrtk_nginx
     depends_on: 
       - server

@@ -9,6 +9,7 @@ if [ $# -eq 0 ]; then
     echo "dev_db: Use internact MongoDB shell for development"
     echo "server_log: Listen to Node server log"
     echo "nginx_log: Listen to nginx server log"
+    echo "reload_nginx: Reload nginx config file"
     echo "start_staging: Start the staging server"
     echo "start_prod: Start the production server"
     echo "build_prod: Pull the latest from master and rebuild containers"
@@ -34,6 +35,10 @@ fi
 
 if [ $1 == "nginx_log" ]; then
     docker logs --follow mrtk_nginx
+fi
+
+if [ $1 == "reload_nginx" ]; then
+    docker exec -it mrtk_nginx nginx -s reload
 fi
 
 if [ $1 == "start_staging" ]; then
