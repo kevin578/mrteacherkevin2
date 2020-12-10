@@ -184,7 +184,7 @@ class App extends Component {
       <div>
         <RedirectModal />
         <UserInfoModal auth = {this.props.auth} updateUser = {this.props.updateUser}/>
-        <BrowserRouter>
+        <BrowserRouter basename = "/">
           <div>
             <Route path="/" component={Main} exact />
             <Route path="/profile" component={Profile} />
