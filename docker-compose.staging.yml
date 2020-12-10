@@ -9,5 +9,4 @@ services:
     volumes:
       - ./nginx/webroot:/usr/share/nginx/html
       - /etc/letsencrypt:/etc/letsencrypt
-    build:
-      dockerfile: Dockerfile.staging
+      - ./nginx/nginx-staging.conf:/etc/nginx/conf.d/default.conf
