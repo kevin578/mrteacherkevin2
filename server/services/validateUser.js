@@ -17,6 +17,8 @@ function secureEndpoint(req, res, next) {
     return res.json(errorObj);
   }
   jwt.verify(token, process.env.JWT_KEY, function(err, decoded) {
+    if (!req.user) res.json({success: false, msg: 'Error decoding JWT'})
+
     //check that email from the token is the same as the user
     if (decoded.email == req.user.email || decoded.email == req.query.email) {
       next();
