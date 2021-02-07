@@ -13,7 +13,7 @@ class Scratch2 extends React.Component {
           <Body key="intro" title="What you'll be making">
             <Header>What you'll be making</Header>
             <p>You will be making an interactive game.</p>
-            <a href="http://mrteacherkevin.herokuapp.com/projects?projectURL=scratch2">
+            <a href="/projects?projectURL=scratch2">
               Click here to see some projects.
             </a>
             <Button>Next</Button>

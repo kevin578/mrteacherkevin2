@@ -12,6 +12,7 @@ class Scratch1 extends React.Component {
         {[
           <Body key="starting" title="Let's get started">
             <Header>Let's get started</Header>
+            <p>You will be making an animation. Click <a href = "/projects?projectURL=scratch1">here</a> to see some projects.</p>
             <Video src = "https://s3.us-east-2.amazonaws.com/mrtk-videos/scratch/scratchInto.mp4"/>
             <Header>I have...</Header>
             <Checkbox>named my file.</Checkbox>

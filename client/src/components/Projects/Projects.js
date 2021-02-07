@@ -37,7 +37,9 @@ class Projects extends Component {
   getProjectsFromDatabase() {
     this.setState({isLoading: true});
     const query = queryString.parse(this.props.location.search);
+
     axios.get(`/api/getProjectType/${query.projectURL}`).then(response => {
+      if (!response.data.length) return;
       this.setState({ 
         projects: response.data,
         isLoading: false,
